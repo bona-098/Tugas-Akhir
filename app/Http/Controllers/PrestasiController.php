@@ -52,7 +52,7 @@ class PrestasiController extends Controller
         ]);
         
         $newNameFoto = date('ymd'). '-' . $request->foto->extension();
-
+         
         $request->file('foto')->move(public_path('prestasi/foto'), $newNameFoto);
         
         Prestasi::create([
