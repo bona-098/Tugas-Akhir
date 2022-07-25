@@ -18,7 +18,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{ asset('dashboard/css/sb-admin-2.min.css')}}"  rel="stylesheet">
+    <link href="{{ asset('dashboard/css/sb-admin-2.min.css') }}" rel="stylesheet">
     {{-- {{ route('prestasi.destroy', $prestasi->Prestasi) }} --}}
 
 </head>
@@ -87,7 +87,7 @@
                                 </form>
                             </div>
                         </li>
-{{-- notif --}}
+                        {{-- notif --}}
                         <!-- Nav Item - Alerts -->
                         {{-- <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
@@ -206,7 +206,7 @@
                         </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div> --}}
-{{-- inbox --}}
+                        {{-- inbox --}}
                         <!-- Nav Item - User Information -->
                         @include('includes.navbar')
 

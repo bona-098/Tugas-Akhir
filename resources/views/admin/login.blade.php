@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link href="dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
 <head>
 
     <meta charset="utf-8">
@@ -49,8 +50,9 @@
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="password"
+                                                class="form-control form-control-user" id="exampleInputPassword"
+                                                placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">

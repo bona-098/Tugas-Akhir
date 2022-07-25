@@ -1,135 +1,55 @@
-{{-- <link href="colorlib-regform-6/css/main.css" rel="stylesheet" media="all">
-<body>
-            <div class="card card-6">
-                <div class="card-heading">
-                    <h2 class="title text-center">Pendaftaran Prestasi SAA</h2>
-                    <div class="alert"></div>
-                </div>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('admin-prestasi.store') }}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-row">
-                            <div class="name">Nama</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="nama" @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
-                                @error('nama')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Nim</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="nim" @error('nim') is-invalid @enderror" value="{{ old('nim') }}">
-                                @error('nim')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Pencapaian</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="pencapaian" @error('pencapaian') is-invalid @enderror" value="{{ old('pencapaian') }}">
-                                @error('pencapaian')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">dospem</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="dospem" @error('dospem') is-invalid @enderror" value="{{ old('dospem') }}">
-                                @error('dospem')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">kategori</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="kategori" @error('kategori') is-invalid @enderror" value="{{ old('kategori') }}">
-                                @error('kategori')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Nama Kegiatan</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="nama_kegiatan" @error('nama_kegiatan') is-invalid @enderror" value="{{ old('nama_kegiatan') }}">
-                                @error('nama_kegiatan')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Penyelenggara</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="penyelenggara" @error('penyelenggara') is-invalid @enderror" value="{{ old('penyelenggara') }}">
-                                @error('penyelenggara')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">waktu</div>
-                            <div class="value">
-                                <input class="input--style-6" type="date" name="waktu" @error('waktu') is-invalid @enderror" value="{{ old('dospem') }}">
-                                @error('waktu')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Tempat</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="tempat" @error('tempat') is-invalid @enderror" value="{{ old('dospem') }}">
-                                @error('tempat')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Foto</div>
-                            <div class="value">
-                                <input type="file" name="foto" @error('foto') is-invalid @enderror" value="{{ old('foto') }}">
-                                @error('foto')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                                <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn--radius-2 btn--blue-2" type="submit">Kirim</button>
-                    </div>
-                </form>
+@extends('admin.app')
+@section('content')
+    {{-- <div class="container border">
+        <div class="d-grid gap-1">
+            <a button type="button" class="btn btn-primary" id="liveToastBtn"
+                href="{{ route('admin-prestasi.create') }}">Tambah prestasi</a>
+        </div>
+        <div class="card-body px-0 pb-0">
+            <div class="table-responsive border">
+                <table class="table table-flush" id="products-list">
+
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Media</th>
+                            <th>Nama</th>
+                            <th>Nim</th>
+                            <th>Waktu</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    @foreach ($prestasi as $item)
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex">
+                                        <div class="pic"><img src="{{ asset('prestasi/foto/' . $item->foto) }}"
+                                                class="img-fluid" width="80" height="80" alt="pp"></div>
+                                    </div>
+                                </td>
+                                <td class="text-sm">{{ $item->nama }}</td>
+                                <td class="text-sm">{{ $item->nim }}</td>
+                                <td class="text-sm">{{ $item->waktu }}</td>
+                                <td class="text-sm">
+                                    <a href="admin-prestasi-detail" data-bs-toggle="tooltip"
+                                        data-bs-original-title="Preview product">
+                                        <i class="fas fa-eye text-secondary"></i>
+                                    </a>
+                                    <a href="{{ route('admin-prestasi.edit', $item->id) }}" class="mx-3"
+                                        data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+                                        <i class="fas fa-user-edit text-secondary"></i>
+                                    </a>
+                                    <form action="{{ route('admin-prestasi.destroy', $item->id) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="badge bg-danger">delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    @endforeach
+                </table>
             </div>
-    <!-- Jquery JS-->
-    <script src="colorlib-regform-6/vendor/jquery/jquery.min.js"></script>
-    <script src="colorlib-regform-6/vendor/jquery/jquery.js"></script>
-
-    <!-- Main JS-->
-    <script src="colorlib-regform6/js/global.js"></script>
-
-</body> --}}
+        </div>
+    </div> --}}
+@endsection

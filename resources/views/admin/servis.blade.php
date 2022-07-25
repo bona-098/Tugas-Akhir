@@ -32,7 +32,7 @@
                         <td class="text-sm">{{ $item->sesi }}</td>
                         <td class="text-sm">{{ $item->no_hp }}</td>
                         {{-- <td><span class="badge badge-danger badge-sm">pending</span></td> --}}
-                        {{-- <td class="text-sm">
+{{-- <td class="text-sm">
                             <a href="admin-servis-detail" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                                 <i class="fas fa-eye text-secondary"></i>
                             </a>
