@@ -1,53 +1,33 @@
-{{-- @extends('admin.app')
-@section('content')
-<link rel="canonical" href="https://www.creative-tim.com/product/argon-dashboard-pro" />
-<style>
-    .border {
-        border: 2px;
-    }
-</style>
-<div class="container border">
-    <div class="d-grid gap-1">
-        <a button type="button" class="btn btn-primary" id="liveToastBtn" href="/admin-servis-tambah">Tambah Teknisi</a>
-    </div>
-    <div class="card-body px-0 pb-0 border">
-        <div class="table-responsive border">
-            <table class="table table-flush" id="products-list">
-                <thead class="thead-light">
-                    <tr>
-                        <th>Nama</th>
-                        <th>Nim</th>
-                        <th>Hari</th>
-                        <th>Sesi</th>
-                        <th>No_hp</th>
-                        <th>action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($sers as $item)
-                    <tr>
-                        <td class="text-sm">{{ $item->nama }}</td>
-                        <td class="text-sm">{{ $item->nim }}</td>
-                        <td class="text-sm">{{ $item->hari }}</td>
-                        <td class="text-sm">{{ $item->sesi }}</td>
-                        <td class="text-sm">{{ $item->no_hp }}</td>
-                        {{-- <td><span class="badge badge-danger badge-sm">pending</span></td> --}}
-{{-- <td class="text-sm">
-                            <a href="admin-servis-detail" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                <i class="fas fa-eye text-secondary"></i>
-                            </a>
-                            <a href="{{ route('adminservice.edit', $item->id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                <i class="fas fa-user-edit text-secondary"></i>
-                            </a>
-                            <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                <i class="fas fa-trash text-secondary"></i>
-                            </a>
-                        </td>
-                    </tr>
+<section id="team" class="team">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="section-title" data-aos="fade-right">
+                    <h2>Prestasi</h2>
+                    <p>Berikut ini adalah prestasi yang sudah dicapai oleh SAA</p>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
+                    @foreach ($prestasi as $item)
+                        <div class="col-lg-6">
+                            <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                                <div class="pic"><img src="{{ asset('prestasi/foto/' . $item->foto) }}"
+                                        class="img-fluid" alt=""></div>
+                                <div class="member-info">
+                                    <h4>{{ $item->nama }}</h4>
+                                    <span>{{ $item->nim }}</span>
+                                    <p>{{ $item->nama_kegiatan }}</p>
+                                    <div class="social">
+                                        <a href="{{ route('showprestasi', $item->id) }}">selengkapnya</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
-                </tbody>
-            </table>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-@endsection --}}
+</section>

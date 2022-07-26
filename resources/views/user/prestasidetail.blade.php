@@ -1,36 +1,61 @@
 @extends('user.app')
 @section('content')
-    <section id="team" class="team">
-        <div class="container">
+    <main id="main">
 
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="section-title" data-aos="fade-right">
-                        <h2>Prestasi</h2>
-                        <p>Berikut ini adalah prestasi yang sudah dicapai oleh SAA</p>
-                    </div>
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Prestasi Details</h2>
+                    <ol>
+                        <li><a href="ind    ex.html">Home</a></li>
+                        <li>Prestasi Detail</li>
+                    </ol>
                 </div>
-                <div class="col-lg-8">
-                    <div class="row">
-                        @foreach ($prestasi as $item)
-                            <div class="col-lg-6">
-                                <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                                    <div class="pic"><img src="{{ asset('prestasi/foto/' . $item->foto) }}"
-                                            class="img-fluid" alt=""></div>
-                                    <div class="member-info">
-                                        <h4>{{ $item->nama }}</h4>
-                                        <span>{{ $item->nim }}</span>
-                                        <p>{{ $item->nama_kegiatan }}</p>
-                                        <div class="social">
-                                            <a href="{{ route('showprestasi', $item->id) }}">selengkapnya</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
+
             </div>
-        </div>
-    </section>
+        </section><!-- End Breadcrumbs -->
+
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            @foreach ($prestasi as $item)
+                <div class="container">
+
+                    <div class="row gy-4">
+
+                        <div class="col-lg-8">
+                            <div class="portfolio-details-slider swiper">
+                                <div class="swiper-wrapper align-items-center">
+                                    <div class="pic"><img src="{{ asset('prestasi/foto/' . $item->foto) }}"
+                                        class="img-fluid" width="80" height="80" alt="pp"></div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4">
+                            <div class="portfolio-info">
+                                <h3>Detail Prestasi</h3>
+                                <ul>
+                                    <li><strong>Nama</strong>: {{ $item->nama }}</li>
+                                    <li><strong>Nim</strong>: {{ $item->nim }}</li>
+                                    <li><strong>Pencapaian</strong>: {{ $item->pencapaian }}</li>
+                                    <li><strong>Dospem</strong>: {{ $item->dospem }}</li>
+                                    <li><strong>Kategori</strong>: {{ $item->kategori }}</li>
+                                    <li><strong>Nama Kegiatan</strong>: {{ $item->nama_kegiatan }}</li>
+                                    <li><strong>Penyelenggara</strong>: {{ $item->penyelenggara }}</li>
+                                    <li><strong>Waktu</strong>: {{ $item->waktu }}</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            @endforeach
+        </section><!-- End Portfolio Details Section -->
+
+    </main><!-- End #main -->
 @endsection

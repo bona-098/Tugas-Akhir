@@ -18,6 +18,7 @@ class CreatePengumumanTable extends Migration
             $table->string('judul');
             $table->string('deskripsi');
             $table->date('waktu');
+            $table->string('media');
             $table->timestamps();
         });
     }

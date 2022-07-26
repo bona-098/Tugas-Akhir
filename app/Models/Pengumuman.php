@@ -14,6 +14,7 @@ class Pengumuman extends Model
         'judul',
         'deskripsi',
         'waktu',
+        'media',
         'created_at',
         'update_at',
     ];

@@ -1,268 +1,139 @@
 @extends('admin.app')
 @section('content')
-    {{-- <style>
-.border {
-    border: 2px;
-}
-</style>
-
-<div class="container-fluid py-4">
-    <div class="row">
-        <div class="col-lg-10">
-            <h4 class="text-danger">Tambahkan Prestasi</h4>
-        </div>
-    </div>
-    
-    <div class="row mt-4">
-        <div class="col-lg-12 mt-lg-0 mt-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="font-weight-bolder">Info</h5>
+    <style>
+        .bd {
+            border: 2px;
+        }
+    </style>
+    <div class="container bd">
+        <main>
+            <div class="row g-5 bd">
+                <div class="col-md-6 col-lg-12 bd">
+                    <h4 class="mb-3">Tambah Prestasi</h4>
                     <form method="POST" action="{{ route('admin-prestasi.store') }}" enctype="multipart/form-data">
                         @csrf
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <div class="name">ama</div>                                
-                                <input class="form-control" type="text" name="nama" @error('nama') is-invalid @enderror" value="{{ old ('name') }}">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label for="nama" class="form-label">nama</label>
+                                <input type="text" class="form-control" name="nama"
+                                    @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
                                 @error('nama')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
-                            </div>
-            
-                            <div class="col-12 col-sm-6">                            
-                                <div class="name">im</div>
-                                <input class="form-control" type="text" name="nim" @error('nim') is-invalid @enderror" value="{{ old ('name') }}">
-                                @error('nim')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                                <br>
                             </div>
 
-                            <div class="col-12 col-sm-6">
-                                <div class="name">encapaian</div>
-                                <input class="form-control" type="text" name="pencapaian" @error('pencapaian') is-invalid @enderror" value="{{ old ('name') }}">
-                                @error('pencapaian')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
+                            <div class="col-sm-6">
+                                <label for="nim" class="form-label">nim</label>
+                                <input type="number" class="form-control" name="nim"
+                                    @error('nim') is-invalid @enderror" value="{{ old('nim') }}">
+                                @error('nim')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="name">ospem</div>
-                                <input class="form-control" type="text" name="dospem" @error('dospem') is-invalid @enderror" value="{{ old ('name') }}">
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label">dospem</label>
+                                <input type="text" class="form-control" name="dospem"
+                                    @error('dospem') is-invalid @enderror" value="{{ old('dospem') }}">
                                 @error('dospem')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                                <br>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="name">ategori</div>
-                                <input class="form-control" type="text" name="kategori" @error('kategori') is-invalid @enderror" value="{{ old ('name') }}">
-                                @error('kategori')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="name">enyelenggara</div>
-                                <input class="form-control" type="text" name="penyelenggara" @error('penyelenggara') is-invalid @enderror" value="{{ old ('name') }}">
-                                @error('penyelenggara')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                                <br>
-                            </div>                            
-                            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                <div class="name">aktu</div>
-                                <input class="form-control" type="date" name="waktu" @error('waktu') is-invalid @enderror" value="{{ old ('name') }}">
+
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">waktu</label>
+                                <input type="date" class="form-control" name="waktu"
+                                    @error('waktu') is-invalid @enderror" value="{{ old('dospem') }}">
                                 @error('waktu')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
-                                <br>                            
                             </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="name">empat</div>
-                                <input class="form-control" type="text" name="tempat" @error('tempat') is-invalid @enderror" value="{{ old ('name') }}">
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label">Penyelenggara</label>
+                                <input type="text" class="form-control" name="penyelenggara"
+                                    @error('penyelenggara') is-invalid @enderror" value="{{ old('penyelenggara') }}">
+                                @error('penyelenggara')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Tempat</label>
+                                <input type="text" class="form-control" name="tempat"
+                                    @error('tempat') is-invalid @enderror" value="{{ old('tempat') }}">
                                 @error('tempat')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Kategori</label>
+                                    <select name="kategori" class="form-control" id="kategori">
+                                        <option value="" selected disabled>Pilih kategori</option>
+                                        <option value="Lomba">Lomba</option>
+                                        <option value="Webinar">Webinar</option>
+                                        <option value="Peraih Penghargaan">Peraih Penghargaan</option>
+                                        <option value="Peraih Nominasi">Peraih Nominasi</option>
+                                        <option value="Dll">Dll</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Pencapaian</label>
+                                    <select name="pencapaian" class="form-control" id="pencapaian">
+                                        <option value="" selected disabled>Pilih pencapaian</option>
+                                        <option value="Juara 1">Juara 1</option>
+                                        <option value="Juara 2">Juara 2</option>
+                                        <option value="Juara 3">Juara 3</option>
+                                        <option value="Juara Harapan">Juara Harapan</option>
+                                        <option value="Peserta">Peserta</option>
+                                        <option value="Guest Star">Guest Star</option>
+                                        <option value="Dll">Dll</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label">Nama Kegiatan</label>
+                                <input type="text" class="form-control" name="nama_kegiatan" @error('nama_kegiatan') is-invalid @enderror" value="{{ old('nama_kegiatan') }}">
+                                @error('nama_kegiatan')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
                                 </div>
                                 @enderror
                             </div>
-                            <div class="name">Foto</div>
-                            <div class="value">
-                                <input type="file" name="foto" @error('foto') is-invalid @enderror" value="{{ old('foto') }}">
-                                @error('foto')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
+
+                            <div class="col-sm-6">
+                                <div class="name">Foto</div>
+                                <div class="value">
+                                    <input type="file" name="foto" @error('foto') is-invalid @enderror"
+                                        value="{{ old('foto') }}">
+                                    @error('foto')
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                    <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB</div>
                                 </div>
-                                @enderror
-                                <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB</div>
-                                <br>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <button class="btn btn--radius-2 btn--blue-2" type="submit">Kirim</button>
-                        </div>
+                        <hr class="my-4">
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Simpan</button>
                     </form>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
-</div> --}}
-    <link href="{{ asset('colorlib-regform-6/css/main.css') }}" rel="stylesheet" media="all">
-
-    <body>
-        <div class="card card-6">
-            <div class="card-heading">
-                <h2 class="title text-center">Pendaftaran Prestasi SAA</h2>
-                <div class="alert"></div>
-            </div>
-            <div class="card-body">
-                <form method="POST" action="{{ route('admin-prestasi.store') }}" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-row">
-                        <div class="name">Nama</div>
-                        <div class="value">
-                            <input class="input--style-6" type="text" name="nama" @error('nama') is-invalid @enderror"
-                                value="{{ old('nama') }}">
-                            @error('nama')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Nim</div>
-                        <div class="value">
-                            <input class="input--style-6" type="text" name="nim" @error('nim') is-invalid @enderror"
-                                value="{{ old('nim') }}">
-                            @error('nim')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Pencapaian</div>
-                        <div class="value">
-                            <input class="input--style-6" type="text" name="pencapaian"
-                                @error('pencapaian') is-invalid @enderror" value="{{ old('pencapaian') }}">
-                            @error('pencapaian')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">dospem</div>
-                        <div class="value">
-                            <input class="input--style-6" type="text" name="dospem"
-                                @error('dospem') is-invalid @enderror" value="{{ old('dospem') }}">
-                            @error('dospem')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">kategori</div>
-                        <div class="value">
-                            <input class="input--style-6" type="text" name="kategori"
-                                @error('kategori') is-invalid @enderror" value="{{ old('kategori') }}">
-                            @error('kategori')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Nama Kegiatan</div>
-                        <div class="value">
-                            <input class="input--style-6" type="text" name="nama_kegiatan"
-                                @error('nama_kegiatan') is-invalid @enderror" value="{{ old('nama_kegiatan') }}">
-                            @error('nama_kegiatan')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Penyelenggara</div>
-                        <div class="value">
-                            <input class="input--style-6" type="text" name="penyelenggara"
-                                @error('penyelenggara') is-invalid @enderror" value="{{ old('penyelenggara') }}">
-                            @error('penyelenggara')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">waktu</div>
-                        <div class="value">
-                            <input class="input--style-6" type="date" name="waktu"
-                                @error('waktu') is-invalid @enderror" value="{{ old('dospem') }}">
-                            @error('waktu')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Tempat</div>
-                        <div class="value">
-                            <input class="input--style-6" type="text" name="tempat"
-                                @error('tempat') is-invalid @enderror" value="{{ old('dospem') }}">
-                            @error('tempat')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="name">Foto</div>
-                        <div class="value">
-                            <input type="file" name="foto" @error('foto') is-invalid @enderror"
-                                value="{{ old('foto') }}">
-                            @error('foto')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                            <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB</div>
-                        </div>
-                    </div>
-            </div>
-            <div class="card-footer">
-                <button class="btn btn--radius-2 btn--blue-2" type="submit">Kirim</button>
-            </div>
-            </form>
-        </div>
-        <!-- Jquery JS-->
-        <script src="colorlib-regform-6/vendor/jquery/jquery.min.js"></script>
-        <script src="colorlib-regform-6/vendor/jquery/jquery.js"></script>
-
-        <!-- Main JS-->
-        <script src="colorlib-regform6/js/global.js"></script>
-    </body>
 @endsection

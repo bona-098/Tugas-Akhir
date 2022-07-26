@@ -1,109 +1,74 @@
 @extends('user.app')
 @section('content')
-{{-- <section id="values" class="values">
+<main id="main">
 
-    <div class="container" data-aos="fade-up">
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
 
-      <header class="text-center">
-        <h2>Program Kerja Student Automotive Association</h2>
-        <p>Berikut ini adalah program kerja yang tedapat pada UKM Student Automotive Association</p>
-      </header>
-
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="box" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/values-1.png" class="img-fluid" alt="">
-            <a href="{{ ('/userormawa') }}"><h3>HRD</h3></a>
-            <p>Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit. Et veritatis id.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 mt-4 mt-lg-0">
-          <div class="box" data-aos="fade-up" data-aos-delay="400">
-            <img src="assets/img/values-2.png" class="img-fluid" alt="">
-            <a href="{{ ('/userpkm') }}"><h3>ORG</h3></a>
-            <p>Repudiandae amet nihil natus in distinctio suscipit id. Doloremque ducimus ea sit non.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 mt-4 mt-lg-0">
-          <div class="box" data-aos="fade-up" data-aos-delay="600">
-            <img src="assets/img/values-3.png" class="img-fluid" alt="">
-            <a href="{{ ('/userlomba') }}"><h3>KWU</h3></a>
-            <p>Quam rem vitae est autem molestias explicabo debitis sint. Vero aliquid quidem commodi.</p>
-          </div>
-        </div>
-      </div>
-      <br>
-      <br>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="box" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/values-1.png" class="img-fluid" alt="">
-            <a href="{{ ('/userormawa') }}"><h3>Hublu</h3></a>
-            <p>Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit. Et veritatis id.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 mt-4 mt-lg-0">
-          <div class="box" data-aos="fade-up" data-aos-delay="400">
-            <img src="assets/img/values-2.png" class="img-fluid" alt="">
-            <a href="{{ ('/userpkm') }}"><h3>Medfo</h3></a>
-            <p>Repudiandae amet nihil natus in distinctio suscipit id. Doloremque ducimus ea sit non.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 mt-4 mt-lg-0">
-          <div class="box" data-aos="fade-up" data-aos-delay="600">
-            <img src="assets/img/values-3.png" class="img-fluid" alt="">
-            <a href="{{ ('/userlomba') }}"><h3>Umum</h3></a>
-            <p>Quam rem vitae est autem molestias explicabo debitis sint. Vero aliquid quidem commodi.</p>
-          </div>
-        </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Portfolio Details</h2>
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Portfolio Details</li>
+        </ol>
       </div>
 
     </div>
+  </section><!-- End Breadcrumbs -->
 
-</section> --}}
-<section id="why-us" class="why-us">
-  <div class="container">
+  <!-- ======= Portfolio Details Section ======= -->
+  <section id="portfolio-details" class="portfolio-details">
+    <div class="container">
 
-    <div class="row">
-      <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-right">
-        <div class="content">
-          <h3>Pengumuman</h3>
-          <div class="text-center">
-            <a href="#" class="more-btn">Selengkapnya <i class="bx bx-chevron-right"></i></a>
+      <div class="row gy-4">
+
+        <div class="col-lg-8">
+          <div class="portfolio-details-slider swiper">
+            <div class="swiper-wrapper align-items-center">
+
+              <div class="swiper-slide">
+                <img src="assets/img/portfolio/portfolio-details-1.jpg" alt="">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="assets/img/portfolio/portfolio-details-2.jpg" alt="">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
+              </div>
+
+            </div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-8 d-flex align-items-stretch">
-        <div class="icon-boxes d-flex flex-column justify-content-center">
-          <div class="row">
-            <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-              <div class="icon-box mt-4 mt-xl-0">
-                <i class="bx bx-receipt"></i>
-                <h4>Penerimaan Anggota Baru</h4>
-                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                <a href="#">Selengkapnya</a>
-              </div>
-            </div>
-            <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
-              <div class="icon-box mt-4 mt-xl-0">
-                <i class="bx bx-cube-alt"></i>
-                <h4>Acara Ulang Tahun SAA</h4>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                <a href="#">Selengkapnya</a>
-              </div>
-            </div>
-            <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
-              <div class="icon-box mt-4 mt-xl-0">
-                <i class="bx bx-images"></i>
-                <h4>Penerimaan pengurus</h4>
-                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                <a href="#">Selengkapnya</a>
-              </div>
-            </div>
+
+        <div class="col-lg-4">
+          <div class="portfolio-info">
+            <h3>Project information</h3>
+            <ul>
+              <li><strong>Category</strong>: Web design</li>
+              <li><strong>Client</strong>: ASU Company</li>
+              <li><strong>Project date</strong>: 01 March, 2020</li>
+              <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+            </ul>
           </div>
-        </div><!-- End .content-->
+          <div class="portfolio-description">
+            <h2>This is an example of portfolio detail</h2>
+            <p>
+              Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia.
+              Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia
+              accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt
+              eius.
+            </p>
+          </div>
+        </div>
+
       </div>
+
     </div>
-  </div>
-</section><!-- End Why Us Section -->
+  </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->
 @endsection
