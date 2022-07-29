@@ -89,7 +89,7 @@
                                                 height="120px" width="120px">
                                         </a>
                                         <div class="value">
-                                            <input type="file" name="foto">
+                                            <input type="file" name="foto" id="foto">
                                             <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB
                                             </div>
                                         </div>

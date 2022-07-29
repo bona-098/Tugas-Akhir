@@ -66,10 +66,6 @@ Route::get('/user-service', [ServiceController::class, 'usercreate']);
 Route::post('/user-storeservice', [ServiceController::class, 'userstore'])->name('userservicestore');
 Route::resource('/admin-service', (ServiceController::class));
 
-Route::get('/user-prestasi', [PrestasiController::class, 'user']);
-Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
-Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
-Route::resource('/admin-prestasi', (PrestasiController::class));
 
 Route::get('/user-pengumuman', [PengumumanController::class, 'user']);
 Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::class, 'showpengumuman'])->name('pengumuman');
@@ -82,12 +78,26 @@ Route::post('/dokumentasi', [DokumentasiController::class, 'store'])->name('doku
 Route::resource('/admin-dokumentasi', (DokumentasiController::class));
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', function(){
-        return view('dashboard');
-    });
+    // Route::get('/dashboard', function(){
+    //     return view('dashboard');
+    // });
     Route::get('/admin-proker', function () {
         return view('admin.proker');
     });
+    Route::get('/user-prestasi', [PrestasiController::class, 'user']);
+    Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
+    Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
+    // Route::resource('/admin-prestasi', (PrestasiController::class));
+
+    Route::group(['middleware' => 'checkRole:superadmin, admin'], function () {
+        Route::get('/home', function(){
+            return view('admin.dashboard');
+        });
+        Route::resource('/admin-prestasi', (PrestasiController::class));
+    
+    });
 });
+
+
 
 require __DIR__.'/auth.php';

@@ -135,18 +135,7 @@ class PrestasiController extends Controller
             unset($prestasis['foto']);
         }
 
-        $prestasi->update([
-            'nama' => $request->nama,
-            'nim' => $request->nim,
-            'pencapaian' => $request->pencapaian,
-            'dospem' => $request->dospem,
-            'kategori' => $request->kategori,
-            'nama_kegiatan' => $request->nama_kegiatan,
-            'penyelenggara' => $request->penyelenggara,
-            'waktu' => $request->waktu,
-            'tempat' => $request->tempat,
-            'foto' => $foto,
-        ]);
+        $prestasi->update($prestasis);
 
         return redirect()->route('admin-prestasi.index')->with('success','Data berhasil ditambahkan');
     }

@@ -2,7 +2,6 @@
 @section('content')
     <section id="about" class="about">
         <div class="container">
-
             <div class="row content">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
                     <h2>Student Automotive Association</h2>

@@ -31,6 +31,18 @@
                                     <input class="form-control" type="date" name="waktu">
                                     <br>
                                 </div>
+                                <div class="col-sm-6">
+                                    <div class="name">media</div>
+                                    <div class="value">
+                                        <input type="file" name="media" @error('media') is-invalid @enderror value="{{ old('media') }}">
+                                        @error('media')
+                                            <div class="alert alert-danger mt-2">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                        <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB</div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">

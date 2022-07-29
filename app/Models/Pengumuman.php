@@ -10,12 +10,9 @@ class Pengumuman extends Model
     use HasFactory;
     public $table = 'pengumuman';
     protected $fillable = [
-        'id',
         'judul',
         'deskripsi',
         'waktu',
         'media',
-        'created_at',
-        'update_at',
     ];
 }

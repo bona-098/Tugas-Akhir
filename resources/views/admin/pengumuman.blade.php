@@ -19,6 +19,8 @@
                             <th>Judul</th>
                             <th>Deskripsi</th>
                             <th>Waktu</th>
+                            <th>Media</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,7 +29,12 @@
                                 <td class="text-sm">{{ $item->judul }}</td>
                                 <td class="text-sm">{{ $item->deskripsi }}</td>
                                 <td class="text-sm">{{ $item->waktu }}</td>
-
+                                <td>
+                                    <div class="d-flex">
+                                        <div class="pic"><img src="{{ asset('pengumuman/media/' . $item->media) }}"
+                                                class="img-fluid" width="80" height="80" alt="pp"></div>
+                                    </div>
+                                </td>
                                 {{-- <td><span class="badge badge-danger badge-sm">pending</span></td> --}}
                                 <td class="text-sm">
                                     <a href="admin-pengumuman-detail" data-bs-toggle="tooltip"

@@ -26,6 +26,19 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Role</label>
+                    <select name="role" class="form-control" id="role">
+                        <option value="#" selected disabled>Pilih kategori</option>
+                        <option value="superadmin">super admin</option>
+                        <option value="admin">admin</option>
+                        <option value="teknisi">teknisi</option>
+                        <option value="user">user</option>
+                    </select>
+                </div>
+            </div>
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
