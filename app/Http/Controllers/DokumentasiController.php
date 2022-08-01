@@ -106,23 +106,19 @@ class DokumentasiController extends Controller
 
         $dokumentasi = Dokumentasi::find($id); 
         
-        // dd($dokumenta);
+        // dd($dokumentasi);
         if ($media = $request->file('media')) {
             File::delete('dokumentasi/media/'.$dokumentasi->media);
-            $medias = 'dokumentasi/media/';
+            // $medias = 'dokumentasi/media/';
             $file_name = $request->media->getClientOriginalName();
-            $media->move($medias, $file_name);
+            // $media->move($medias, $file_name);
+            $media->move(public_path('dokumentasi/media'), $file_name);
             $dokumenta['media'] = "$file_name";
         }else{
             unset($dokumentasi['media']);
         }
 
-        $dokumentasi->update([
-            'nama' => $request->nama,
-            'waktu' => $request->waktu,
-            'deskripsi' => $request->deskrispi,
-            'media' => $media,
-        ]);
+        $dokumentasi->update($dokumenta);
 
         return redirect()->route('admin-dokumentasi.index')->with('success','Data berhasil ditambahkan');
     }

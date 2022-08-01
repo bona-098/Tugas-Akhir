@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PengumumanController extends Controller
 {
@@ -95,7 +96,7 @@ class PengumumanController extends Controller
             'judul' => 'required',
             'deskripsi' => 'required',
             'waktu' => 'required',
-            'media' => 'file|mimes:jpg,jpeg|max:50000'
+            'media' => 'file|mimes:jpg,img,jpeg|max:50000'
         ]);
         
         $pengumumans = $request->all();

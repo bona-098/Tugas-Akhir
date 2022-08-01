@@ -116,8 +116,6 @@ class PrestasiController extends Controller
             'tempat' => 'required',
             'foto' => 'file|mimes:jpg,jpeg|max:50000'
         ]);
-
-        
         
         $prestasis = $request->all();
 

@@ -5,14 +5,20 @@
             border: 2px;
         }
     </style>
-
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>sorry?</strong>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-lg-10">
-                <h4 class="text-danger">Edit Teknisi</h4>
-            </div>
-            <div class="col-lg-2 text-right d-flex flex-column justify-content-center end-0">
-                <button type="button" class="btn btn-primary position-absolute top-0 end-0">Save</button>
+                <h4 class="text-danger">Edit Anggota</h4>
             </div>
         </div>
 
@@ -20,60 +26,92 @@
             <div class="col-lg-12 mt-lg-0 mt-4">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin-service.update', $service->id) }}" method="POST"
+                        <form action="{{ route('admin-anggota.update', $anggota->id) }}" method="POST"
                             enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
+                            {{ csrf_field() }}
+                            @method('patch')
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <label>Nama</label>
-                                    <input class="form-control" type="text" name="nama"
-                                        value="{{ $service->nama }}">
+                                    <input class="form-control" type="text" name="nama" value="{{ $anggota->nama }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label>Nim</label>
-                                    <input class="form-control" type="text" name="nim" value="{{ $service->nim }}">
+                                    <input class="form-control" type="text" name="nim" value="{{ $anggota->nim }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>Hari</label>
-                                    <input class="form-control" type="date" name="hari"
-                                        value="{{ $service->hari }}">
+                                    <label>Prodi</label>
+                                    <input class="form-control" type="text" name="prodi"
+                                        value="{{ $anggota->prodi }}">
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>no_hp</label>
-                                    <input class="form-control" type="text" name="no_hp"
-                                        value="{{ $service->no_hp }}">
+                                    <label>No telp</label>
+                                    <input class="form-control" type="number" name="no_telp"
+                                        value="{{ $anggota->no_telp }}">
                                 </div>
-                                <div class="col-12 col-sm-6">
-                                    <label>Sesi</label>
-                                    <select class="form-control" name="sesi" value="{{ $service->sesi }}">
-                                        <option selected value="">Sesi</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                                    <br>
-                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <label>resume</label>
+                                    <input class="form-control" type="text" name="resume"
+                                        value="{{ $anggota->resume }}">
+                                </div>                                
                                 <div class="row">
-                                    <div class="col-12 col-sm-6 mt-3 mt-sm-3">
+                                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                         <a class="card-profile-image mt-4"
-                                            href="{{ asset('images/service/' . $service->foto) }}" target="_blank">
-                                            <img id="preview-image" src="{{ asset('images/service/' . $service->foto) }}" />
+                                            href="{{ asset('pendaftaran/resume/' . $anggota->resume) }}" target="_blank">
+                                            <img id="preview-image" src="{{ asset('pendaftaran/resume/' . $anggota->resume) }}"
+                                                height="120px" width="120px">
                                         </a>
                                         <div class="value">
-                                            <input type="file" name="foto">
-                                            <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB
-                                            </div>
+                                            <input type="file" name="foto" id="foto">
+                                            <div class="label--desc">Ubah Surat Rekomendasi</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                        <a class="card-profile-image mt-4"
+                                            href="{{ asset('pendaftaran/transkrip/' . $anggota->transkrip) }}" target="_blank">
+                                            <img id="preview-image" src="{{ asset('pendaftaran/transkrip/' . $anggota->transkrip) }}"
+                                                height="120px" width="120px">
+                                        </a>
+                                        <div class="value">
+                                            <input type="file" name="foto" id="foto">
+                                            <div class="label--desc">Ubah Surat Rekomendasi</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                        <a class="card-profile-image mt-4"
+                                            href="{{ asset('pendaftaran/surat_rekomendasi/' . $anggota->surat_rekomendasi) }}" target="_blank">
+                                            <img id="preview-image" src="{{ asset('pendaftaran/surat_rekomendasi/' . $anggota->surat_rekomendasi) }}"
+                                                height="120px" width="120px">
+                                        </a>
+                                        <div class="value">
+                                            <input type="file" name="foto" id="foto">
+                                            <div class="label--desc">Ubah Surat Rekomendasi</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                        <a class="card-profile-image mt-4"
+                                            href="{{ asset('pendaftaran/sertifikat/' . $anggota->sertifikat) }}" target="_blank">
+                                            <img id="preview-image" src="{{ asset('pendaftaran/sertifikat/' . $anggota->sertifikat) }}"
+                                                height="120px" width="120px">
+                                        </a>
+                                        <div class="value">
+                                            <input type="file" name="foto" id="foto">
+                                            <div class="label--desc">Ubah Sertifikat</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary" type="submit">Booking</button>
+                                    <button class="btn btn-primary" type="submit">Edit</button>
                                 </div>
                             </div>
                         </form>
@@ -81,89 +119,13 @@
                 </div>
             </div>
         </div>
-        @endsection@extends('admin.app')
-    @section('content')
-        <style>
-            .border {
-                border: 2px;
-            }
-        </style>
-
-        <div class="container-fluid py-4">
-            <div class="row">
-                <div class="col-lg-10">
-                    <h4 class="text-danger">Edit Teknisi</h4>
-                </div>
-                <div class="col-lg-2 text-right d-flex flex-column justify-content-center end-0">
-                    <button type="button" class="btn btn-primary position-absolute top-0 end-0">Save</button>
-                </div>
-            </div>
-
-            <div class="row mt-4">
-                <div class="col-lg-12 mt-lg-0 mt-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="{{ route('admin-anggota.update', $anggota->id) }}" method="POST"
-                                enctype="multipart/form-data">
-                                @csrf
-                                @method('PUT')
-                                <div class="row">
-                                    <div class="col-12 col-sm-6">
-                                        <label>Nama</label>
-                                        <input class="form-control" type="text" name="nama"
-                                            value="{{ $anggota->nama }}">
-                                        <br>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <label>Nim</label>
-                                        <input class="form-control" type="text" name="nim"
-                                            value="{{ $service->nim }}">
-                                        <br>
-                                    </div>
-                                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                        <label>Hari</label>
-                                        <input class="form-control" type="date" name="hari"
-                                            value="{{ $service->hari }}">
-                                    </div>
-                                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                        <label>no_hp</label>
-                                        <input class="form-control" type="text" name="no_hp"
-                                            value="{{ $service->no_hp }}">
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <label>Sesi</label>
-                                        <select class="form-control" name="sesi" value="{{ $service->sesi }}">
-                                            <option selected value="">Sesi</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                        </select>
-                                        <br>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 col-sm-6 mt-3 mt-sm-3">
-                                            <a class="card-profile-image mt-4"
-                                                href="{{ asset('images/service/' . $service->foto) }}" target="_blank">
-                                                <img id="preview-image"
-                                                    src="{{ asset('images/service/' . $service->foto) }}" />
-                                            </a>
-                                            <div class="value">
-                                                <input type="file" name="foto">
-                                                <div class="label--desc">Upload your foto with pdf format. Max file size 50
-                                                    MB</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <button class="btn btn-primary" type="submit">Booking</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endsection
+        <script type="text/javascript">
+            $('#foto').change(function() {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    $('#preview-image').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
+        </script>
+    @endsection

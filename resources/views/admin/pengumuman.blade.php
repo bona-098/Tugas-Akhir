@@ -36,20 +36,20 @@
                                     </div>
                                 </td>
                                 {{-- <td><span class="badge badge-danger badge-sm">pending</span></td> --}}
-                                <td class="text-sm">
-                                    <a href="admin-pengumuman-detail" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Preview product">
-                                        <i class="fas fa-eye text-secondary"></i>
-                                    </a>
-                                    <a href="{{ route('admin-pengumuman.edit', $item->id) }}" class="mx-3"
-                                        data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                        <i class="fas fa-user-edit text-secondary"></i>
-                                    </a>
-                                    <form action="{{ route('admin-pengumuman.destroy', $item->id) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" class="badge bg-danger">delete</button>
-                                    </form>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <i class="fa fa-cog"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="{{route('admin-pengumuman.edit',$item->id)}}"><i class="fa fa-edit"></i> Edit</a>
+                                            <form action="{{route('admin-pengumuman.destroy', $item->id)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="dropdown-item" type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i> Hapus</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

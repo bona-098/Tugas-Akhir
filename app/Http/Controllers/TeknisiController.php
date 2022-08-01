@@ -23,7 +23,8 @@ class TeknisiController extends Controller
      */
     public function create()
     {
-        //
+        $teknisi = Teknisi::get();
+        return view('teknisi.index', compact('teknisi'));
     }
 
     /**

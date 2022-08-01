@@ -33,8 +33,13 @@ Route::get('/user-anggota', function () {
 Route::get('/user-pengurus', function () {
     return view('user.pengurus');
 });
+
 Route::get('user-proker', function () {
     return view('user.proker.proker');
+});
+
+Route::get('admin-hrd', function () {
+    return view('admin.proker.hrd');
 });
 
 Route::get('/admin-home', function () {

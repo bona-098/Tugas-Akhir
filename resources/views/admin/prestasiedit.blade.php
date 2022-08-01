@@ -36,14 +36,12 @@
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <label>Nama</label>
-                                    <input class="form-control" type="text" name="nama"
-                                        value="{{ $prestasi->nama }}">
+                                    <input class="form-control" type="text" name="nama" value="{{ $prestasi->nama }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label>Nim</label>
-                                    <input class="form-control" type="text" name="nim"
-                                        value="{{ $prestasi->nim }}">
+                                    <input class="form-control" type="text" name="nim" value="{{ $prestasi->nim }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
@@ -115,4 +113,4 @@
                 reader.readAsDataURL(this.files[0]);
             });
         </script>
-    @endsection
+@endsection

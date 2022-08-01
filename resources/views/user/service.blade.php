@@ -47,10 +47,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-6 mt-3 mt-sm-3">
-                                        <div class="name">Foto</div>
+                                        <div class="name">KTM / KTP</div>
                                         <div class="value">
                                             <input type="file" name="foto">
-                                            <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB
+                                            <div class="label--desc">Upload your foto with jpg, jpeg format. Max file size 50 MB
                                             </div>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="card text-start" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Nama : Bona A. Matanari</li>
@@ -71,9 +71,9 @@
                                 <li class="list-group-item">Hari : selasa</li>
                                 <li class="list-group-item">Sesi : 4</li>
                             </ul>
-                            {{-- <div class="card-footer">
+                            <div class="card-footer">
                         Card footer
-                        </div> --}}
+                        </div>
                         </div>
                         <div class="card" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
@@ -82,7 +82,7 @@
                                 <li class="list-group-item">A third item</li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

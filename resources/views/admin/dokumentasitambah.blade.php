@@ -22,17 +22,17 @@
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>Hari</label>
+                                    <label>waktu</label>
                                     <input class="form-control" type="date" name="waktu">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <label>Nim</label>
+                                    <label>deskripsi</label>
                                     <input class="form-control" type="text" name="deskripsi">
                                     <br>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-6 mt-3 mt-sm-3">
-                                        <div class="name">Foto</div>
+                                        <div class="name">media</div>
                                         <div class="value">
                                             <input type="file" name="media">
                                             <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB
@@ -43,7 +43,7 @@
                             </div>
                             <div class="row">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary" type="submit">Booking</button>
+                                    <button class="btn btn-primary" type="submit">Submit</button>
                                 </div>
                             </div>
                         </form>
