@@ -19,10 +19,7 @@
         <div class="row">
             <div class="col-lg-10">
                 <h4 class="text-danger">Edit Prestasi</h4>
-            </div>
-            {{-- <div class="col-lg-2 text-right d-flex flex-column justify-content-center end-0">
-            <button type="button" class="btn btn-primary position-absolute top-0 end-0">Save</button>
-        </div> --}}
+            </div>            
         </div>
 
         <div class="row mt-4">
@@ -36,12 +33,14 @@
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <label>Nama</label>
-                                    <input class="form-control" type="text" name="nama" value="{{ $prestasi->nama }}">
+                                    <input class="form-control" type="text" name="nama" 
+                                    value="{{ $prestasi->nama }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label>Nim</label>
-                                    <input class="form-control" type="text" name="nim" value="{{ $prestasi->nim }}">
+                                    <input class="form-control" type="text" name="nim" 
+                                    value="{{ $prestasi->nim }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">

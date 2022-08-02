@@ -46,7 +46,7 @@ class DokumentasiController extends Controller
 
         ]);
 
-        $newNameMedia = date('ymd'). '-' . $request->nama . '-' .$request->media->extension();
+        $newNameMedia = date('ymd'). '-' . $request->media . '-' .$request->media->extension();
 
         $request->file('media')->move(public_path('dokumentasi/media'), $newNameMedia);
 
@@ -115,7 +115,7 @@ class DokumentasiController extends Controller
             $media->move(public_path('dokumentasi/media'), $file_name);
             $dokumenta['media'] = "$file_name";
         }else{
-            unset($dokumentasi['media']);
+            unset($dokumenta['media']);
         }
 
         $dokumentasi->update($dokumenta);

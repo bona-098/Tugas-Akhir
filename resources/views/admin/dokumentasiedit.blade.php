@@ -19,10 +19,7 @@
         <div class="row">
             <div class="col-lg-10">
                 <h4 class="text-danger">Edit Dokumentasi</h4>
-            </div>
-            {{-- <div class="col-lg-2 text-right d-flex flex-column justify-content-center end-0">
-            <button type="button" class="btn btn-primary position-absolute top-0 end-0">Save</button>
-        </div> --}}
+            </div>            
         </div>
 
         <div class="row mt-4">
@@ -55,14 +52,14 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-6 mt-3 mt-sm-3">
                                         <a class="card-profile-image mt-4"
-                                            href="{{ asset('dokumentasi/foto/' . $dokumentasi->media) }}" target="_blank">
+                                            href="{{ asset('dokumentasi/media/' . $dokumentasi->media) }}" target="_blank">
                                             <img id="preview-image"
-                                                src="{{ asset('dokumentasi/foto/' . $dokumentasi->media) }}" height="120px"
+                                                src="{{ asset('dokumentasi/media/' . $dokumentasi->media) }}" height="120px"
                                                 width="120px">
                                         </a>
                                         <div class="value">
-                                            <input type="file" name="foto" id="foto">
-                                            <div class="label--desc">Upload your foto with pdf format. Max file size 50
+                                            <input type="file" name="media" id="media">
+                                            <div class="label--desc">Upload your media with pdf format. Max file size 50
                                                 MB
                                             </div>
                                         </div>
