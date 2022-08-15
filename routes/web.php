@@ -57,17 +57,13 @@ Route::get('/admin-proker', function () {
 Route::get('/admin-teknisi', function () {
     return view('admin.teknisi.index');
 });
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-//pendaftaran
+
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);
 Route::post('/daftar', [AnggotaController::class, 'store'])->name('anggota.store');
 Route::resource('/admin-anggota', (AnggotaController::class));
 
 //prestasi
 
-Route::get('/user-service', [ServiceController::class, 'usercreate']);
 Route::post('/user-storeservice', [ServiceController::class, 'userstore'])->name('userservicestore');
 Route::resource('/admin-service', (ServiceController::class));
 
@@ -80,27 +76,38 @@ Route::resource('/admin-pengumuman', (PengumumanController::class));
 Route::get('/user-dokumentasi', [DokumentasiController::class, 'user']);
 Route::get('/user-dokumentasidetail/{showdokumentasi}', [PrestasiController::class, 'showuser'])->name('showdokumentasi');
 Route::post('/dokumentasi', [DokumentasiController::class, 'store'])->name('dokumentasi.store');
-Route::resource('/admin-dokumentasi', (DokumentasiController::class));
 
+//tanpa login
+//route prestasi
+Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
+Route::get('/user-prestasi', [PrestasiController::class, 'user']);
+Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
+
+//harus login
 Route::group(['middleware' => 'auth'], function () {
-    // Route::get('/dashboard', function(){
-    //     return view('dashboard');
-    // });
-    Route::get('/admin-proker', function () {
-        return view('admin.proker');
-    });
-    Route::get('/user-prestasi', [PrestasiController::class, 'user']);
-    Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
-    Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
-    // Route::resource('/admin-prestasi', (PrestasiController::class));
-
-    Route::group(['middleware' => 'checkRole:superadmin, admin'], function () {
+    
+    //role
+    Route::group(['middleware' => 'checkRole:su, admin, teknisi, user'], function () {
         Route::get('/home', function(){
             return view('admin.dashboard');
         });
         Route::resource('/admin-prestasi', (PrestasiController::class));
-    
+        
     });
+    //route service
+    Route::get('/user-service', [ServiceController::class, 'usercreate']);
+    
+    //role
+    Route::group(['middleware' => 'checkRole:su, admin'], function () {
+        Route::get('/home', function(){
+            return view('admin.dashboard');
+        });
+        //prestasi
+        Route::resource('/admin-prestasi', (PrestasiController::class));
+        //dokumentasi
+        Route::resource('/admin-dokumentasi', (DokumentasiController::class));
+    });
+    //role
 });
 
 

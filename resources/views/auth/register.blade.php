@@ -31,7 +31,7 @@
                     <label>Role</label>
                     <select name="role" class="form-control" id="role">
                         <option value="#" selected disabled>Pilih kategori</option>
-                        <option value="superadmin">super admin</option>
+                        <option value="su">super admin</option>
                         <option value="admin">admin</option>
                         <option value="teknisi">teknisi</option>
                         <option value="user">user</option>

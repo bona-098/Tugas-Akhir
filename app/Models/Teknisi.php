@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Teknisi extends Model
 {
     use HasFactory;
-    public $table = 'teknisi';
+    protected $table = 'teknisi';
     protected $fillable = [
-        'id',
         'nama',
         'nim',
-        'jadwal',
-        'no_hp'
+        'hari',
+        'sesi',
+        'no_hp',
+        'foto'
     ];
 }
