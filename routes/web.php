@@ -70,8 +70,6 @@ Route::resource('/admin-service', (ServiceController::class));
 
 Route::get('/user-pengumuman', [PengumumanController::class, 'user']);
 Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::class, 'showpengumuman'])->name('pengumuman');
-Route::post('/pengumuman', [PengumumanController::class, 'store'])->name('pengumuman.store');
-Route::resource('/admin-pengumuman', (PengumumanController::class));
 
 Route::get('/user-dokumentasi', [DokumentasiController::class, 'user']);
 Route::get('/user-dokumentasidetail/{showdokumentasi}', [PrestasiController::class, 'showuser'])->name('showdokumentasi');
@@ -79,20 +77,17 @@ Route::post('/dokumentasi', [DokumentasiController::class, 'store'])->name('doku
 
 //tanpa login
 //route prestasi
-Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
 Route::get('/user-prestasi', [PrestasiController::class, 'user']);
 Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
 
 //harus login
 Route::group(['middleware' => 'auth'], function () {
     
-    //role
-    Route::group(['middleware' => 'checkRole:su, admin, teknisi, user'], function () {
+    //role su, admin, teknisi
+    Route::group(['middleware' => 'checkRole:su, admin, teknisi'], function () {
         Route::get('/home', function(){
             return view('admin.dashboard');
-        });
-        Route::resource('/admin-prestasi', (PrestasiController::class));
-        
+        });        
     });
     //route service
     Route::get('/user-service', [ServiceController::class, 'usercreate']);
@@ -104,8 +99,12 @@ Route::group(['middleware' => 'auth'], function () {
         });
         //prestasi
         Route::resource('/admin-prestasi', (PrestasiController::class));
+        Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
         //dokumentasi
         Route::resource('/admin-dokumentasi', (DokumentasiController::class));
+        //pengumuman
+        Route::post('/pengumuman', [PengumumanController::class, 'store'])->name('pengumuman.store');
+        Route::resource('/admin-pengumuman', (PengumumanController::class));
     });
     //role
 });

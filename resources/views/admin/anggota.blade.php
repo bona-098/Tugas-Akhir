@@ -37,7 +37,7 @@
                         <td>{{ $item->prodi }}</td>
                         <td>{{ $item->no_telp }}</td>
                         <td>{{ $item->resume }}</td>
-                        <td>{{ $item->transkrip }}</td>
+                        <td>{{ $item->transkip }}</td>
                         <td>{{ $item->surat_rekomendasi }}</td>
                         <td>{{ $item->sertifikat }}</td>
                         <td>
