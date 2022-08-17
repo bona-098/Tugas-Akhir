@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($sers as $item)
+                        @foreach ($service as $item)
                             <tr>
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->nim }}</td>

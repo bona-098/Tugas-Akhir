@@ -69,7 +69,7 @@
             <span>Anggota</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/admin-teknisi">
+        <a class="nav-link" href="/teknisi-index">
             <i class="fa fa-gavel" aria-hidden="true"></i>
             <span>Teknisi</span></a>
     </li>

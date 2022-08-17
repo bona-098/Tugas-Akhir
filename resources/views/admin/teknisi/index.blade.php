@@ -17,29 +17,37 @@
                         <th>action</th>
                     </tr>
                 </thead>
-                {{-- @foreach ($prestasi as $item) --}}
+                @foreach ($teknisi as $item)
                 <tbody>
                     <tr>
-                        <td class="text-sm">Bona Matanari</td>
-                        <td class="text-sm">11181019</td>                        
-                        <td class="text-sm">senin (s1)</td>
-                        <td class="text-sm">085348409442</td>                        
-                        <td class="text-sm">
-                            <a href="admin-prestasi-detail" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                <i class="fas fa-eye text-secondary"></i>
-                            </a>
-                            <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                <i class="fas fa-user-edit text-secondary"></i>
-                            </a>
-                            <form action="#" method="POST">
-                                {{-- @method('DELETE')                        
-                                @csrf --}}
-                                <button type="submit" class="badge bg-danger">delete</button>
-                            </form>
+                        <td class="text-sm">{{ $item->nama }}</td>
+                        <td class="text-sm">{{ $item->nim }}</td>                        
+                        <td class="text-sm">{{ $item->jadwal }}</td>
+                        <td class="text-sm">{{ $item->no_hp }}</td>                        
+                        <td>
+                            <div class="d-flex">
+                                <div class="pic"><img src="{{ asset('teknisi/foto/' . $item->foto) }}"
+                                        class="img-fluid" width="80" height="80" alt="pp"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fa fa-cog"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{route('teknisi-edit.edit',$item->id)}}"><i class="fa fa-edit"></i> Edit</a>
+                                    <form action="{{route('teknisi-index.destroy', $item->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="dropdown-item" type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i> Hapus</button>
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
-                {{-- @endforeach --}}
+                @endforeach
             </table>
         </div>
     </div>

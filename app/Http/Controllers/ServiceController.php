@@ -15,8 +15,8 @@ class serviceController extends Controller
      */
     public function index()
     {
-        $sers = service::get();
-        return view('admin.service', compact('sers'));
+        $service = Service::get();
+        return view('admin.service', compact('service'));
     }
 
     /**
@@ -26,7 +26,7 @@ class serviceController extends Controller
      */
     public function create()
     {
-        return view('admin.service');
+        return view('admin.servicetambah');
     }
 
     public function usercreate()
@@ -112,9 +112,9 @@ class serviceController extends Controller
      * @param  \App\Models\service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(service $service)
+    public function show(Service $service)
     {
-        $service = service::where('id', $service)->get();
+        $service = Service::where('id', $service)->get();
         return view('admin.service', compact('service'));
     }
 

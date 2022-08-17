@@ -8,6 +8,7 @@ use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdmindaftarController;
 use App\Http\Controllers\DokumentasiController;
+use App\Http\Controllers\TeknisiController;
 use App\Http\Controllers\PendaftaranController;
 
 
@@ -54,10 +55,6 @@ Route::get('/admin-proker', function () {
     return view('admin.proker');
 });
 
-Route::get('/admin-teknisi', function () {
-    return view('admin.teknisi.index');
-});
-
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);
 Route::post('/daftar', [AnggotaController::class, 'store'])->name('anggota.store');
 Route::resource('/admin-anggota', (AnggotaController::class));
@@ -67,13 +64,20 @@ Route::resource('/admin-anggota', (AnggotaController::class));
 Route::post('/user-storeservice', [ServiceController::class, 'userstore'])->name('userservicestore');
 Route::resource('/admin-service', (ServiceController::class));
 
-
+//pengumuman
 Route::get('/user-pengumuman', [PengumumanController::class, 'user']);
 Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::class, 'showpengumuman'])->name('pengumuman');
 
+//dkumentasi
 Route::get('/user-dokumentasi', [DokumentasiController::class, 'user']);
-Route::get('/user-dokumentasidetail/{showdokumentasi}', [PrestasiController::class, 'showuser'])->name('showdokumentasi');
+Route::get('/user-dokumentasidetail/{showdokumentasi}', [DokumentasiController::class, 'showuser'])->name('showdokumentasi');
 Route::post('/dokumentasi', [DokumentasiController::class, 'store'])->name('dokumentasi.store');
+
+//teknisi
+Route::resource('/teknisi-index', (TeknisiController::class));
+Route::get('/teknisi-index', [TeknisiController::class, 'show']);
+Route::get('/teknisi-index /{showteknisi}', [DokumentasiController::class, 'show'])->name('showteknisi');
+Route::post('/teknisi-index', [TeknisiController::class, 'store'])->name('index.store');
 
 //tanpa login
 //route prestasi

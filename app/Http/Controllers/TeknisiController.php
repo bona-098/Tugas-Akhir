@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teknisi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class TeknisiController extends Controller
 {
@@ -11,9 +13,10 @@ class TeknisiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Teknisi $teknisi)
     {
-        //
+        $teknisi = Teknisi::get();
+        return view('teknisi.index', compact('teknisi'));
     }
 
     /**
@@ -23,8 +26,7 @@ class TeknisiController extends Controller
      */
     public function create()
     {
-        $teknisi = Teknisi::get();
-        return view('teknisi.index', compact('teknisi'));
+        return view('teknisi.tambah');
     }
 
     /**
@@ -35,7 +37,28 @@ class TeknisiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',
+            'nim' => 'required',            
+            'hari' => 'required',            
+            'sesi' => 'required',            
+            'no_hp' => 'required',            
+            'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
+        ]);
+
+        $newNameFoto = date('ymd'). '-' . $request->foto->extension();
+         
+        $request->file('foto')->move(public_path('teknisi/foto'), $newNameFoto);
+        
+        Teknisi::create([
+            'nama' => $request->nama,
+            'nim' => $request->nim,
+            'hari' => $request->hari,
+            'sesi' => $request->sesi,
+            'no_hp' => $request->no_hp,
+            'foto' => $newNameFoto
+        ]);
+        return redirect()->route('teknisi.index.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**
@@ -44,9 +67,9 @@ class TeknisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Teknisi $teknisi)
     {
-        //
+        return view('teknisi-index', compact('teknisi'));
     }
 
     /**
@@ -55,9 +78,9 @@ class TeknisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Teknisi $teknisi)
     {
-        //
+        return view('teknisi.edit', compact('teknisi'));
     }
 
     /**
@@ -69,7 +92,31 @@ class TeknisiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'nim' => 'required',            
+            'hari' => 'required',            
+            'sesi' => 'required',            
+            'no_hp' => 'required',            
+            'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
+        ]);
+        
+        $teknisis = $request->all();
+
+        $teknisi = Teknisi::find($id);
+
+        if ($foto = $request->file('foto')) {
+            file::delete('teknisi/foto' .$teknisi->foto);
+            $file_name = $request->foto->getClientOriginalName();
+            $foto->move(public_path('teknisi/foto'), $file_name);
+            $teknisis['foto'] = "$file_name";
+        }
+        else {
+            unset($teknisis['foto']);
+        }
+
+        $teknisi->update($teknisis);
+        return redirect()->route('teknisi-edit.index');
     }
 
     /**
@@ -78,8 +125,9 @@ class TeknisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Teknisi $teknisi, $id)
     {
-        //
+        $teknisi->destroy($id);
+        return redirect()->back();
     }
 }
