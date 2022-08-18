@@ -51,10 +51,6 @@ Route::get('/admin-pengurus', function () {
     return view('admin.pengurus');
 });
 
-Route::get('/admin-proker', function () {
-    return view('admin.proker');
-});
-
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);
 Route::post('/daftar', [AnggotaController::class, 'store'])->name('anggota.store');
 Route::resource('/admin-anggota', (AnggotaController::class));
@@ -75,9 +71,8 @@ Route::post('/dokumentasi', [DokumentasiController::class, 'store'])->name('doku
 
 //teknisi
 Route::resource('/teknisi-index', (TeknisiController::class));
-Route::get('/teknisi-index', [TeknisiController::class, 'show']);
-Route::get('/teknisi-index /{showteknisi}', [DokumentasiController::class, 'show'])->name('showteknisi');
-Route::post('/teknisi-index', [TeknisiController::class, 'store'])->name('index.store');
+Route::resource('/teknisi-tambah', (TeknisiController::class));
+Route::resource('/admin.teknisi.edit', (TeknisiController::class));
 
 //tanpa login
 //route prestasi
