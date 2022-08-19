@@ -71,8 +71,6 @@ Route::post('/dokumentasi', [DokumentasiController::class, 'store'])->name('doku
 
 //teknisi
 Route::resource('/teknisi-index', (TeknisiController::class));
-Route::resource('/teknisi-tambah', (TeknisiController::class));
-Route::resource('/admin.teknisi.edit', (TeknisiController::class));
 
 //tanpa login
 //route prestasi

@@ -26,7 +26,7 @@
             <div class="col-lg-12 mt-lg-0 mt-4">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin.teknisi.edit', $teknisi->id) }}" method="POST"
+                        <form action="{{ route('teknisi-index.update', $teknisi->id) }}" method="POST"
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
                             @method('patch')

@@ -13,7 +13,7 @@ class TeknisiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Teknisi $teknisi)
     {
         $teknisi = Teknisi::get();
         return view('admin.teknisi.index', compact('teknisi'));
@@ -58,7 +58,7 @@ class TeknisiController extends Controller
             'no_hp' => $request->no_hp,
             'foto' => $newNameFoto
         ]);
-        return redirect()->route('teknisi-index.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->back();
     }
 
     /**
@@ -70,7 +70,7 @@ class TeknisiController extends Controller
     public function show(Teknisi $teknisi)
     {
         // dd($teknisi);
-        return view('admin.teknisi.index', compact('teknisi'));
+        return view('admin.teknisi.edit', compact('teknisi'));
     }
 
     /**
@@ -117,7 +117,7 @@ class TeknisiController extends Controller
         }
 
         $teknisi->update($teknisis);
-        return redirect()->route('admin.teknisi.edit.edit');
+        return redirect()->back();
     }
 
     /**
