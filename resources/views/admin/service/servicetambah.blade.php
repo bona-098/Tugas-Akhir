@@ -9,8 +9,8 @@
         <main>
             <div class="row g-5 bd">
                 <div class="col-md-6 col-lg-12 bd">
-                    <h4 class="mb-3">Tambah Prestasi</h4>
-                    <form method="POST" action="{{ route('teknisi.store') }}" enctype="multipart/form-data">
+                    <h4 class="mb-3">Buat Jadwal Servis</h4>
+                    <form method="POST" action="{{ route('service.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row g-3">
                             <div class="col-sm-6">
@@ -47,6 +47,16 @@
                             </div>
                                                         
                             <div class="col-sm-6">
+                                <label for="firstName" class="form-label">No. Hp</label>
+                                <input type="text" class="form-control" name="no_hp" @error('no_hp') is-invalid @enderror" value="{{ old('no_hp') }}">
+                                @error('no_hp')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>sesi</label>
                                     <select name="sesi" class="form-control" id="sesi">
@@ -57,16 +67,6 @@
                                         <option value="4">Sesi 4</option>
                                     </select>
                                 </div>
-                            </div>
-                            
-                            <div class="col-sm-6">
-                                <label for="firstName" class="form-label">No. Hp</label>
-                                <input type="text" class="form-control" name="no_hp" @error('no_hp') is-invalid @enderror" value="{{ old('no_hp') }}">
-                                @error('no_hp')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
                             </div>
 
                             <div class="col-sm-6">

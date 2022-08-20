@@ -9,7 +9,7 @@
     <div class="container border">
         <div class="d-grid gap-1">
             <a button type="button" class="btn btn-primary" id="liveToastBtn"
-                href="{{ route('admin-service.create') }}">Tambah Jadwal</a>
+                href="{{ route('service.create') }}">Tambah Jadwal</a>
         </div>
         <div class="card-body px-0 pb-0 border">
             <div class="table-responsive border">
@@ -36,11 +36,11 @@
                                 <td class="text-sm">pending</td>
                                 {{-- <td><span class="badge badge-danger badge-sm">pending</span></td> --}}
                                 <td class="text-sm">
-                                    <a href="{{ route('admin-service.edit', $item->id) }}" class="mx-3"
+                                    <a href="{{ route('service.edit', $item->id) }}" class="mx-3"
                                         data-bs-toggle="tooltip" data-bs-original-title="Edit product">
                                         <i class="fas fa-user-edit text-secondary"></i>
                                     </a>
-                                    <form action="{{ route('admin-service.destroy', $item->id) }}" method="POST">
+                                    <form action="{{ route('service.destroy', $item->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="badge bg-danger">delete</button>

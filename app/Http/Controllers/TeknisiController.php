@@ -48,7 +48,7 @@ class TeknisiController extends Controller
 
         $newNameFoto = date('ymd'). '-' . $request->foto->extension();
          
-        $request->file('foto')->move(public_path('teknisi/foto'), $newNameFoto);
+        $request->file('foto')->move(public_path('images/teknisi'), $newNameFoto);
         
         Teknisi::create([
             'nama' => $request->nama,
@@ -58,7 +58,7 @@ class TeknisiController extends Controller
             'no_hp' => $request->no_hp,
             'foto' => $newNameFoto
         ]);
-        return redirect()->back();
+        return redirect()->route('teknisi.index');
     }
 
     /**
@@ -79,8 +79,9 @@ class TeknisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teknisi $teknisi)
+    public function edit($id)
     {
+        $teknisi = Teknisi::find($id);
         return view('admin.teknisi.edit', compact('teknisi'));
     }
 
@@ -107,9 +108,9 @@ class TeknisiController extends Controller
         $teknisi = Teknisi::find($id);
 
         if ($foto = $request->file('foto')) {
-            file::delete('teknisi/foto' .$teknisi->foto);
+            file::delete('images/teknisi' .$teknisi->images);
             $file_name = $request->foto->getClientOriginalName();
-            $foto->move(public_path('teknisi/foto'), $file_name);
+            $foto->move(public_path('images/teknisi'), $file_name);
             $teknisis['foto'] = "$file_name";
         }
         else {
@@ -117,7 +118,7 @@ class TeknisiController extends Controller
         }
 
         $teknisi->update($teknisis);
-        return redirect()->back();
+        return redirect()->route('teknisi.index');
     }
 
     /**
@@ -126,9 +127,10 @@ class TeknisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teknisi $teknisi, $id)
+    public function destroy(Teknisi $teknisi)
     {
-        $teknisi->destroy($id);
+        $teknisi->delete();
+        File::delete('images/teknisi/'.$teknisi->foto);
         return redirect()->back();
     }
 }

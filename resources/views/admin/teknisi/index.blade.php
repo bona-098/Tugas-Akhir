@@ -2,7 +2,7 @@
 @section('content')
     <div class="container border">
         <div class="d-grid gap-1">
-            <a button type="button" class="btn btn-primary" id="liveToastBtn" href="{{ route('teknisi-index.create') }}">Tambah Teknisi</a>
+            <a button type="button" class="btn btn-primary" id="liveToastBtn" href="{{ route('teknisi.create') }}">Tambah Teknisi</a>
         </div>
         <div class="card-body px-0 pb-0">
             <div class="table-responsive border">
@@ -29,7 +29,7 @@
                                 <td class="text-sm">{{ $item->no_hp }}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <div class="pic"><img src="{{ asset('teknisi/foto/' . $item->foto) }}"
+                                        <div class="pic"><img src="{{ asset('images/teknisi/' . $item->foto) }}"
                                                 class="img-fluid" width="80" height="80" alt="pp"></div>
                                     </div>
                                 </td>
@@ -41,9 +41,9 @@
                                             <i class="fa fa-cog"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="{{ route('teknisi-index.update', $item->id) }}"><i
+                                            <a class="dropdown-item" href="{{ route('teknisi.edit', $item->id) }}"><i
                                                     class="fa fa-edit"></i> Edit</a>
-                                            <form action="{{ route('teknisi-index.destroy', $item->id) }}" method="POST">
+                                            <form action="{{ route('teknisi.destroy', $item->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="dropdown-item" type="submit"

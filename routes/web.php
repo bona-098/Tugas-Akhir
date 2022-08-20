@@ -58,7 +58,7 @@ Route::resource('/admin-anggota', (AnggotaController::class));
 //prestasi
 
 Route::post('/user-storeservice', [ServiceController::class, 'userstore'])->name('userservicestore');
-Route::resource('/admin-service', (ServiceController::class));
+Route::resource('/service', (ServiceController::class));
 
 //pengumuman
 Route::get('/user-pengumuman', [PengumumanController::class, 'user']);
@@ -70,7 +70,7 @@ Route::get('/user-dokumentasidetail/{showdokumentasi}', [DokumentasiController::
 Route::post('/dokumentasi', [DokumentasiController::class, 'store'])->name('dokumentasi.store');
 
 //teknisi
-Route::resource('/teknisi-index', (TeknisiController::class));
+Route::resource('/teknisi', TeknisiController::class);
 
 //tanpa login
 //route prestasi

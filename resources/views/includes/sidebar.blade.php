@@ -69,12 +69,12 @@
             <span>Anggota</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/teknisi-index">
+        <a class="nav-link" href="/teknisi">
             <i class="fa fa-gavel" aria-hidden="true"></i>
             <span>Teknisi</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/admin-service">
+        <a class="nav-link" href="/service">
             <i class="fa fa-plus-square" aria-hidden="true"></i>
             <span>Servis</span></a>
     </li>

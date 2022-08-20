@@ -16,7 +16,7 @@ class serviceController extends Controller
     public function index()
     {
         $service = Service::get();
-        return view('admin.service', compact('service'));
+        return view('admin.service.service', compact('service'));
     }
 
     /**
@@ -26,7 +26,7 @@ class serviceController extends Controller
      */
     public function create()
     {
-        return view('admin.servicetambah');
+        return view('admin.service.servicetambah');
     }
 
     public function usercreate()
@@ -57,7 +57,7 @@ class serviceController extends Controller
 
         $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
 
-        $request->file('foto')->move(public_path('service/foto'), $newNameFoto);
+        $request->file('foto')->move(public_path('images/service'), $newNameFoto);
 
         service::create([
             'nama'=>$request->nama,
@@ -69,7 +69,7 @@ class serviceController extends Controller
 
         ]);
 
-        return redirect()->back()->with('success','Data berhasil ditambahkan');
+        return redirect()->route('service.index')->with('success','Data berhasil ditambahkan');
     }
 
     public function userstore(Request $request)
@@ -91,7 +91,7 @@ class serviceController extends Controller
 
         $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
 
-        $request->file('foto')->move(public_path('service/foto'), $newNameFoto);
+        $request->file('foto')->move(public_path('images/service'), $newNameFoto);
 
         service::create([
             'nama'=>$request->nama,
@@ -115,7 +115,7 @@ class serviceController extends Controller
     public function show(Service $service)
     {
         $service = Service::where('id', $service)->get();
-        return view('admin.service', compact('service'));
+        return view('admin.service.service', compact('service'));
     }
 
     /**
@@ -127,7 +127,7 @@ class serviceController extends Controller
     public function edit($id)
     {
         $service = Service::findOrfail($id);
-        return view('admin.serviceedit', compact('service'));
+        return view('admin.service.serviceedit', compact('service'));
     }
 
     /**
@@ -158,8 +158,8 @@ class serviceController extends Controller
         
         // dd($serviced);
         if ($foto = $request->file('foto')) {
-            File::delete('service/foto/'.$service->foto);
-            $fotos = 'service/foto/';
+            File::delete('images/service/'.$service->foto);
+            $fotos = 'images/service/';
             $file_name = $request->foto->getClientOriginalName();
             $foto->move($fotos, $file_name);
             $serviced['foto'] = "$file_name";
@@ -186,7 +186,7 @@ class serviceController extends Controller
         // ]);
 
 
-        return redirect()->route('admin-service.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('service.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**
