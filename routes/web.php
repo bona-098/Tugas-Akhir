@@ -67,7 +67,7 @@ Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::cla
 //dkumentasi
 Route::get('/user-dokumentasi', [DokumentasiController::class, 'user']);
 Route::get('/user-dokumentasidetail/{showdokumentasi}', [DokumentasiController::class, 'showuser'])->name('showdokumentasi');
-Route::post('/dokumentasi', [DokumentasiController::class, 'store'])->name('dokumentasi.store');
+// Route::post('/dokumentasi', [DokumentasiController::class, 'store'])->name('dokumentasi.store');
 
 //teknisi
 Route::resource('/teknisi', TeknisiController::class);
@@ -98,7 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/admin-prestasi', (PrestasiController::class));
         Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
         //dokumentasi
-        Route::resource('/admin-dokumentasi', (DokumentasiController::class));
+        Route::resource('/dokumentasi', (DokumentasiController::class));
         //pengumuman
         Route::post('/pengumuman', [PengumumanController::class, 'store'])->name('pengumuman.store');
         Route::resource('/admin-pengumuman', (PengumumanController::class));

@@ -17,7 +17,7 @@ class DokumentasiController extends Controller
     public function index()
     {
         $dokumentasi = Dokumentasi::get();
-        return view('admin.dokumentasi', compact('dokumentasi'));
+        return view('admin.dokumentasi.dokumentasi', compact('dokumentasi'));
     }
 
     /**
@@ -27,7 +27,7 @@ class DokumentasiController extends Controller
      */
     public function create()
     {
-        return view('admin.dokumentasitambah');
+        return view('admin.dokumentasi.dokumentasitambah');
     }
 
     /**
@@ -48,7 +48,7 @@ class DokumentasiController extends Controller
 
         $newNameMedia = date('ymd'). '-' . $request->media . '-' .$request->media->extension();
 
-        $request->file('media')->move(public_path('dokumentasi/media'), $newNameMedia);
+        $request->file('media')->move(public_path('images/dokumentasi'), $newNameMedia);
 
 
         Dokumentasi::create([
@@ -58,7 +58,7 @@ class DokumentasiController extends Controller
             'media'=>$newNameMedia
         ]);
 
-        return redirect()->route('admin-dokumentasi.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('dokumentasi.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**
@@ -70,7 +70,7 @@ class DokumentasiController extends Controller
     public function show($id)
     {
         $dokumentasi = Dokumentasi::where('id', $id)->get();
-        return view('admin.dokumentasidetail', compact('dokumentasi'));
+        return view('admin.dokumentasi.dokumentasidetail', compact('dokumentasi'));
     }
 
     /**
@@ -82,7 +82,7 @@ class DokumentasiController extends Controller
     public function edit($id)
     {
         $dokumentasi = Dokumentasi::findOrfail($id);
-        return view('admin.dokumentasiedit', compact('dokumentasi'));
+        return view('admin.dokumentasi.dokumentasiedit', compact('dokumentasi'));
     }
 
     /**
@@ -108,11 +108,9 @@ class DokumentasiController extends Controller
         
         // dd($dokumentasi);
         if ($media = $request->file('media')) {
-            File::delete('dokumentasi/media/'.$dokumentasi->media);
-            // $medias = 'dokumentasi/media/';
+            File::delete('images/dokumentasi/'.$dokumentasi->media);
             $file_name = $request->media->getClientOriginalName();
-            // $media->move($medias, $file_name);
-            $media->move(public_path('dokumentasi/media'), $file_name);
+            $media->move(public_path('images/dokumentasi'), $file_name);
             $dokumenta['media'] = "$file_name";
         }else{
             unset($dokumenta['media']);
@@ -120,7 +118,7 @@ class DokumentasiController extends Controller
 
         $dokumentasi->update($dokumenta);
 
-        return redirect()->route('admin-dokumentasi.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('dokumentasi.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**

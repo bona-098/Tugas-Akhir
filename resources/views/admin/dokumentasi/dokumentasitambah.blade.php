@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <h5 class="font-weight-bolder">Dokumentasi</h5>
                         <br>
-                        <form action="{{ route('admin-dokumentasi.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('dokumentasi.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-12 col-sm-6">

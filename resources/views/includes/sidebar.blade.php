@@ -44,7 +44,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="/admin-dokumentasi">
+        <a class="nav-link" href="/dokumentasi">
             <i class="fas fa-fw fa-camera"></i>
             <span>Dokumentasi</span></a>
     </li>
