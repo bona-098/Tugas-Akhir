@@ -16,9 +16,12 @@ class CreateKepengurusansTable extends Migration
         Schema::create('kepengurusans', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->date('tahun');
-            $table->string('status');
-            $table->timestamps();
+            $table->string('tahun');
+            $table->string('pembina');
+            $table->string('bph');
+            $table->string('pengurus_lain');
+            $table->string('anggota');
+            $table->string('program_kerja');
             $table->foreignId('user_id')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
         });
     }

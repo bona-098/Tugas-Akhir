@@ -12,7 +12,11 @@ class Kepengurusan extends Model
     protected $fillable = [
         'nama',
         'tahun',
-        'status',
+        'pembina',
+        'bph',
+        'pengurus_lain',
+        'anggota',
+        'program_kerja',
         'created_at',
         'update_at',
         'user_id'

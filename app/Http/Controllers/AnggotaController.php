@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Anggota;
 use App\Models\Kepengurusan;
 use Illuminate\Http\Request;
+use illuminate\Support\Facades\File;
 
 class AnggotaController extends Controller
 {
@@ -16,7 +17,7 @@ class AnggotaController extends Controller
     public function index()
     {
         $daftar = Anggota::get();
-        return view('admin.anggota', compact('daftar'));    
+        return view('admin.anggota.anggota', compact('daftar'));    
     }
 
     /**
@@ -88,7 +89,7 @@ class AnggotaController extends Controller
     public function show($id)
     {
         $anggota = Anggota::where('id', $id)->get();
-        return view('admin.anggotadetail', compact('anggota'));
+        return view('admin.anggota.anggotadetail', compact('anggota'));
     }
 
     /**
@@ -100,7 +101,7 @@ class AnggotaController extends Controller
     public function edit($id)
     {
         $anggota = Anggota::find($id);
-        return view('admin.anggotaedit', compact('anggota'));
+        return view('admin.anggota.anggotaedit', compact('anggota'));
     }
 
     /**
@@ -112,44 +113,31 @@ class AnggotaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'nama' => 'required',
-            'nim' => 'required',
-            'no_telp' => 'required',
-            'prodi' => 'required',
-            'resume' => 'required|mimes:pdf|max:50000',
-            'transkip' => 'required|mimes:pdf|max:50000',
-            'surat_rekomendasi' => 'required|mimes:pdf|max:50000',
-            'sertifikat' => 'required|mimes:pdf|max:50000'
+        $request->validate([
+            'nama'=>'required',
+            'nim'=>'required',            
+            'prodi'=>'required',
+            'no_telp'=>'required',            
+            'resume'=>'required',
+            'transkip'=>'required',
+            'surat_rekomendasi'=>'required',
+            'sertifikat'=>'required',
+            'kepengurusan_id'=>'file|mimes:jpg, jpeg, png|max:50000'
         ]);
 
-        $anggota = $request->all();
-
-        if ($resume = $request->file('resume')) {
-            File::delete('pendaftaran/resume/'.$service->resume);
-            $destinationPath = 'images/anggota/';
-            $profileImage = date('Ymd'). '-' . $request->nama_anggota . '.' . $request->resume->extension();
-            $resume->move($destinationPath, $profileImage);
-            $anggota['resume'] = "$profileImage";
+        Anggota = $request->all();
+        
+        if (resume = $request->file('media')){
+            file::delete('images/anggota/'. $anggota->resume);
+            $file_name = $request->media->getVlientOriginalName();
+            $resume->move(public_path('images/anggota'), $file_name)
+            $anggot['resume'] = "$file_name";
         }else{
-            unset($anggota['resume']);
+            unset($anggot['media']);
         }
 
-        $pendaftaran->update($anggota);
-
-        if($anggota){
-            //redirect dengan pesan sukses
-            Riwayat::create([
-                'user_id' => Auth::user()->id,
-                'aktivitas' => 'Mengubah Data anggotawan '.$anggota->nama_anggota.''
-            ]);
-
-            Alert::toast('Data Berhasil Diubah', 'success');
-            return redirect()->route('anggota.index');
-        }else{
-            //redirect dengan pesan error
-            return redirect()->route('anggota.index')->with(['error' => 'Data Gagal Disimpan!']);
-        }
+        $anggota->update($anggot);
+        return redirect()->route('anggota.index')->with('nice');
     }
 
     /**

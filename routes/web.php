@@ -53,7 +53,7 @@ Route::get('/admin-pengurus', function () {
 
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);
 Route::post('/daftar', [AnggotaController::class, 'store'])->name('anggota.store');
-Route::resource('/admin-anggota', (AnggotaController::class));
+Route::resource('/anggota', (AnggotaController::class));
 
 //prestasi
 
