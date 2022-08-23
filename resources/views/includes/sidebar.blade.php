@@ -49,7 +49,7 @@
             <span>Dokumentasi</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/admin-pengumuman">
+        <a class="nav-link" href="/pengumuman">
             <i class="fas fa-fw fa-bullhorn"></i>
             <span>Pengumuman</span></a>
     </li>
@@ -64,7 +64,7 @@
             <span>Pengurus</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/admin-anggota">
+        <a class="nav-link" href="/anggota">
             <i class="fas fa-fw fa-users"></i>
             <span>Anggota</span></a>
     </li>

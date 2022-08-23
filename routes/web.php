@@ -100,8 +100,8 @@ Route::group(['middleware' => 'auth'], function () {
         //dokumentasi
         Route::resource('/dokumentasi', (DokumentasiController::class));
         //pengumuman
-        Route::post('/pengumuman', [PengumumanController::class, 'store'])->name('pengumuman.store');
-        Route::resource('/admin-pengumuman', (PengumumanController::class));
+        // Route::post('/pengumuman', [PengumumanController::class, 'store'])->name('pengumuman.store');
+        Route::resource('/pengumuman', (PengumumanController::class));
     });
     //role
 });

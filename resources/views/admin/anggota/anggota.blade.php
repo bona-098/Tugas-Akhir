@@ -46,8 +46,8 @@
                                   <i class="fa fa-cog"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{route('admin-anggota.edit',$item->id)}}"><i class="fa fa-edit"></i> Edit</a>
-                                    <form action="{{route('admin-anggota.destroy', $item->id)}}" method="POST">
+                                    <a class="dropdown-item" href="{{route('anggota.edit',$item->id)}}"><i class="fa fa-edit"></i> Edit</a>
+                                    <form action="{{route('anggota.destroy', $item->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="dropdown-item" type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i> Hapus</button>

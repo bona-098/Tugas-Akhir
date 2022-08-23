@@ -16,7 +16,7 @@ class PengumumanController extends Controller
     public function index()
     {
         $pengumuman = Pengumuman::get();
-        return view('admin.pengumuman', compact('pengumuman'));
+        return view('admin.pengumuman.pengumuman', compact('pengumuman'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        return view('admin.pengumumantambah');
+        return view('admin.pengumuman.pengumumantambah');
     }
 
     /**
@@ -48,7 +48,7 @@ class PengumumanController extends Controller
         
         $newNameMedia = $request->judul . '-' . date('His') . '.' .$request->media->extension();
          
-        $request->file('media')->move(public_path('pengumuman/media'), $newNameMedia);
+        $request->file('media')->move(public_path('images/pengumuman'), $newNameMedia);
 
         Pengumuman::create([
             'judul'=>$request->judul,
@@ -56,7 +56,7 @@ class PengumumanController extends Controller
             'waktu'=>$request->waktu,
             'media'=>$newNameMedia,
         ]);
-        return redirect()->route('admin-pengumuman.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('pengumuman.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**
@@ -68,7 +68,7 @@ class PengumumanController extends Controller
     public function show($id)
     {
         $pengumuman = Pengumuman::where('id', $id)->get();
-        return view('admin.pengumumandetail', compact('pengumuman'));
+        return view('admin.pengumuman.pengumumandetail', compact('pengumuman'));
     }
 
     /**
@@ -80,7 +80,7 @@ class PengumumanController extends Controller
     public function edit($id)
     {
         $pengumuman = Pengumuman::findOrfail($id);
-        return view('admin.pengumumanedit', compact('pengumuman'));
+        return view('admin.pengumuman.pengumumanedit', compact('pengumuman'));
     }
 
     /**
@@ -105,11 +105,11 @@ class PengumumanController extends Controller
         
         // dd($prestasis);
         if ($media = $request->file('media')) {
-            File::delete('pengumuman/media/'.$pengumuman->media);
+            File::delete('images/pengumuman/'.$pengumuman->media);
             // $medias = 'pengumuman/media/';
             $file_name = $request->media->getClientOriginalName();
             // $media->move($medias, $file_name);
-            $media->move(public_path('pengumuman/media'), $file_name);
+            $media->move(public_path('images/pengumuman'), $file_name);
             $pengumumans['media'] = "$file_name";
         }else{
             unset($pengumumans['media']);
@@ -117,7 +117,7 @@ class PengumumanController extends Controller
 
         $pengumuman->update($pengumumans);
 
-        return redirect()->route('admin-pengumuman.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('pengumuman.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**

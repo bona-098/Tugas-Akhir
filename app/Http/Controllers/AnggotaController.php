@@ -60,10 +60,10 @@ class AnggotaController extends Controller
         
         
         
-        $request->file('resume')->move(public_path('pendaftaran/resume'), $newNameResume);
-        $request->file('transkip')->move(public_path('pendaftaran/transkip'), $newNameTranskip);
-        $request->file('surat_rekomendasi')->move(public_path('pendaftaran/surat_rekomendasi'), $newNameSurat);
-        $request->file('sertifikat')->move(public_path('pendaftaran/sertifikat'), $newNameSertifikat);
+        $request->file('resume')->move(public_path('images/pendaftaran/resume'), $newNameResume);
+        $request->file('transkip')->move(public_path('images/pendaftaran/transkip'), $newNameTranskip);
+        $request->file('surat_rekomendasi')->move(public_path('images/pendaftaran/surat_rekomendasi'), $newNameSurat);
+        $request->file('sertifikat')->move(public_path('images/pendaftaran/sertifikat'), $newNameSertifikat);
         
         Anggota::create([
             'nama'=>$request->nama,
@@ -125,15 +125,16 @@ class AnggotaController extends Controller
             'kepengurusan_id'=>'file|mimes:jpg, jpeg, png|max:50000'
         ]);
 
-        Anggota = $request->all();
+        $anggot = $request->all();
+        $anggota = Anggota::find($id);
         
-        if (resume = $request->file('media')){
-            file::delete('images/anggota/'. $anggota->resume);
+        if ($resume = $request->file('resume')){
+            file::delete('images/pendaftaran/anggota/'. $anggota->resume);
             $file_name = $request->media->getVlientOriginalName();
-            $resume->move(public_path('images/anggota'), $file_name)
+            $resume->move(public_path('images/pendaftaran/anggota'), $file_name);
             $anggot['resume'] = "$file_name";
         }else{
-            unset($anggot['media']);
+            unset($anggot['resume']);
         }
 
         $anggota->update($anggot);

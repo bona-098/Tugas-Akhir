@@ -26,7 +26,7 @@
             <div class="col-lg-12 mt-lg-0 mt-4">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin-anggota.update', $anggota->id) }}" method="POST"
+                        <form action="{{ route('anggota.update', $anggota->id) }}" method="POST"
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
                             @method('patch')
@@ -72,8 +72,8 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                         <a class="card-profile-image mt-4"
-                                            href="{{ asset('pendaftaran/transkrip/' . $anggota->transkrip) }}" target="_blank">
-                                            <img id="preview-image" src="{{ asset('pendaftaran/transkrip/' . $anggota->transkrip) }}"
+                                            href="{{ asset('images/pendaftaran/transkrip/' . $anggota->transkrip) }}" target="_blank">
+                                            <img id="preview-image" src="{{ asset('images/pendaftaran/transkrip/' . $anggota->transkrip) }}"
                                                 height="120px" width="120px">
                                         </a>
                                         <div class="value">

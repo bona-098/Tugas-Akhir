@@ -14,7 +14,7 @@
                         <h5 class="font-weight-bolder">Silahkan isi form dibawah ini untuk melakukan booking jadwal servis
                         </h5>
                         <br>
-                        <form action="{{ route('admin-pengumuman.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('pengumuman.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-12 col-sm-6">
