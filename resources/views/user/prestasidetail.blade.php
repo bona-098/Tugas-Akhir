@@ -9,8 +9,6 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Prestasi Details</h2>
                     <ol>
-                        <li><a href="ind    ex.html">Home</a></li>
-                        <li>Prestasi Detail</li>
                     </ol>
                 </div>
 
@@ -27,7 +25,7 @@
                         <div class="col-lg-8">
                             <div class="portfolio-details-slider swiper">
                                 <div class="swiper-wrapper align-items-center">
-                                    <div class="pic"><img src="{{ asset('prestasi/foto/' . $item->foto) }}"
+                                    <div class="pic"><img src="{{ asset('images/prestasi/' . $item->foto) }}"
                                         class="img-fluid" width="80" height="80" alt="pp"></div>
                                 </div>
                                 <div class="swiper-pagination"></div>

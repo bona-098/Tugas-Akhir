@@ -15,7 +15,7 @@
                         @foreach ($prestasi as $item)
                             <div class="col-lg-6">
                                 <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                                    <div class="pic"><img src="{{ asset('prestasi/foto/' . $item->foto) }}"
+                                    <div class="pic"><img src="{{ asset('images/prestasi/' . $item->foto) }}"
                                             class="img-fluid" alt=""></div>
                                     <div class="member-info">
                                         <h4>{{ $item->nama }}</h4>

@@ -95,8 +95,8 @@ Route::group(['middleware' => 'auth'], function () {
             return view('admin.dashboard');
         });
         //prestasi
-        Route::resource('/admin-prestasi', (PrestasiController::class));
-        Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
+        Route::resource('/prestasi', (PrestasiController::class));
+        // Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
         //dokumentasi
         Route::resource('/dokumentasi', (DokumentasiController::class));
         //pengumuman

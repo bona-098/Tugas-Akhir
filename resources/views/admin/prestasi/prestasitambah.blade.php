@@ -10,7 +10,7 @@
             <div class="row g-5 bd">
                 <div class="col-md-6 col-lg-12 bd">
                     <h4 class="mb-3">Tambah Prestasi</h4>
-                    <form method="POST" action="{{ route('admin-prestasi.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('prestasi.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row g-3">
                             <div class="col-sm-6">

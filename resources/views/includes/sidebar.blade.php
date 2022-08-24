@@ -33,11 +33,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Divisi:</h6>
                 <a class="collapse-item" href="/admin-hrd">HRD</a>
-                <a class="collapse-item" href="#">ORG</a>
-                <a class="collapse-item" href="#">Umum</a>
-                <a class="collapse-item" href="#">Medfo</a>
-                <a class="collapse-item" href="#">Hublu</a>
-                <a class="collapse-item" href="#">KWU</a>
             </div>
         </div>
     </li>
@@ -54,14 +49,14 @@
             <span>Pengumuman</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/admin-prestasi">
+        <a class="nav-link" href="/prestasi">
             <i class="fas fa-fw fa-trophy"></i>
             <span>Prestasi</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/admin-pengurus">
+        <a class="nav-link" href="/kepengurusan">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Pengurus</span></a>
+            <span>Kepengurusan</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/anggota">

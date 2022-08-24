@@ -17,7 +17,7 @@ class PrestasiController extends Controller
     public function index()
     {
         $prestasi = Prestasi::get();
-        return view('admin.prestasi', compact('prestasi')); 
+        return view('admin.prestasi.prestasi', compact('prestasi')); 
     }
     /**
      * Show the form for creating a new resource.
@@ -26,7 +26,7 @@ class PrestasiController extends Controller
      */
     public function create()
     {
-        return view('admin.prestasitambah');
+        return view('admin.prestasi.prestasitambah');
     }
 
     /**
@@ -53,7 +53,7 @@ class PrestasiController extends Controller
         
         $newNameFoto = date('ymd'). '-' . $request->foto->extension();
          
-        $request->file('foto')->move(public_path('prestasi/foto'), $newNameFoto);
+        $request->file('foto')->move(public_path('images/prestasi'), $newNameFoto);
         
         Prestasi::create([
             'nama'=>$request->nama,
@@ -68,7 +68,7 @@ class PrestasiController extends Controller
             'foto'=>$newNameFoto
         ]);
 
-        return redirect()->route('admin-prestasi.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('prestasi.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**
@@ -80,7 +80,7 @@ class PrestasiController extends Controller
     public function show($id)
     {
         $prestasi = Prestasi::where('id', $id)->get();
-        return view('admin.prestasidetail', compact('prestasi'));
+        return view('admin.prestasi.prestasidetail', compact('prestasi'));
     }
 
     /**
@@ -92,7 +92,7 @@ class PrestasiController extends Controller
     public function edit($id)
     {
         $prestasi = Prestasi::findOrfail($id);
-        return view('admin.prestasiedit', compact('prestasi'));
+        return view('admin.prestasi.prestasiedit', compact('prestasi'));
     }
 
     /**
@@ -123,11 +123,11 @@ class PrestasiController extends Controller
         
         // dd($prestasis);
         if ($foto = $request->file('foto')) {
-            File::delete('prestasi/foto/'.$prestasi->foto);
+            File::delete('images/prestasi/'.$prestasi->foto);
             // $fotos = 'prestasi/foto/';
             $file_name = $request->foto->getClientOriginalName();
             // $foto->move($fotos, $file_name);
-            $foto->move(public_path('prestasi/foto'), $file_name);
+            $foto->move(public_path('images/prestasi'), $file_name);
             $prestasis['foto'] = "$file_name";
         }else{
             unset($prestasis['foto']);
@@ -135,7 +135,7 @@ class PrestasiController extends Controller
 
         $prestasi->update($prestasis);
 
-        return redirect()->route('admin-prestasi.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('prestasi.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**
