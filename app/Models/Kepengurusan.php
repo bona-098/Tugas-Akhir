@@ -16,9 +16,9 @@ class Kepengurusan extends Model
         'bph',
         'pengurus_lain',
         'anggota',
-        'program_kerja',
-        'created_at',
-        'update_at',
-        'user_id'
+        'program_kerja'
+        // 'created_at',
+        // 'update_at',
+        // 'user_id'
     ];
 }

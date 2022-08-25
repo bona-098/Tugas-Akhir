@@ -1,14 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ServisController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\PengumumanController;
-use App\Http\Controllers\AdmindaftarController;
 use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\TeknisiController;
+use App\Http\Controllers\KepengurusanController;
 use App\Http\Controllers\PendaftaranController;
 
 
@@ -25,18 +24,7 @@ use App\Http\Controllers\PendaftaranController;
 
 //user
 Route::get('/', function () {
-    return view('user.home');
-});
-
-Route::get('/user-anggota', function () {
-    return view('user.anggota');
-});
-Route::get('/user-pengurus', function () {
-    return view('user.pengurus');
-});
-
-Route::get('user-proker', function () {
-    return view('user.proker.proker');
+    return view('login');
 });
 
 Route::get('admin-hrd', function () {
@@ -45,10 +33,6 @@ Route::get('admin-hrd', function () {
 
 Route::get('/admin-home', function () {
     return view('admin.home');
-});
-
-Route::get('/admin-pengurus', function () {
-    return view('admin.pengurus');
 });
 
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);
@@ -71,6 +55,8 @@ Route::get('/user-dokumentasidetail/{showdokumentasi}', [DokumentasiController::
 
 //teknisi
 Route::resource('/teknisi', TeknisiController::class);
+
+Route::resource('/kepengurusan', KepengurusanController::class);
 
 //tanpa login
 //route prestasi
