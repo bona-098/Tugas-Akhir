@@ -24,7 +24,7 @@ use App\Http\Controllers\PendaftaranController;
 
 //user
 Route::get('/', function () {
-    return view('login');
+    return view('user.home');
 });
 
 Route::get('admin-hrd', function () {
@@ -33,6 +33,10 @@ Route::get('admin-hrd', function () {
 
 Route::get('/admin-home', function () {
     return view('admin.home');
+});
+
+Route::get('/user-proker', function () {
+    return view('user.proker.hrd');
 });
 
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);
