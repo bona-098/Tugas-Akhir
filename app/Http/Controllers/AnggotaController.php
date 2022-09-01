@@ -25,9 +25,9 @@ class AnggotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create() 
     {
-        //
+        return view('user.anggota');
     }
 
     /**
@@ -147,7 +147,7 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Anggota $anggota, $id)
+    public function destroy(Anggota $anggota, $id) 
     {
         $anggota->destroy($id);
         return redirect()->back();
