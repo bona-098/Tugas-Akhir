@@ -126,9 +126,10 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pengumuman $pengumuman, $id)
+    public function destroy(Pengumuman $pengumuman)
     {
-        $pengumuman->destroy($id);
+        $pengumuman->delete();
+        File::delete('images/pengumuman/'.$pengumuman->media);
         return redirect()->back();
     }
     public function showpengumuman($id)

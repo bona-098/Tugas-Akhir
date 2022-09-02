@@ -46,7 +46,7 @@ class DokumentasiController extends Controller
 
         ]);
 
-        $newNameMedia = date('ymd'). '-' . $request->media . '-' .$request->media->extension();
+        $newNameMedia = $request->nama . '-' . date('His'). '-' .$request->media->extension();
 
         $request->file('media')->move(public_path('images/dokumentasi'), $newNameMedia);
 
@@ -127,9 +127,10 @@ class DokumentasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dokumentasi $dokumentasi, $id )
+    public function destroy(Dokumentasi $dokumentasi)
     {
-        $dokumentasi->destroy($id);
+        $dokumentasi->delete();
+        File::delete('images/dokumentasi/'.$dokumentasi->media);
         return redirect()->back();
     }
 

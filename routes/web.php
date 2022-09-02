@@ -31,6 +31,10 @@ Route::get('admin-hrd', function () {
     return view('admin.proker.hrd');
 });
 
+Route::get('tes', function () {
+    return view('test');
+});
+
 Route::get('/admin-home', function () {
     return view('admin.home');
 });

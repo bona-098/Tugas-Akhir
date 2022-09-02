@@ -16,7 +16,7 @@
                             <div class="card shadow-sm">
                                 <a href="/admin-dokumentasi-edit">
                                     <img width="348px" height="225px"
-                                        src="{{ asset('dokumentasi/media/' . $item->media) }}">
+                                        src="{{ asset('images/dokumentasi/' . $item->media) }}">
                                 </a>
 
                                 <div class="card-body">

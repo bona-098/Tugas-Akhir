@@ -40,7 +40,8 @@
             <h2>mengembangkan dan membina kemampuan mahasiswa Institut Teknologi Kalimantan dalam bidang otomotif </h2>
             {{-- <a href="#about" class="btn-get-started scrollto">Get Started</a> --}}
         </div>
-    </section><!-- End Hero -->
+    </section>
+    <!-- End Hero -->
 
     <main id="main">
 
