@@ -65,7 +65,8 @@ class ProgramkerjaController extends Controller
             'jumlah_sdm'=>$request->jumlah_sdm,
             'kebutuhan_lain'=>$request->kebutuhan_lain
         ]);
-        return redirect()->route('proker.proker');
+
+        return redirect()->route('proker.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**
@@ -88,7 +89,7 @@ class ProgramkerjaController extends Controller
     public function edit($id)
     {
         $proker = Programkerja::findOrfail($id);
-        return view('admin.Programkerja.Programkerjaedit', compact('Programkerja'));
+        return view('admin.proker.prokeredit', compact('proker'));
     }
 
     /**

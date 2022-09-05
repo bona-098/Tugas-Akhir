@@ -10,7 +10,7 @@
             <div class="row g-5 bd">
                 <div class="col-md-6 col-lg-12 bd">
                     <h4 class="mb-3">Tambah Prestasi</h4>
-                    <form method="POST" action="{{ route('prestasi.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('proker.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row g-3">
                             <div class="col-sm-6">
@@ -23,111 +23,120 @@
                                     </div>
                                 @enderror
                             </div>
-
                             <div class="col-sm-6">
-                                <label for="nim" class="form-label">nim</label>
-                                <input type="number" class="form-control" name="nim"
-                                    @error('nim') is-invalid @enderror" value="{{ old('nim') }}">
-                                @error('nim')
+                                <label for="penanggung_jawab" class="form-label">penanggung_jawab</label>
+                                <input type="text" class="form-control" name="penanggung_jawab"
+                                    @error('penanggung_jawab') is-invalid @enderror" value="{{ old('penanggung_jawab') }}">
+                                @error('penanggung_jawab')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-sm-6">
-                                <label for="firstName" class="form-label">dospem</label>
-                                <input type="text" class="form-control" name="dospem"
-                                    @error('dospem') is-invalid @enderror" value="{{ old('dospem') }}">
-                                @error('dospem')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label for="lastName" class="form-label">waktu</label>
-                                <input type="date" class="form-control" name="waktu"
-                                    @error('waktu') is-invalid @enderror" value="{{ old('dospem') }}">
-                                @error('waktu')
+                                <label for="pengurus" class="form-label">pengurus</label>
+                                <input type="text" class="form-control" name="pengurus"
+                                    @error('pengurus') is-invalid @enderror" value="{{ old('pengurus') }}">
+                                @error('pengurus')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-sm-6">
-                                <label for="firstName" class="form-label">Penyelenggara</label>
-                                <input type="text" class="form-control" name="penyelenggara"
-                                    @error('penyelenggara') is-invalid @enderror" value="{{ old('penyelenggara') }}">
-                                @error('penyelenggara')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label for="lastName" class="form-label">Tempat</label>
-                                <input type="text" class="form-control" name="tempat"
-                                    @error('tempat') is-invalid @enderror" value="{{ old('tempat') }}">
-                                @error('tempat')
+                                <label for="landasan_kegiatan" class="form-label">landasan_kegiatan</label>
+                                <input type="text" class="form-control" name="landasan_kegiatan"
+                                    @error('landasan_kegiatan') is-invalid @enderror"
+                                    value="{{ old('landasan_kegiatan') }}">
+                                @error('landasan_kegiatan')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Kategori</label>
-                                    <select name="kategori" class="form-control" id="kategori">
-                                        <option value="" selected disabled>Pilih kategori</option>
-                                        <option value="Lomba">Lomba</option>
-                                        <option value="Webinar">Webinar</option>
-                                        <option value="Peraih Penghargaan">Peraih Penghargaan</option>
-                                        <option value="Peraih Nominasi">Peraih Nominasi</option>
-                                        <option value="Dll">Dll</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Pencapaian</label>
-                                    <select name="pencapaian" class="form-control" id="pencapaian">
-                                        <option value="" selected disabled>Pilih pencapaian</option>
-                                        <option value="Juara 1">Juara 1</option>
-                                        <option value="Juara 2">Juara 2</option>
-                                        <option value="Juara 3">Juara 3</option>
-                                        <option value="Juara Harapan">Juara Harapan</option>
-                                        <option value="Peserta">Peserta</option>
-                                        <option value="Guest Star">Guest Star</option>
-                                        <option value="Dll">Dll</option>
-                                    </select>
-                                </div>
+                                <label for="tujuan_kegiatan" class="form-label">tujuan_kegiatan</label>
+                                <input type="text" class="form-control" name="tujuan_kegiatan"
+                                    @error('tujuan_kegiatan') is-invalid @enderror" value="{{ old('tujuan_kegiatan') }}">
+                                @error('tujuan_kegiatan')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="col-sm-6">
-                                <label for="firstName" class="form-label">Nama Kegiatan</label>
-                                <input type="text" class="form-control" name="nama_kegiatan" @error('nama_kegiatan') is-invalid @enderror" value="{{ old('nama_kegiatan') }}">
-                                @error('nama_kegiatan')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
+                                <label for="objek_segmentasi" class="form-label">objek_segmentasi</label>
+                                <input type="text" class="form-control" name="objek_segmentasi"
+                                    @error('objek_segmentasi') is-invalid @enderror" value="{{ old('objek_segmentasi') }}">
+                                @error('objek_segmentasi')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="deskripsi" class="form-label">deskripsi</label>
+                                <input type="text" class="form-control" name="deskripsi"
+                                    @error('deskripsi') is-invalid @enderror" value="{{ old('deskripsi') }}">
+                                @error('deskripsi')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="parameter_keberhasilan" class="form-label">parameter_keberhasilan</label>
+                                <input type="text" class="form-control" name="parameter_keberhasilan"
+                                    @error('parameter_keberhasilan') is-invalid @enderror"
+                                    value="{{ old('parameter_keberhasilan') }}">
+                                @error('parameter_keberhasilan')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="kebutuhan_dana" class="form-label">kebutuhan_dana</label>
+                                <input type="text" class="form-control" name="kebutuhan_dana"
+                                    @error('kebutuhan_dana') is-invalid @enderror" value="{{ old('kebutuhan_dana') }}">
+                                @error('kebutuhan_dana')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="sumber_dana" class="form-label">sumber_dana</label>
+                                <input type="text" class="form-control" name="sumber_dana"
+                                    @error('sumber_dana') is-invalid @enderror" value="{{ old('sumber_dana') }}">
+                                @error('sumber_dana')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="jumlah_sdm" class="form-label">jumlah_sdm</label>
+                                <input type="text" class="form-control" name="jumlah_sdm"
+                                    @error('jumlah_sdm') is-invalid @enderror" value="{{ old('jumlah_sdm') }}">
+                                @error('jumlah_sdm')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="kebutuhan_lain" class="form-label">kebutuhan_lain</label>
+                                <input type="text" class="form-control" name="kebutuhan_lain"
+                                    @error('kebutuhan_lain') is-invalid @enderror" value="{{ old('kebutuhan_lain') }}">
+                                @error('kebutuhan_lain')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
 
-                            <div class="col-sm-6">
-                                <div class="name">Foto</div>
-                                <div class="value">
-                                    <input type="file" name="foto" @error('foto') is-invalid @enderror"
-                                        value="{{ old('foto') }}">
-                                    @error('foto')
-                                        <div class="alert alert-danger mt-2">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                    <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB</div>
-                                </div>
-                            </div>
+
                         </div>
                         <hr class="my-4">
                         <button class="w-100 btn btn-primary btn-lg" type="submit">Simpan</button>

@@ -16,7 +16,7 @@ class CreateProgramkerjasTable extends Migration
         Schema::create('programkerjas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->date('penanggung_jawab');
+            $table->string('penanggung_jawab');
             $table->string('pengurus');
             $table->string('landasan_kegiatan');
             $table->string('tujuan_kegiatan');
@@ -27,7 +27,8 @@ class CreateProgramkerjasTable extends Migration
             $table->string('sumber_dana')->nullable();
             $table->string('jumlah_sdm');
             $table->string('kebutuhan_lain')->nullable();
-            $table->foreignId('user_id')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->timestamps();
+            // $table->foreignId('user_id')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class divisi extends Model
 {
     use HasFactory;
-    public $table = 'divisi';
+    public $table = 'divisis';
     protected $fillable = [
         'id',
         'nama',
@@ -18,7 +18,6 @@ class divisi extends Model
         'visi',
         'misi',
         'created_at',
-        'update_at',
-        'programkerja_id'
+        'update_at'
     ];
 }
