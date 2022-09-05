@@ -16,6 +16,11 @@ class CreateDivisisTable extends Migration
         Schema::create('divisis', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('kadiv');
+            $table->string('staffahli');
+            $table->string('staff');
+            $table->string('visi');
+            $table->string('misi');
             $table->timestamps();
             $table->foreignId('programkerja_id')->constrained('programkerjas')->onDelete('restrict')->onUpdate('cascade');
         });

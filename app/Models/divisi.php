@@ -12,6 +12,11 @@ class divisi extends Model
     protected $fillable = [
         'id',
         'nama',
+        'kadiv',
+        'staffahli',
+        'staff',
+        'visi',
+        'misi',
         'created_at',
         'update_at',
         'programkerja_id'

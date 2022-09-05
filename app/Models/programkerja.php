@@ -8,14 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class programkerja extends Model
 {
     use HasFactory;
-    public $table = 'programkerja';
+    public $table = 'programkerjas';
     protected $fillable = [
         'id',
         'nama',
-        'waktu',
-        'tampat',
+        'penanggung_jawab',
+        'pengurus',
+        'landasan_kegiatan',
+        'tujuan_kegiatan',
+        'objek_segmentasi',
         'deskripsi',
-        'gambar',
+        'parameter_keberhasilan',
+        'kebutuhan_dana',
+        'sumber_dana',
+        'jumlah_sdm',
+        'kebutuhan_lain',
         'created_at',
         'update_at',
         'user_id'

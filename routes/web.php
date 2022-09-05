@@ -7,6 +7,8 @@ use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\TeknisiController;
+use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\ProgramkerjaController;
 use App\Http\Controllers\KepengurusanController;
 use App\Http\Controllers\PendaftaranController;
 
@@ -27,20 +29,12 @@ Route::get('/', function () {
     return view('user.home');
 });
 
-Route::get('admin-hrd', function () {
-    return view('admin.proker.hrd');
-});
-
 Route::get('tes', function () {
     return view('test');
 });
 
 Route::get('/admin-home', function () {
     return view('admin.home');
-});
-
-Route::get('/user-proker', function () {
-    return view('user.proker.hrd');
 });
 
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);
@@ -64,7 +58,14 @@ Route::get('/user-dokumentasidetail/{showdokumentasi}', [DokumentasiController::
 //teknisi
 Route::resource('/teknisi', TeknisiController::class);
 
+//kepengurusan
 Route::resource('/kepengurusan', KepengurusanController::class);
+
+//kepengurusan
+Route::resource('/proker', ProgramkerjaController::class);
+
+//kepengurusan
+Route::resource('/divisi', DivisiController::class);
 
 //tanpa login
 //route prestasi

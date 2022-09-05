@@ -16,10 +16,17 @@ class CreateProgramkerjasTable extends Migration
         Schema::create('programkerjas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->date('waktu');
-            $table->string('tempat');
+            $table->date('penanggung_jawab');
+            $table->string('pengurus');
+            $table->string('landasan_kegiatan');
+            $table->string('tujuan_kegiatan');
+            $table->string('objek_segmentasi');
             $table->string('deskripsi');
-            $table->string('gambar');
+            $table->string('parameter_keberhasilan');
+            $table->string('kebutuhan_dana')->nullable();
+            $table->string('sumber_dana')->nullable();
+            $table->string('jumlah_sdm');
+            $table->string('kebutuhan_lain')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
         });
     }
