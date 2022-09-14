@@ -125,7 +125,7 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                    <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB</div>
+                                    <div class="label--desc">Pastikan media yang diunggah berupa file gambar</div>
                                 </div>
                             </div>
                         </div>

@@ -27,6 +27,7 @@
                     <th scope="col">Transkrip</th>
                     <th scope="col">Surat Rekomendasi</th>
                     <th scope="col">Sertifikat</th>
+                    <th scope="col">action</th>
                 </tr>
             </thead>
             <tbody>

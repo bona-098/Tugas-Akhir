@@ -11,8 +11,7 @@
             <div class="col-lg-12 mt-lg-0 mt-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="font-weight-bolder">Silahkan isi form dibawah ini untuk melakukan booking jadwal servis
-                        </h5>
+                        <h5 class="font-weight-bolder">Silahkan isi form untuk membuat pengumuman</h5>
                         <br>
                         <form action="{{ route('pengumuman.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -40,13 +39,13 @@
                                                 {{ $message }}
                                             </div>
                                         @enderror
-                                        <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB</div>
+                                        <div class="label--desc">Pastikan media yang diunggah berupa file gambar</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary" type="submit">Booking</button>
+                                    <button class="btn btn-primary" type="submit">Submit</button>
                                 </div>
                             </div>
                         </form>

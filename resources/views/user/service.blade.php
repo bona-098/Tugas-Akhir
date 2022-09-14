@@ -50,8 +50,7 @@
                                         <div class="name">KTM / KTP</div>
                                         <div class="value">
                                             <input type="file" name="foto">
-                                            <div class="label--desc">Upload your foto with jpg, jpeg format. Max file size 50 MB
-                                            </div>
+                                            <div class="label--desc">Upload file gambar</div>
                                         </div>
                                     </div>
                                 </div>

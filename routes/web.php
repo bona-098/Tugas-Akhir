@@ -33,8 +33,8 @@ Route::get('tes', function () {
     return view('test');
 });
 
-Route::get('/admin-home', function () {
-    return view('admin.home');
+Route::get('welcome', function () {
+    return view('welcome');
 });
 
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);
@@ -77,9 +77,9 @@ Route::group(['middleware' => 'auth'], function () {
     
     //role su, admin, teknisi
     Route::group(['middleware' => 'checkRole:su, admin, teknisi'], function () {
-        Route::get('/home', function(){
-            return view('admin.dashboard');
-        });        
+        Route::get('/admin-home', function () {
+            return view('admin.home');
+        });
     });
     //route service
     Route::get('/user-service', [ServiceController::class, 'usercreate']);

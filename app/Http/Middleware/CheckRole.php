@@ -17,7 +17,7 @@ class CheckRole
     public function handle(Request $request, Closure $next, ...$roles)
     {
         //jika akun yang login sesuai dengan role 
-        //maka silahkan akses
+        //maka silahkan akses   
         //jika tidak sesuai akan diarahkan ke home
     
         // $roles = array_slice(func_get_args(), 2);

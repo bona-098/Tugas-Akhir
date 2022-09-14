@@ -1,72 +1,62 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login - Saa</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+<body>
+    <main>
+        <div class="limiter">
+            <div class="container-login">                
+                <div class="login-wrapper">
+                    <div class="text-center">
+                    <img src="assets/img/cutlogo.jpg" alt="logo">
+                    <h1 class="login-title">Welcome</h1>
+                </div>
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+                        <div class="form-group mb-4">
+                            <label for="email" :value="__('Email')" >Email</label>
+                            
+                            <input type="email" 
+                            name="email" 
+                            id="email" 
+                            class="form-control"
+                            placeholder="email@example.com">
+                        </div>
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label>Role</label>
-                    <select name="role" class="form-control" id="role">
-                        <option value="#" selected disabled>Pilih kategori</option>
-                        <option value="su">super admin</option>
-                        <option value="admin">admin</option>
-                        <option value="teknisi">teknisi</option>
-                        <option value="user">user</option>
-                    </select>
+                        <div class="form-group mb-4">
+                            <label for="password" :value="__('Password')"  >Password</label>
+                            
+                            <input type="password" 
+                                    name="password" 
+                                    id="password"
+                                    required autocomplete="current-password"
+                                    class="form-control"
+                                placeholder="enter your passsword">
+                        </div>
+                        <input name="login" id="login" class="btn btn-block login-btn" type="submit"
+                            value="Login">
+                    </form>
+                    <a href="#!" class="forgot-password-link">Lupa Password?</a>
+                    <p class="login-wrapper-footer-text">Belum Memiliki Akun? <a href="#!"
+                            class="text-reset">Daftar Disini</a></p>
                 </div>
             </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+</html>

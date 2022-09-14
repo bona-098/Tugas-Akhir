@@ -17,7 +17,7 @@
                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </a>
-                </form>
+                    </form>
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     
                 </div>

@@ -14,7 +14,11 @@
 </head>
 @extends('user.app')
 @section('content')
-
+    <style>
+        .name {
+            font-style: bold;
+        }
+    </style>
     <body>
         <form method="POST" action="{{ route('anggota.store') }}" enctype="multipart/form-data">
             @csrf
@@ -57,37 +61,33 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <br>
                                 <div class="row">
                                     <div class="col">
                                         <div class="name">Resume</div>
                                         <div class="value">
                                             <input type="file" name="resume" @error('resume') is-invalid @enderror"
                                                 value="#">
-                                            <div class="label--desc">Upload your Resume with pdf format. Max file
-                                                size 1 MB</div>
+                                            <div class="label--desc">Upload file pdf</div>
                                         </div>
-
                                     </div>
                                     <div class="col">
                                         <div class="name">Transkip</div>
                                         <div class="value">
                                             <input type="file" name="transkip" @error('resume') is-invalid @enderror"
                                                 value="#">
-                                            <div class="label--desc">Upload your Resume with pdf format. Max file
-                                                size 1 MB</div>
+                                            <div class="label--desc">Upload file pdf</div>
                                         </div>
-
                                     </div>
                                 </div>
+                                <br>
                                 <div class="row">
                                     <div class="col">
                                         <div class="name">Surat Rekomendasi</div>
                                         <div class="value">
                                             <input type="file" name="surat_rekomendasi"
                                                 @error('resume') is-invalid @enderror" value="#">
-                                            <div class="label--desc">Upload your Resume with pdf format. Max file
-                                                size 1 MB</div>
+                                            <div class="label--desc">Upload file pdf</div>
                                         </div>
 
                                     </div>
@@ -96,14 +96,13 @@
                                         <div class="value">
                                             <input type="file" name="sertifikat" @error('resume') is-invalid @enderror"
                                                 value="#">
-                                            <div class="label--desc">Upload your Resume with pdf format. Max file
-                                                size 1 MB</div>
+                                            <div class="label--desc">Upload file pdf</div>
                                         </div>
 
                                     </div>
                                 </div>
                                 <br>
-                                <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
+                                <button type="submit" class="btn btn-success btn-lg mb-1">Daftar</button>
 
                             </form>
 
