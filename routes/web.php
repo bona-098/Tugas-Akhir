@@ -28,6 +28,9 @@ use App\Http\Controllers\PendaftaranController;
 Route::get('/', function () {
     return view('user.home');
 });
+Route::get('profil', function () {
+    return view('profil.index');
+});
 
 Route::get('tes', function () {
     return view('test');
@@ -35,6 +38,10 @@ Route::get('tes', function () {
 
 Route::get('welcome', function () {
     return view('welcome');
+});
+
+Route::get('kelola', function () {
+    return view('admin.user.index');
 });
 
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);

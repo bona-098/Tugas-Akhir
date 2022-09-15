@@ -10,7 +10,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -76,6 +76,11 @@
         <a class="nav-link" href="/service">
             <i class="fa fa-plus-square" aria-hidden="true"></i>
             <span>Servis</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/kelola">
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+            <span>Kelola user</span></a>
     </li>
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

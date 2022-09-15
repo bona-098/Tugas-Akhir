@@ -15,40 +15,66 @@
 <body>
     <main>
         <div class="limiter">
-            <div class="container-login">                
+            <div class="container-login">
                 <div class="login-wrapper">
                     <div class="text-center">
-                    <img src="assets/img/cutlogo.jpg" alt="logo">
-                    <h1 class="login-title">Welcome</h1>
-                </div>
-                    <form method="POST" action="{{ route('login') }}">
+                        <img src="assets/img/cutlogo.jpg" alt="logo">
+                        <h1 class="login-title">Welcome</h1>
+                    </div>
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+                        <!-- Name -->
                         <div class="form-group mb-4">
-                            <label for="email" :value="__('Email')" >Email</label>
-                            
-                            <input type="email" 
-                            name="email" 
-                            id="email" 
-                            class="form-control"
-                            placeholder="email@example.com">
+                            <label for="name" :value="__('Name')">name</label>
+
+                            <input id="name" class="form-control" type="text" name="name"
+                                :value="old('name')" required autofocus />
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="form-group mb-4">
+                            <label for="email" :value="__('Email')">email</label>
+
+                            <input id="email" class="form-control" type="email" name="email"
+                                :value="old('email')" required />
+                        </div>
+
+                        <div class="form-group mb4">
+                            <div class="form-group">
+                                <label>Role</label>
+                                <select name="role" class="form-control" id="role">
+                                    <option value="#" selected disabled>Pilih kategori</option>
+                                    <option value="su">super admin</option>
+                                    <option value="admin">admin</option>
+                                    <option value="teknisi">teknisi</option>
+                                    <option value="user">user</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group mb4">
+                            <label for="password" :value="__('Password')">Password</label>
+
+                            <input id="password" class="form-control" type="password" name="password" required
+                                autocomplete="new-password" />
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="form-group mb4">
+                            <label for="password_confirmation" :value="__('Confirm Password')">Konfirmasi Password</label>
+
+                            <input id="password_confirmation" class="form-control" type="password"
+                                name="password_confirmation" required />
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="password" :value="__('Password')"  >Password</label>
-                            
-                            <input type="password" 
-                                    name="password" 
-                                    id="password"
-                                    required autocomplete="current-password"
-                                    class="form-control"
-                                placeholder="enter your passsword">
+                            <button class="btn btn-block login-btn">{{ __('Register') }}</button>
                         </div>
-                        <input name="login" id="login" class="btn btn-block login-btn" type="submit"
-                            value="Login">
                     </form>
                     <a href="#!" class="forgot-password-link">Lupa Password?</a>
-                    <p class="login-wrapper-footer-text">Belum Memiliki Akun? <a href="#!"
+                    <p class="login-wrapper-footer-text">Belum Memiliki Akun? <a href="{{ route('login') }}"
                             class="text-reset">Daftar Disini</a></p>
                 </div>
             </div>

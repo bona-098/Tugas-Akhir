@@ -48,7 +48,7 @@
                             value="Login">
                     </form>
                     <a href="#!" class="forgot-password-link">Lupa Password?</a>
-                    <p class="login-wrapper-footer-text">Belum Memiliki Akun? <a href="#!"
+                    <p class="login-wrapper-footer-text">Belum Memiliki Akun? <a href="register"
                             class="text-reset">Daftar Disini</a></p>
                 </div>
             </div>
