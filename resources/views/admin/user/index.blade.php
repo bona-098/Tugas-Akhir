@@ -20,20 +20,39 @@
             <thead>
                 <tr>
                     <th scope="col">Nama</th>
-                    <th scope="col">Nim</th>
-                    <th scope="col">Prodi</th>
-                    <th scope="col">No Telp</th>
-                    <th scope="col">Resume</th>
-                    <th scope="col">Transkrip</th>
-                    <th scope="col">Surat Rekomendasi</th>
-                    <th scope="col">Sertifikat</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Booking</th>
                     <th scope="col">action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $item)
+                @foreach ($user as $item)
                     <tr>
-                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>{{ $item->role }}</td>
+                        <td></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button"
+                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i class="fa fa-cog"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ route('kelola.edit', $item->id) }}"><i
+                                            class="fa fa-edit"></i> Edit</a>
+                                    <form action="{{ route('kelola.destroy', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="dropdown-item" type="submit"
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i
+                                                class="fa fa-trash"></i> Hapus</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

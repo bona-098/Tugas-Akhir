@@ -11,6 +11,7 @@ use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\ProgramkerjaController;
 use App\Http\Controllers\KepengurusanController;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -38,10 +39,6 @@ Route::get('tes', function () {
 
 Route::get('welcome', function () {
     return view('welcome');
-});
-
-Route::get('kelola', function () {
-    return view('admin.user.index');
 });
 
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);
@@ -73,6 +70,7 @@ Route::resource('/proker', ProgramkerjaController::class);
 
 //kepengurusan
 Route::resource('/divisi', DivisiController::class);
+Route::resource('/kelola', UserController::class);
 
 //tanpa login
 //route prestasi
