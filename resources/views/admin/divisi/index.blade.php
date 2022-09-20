@@ -23,12 +23,14 @@
                     @foreach ($divisi as $item)
                         <tbody>
                             <tr>
+                                <a href="oh/shiow/{{ $item->id }}"> 
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->kadiv }}</td>
                                 <td class="text-sm">{{ $item->staffahli }}</td>
                                 <td class="text-sm">{{ $item->staff }}</td>
                                 <td class="text-sm">{{ $item->visi }}</td>                                
-                                <td class="text-sm">{{ $item->misi }}</td>                                                                
+                                <td class="text-sm">{{ $item->misi }}</td>
+                                </a>                                                              
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

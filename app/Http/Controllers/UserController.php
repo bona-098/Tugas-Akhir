@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Auth;
 class UserController extends Controller
 {
     /**
@@ -17,7 +17,8 @@ class UserController extends Controller
         $user = User::get();
         return view('admin.user.index', compact('user'));
     }
-
+    
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +28,7 @@ class UserController extends Controller
     {
         return view('kelola.tambah');
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -91,7 +92,7 @@ class UserController extends Controller
         ]);
         return redirect()->route('kelola.index');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -102,5 +103,16 @@ class UserController extends Controller
     {
         $user->destroy($id);
         return redirect()->back();
+    }
+    
+    public function showprofil($id)
+    {
+        $user = User::find(Auth::user()->id);
+        return view('profil.edit', compact('user'));
+    }
+    public function profil()
+    {
+        $user = User::find(Auth::user()->id);
+        return view('profil.index', compact('user'));
     }
 }

@@ -29,9 +29,10 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('user.home');
 });
-Route::get('profil', function () {
-    return view('profil.index');
-});
+
+// Route::get('profil', function () {
+//     return view('profil.index');
+// });
 
 Route::get('tes', function () {
     return view('test');
@@ -71,7 +72,10 @@ Route::resource('/proker', ProgramkerjaController::class);
 //kepengurusan
 Route::resource('/divisi', DivisiController::class);
 Route::resource('/kelola', UserController::class);
-
+// Route::post('/profil', [UserController::class, 'profil'])->name('profil.index');
+Route::get('/profil', [UserController::class, 'profil']);
+Route::get('/profiledit/{showprofil}', [UserController::class, 'showprofil'])->name('showprofil');
+ 
 //tanpa login
 //route prestasi
 Route::get('/user-prestasi', [PrestasiController::class, 'user']);

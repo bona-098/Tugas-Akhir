@@ -7,10 +7,11 @@
         }
     </style>
     <div class="container border">
-        <div class="d-grid gap-1">
+        <div>
             <a button type="button" class="btn btn-primary" id="liveToastBtn"
                 href="{{ route('dokumentasi.create') }}">Tambah Dokumentasi</a>
-        </div>
+            </div>
+            <br>
         <div class="card-body px-0 pb-0 border">
             <div class="table-responsive border">
                 <table class="table table-flush" id="products-list">
