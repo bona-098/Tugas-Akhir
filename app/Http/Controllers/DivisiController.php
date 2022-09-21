@@ -65,7 +65,8 @@ class DivisiController extends Controller
      */
     public function show($id)
     {
-        //
+        $divisi = Divisi::findOrfail($id);
+        return view('admin.divisi.show', compact('divisi'));
     }
 
     /**
@@ -96,6 +97,18 @@ class DivisiController extends Controller
             'staff' => 'required',
             'visi' => 'required',
             'misi' => 'required'
+        ]);
+
+        $div = $request->all();
+        $divisi = Divisi::find($id);
+
+        $divisi->update([
+            'nama'=>$request->nama,
+            'kadiv'=>$request->kadiv,
+            'staffahli'=>$request->staffahli,
+            'staff'=>$request->staff,
+            'visi'=>$request->visi,
+            'misi'=>$request->misi
         ]);
 
         return redirect()->route('divisi.index');

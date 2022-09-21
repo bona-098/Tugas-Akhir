@@ -47,6 +47,7 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="{{route('proker.edit',$item->id)}}"><i class="fa fa-edit"></i> Edit</a>
+                                            <a class="dropdown-item" href="{{route('proker.show',$item->id)}}"><i class="fa fa-edit"></i> show</a>
                                             <form action="{{route('proker.destroy', $item->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')

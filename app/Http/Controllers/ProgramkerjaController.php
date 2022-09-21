@@ -77,7 +77,8 @@ class ProgramkerjaController extends Controller
      */
     public function show($id)
     {
-        //
+        $proker = Programkerja::findOrfail($id);
+        return view('admin.proker.show', compact('proker'));
     }
 
     /**

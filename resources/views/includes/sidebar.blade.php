@@ -36,7 +36,7 @@
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Divisi:</h6>
-                <a class="collapse-item" href="/proker">proker</a>
+                <a class="collapse-item" href="/proker">Program Kerja</a>
             </div>
         </div>
     </li>

@@ -3,7 +3,7 @@
     <div class="container border">
         <div class="d-grid gap-1">
             <a button type="button" class="btn btn-primary" id="liveToastBtn"
-                href="{{ route('divisi.create') }}">Tambah Program kerja</a>
+                href="{{ route('divisi.create') }}">Tambah Divisi</a>
         </div>
         <div class="card-body px-0 pb-0">
             <div class="table-responsive border">
@@ -23,6 +23,7 @@
                     @foreach ($divisi as $item)
                         <tbody>
                             <tr>
+                                <div>
                                 <a href="oh/shiow/{{ $item->id }}"> 
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->kadiv }}</td>
@@ -30,7 +31,8 @@
                                 <td class="text-sm">{{ $item->staff }}</td>
                                 <td class="text-sm">{{ $item->visi }}</td>                                
                                 <td class="text-sm">{{ $item->misi }}</td>
-                                </a>                                                              
+                                </a>
+                                </div>                                                              
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,8 +40,9 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="{{route('divisi.edit',$item->id)}}"><i class="fa fa-edit"></i> Edit</a>
+                                            <a class="dropdown-item" href="{{route('divisi.show',$item->id)}}"><i class="fa fa-edit"></i> show</a>
                                             <form action="{{route('divisi.destroy', $item->id)}}" method="POST">
-                                                @csrf
+                                                @csrf   
                                                 @method('DELETE')
                                                 <button class="dropdown-item" type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i> Hapus</button>
                                             </form>
