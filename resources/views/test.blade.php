@@ -153,7 +153,7 @@
                                         <option value="2">ORG</option>
                                         <option value="3">Umum</option>
                                         <option value="4">KWU</option>
-                                        <opti value="5">Karsa Cipta (PKM-KC)</opti>
+                                        <option value="5">Karsa Cipta (PKM-KC)</option>
                                         <option value="6">Futuristik Konstruktif</option>
                                         <option value="7">Gagasan Tertulis</option>
                                         <option value="8">Artikel Ilmiah (PKM-AI)</option> on

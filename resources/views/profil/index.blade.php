@@ -65,7 +65,6 @@
                                         Valid first name is required.
                                     </div>
                                 </div>
-
                                 <div class="col-sm-6">
                                     <label for="lastName" class="form-label">Last name</label>
                                     <input type="text" class="form-control" id="lastName" placeholder="user-098"

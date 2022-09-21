@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\divisi;
+use App\Models\programkerja;
+
+// use App\Http\Traits\QueryTrait;
+// use App\Models\programkerja;
 
 class DivisiController extends Controller
 {
+    // use QueryTrait;
     /**
      * Display a listing of the resource.
      *
@@ -66,7 +72,13 @@ class DivisiController extends Controller
     public function show($id)
     {
         $divisi = Divisi::findOrfail($id);
-        return view('admin.divisi.show', compact('divisi'));
+        $proker = Programkerja::where('divisi_id', '=', $id)->firstOrFail();
+        // dd($divisi);
+        return view('admin.divisi.show',
+        [
+            'divisi' => $divisi,
+            'proker' => $proker
+            ]);
     }
 
     /**

@@ -28,7 +28,7 @@ class CreateProgramkerjasTable extends Migration
             $table->string('jumlah_sdm');
             $table->string('kebutuhan_lain')->nullable();
             $table->timestamps();
-            // $table->foreignId('user_id')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('divisi_id')->constrained('divisis')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

@@ -25,6 +25,7 @@ class programkerja extends Model
         'kebutuhan_lain',
         'created_at',
         'update_at',
-        'user_id'
+        'user_id',
+        'divisi_id'
     ];
 }

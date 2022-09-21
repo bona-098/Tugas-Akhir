@@ -75,7 +75,7 @@ Route::resource('/kelola', UserController::class);
 // Route::post('/profil', [UserController::class, 'profil'])->name('profil.index');
 Route::get('/profil', [UserController::class, 'profil']);
 Route::get('/profiledit/{showprofil}', [UserController::class, 'showprofil'])->name('showprofil');
- 
+
 //tanpa login
 //route prestasi
 Route::get('/user-prestasi', [PrestasiController::class, 'user']);

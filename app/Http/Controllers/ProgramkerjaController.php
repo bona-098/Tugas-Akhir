@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\programkerja;
+use App\Models\divisi;
+
 
 class ProgramkerjaController extends Controller
 {
@@ -25,7 +27,8 @@ class ProgramkerjaController extends Controller
      */
     public function create()
     {
-        return view('admin.proker.tambah');
+        $divisi = Divisi::select('nama','id')->get();
+        return view('admin.proker.tambah', compact('divisi'));
     }
 
     /**
@@ -48,25 +51,27 @@ class ProgramkerjaController extends Controller
             'kebutuhan_dana' => 'required',
             'sumber_dana' => 'required',
             'jumlah_sdm' => 'required',
-            'kebutuhan_lain' => 'required'
+            'kebutuhan_lain' => 'required',
+            'divisi_id' => 'required'
         ]);
 
         Programkerja::create([
-            'nama'=>$request->nama,
-            'penanggung_jawab'=>$request->penanggung_jawab,
-            'pengurus'=>$request->pengurus,
-            'landasan_kegiatan'=>$request->landasan_kegiatan,
-            'tujuan_kegiatan'=>$request->tujuan_kegiatan,
-            'objek_segmentasi'=>$request->objek_segmentasi,
-            'deskripsi'=>$request->deskripsi,
-            'parameter_keberhasilan'=>$request->parameter_keberhasilan,
-            'kebutuhan_dana'=>$request->kebutuhan_dana,
-            'sumber_dana'=>$request->sumber_dana,
-            'jumlah_sdm'=>$request->jumlah_sdm,
-            'kebutuhan_lain'=>$request->kebutuhan_lain
+            'nama' => $request->nama,
+            'penanggung_jawab' => $request->penanggung_jawab,
+            'pengurus' => $request->pengurus,
+            'landasan_kegiatan' => $request->landasan_kegiatan,
+            'tujuan_kegiatan' => $request->tujuan_kegiatan,
+            'objek_segmentasi' => $request->objek_segmentasi,
+            'deskripsi' => $request->deskripsi,
+            'parameter_keberhasilan' => $request->parameter_keberhasilan,
+            'kebutuhan_dana' => $request->kebutuhan_dana,
+            'sumber_dana' => $request->sumber_dana,
+            'jumlah_sdm' => $request->jumlah_sdm,
+            'kebutuhan_lain' => $request->kebutuhan_lain,
+            'divisi_id' => $request->divisi_id
         ]);
 
-        return redirect()->route('proker.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('proker.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -75,11 +80,6 @@ class ProgramkerjaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $proker = Programkerja::findOrfail($id);
-        return view('admin.proker.show', compact('proker'));
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -131,4 +131,17 @@ class ProgramkerjaController extends Controller
         $proker->destroy($id);
         return redirect()->back();
     }
+    public function show($id)
+    {
+        $proker = Programkerja::findOrfail($id);
+        return view('admin.proker.show', compact('proker'));
+    }
+    public function showindiv($id)
+    {
+        $proker = Programkerja::findOrfail($id);
+        return view('admin.proker.show', compact('proker'));
+    }
+
+
 }
+

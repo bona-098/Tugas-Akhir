@@ -38,7 +38,8 @@
                         <br>
                         <span>
                             <p class="title is-semibolded is-size-6 has-text-grey">Staff Ahli</p>
-                            <p class="subtitle is-size-5">{{ $divisi->staffahli }}, {{ $divisi->staff }}, {{ $divisi->misi }}</p>
+                            <p class="subtitle is-size-5">{{ $divisi->staffahli }}, {{ $divisi->staff }},
+                                {{ $divisi->misi }}</p>
                         </span>
                     </div>
                     <div class="col-4">
@@ -58,61 +59,53 @@
                         </span>
                         <br>
                     </div>
-                </div>
-            </form>
-                <form action="{{ route('proker.show', $proker->id) }}" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    @method('patch')
                     <div class="col-4">
                         <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">Program Kerja</p>
-                            <a href="{{route('proker.show',$proker->nama)}}"><i class="fa fa-edit"></i> show</a>
-                            <p class="subtitle is-size-5">2</p>
-                            <p class="subtitle is-size-5">3</p>
-                            <p class="subtitle is-size-5">4</p>
-                            <p class="subtitle is-size-5">5</p>
+                            <p class="title is-semibolded is-size-6 has-text-grey">proker</p>
+                            <p class="subtitle is-size-5" >{{ $proker->nama }}</p>                           
                         </span>
-                        <br>
+                        <br>                        
                         <span>
-                            <a button type="button" class="btn btn-primary" id="liveToastBtn" href="{{ route('proker.create') }}">Tambah
+                            <a button type="button" class="btn btn-outline-dark" id="liveToastBtn"
+                                href="{{ route('proker.create') }}">Tambah
                                 Program kerja</a>
                         </span>
-                        <br>
-                        <br>
                     </div>
-                </form>
-                </div>
-                <br>
-                {{-- <div class="columns is-centered is-multiline" id="my-courses">
-                                        <div class="column is-9">
-                                            <h3 class="is-size-3 is-uppercase has-text-dark title">Riwayat Janji</h3>
-                                        </div>
-                                        @foreach ($campuran as $item)
-                                        <div class="column is-8" style="border: 1px solid lightgrey; border-radius: 3px; margin-bottom: 15px;">
-                                            <div class="columns">						
-                                                <div class="column">							
-                                                        <a href="#" class="is-semibolded is-size-4">{{$item->nama_psikolog}}</a>
-                                                        <br>
-                                                        <p>{{$item->jadwal_psikolog}}</p>									
-                                                </div>		
-                                                
-                                                @if ($item->status == 'Proses')
-                                                <div class="column is-3 has-text-centered">
-                                                    <p class="has-background-warning">Proses</p>
-                                                </div>
-                                                @elseif ($item->status == 'Tolak')
-                                                <div class="column is-3 has-text-centered">
-                                                    <p class="has-background-danger">Tertolak</p>
-                                                </div>
-                                                @else					
-                                                <div class="column is-3 has-text-centered">
-                                                    <p class="has-background-primary has-text-light">Diterima</p>
-                                                </div>
-                                                @endif
-                                
-                                            </div>
-                                        </div>
-                                        @endforeach	
-                                    </div> --}}
+            </div>
+            </form>
+        </div>
+        <br>
     </section>
 @endsection
+
+{{-- <div class="columns is-centered is-multiline" id="my-courses">
+                                    <div class="column is-9">
+                                        <h3 class="is-size-3 is-uppercase has-text-dark title">Riwayat Janji</h3>
+                                    </div>
+                                    @foreach ($campuran as $item)
+                                    <div class="column is-8" style="border: 1px solid lightgrey; border-radius: 3px; margin-bottom: 15px;">
+                                        <div class="columns">						
+                                            <div class="column">							
+                                                    <a href="#" class="is-semibolded is-size-4">{{$item->nama_psikolog}}</a>
+                                                    <br>
+                                                    <p>{{$item->jadwal_psikolog}}</p>									
+                                            </div>		
+                                            
+                                            @if ($item->status == 'Proses')
+                                            <div class="column is-3 has-text-centered">
+                                                <p class="has-background-warning">Proses</p>
+                                            </div>
+                                            @elseif ($item->status == 'Tolak')
+                                            <div class="column is-3 has-text-centered">
+                                                <p class="has-background-danger">Tertolak</p>
+                                            </div>
+                                            @else					
+                                            <div class="column is-3 has-text-centered">
+                                                <p class="has-background-primary has-text-light">Diterima</p>
+                                            </div>
+                                            @endif
+                            
+                                        </div>
+                                    </div>
+                                    @endforeach	
+                                </div> --}}
