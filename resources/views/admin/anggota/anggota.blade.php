@@ -1,6 +1,10 @@
 @extends('admin.app')
 @section('content')
     <div class="container-fluid">
+        <div class="button">
+            <a button type="button" class="btn btn-primary" id="liveToastBtn"
+                href="{{ route('anggota.create') }}">Tambah Anggota</a>
+        </div>
         <table id="example" class="table table-striped">
             {{-- <caption>Berikut adalah Proposal Ormawa yang harus dilengkapi
                 <nav aria-label="Page navigation example">
@@ -58,20 +62,7 @@
                         </td>
                     </tr>
                 @endforeach
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Nim</th>
-                    <th scope="col">Prodi</th>
-                    <th scope="col">No Telp</th>
-                    <th scope="col">Resume</th>
-                    <th scope="col">Transkrip</th>
-                    <th scope="col">Surat Rekomendasi</th>
-                    <th scope="col">Sertifikat</th>
-                    <th scope="col">action</th>
-                </tr>
-            </tfoot>
+                </tbody>
         </table>
     </div>
     <!-- /.container-fluid -->

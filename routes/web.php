@@ -12,6 +12,7 @@ use App\Http\Controllers\ProgramkerjaController;
 use App\Http\Controllers\KepengurusanController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfilController;
 
 
 /*
@@ -70,11 +71,14 @@ Route::resource('/kepengurusan', KepengurusanController::class);
 Route::resource('/proker', ProgramkerjaController::class);
 
 //kepengurusan
+Route::resource('/profil', ProfilController::class);
+
 Route::resource('/divisi', DivisiController::class);
 Route::resource('/kelola', UserController::class);
+
 // Route::post('/profil', [UserController::class, 'profil'])->name('profil.index');
-Route::get('/profil', [UserController::class, 'profil']);
-Route::get('/profiledit/{showprofil}', [UserController::class, 'showprofil'])->name('showprofil');
+// Route::get('/profil', [UserController::class, 'profil']);
+// Route::get('/profiledit/{showprofil}', [UserController::class, 'showprofil'])->name('showprofil');
 
 //tanpa login
 //route prestasi

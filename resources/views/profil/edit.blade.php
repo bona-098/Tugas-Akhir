@@ -1,136 +1,139 @@
-
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Profil</title>
     <link href="dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
         }
-      }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .title {
+            font-size: large;
+        }
     </style>
-  </head>
-<body class="bg-light">
- 
-<div class="container">
-  <main>
-    @foreach ($user as $item)
-    
-    <div class="py-5 text-center">
-      <i class="fa fa-cog"></i>
-      <h2>ielas</h2>
-      <p class="lead">email</p>
+</head>
+
+<body class="bglight">
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 p-5 pt-2">
+                        <!-- membuat form -->
+                        <div class="container">
+                            <div class="card mt-2">
+                                <div class="card-header">
+                                    <h4 style="text-align:center"><b> EDIT profil </b></h4>
+                                </div>
+                                <div class="card-body">                                    
+                                    <form action="{{ route('profil.update', $profil->id) }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @method('PUT')
+                                        {{ csrf_field() }}
+                                        <div class="form-group row">
+                                            <label for="Judul" class="col-sm-2 col-form-label">Nama</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" id="name" name="name" class="form-control"
+                                                    placeholder="Masukkan Nama " required value="{{ $profil->name }}">
+                                                <div class="text-danger">
+                                                    @error('nama')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="Judul" class="col-sm-2 col-form-label">Email </label>
+                                            <div class="col-sm-10">
+                                                <input type="text" id="email" name="email"
+                                                    class="form-control " placeholder="Masukkan Email" required
+                                                    value="{{ old('email', Auth::user()->email) }}">
+                                                <div class="text-danger">
+                                                    @error('email')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="small text-danger">*Jika tidak mengganti password, harap
+                                            dikosongkan</span>
+                                        <div class="form-group row">
+                                            <label for="Judul" class="col-sm-2 col-form-label"> Current password
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="password" id="current_password" name="current_password"
+                                                    class="form-control " placeholder="Masukkan Password">
+                                                <div class="text-danger">
+                                                    @error('current_password')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="Judul" class="col-sm-2 col-form-label"> New password </label>
+                                            <div class="col-sm-10">
+                                                <input type="password" id="new_password" name="new_password"
+                                                    class="form-control " placeholder="Masukkan Password">
+                                                <div class="text-danger">
+                                                    @error('new_password')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="Judul" class="col-sm-2 col-form-label"> Confirm password
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="password" id="password_confirmation"
+                                                    name="password_confirmation" class="form-control "
+                                                    placeholder="Masukkan Password">
+                                                <div class="text-danger">
+                                                    @error('password_confirmation')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="card-footer text-muted">
+                                            <button type="submit" class="btn btn-danger mb-3">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- /.content -->
     </div>
-    
-    <div class="row g-5">
-      <div class="col-md-5 col-lg-4 order-md-last">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-primary">Riwayat Booking</span>
-          <span class="badge bg-primary rounded-pill">1</span>
-        </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-muted">jadwal</small>
-            </div>
-            <span class="text-muted">pending</span>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3">Tentang saya</h4>
-        <form class="needs-validation" novalidate>
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="firstName" class="form-label">{{ $item->role }}</label>
-              <input type="text" class="form-control" id="firstName" placeholder="{{  }}" value="" required>
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
-            </div>
+    <!-- /.content-wrapper -->
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="user-098" value="" required>
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </div>
+    <script src="form-validation.js"></script>
+</body>
 
-            <div class="col-6">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="user@gmail.com">
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
-            </div>
-            
-            <div class="col-6">
-              <label for="email" class="form-label">password</label>
-              <input type="email" class="form-control" id="email" placeholder="**********">
-              <div class="invalid-feedback">
-                Your password is incorrect.
-              </div>
-            </div>
-            
-            <div class="col-6">
-              <label for="email" class="form-label">Nim</label>
-              <input type="email" class="form-control" id="email" placeholder="11181019">
-              <div class="invalid-feedback">
-                Your nim is incorrect.
-              </div>
-            </div>
-
-            <div class="col-6">
-              <label for="email" class="form-label">password</label>
-              <input type="email" class="form-control" id="email" placeholder="085231311212">
-              <div class="invalid-feedback">
-                Your number is incorrect.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="jl.fungai wain" required>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  @endforeach
-  </main>
-
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017–2021 Company Name</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
-  </footer>
-</div>
-
-
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-      <script src="form-validation.js"></script>
-  </body>
 </html>

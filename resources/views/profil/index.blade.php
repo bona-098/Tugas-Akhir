@@ -23,6 +23,9 @@
                 font-size: 3.5rem;
             }
         }
+        .title {
+            font-size: large;
+        }
     </style>
 </head>
 
@@ -31,93 +34,51 @@
     <div class="container">
         <main>
             <div class="py-5 text-center">
-                <i class="fa fa-cog"></i>
+                <a href="{{ route('profil.edit', $profil->id) }}" class="mx-3"
+                    data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+                    <i class="fas fa-user-edit text-secondary"></i>
+                </a>
                 <h2>{{ auth()->user()->name }}</h2>
                 <p class="lead">{{ auth()->user()->email }}</p>
             </div>
 
             <div class="row g-5">
-                <div class="col-md-5 col-lg-4 order-md-last">
-                    <h4 class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-primary">asdasd</span>
-                        <span class="badge bg-primary rounded-pill">1</span>
-                    </h4>
-                    <ul class="list-group mb-3">
-                        <li class="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                                <h6 class="my-0">Product name</h6>
-                                <small class="text-muted">jadwal</small>
-                            </div>
-                            <span class="text-muted">pending</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-7 col-lg-8">
+                <div class="col-4">
                     <h4 class="mb-3">Tentang saya</h4>
-                    <form class="needs-validation" novalidate>
-                        
-                            <div class="row g-3">
-                                <div class="col-sm-6">
-                                    <label for="firstName" class="form-label"></label>
-                                    <input type="text" class="form-control" id="firstName"
-                                        placeholder="{{ $user->email }}" value="" required>
-                                    <div class="invalid-feedback">
-                                        Valid first name is required.
-                                    </div>
+                    <div class="row justify-content-evenly">
+                        <span>
+                            <p class="title is-semibolded is-size-6 has-text-grey">Nama</p>
+                            <p class="subtitle is-size-5">{{ $profil->name }}</p>
+                        </span>
+                        <span>
+                            <p class="title is-semibolded is-size-6 has-text-grey">email</p>
+                            <p class="subtitle is-size-5">{{ $profil->email }}</p>
+                        </span>
+                    </div>
+                </div>
+                    <div class="col-4">
+                        <br>
+                        <br>
+                        <span>
+                            <p class="title is-semibolded is-size-6 has-text-grey">email</p>
+                            <p class="subtitle is-size-5">{{ $profil->email }}</p>
+                        </span>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-primary">Riwayat Servis</span>
+                            <span class="badge bg-primary rounded-pill">1</span>
+                        </h4>
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">Product name</h6>
+                                    <small class="text-muted">jadwal</small>
                                 </div>
-                                <div class="col-sm-6">
-                                    <label for="lastName" class="form-label">Last name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="user-098"
-                                        value="" required>
-                                    <div class="invalid-feedback">
-                                        Valid last name is required.
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email"
-                                        placeholder="user@gmail.com">
-                                    <div class="invalid-feedback">
-                                        Please enter a valid email address for shipping updates.
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <label for="email" class="form-label">password</label>
-                                    <input type="email" class="form-control" id="email" placeholder="**********">
-                                    <div class="invalid-feedback">
-                                        Your password is incorrect.
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <label for="email" class="form-label">Nim</label>
-                                    <input type="email" class="form-control" id="email" placeholder="11181019">
-                                    <div class="invalid-feedback">
-                                        Your nim is incorrect.
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <label for="email" class="form-label">password</label>
-                                    <input type="email" class="form-control" id="email" placeholder="092831723">
-                                    <div class="invalid-feedback">
-                                        Your number is incorrect.
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="address" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="address"
-                                        placeholder="jl.fungai wain" required>
-                                    <div class="invalid-feedback">
-                                        Please enter your shipping address.
-                                    </div>
-                                </div>
-                            </div>
-                        
-                    </form>
+                                <span class="text-muted">pending</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </main>

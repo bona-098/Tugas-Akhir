@@ -104,15 +104,4 @@ class UserController extends Controller
         $user->destroy($id);
         return redirect()->back();
     }
-    
-    public function showprofil($id)
-    {
-        $user = User::find(Auth::user()->id);
-        return view('profil.edit', compact('user'));
-    }
-    public function profil()
-    {
-        $user = User::find(Auth::user()->id);
-        return view('profil.index', compact('user'));
-    }
 }

@@ -24,7 +24,7 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="/dokumentasi" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <span>Divisi</span>
@@ -39,9 +39,19 @@
                 <a class="collapse-item" href="/proker">Program Kerja</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
     <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link" href="/divisi">
+            <i class="fas fa-fw fa-camera"></i>
+            <span>Divisi</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/proker">
+            <i class="fas fa-fw fa-camera"></i>
+            <span>Program Kerja</span></a>
+    </li>
     <li class="nav-item">
         <a class="nav-link" href="/dokumentasi">
             <i class="fas fa-fw fa-camera"></i>
