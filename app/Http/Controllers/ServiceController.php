@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\File;
 
 class serviceController extends Controller
@@ -42,10 +43,6 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
-        $nomor = 2;
-        $kepengurusan = service::where('id', $nomor)->pluck('id');
-
-        // dd($kepengurusan);?
         $this->validate($request, [
             'nama' => 'required',
             'nim' => 'required',
@@ -74,32 +71,35 @@ class serviceController extends Controller
 
     public function userstore(Request $request)
     {
-        // $nomor = 2;
-        // $kepengurusan = service::where('id', $nomor)->pluck('id');
-
-        // dd($kepengurusan);?
         $this->validate($request, [
             'nama' => 'required',
-            'nim' => 'required',
             'hari' => 'required',
             'sesi' => 'required',
             'no_hp' => 'required',
-            'foto' => 'required|mimes:jpg,jpeg|max:50000'
+            'pesan' => 'required',
+            'status' => 'required',
+            'foto' => 'required|mimes:jpg,jpeg|max:50000',
+            'user_id' => 'required'
         ]);
-
-        // dd($request);
 
         $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
 
         $request->file('foto')->move(public_path('images/service'), $newNameFoto);
 
         service::create([
-            'nama'=>$request->nama,
-            'nim'=>$request->nim,            
+            'nama'=>$request->nama,            
             'hari'=>$request->hari,            
             'sesi'=>$request->sesi,
             'no_hp'=>$request->no_hp,
-            'foto'=>$newNameFoto
+            'pesan'=>$request->pesan,
+            'status'=>'in progress',
+            'foto'=>$newNameFoto,
+            
+            if(Auth::id())
+            {
+                'user_id'=$Auth::user()->id;
+            }
+            $request->save();
 
         ]);
 
@@ -141,52 +141,48 @@ class serviceController extends Controller
     {
 
         // dd($request);
-        $request->validate([
-            'nama' => 'required',
-            'nim' => 'required',
-            'hari' => 'required',
-            'sesi' => 'required',
-            'no_hp' => 'required',
-            'foto' => 'file|mimes:jpg,jpeg|max:50000'
-        ]);
-
-        
-        
-        $serviced = $request->all();
-
-        $service = Service::find($id); 
-        
-        // dd($serviced);
-        if ($foto = $request->file('foto')) {
-            File::delete('images/service/'.$service->foto);
-            $fotos = 'images/service/';
-            $file_name = $request->foto->getClientOriginalName();
-            $foto->move($fotos, $file_name);
-            $serviced['foto'] = "$file_name";
-        }else{
-            unset($serviced['foto']);
-        }
-
-        $service->update([
-            'nama' => $request->nama,
-            'nim' => $request->nim,
-            'hari' => $request->hari,
-            'sesi' => $request->sesi,
-            'no_hp' => $request->no_hp,
-            'foto' => $foto,
-        ]);
-        
-        // $service->update([
-            //     'nama' => 'required',
+        // $request->validate([
+        //     'nama' => 'required',
         //     'nim' => 'required',
         //     'hari' => 'required',
         //     'sesi' => 'required',
         //     'no_hp' => 'required',
+        //     'pesan' => 'required',
+        //     'status' => 'required',
+        //     'user_id' => 'required',
         //     'foto' => 'file|mimes:jpg,jpeg|max:50000'
         // ]);
 
+        
+        
+        // $serviced = $request->all();
 
-        return redirect()->route('service.index')->with('success','Data berhasil ditambahkan');
+        // $service = Service::find($id); 
+        
+        // dd($serviced);
+        // if ($foto = $request->file('foto')) {
+        //     File::delete('images/service/'.$service->foto);
+        //     $fotos = 'images/service/';
+        //     $file_name = $request->foto->getClientOriginalName();
+        //     $foto->move($fotos, $file_name);
+        //     $serviced['foto'] = "$file_name";
+        // }else{
+        //     unset($serviced['foto']);
+        // }
+
+        // $service->update([
+        //     'nama' => $request->nama,
+        //     'nim' => $request->nim,
+        //     'hari' => $request->hari,
+        //     'sesi' => $request->sesi,
+        //     'no_hp' => $request->no_hp,
+        //     'pesan' => $request->pesan,
+        //     'status' => 'in progress',
+        //     'user_id' => $request->user_id,
+        //     'foto' => $foto,
+        // ]);
+
+        // return redirect()->route('service.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**

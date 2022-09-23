@@ -6,13 +6,13 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="section-title" data-aos="fade-right">
-                        <h2>Prestasi</h2>
-                        <p>Berikut ini adalah prestasi yang sudah dicapai oleh SAA</p>
+                        <h2>Program kerja</h2>
+                        <p>Berikut ini adalah Program kerja SAA</p>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="row">
-                        @foreach ($prestasi as $item)
+                        @foreach ($proker as $item)
                             <div class="col-lg-6">
                                 <div class="member" data-aos="zoom-in" data-aos-delay="100">
                                     <div class="pic"><img src="{{ asset('images/prestasi/' . $item->foto) }}"

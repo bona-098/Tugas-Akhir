@@ -15,12 +15,13 @@ class CreateservicesTable extends Migration
     {
         Schema::create('service', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('nim');            
-            $table->date('hari');            
-            $table->integer('sesi');            
-            $table->string('no_hp');            
-            $table->string('foto');            
+            $table->string('nama')->nullable();                        
+            $table->date('hari')->nullable();            
+            $table->integer('sesi')->nullable();            
+            $table->string('no_hp')->nullable();
+            $table->string('pesan')->nullable();            
+            $table->string('status')->nullable();            
+            $table->string('user_id')->nullable();            
             $table->timestamps();
         });
     }

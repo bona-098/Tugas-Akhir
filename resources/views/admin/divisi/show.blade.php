@@ -62,7 +62,9 @@
                     <div class="col-4">
                         <span>
                             <p class="title is-semibolded is-size-6 has-text-grey">proker</p>
-                            <p class="subtitle is-size-5" >{{ $proker->nama }}</p>                           
+                            @foreach ($proker as $item)
+                            <p>{{ $item->nama }}</p>                            
+                            @endforeach
                         </span>
                         <br>                        
                         <span>

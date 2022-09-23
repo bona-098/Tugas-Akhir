@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\programkerja;
 use App\Models\divisi;
-
+use Exception;
+use Illuminate\Support\Facades\File;
 
 class ProgramkerjaController extends Controller
 {
@@ -126,20 +127,27 @@ class ProgramkerjaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($proker, $id)
+    public function destroy($id)
     {
-        $proker->destroy($id);
+        $proker = Programkerja::find($id);
+        try {
+            $proker->delete();
+        } catch (Exception $e){
+            return redirect()->back();
+        }
         return redirect()->back();
     }
+
+
     public function show($id)
     {
         $proker = Programkerja::findOrfail($id);
         return view('admin.proker.show', compact('proker'));
     }
-    public function showindiv($id)
+    public function user()
     {
-        $proker = Programkerja::findOrfail($id);
-        return view('admin.proker.show', compact('proker'));
+        $proker = programkerja::get();
+        return view('user.proker', compact('proker')); 
     }
 
 

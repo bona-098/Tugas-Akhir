@@ -153,12 +153,12 @@
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-wrap">
-                        <img src="Bethany/assets/img/dokumentasi/dok2.jpg" class="img-fluid" alt="">
+                        <img src="assets/img/dokumentasi/dok2.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>HUT SAA</h4>
                             <p>11 mei 2022</p>
                             <div class="portfolio-links">
-                                <a href="Bethany/assets/img/dokumentasi/dok2.jpg" data-gallery="portfolioGallery"
+                                <a href="assets/img/dokumentasi/dok2.jpg" data-gallery="portfolioGallery"
                                     class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
                                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                             </div>
@@ -168,7 +168,7 @@
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                     <div class="portfolio-wrap">
-                        <img src="Bethany/assets/img/dokumentasi/dok3.jpg" class="img-fluid" alt="">
+                        <img src="assets/img/dokumentasi/dok3.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Nongkrong Bareng</h4>
                             <p>4 april 2022</p>
@@ -183,7 +183,7 @@
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-wrap">
-                        <img src="Bethany/assets/img/dokumentasi/dok4.jpg" class="img-fluid" alt="">
+                        <img src="assets/img/dokumentasi/dok4.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Big Fun Day</h4>
                             <p>2 maret 2022</p>
@@ -198,7 +198,7 @@
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-card">
                     <div class="portfolio-wrap">
-                        <img src="Bethany/assets/img/dokumentasi/dok5.jpg" class="img-fluid" alt="">
+                        <img src="assets/img/dokumentasi/dok5.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Pelatihan Tools</h4>
                             <p>7 juni 2022</p>
@@ -213,7 +213,7 @@
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                     <div class="portfolio-wrap">
-                        <img src="Bethany/assets/img/dokumentasi/dok6.jpg" class="img-fluid" alt="">
+                        <img src="assets/img/dokumentasi/dok6.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Servis Gratis</h4>
                             <p>16 agustus 2022</p>
@@ -228,7 +228,7 @@
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-wrap">
-                        <img src="Bethany/assets/img/dokumentasi/dok7.jpg" class="img-fluid" alt="">
+                        <img src="assets/img/dokumentasi/dok7.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Servis Harian</h4>
                             <p>senin - jumat</p>

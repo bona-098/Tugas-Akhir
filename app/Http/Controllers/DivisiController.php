@@ -6,6 +6,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\divisi;
 use App\Models\programkerja;
+use Exception;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
 // use App\Http\Traits\QueryTrait;
 // use App\Models\programkerja;
@@ -72,7 +75,8 @@ class DivisiController extends Controller
     public function show($id)
     {
         $divisi = Divisi::findOrfail($id);
-        $proker = Programkerja::where('divisi_id', '=', $id)->firstOrFail();
+        $proker = Programkerja::where('divisi_id', '=', $id)->get();
+        // $proker = programkerja('programkerja')->get();
         // dd($divisi);
         return view('admin.divisi.show',
         [
@@ -132,9 +136,15 @@ class DivisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($divisi, $id)
+    public function destroy($divisi,$id)
     {
-        $divisi->destroy($id);
-        return redirect()->back();
+        $divisi->Divisi::find($id);
+        try {
+            $divisi->delete();
+        } catch (Exception $e){
+            return redirect()->back()->with('alert', 'tidak bisa dihapus');
+        }
+
+        return redirect()->back;
     }
 }
