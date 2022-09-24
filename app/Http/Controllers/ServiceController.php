@@ -94,13 +94,6 @@ class serviceController extends Controller
             'pesan'=>$request->pesan,
             'status'=>'in progress',
             'foto'=>$newNameFoto,
-            
-            if(Auth::id())
-            {
-                'user_id'=$Auth::user()->id;
-            }
-            $request->save();
-
         ]);
 
         return redirect()->back()->with('success','Data berhasil ditambahkan');

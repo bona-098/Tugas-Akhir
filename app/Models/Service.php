@@ -15,6 +15,9 @@ class service extends Model
         'hari',
         'sesi',
         'no_hp',
+        'pesan',
+        'status',
+        'user_id',
         'foto'
     ];
 }
