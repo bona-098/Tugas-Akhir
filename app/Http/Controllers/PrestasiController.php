@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\prestasi;
+use App\Models\Kepengurusan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -26,7 +27,13 @@ class PrestasiController extends Controller
      */
     public function create()
     {
-        return view('admin.prestasi.prestasitambah');
+        // $kepengurusan = Divisi::select('nama','id')->get();
+        $kepengurusan = Kepengurusan::select('nama','id')->get();
+        return view('admin.prestasi.prestasitambah', 
+        [
+            // 'divisi' => $divisi,
+            'kepengurusan' => $kepengurusan
+            ]);
     }
 
     /**
@@ -48,6 +55,7 @@ class PrestasiController extends Controller
             'penyelenggara' => 'required',
             'waktu' => 'required',
             'tempat' => 'required',
+            'kepengurusan_id' => 'required',
             'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
         ]);
         
@@ -65,6 +73,7 @@ class PrestasiController extends Controller
             'penyelenggara'=>$request->penyelenggara,
             'waktu'=>$request->waktu,
             'tempat'=>$request->tempat,
+            'kepengurusan_id'=>$request->kepengurusan_id,
             'foto'=>$newNameFoto
         ]);
 
@@ -121,12 +130,10 @@ class PrestasiController extends Controller
 
         $prestasi = Prestasi::find($id); 
         
-        // dd($prestasis);
+
         if ($foto = $request->file('foto')) {
             File::delete('images/prestasi/'.$prestasi->foto);
-            // $fotos = 'prestasi/foto/';
             $file_name = $request->foto->getClientOriginalName();
-            // $foto->move($fotos, $file_name);
             $foto->move(public_path('images/prestasi'), $file_name);
             $prestasis['foto'] = "$file_name";
         }else{

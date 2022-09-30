@@ -31,7 +31,7 @@ Route::get('/', function () {
     return view('user.home');
 });
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);
-Route::post('/daftar', [AnggotaController::class, 'store'])->name('anggota.store');
+// Route::post('/daftar', [AnggotaController::class, 'store'])->name('anggota.store');
 Route::post('/user-storeservice', [ServiceController::class, 'userstore'])->name('userservicestore');
 Route::get('/user-pengumuman', [PengumumanController::class, 'user']);
 Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::class, 'showpengumuman'])->name('pengumuman');
@@ -40,6 +40,7 @@ Route::get('/user-dokumentasi', [DokumentasiController::class, 'user']);
 Route::get('/user-dokumentasidetail/{showdokumentasi}', [DokumentasiController::class, 'showuser'])->name('showdokumentasi');
 Route::get('/user-prestasi', [PrestasiController::class, 'user']);
 Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
+Route::resource('/anggota', (AnggotaController::class));
 //harus login
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/profil', ProfilController::class);
@@ -60,7 +61,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/pengumuman', (PengumumanController::class));
         Route::resource('/prestasi', (PrestasiController::class));
         Route::resource('/kepengurusan', KepengurusanController::class);
-        Route::resource('/anggota', (AnggotaController::class));
         Route::resource('/kelola', UserController::class);
     });
 });

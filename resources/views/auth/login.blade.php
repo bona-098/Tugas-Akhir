@@ -43,6 +43,9 @@
                                     required autocomplete="current-password"
                                     class="form-control"
                                 placeholder="enter your passsword">
+                                @error('password')
+                                {{ $message }}
+                                @enderror
                         </div>
                         <input name="login" id="login" class="btn btn-block login-btn" type="submit"
                             value="Login">

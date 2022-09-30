@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kepengurusan;
+use App\Models\prestasi;
+use App\Models\programkerja;
+use App\Models\Anggota;
+use App\Models\service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -42,20 +46,21 @@ class KepengurusanController extends Controller
             'nama' => 'required',
             'tahun' => 'required',
             'pembina' => 'required',
-            'bph' => 'required',
-            'pengurus_lain' => 'required',
-            'anggota' => 'required',
-            'program_kerja' => 'required',
+            // 'programkerjas_id' => 'required',
+            // 'anggotas_id' => 'required',
+            // 'prestasis_id' => 'required',
+            // 'service_id' => 'required'
         ]);
 
         Kepengurusan::create([
             'nama'=>$request->nama,
             'tahun'=>$request->tahun,
             'pembina'=>$request->pembina,
-            'bph'=>$request->bph,
-            'pengurus_lain'=>$request->pengurus_lain,
-            'anggota'=>$request->anggota,
-            'program_kerja'=>$request->program_kerja
+            // 'programkerjas_id'=>$request->pembina,
+            // 'anggotas_id'=>$request->pembina,
+            // 'prestasis_id'=>$request->pembina,
+            // 'service_id'=>$request->pembina,
+            
         ]);
         return redirect()->route('kepengurusan.index');
     }
@@ -68,8 +73,17 @@ class KepengurusanController extends Controller
      */
     public function show($id)
     {
-        //
+        $kepengurusan = Kepengurusan::findOrfail($id);
+        $prestasi = Prestasi::where('kepengurusan_id', '=', $id)->get();
+        $programkerja = Programkerja::where('kepengurusan_id', '=', $id)->get();
+        return view('admin.kepengurusan.show',
+        [
+            'kepengurusan' => $kepengurusan,
+            'prestasi' => $prestasi,
+            'programkerja' => $programkerja
+            ]);
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -96,10 +110,10 @@ class KepengurusanController extends Controller
             'nama' => 'required',
             'tahun' => 'required',
             'pembina' => 'required',
-            'bph' => 'required',
-            'pengurus_lain' => 'required',
-            'anggota' => 'required',
-            'program_kerja' => 'required'
+            // 'programkerjas_id' => 'required',
+            // 'anggotas_id' => 'required',
+            // 'prestasis_id' => 'required',
+            // 'service_id' => 'required'
         ]);
         
         return redirect()->route('kepengurusan.index');

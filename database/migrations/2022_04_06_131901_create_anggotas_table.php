@@ -25,7 +25,7 @@ class CreateAnggotasTable extends Migration
             $table->string('sertifikat');
             $table->string('status')->nullable();
             $table->timestamps();
-            $table->foreignId('kepengurusan_id')->nullable()->constrained('kepengurusans');
+            // $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

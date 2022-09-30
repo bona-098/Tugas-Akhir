@@ -45,10 +45,11 @@ class serviceController extends Controller
     {
         $this->validate($request, [
             'nama' => 'required',
-            'nim' => 'required',
             'hari' => 'required',
             'sesi' => 'required',
             'no_hp' => 'required',
+            'pesan' => 'required',
+            'status' => 'required',
             'foto' => 'required|mimes:jpg,jpeg|max:50000'
         ]);
 
@@ -57,11 +58,12 @@ class serviceController extends Controller
         $request->file('foto')->move(public_path('images/service'), $newNameFoto);
 
         service::create([
-            'nama'=>$request->nama,
-            'nim'=>$request->nim,            
+            'nama'=>$request->nama,         
             'hari'=>$request->hari,            
             'sesi'=>$request->sesi,
             'no_hp'=>$request->no_hp,
+            'pesan'=>$request->pesan,
+            'status'=>$request->status,
             'foto'=>$newNameFoto
 
         ]);
@@ -79,7 +81,7 @@ class serviceController extends Controller
             'pesan' => 'required',
             'status' => 'required',
             'foto' => 'required|mimes:jpg,jpeg|max:50000',
-            'user_id' => 'required'
+            // 'user_id' => 'required'
         ]);
 
         $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
@@ -92,7 +94,7 @@ class serviceController extends Controller
             'sesi'=>$request->sesi,
             'no_hp'=>$request->no_hp,
             'pesan'=>$request->pesan,
-            'status'=>'in progress',
+            'status'=>$request->status,
             'foto'=>$newNameFoto,
         ]);
 

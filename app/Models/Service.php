@@ -11,13 +11,12 @@ class service extends Model
     protected $table = 'service';
     protected $fillable = [
         'nama',
-        'nim',
         'hari',
         'sesi',
         'no_hp',
         'pesan',
         'status',
-        'user_id',
+        // 'kepengurusan_id',
         'foto'
     ];
 }

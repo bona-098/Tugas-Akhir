@@ -145,6 +145,16 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-sm-6">
+                                <div class="name">Pilih kepengurusan</div>
+                                <div class="value">
+                                    <select class="form-select" name="kepengurusan_id" aria-label="Default select example">
+                                        @foreach ($kepengurusan as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <hr class="my-4">
                         <button class="w-100 btn btn-primary btn-lg" type="submit">Simpan</button>

@@ -21,8 +21,10 @@ class CreateservicesTable extends Migration
             $table->string('no_hp')->nullable();
             $table->string('pesan')->nullable();            
             $table->string('status')->nullable();            
-            $table->string('user_id')->nullable();            
+            $table->string('foto')->nullable();            
+            // $table->string('user_id')->nullable();
             $table->timestamps();
+            // $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('restrict')->onUpdate('cascade');          
         });
     }
 

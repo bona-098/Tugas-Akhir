@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\programkerja;
 use App\Models\divisi;
+use App\Models\Kepengurusan;
 use Exception;
 use Illuminate\Support\Facades\File;
 
@@ -28,8 +29,14 @@ class ProgramkerjaController extends Controller
      */
     public function create()
     {
+        $kepengurusan = Kepengurusan::select('nama','id')->get();
         $divisi = Divisi::select('nama','id')->get();
-        return view('admin.proker.tambah', compact('divisi'));
+        // dd($kepengurusan);
+        return view('admin.proker.tambah',
+        [
+            'kepengurusan' => $kepengurusan,
+            'divisi' => $divisi,
+            ]);
     }
 
     /**
@@ -53,7 +60,8 @@ class ProgramkerjaController extends Controller
             'sumber_dana' => 'required',
             'jumlah_sdm' => 'required',
             'kebutuhan_lain' => 'required',
-            'divisi_id' => 'required'
+            'divisi_id' => 'required',
+            'kepengurusan_id' => 'required'
         ]);
 
         Programkerja::create([
@@ -69,7 +77,8 @@ class ProgramkerjaController extends Controller
             'sumber_dana' => $request->sumber_dana,
             'jumlah_sdm' => $request->jumlah_sdm,
             'kebutuhan_lain' => $request->kebutuhan_lain,
-            'divisi_id' => $request->divisi_id
+            'divisi_id' => $request->divisi_id,
+            'kepengurusan_id' => $request->kepengurusan_id
         ]);
 
         return redirect()->route('proker.index')->with('success', 'Data berhasil ditambahkan');

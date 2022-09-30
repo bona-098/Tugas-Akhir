@@ -19,10 +19,10 @@ class CreateKepengurusansTable extends Migration
             $table->string('nama');
             $table->string('tahun');
             $table->string('pembina');
-            $table->string('bph');
-            $table->string('pengurus_lain');
-            $table->string('anggota');
-            $table->string('program_kerja');
+            // $table->string('anggotas_id');
+            // $table->string('programkerjas_id');
+            // $table->string('prestasis_id');
+            // $table->string('service_id');
             $table->timestamps();
         });
     }

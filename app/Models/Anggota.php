@@ -19,6 +19,6 @@ class Anggota extends Model
         'surat_rekomendasi',
         'sertifikat',
         'status',
-        'kepengurusan_id'
+        // 'kepengurusan_id'
     ];
 }

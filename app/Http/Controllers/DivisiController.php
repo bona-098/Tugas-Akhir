@@ -76,8 +76,6 @@ class DivisiController extends Controller
     {
         $divisi = Divisi::findOrfail($id);
         $proker = Programkerja::where('divisi_id', '=', $id)->get();
-        // $proker = programkerja('programkerja')->get();
-        // dd($divisi);
         return view('admin.divisi.show',
         [
             'divisi' => $divisi,

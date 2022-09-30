@@ -20,5 +20,6 @@ class prestasi extends Model
         'waktu',
         'tempat',
         'foto',
+        'kepengurusan_id',
     ];
 }

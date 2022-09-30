@@ -18,7 +18,7 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-lg-10">
-                <h4 class="text-danger">Edit Pengumuman</h4>
+                <h4 class="text-danger">Edit Kepengurusan</h4>
             </div>
             {{-- <div class="col-lg-2 text-right d-flex flex-column justify-content-center end-0">
             <button type="button" class="btn btn-primary position-absolute top-0 end-0">Save</button>

@@ -37,7 +37,7 @@
                                         value="{{ $proker->nama }}">
                                     <br>
                                 </div>
-                                {{-- <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-6">
                                     <label>waktu</label>
                                     <input class="form-control" type="text" name="kadiv"
                                         value="{{ $proker->kadiv }}">
@@ -66,7 +66,7 @@
                                     <input class="form-control" type="text" name="misi"
                                         value="{{ $proker->misi }}">
                                     <br>
-                                </div>                                 --}}
+                                </div>                                
                             </div>
                             <div class="row">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">

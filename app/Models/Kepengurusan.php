@@ -13,10 +13,10 @@ class Kepengurusan extends Model
         'nama',
         'tahun',
         'pembina',
-        'bph',
-        'pengurus_lain',
-        'anggota',
-        'program_kerja'
+        // 'bph',
+        // 'pengurus_lain',
+        // 'anggota',
+        // 'program_kerja'
         // 'created_at',
         // 'update_at',
         // 'user_id'

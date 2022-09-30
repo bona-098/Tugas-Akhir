@@ -114,7 +114,16 @@
                                 </div>
                                 @enderror
                             </div>
-
+                            <div class="col-sm-6">
+                                <div class="name">Pilih Kepengurusan</div>
+                                <div class="value">
+                                    <select class="form-select" name="kepengurusan_id" aria-label="Default select example">
+                                        @foreach ($kepengurusan as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-sm-6">
                                 <div class="name">Foto</div>
                                 <div class="value">

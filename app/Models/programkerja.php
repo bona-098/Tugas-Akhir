@@ -26,6 +26,7 @@ class programkerja extends Model
         'created_at',
         'update_at',
         'user_id',
-        'divisi_id'
+        'divisi_id',
+        'kepengurusan_id'
     ];
 }

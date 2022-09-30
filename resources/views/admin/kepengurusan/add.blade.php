@@ -31,17 +31,17 @@
                                     <input class="form-control" type="text" name="pembina">
                                     <br>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                {{-- <div class="col-12 col-sm-6">
                                     <label>bph</label>
                                     <input class="form-control" type="text" name="bph">
                                     <br>
-                                </div>
-                                <div class="col-12 col-sm-6">
+                                </div> --}}
+                                {{-- <div class="col-12 col-sm-6">
                                     <label>pengurus lain</label>
                                     <input class="form-control" type="text" name="pengurus_lain">
                                     <br>
-                                </div>
-                                <div class="col-12 col-sm-6">
+                                </div> --}}
+                                {{-- <div class="col-12 col-sm-6">
                                     <label>anggota</label>
                                     <input class="form-control" type="text" name="anggota">
                                     <br>
@@ -50,7 +50,7 @@
                                     <label>program kerja</label>
                                     <input class="form-control" type="text" name="program_kerja">
                                     <br>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="row">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">

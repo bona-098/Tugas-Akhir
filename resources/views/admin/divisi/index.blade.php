@@ -24,7 +24,7 @@
                         <tbody>
                             <tr>
                                 <div>
-                                <a href="oh/shiow/{{ $item->id }}"> 
+                                {{-- <a href="oh/shiow/{{ $item->id }}">  --}}
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->kadiv }}</td>
                                 <td class="text-sm">{{ $item->staffahli }}</td>
