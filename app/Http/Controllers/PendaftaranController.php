@@ -7,7 +7,7 @@ use App\Models\Kepengurusan;
 use Illuminate\Http\Request;
 use illuminate\Support\Facades\File;
 
-class AnggotaController extends Controller
+class pendaftaranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        $daftar = Anggota::get();
-        return view('user.anggota', compact('daftar'));    
+        // $daftar = pendaftaran::get();
+        return view('user.anggota');    
     }
 
     /**
@@ -38,10 +38,7 @@ class AnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        $nomor = 2;
-        $kepengurusan = Kepengurusan::where('id', $nomor)->pluck('id');
-
-        // dd($kepengurusan);?
+       
         $this->validate($request, [
             'nama' => 'required',
             'nim' => 'required',
@@ -65,7 +62,7 @@ class AnggotaController extends Controller
         $request->file('surat_rekomendasi')->move(public_path('images/pendaftaran/surat_rekomendasi'), $newNameSurat);
         $request->file('sertifikat')->move(public_path('images/pendaftaran/sertifikat'), $newNameSertifikat);
         
-        Anggota::create([
+        anggota::create([
             'nama'=>$request->nama,
             'nim'=>$request->nim,            
             'prodi'=>$request->prodi,
@@ -74,7 +71,6 @@ class AnggotaController extends Controller
             'transkip'=>$newNameTranskip,
             'surat_rekomendasi'=>$newNameSurat,
             'sertifikat'=>$newNameSertifikat,
-            'kepengurusan_id'=>null
         ]);
 
         return redirect()->back()->with('success','Data berhasil ditambahkan');
@@ -86,11 +82,11 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $anggota = Anggota::where('id', $id)->get();
-        return view('admin.anggota.anggotadetail', compact('anggota'));
-    }
+    // public function show($id)
+    // {
+    //     $pendaftaran = pendaftaran::where('id', $id)->get();
+    //     return view('admin.pendaftaran.pendaftarandetail', compact('pendaftaran'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -98,11 +94,11 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $anggota = Anggota::find($id);
-        return view('admin.anggota.anggotaedit', compact('anggota'));
-    }
+    // public function edit($id)
+    // {
+    //     $pendaftaran = pendaftaran::find($id);
+    //     return view('admin.pendaftaran.pendaftaranedit', compact('pendaftaran'));
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -111,35 +107,35 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'nama'=>'required',
-            'nim'=>'required',            
-            'prodi'=>'required',
-            'no_telp'=>'required',            
-            'resume'=>'required',
-            'transkip'=>'required',
-            'surat_rekomendasi'=>'required',
-            'sertifikat'=>'required',
-            'kepengurusan_id'=>'file|mimes:jpg, jpeg, png|max:50000'
-        ]);
+    // public function update(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'nama'=>'required',
+    //         'nim'=>'required',            
+    //         'prodi'=>'required',
+    //         'no_telp'=>'required',            
+    //         'resume'=>'required',
+    //         'transkip'=>'required',
+    //         'surat_rekomendasi'=>'required',
+    //         'sertifikat'=>'required',
+    //         'kepengurusan_id'=>'file|mimes:jpg, jpeg, png|max:50000'
+    //     ]);
 
-        $anggot = $request->all();
-        $anggota = Anggota::find($id);
+    //     $anggot = $request->all();
+    //     $pendaftaran = pendaftaran::find($id);
         
-        if ($resume = $request->file('resume')){
-            file::delete('images/pendaftaran/anggota/'. $anggota->resume);
-            $file_name = $request->media->getVlientOriginalName();
-            $resume->move(public_path('images/pendaftaran/anggota'), $file_name);
-            $anggot['resume'] = "$file_name";
-        }else{
-            unset($anggot['resume']);
-        }
+    //     if ($resume = $request->file('resume')){
+    //         file::delete('images/pendaftaran/pendaftaran/'. $pendaftaran->resume);
+    //         $file_name = $request->media->getVlientOriginalName();
+    //         $resume->move(public_path('images/pendaftaran/pendaftaran'), $file_name);
+    //         $anggot['resume'] = "$file_name";
+    //     }else{
+    //         unset($anggot['resume']);
+    //     }
 
-        $anggota->update($anggot);
-        return redirect()->route('anggota.index')->with('nice');
-    }
+    //     $pendaftaran->update($anggot);
+    //     return redirect()->route('pendaftaran.index')->with('nice');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -147,9 +143,9 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Anggota $anggota, $id) 
-    {
-        $anggota->destroy($id);
-        return redirect()->back();
-    }
+    // public function destroy(pendaftaran $pendaftaran, $id) 
+    // {
+    //     $pendaftaran->destroy($id);
+    //     return redirect()->back();
+    // }
 }

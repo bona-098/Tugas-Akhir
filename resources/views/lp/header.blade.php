@@ -11,7 +11,7 @@
                     <li><a class="nav-link scrollto" href="/user-proker">Program Kerja</a></li>
                     <li><a class="nav-link scrollto" href="/user-prestasi">Prestasi</a></li>
                     <li><a class="nav-link scrollto" href="/user-dokumentasi">Dokumentasi</a></li>
-                    <li><a class="nav-link scrollto" href="/pendaftaran">Pendaftaran</a></li>
+                    <li><a class="nav-link scrollto" href="/user-pendaftaran">Pendaftaran</a></li>
                     <li><a class="nav-link scrollto" href="/user-service">Servis Harian</a></li>
                     <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>

@@ -40,7 +40,7 @@ Route::get('/user-dokumentasi', [DokumentasiController::class, 'user']);
 Route::get('/user-dokumentasidetail/{showdokumentasi}', [DokumentasiController::class, 'showuser'])->name('showdokumentasi');
 Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
 Route::get('/user-prestasi', [PrestasiController::class, 'user']);
-// Route::resource('/pendaftaran', PendaftaranController::class);
+Route::resource('/pendaftaran', PendaftaranController::class);
 
 //harus login
 Route::group(['middleware' => 'auth'], function () {
