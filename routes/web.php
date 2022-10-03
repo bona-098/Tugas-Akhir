@@ -38,9 +38,10 @@ Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::cla
 Route::get('/user-proker', [ProgramkerjaController::class, 'user']);
 Route::get('/user-dokumentasi', [DokumentasiController::class, 'user']);
 Route::get('/user-dokumentasidetail/{showdokumentasi}', [DokumentasiController::class, 'showuser'])->name('showdokumentasi');
-Route::get('/user-prestasi', [PrestasiController::class, 'user']);
 Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
-Route::resource('/anggota', (AnggotaController::class));
+Route::get('/user-prestasi', [PrestasiController::class, 'user']);
+// Route::resource('/pendaftaran', PendaftaranController::class);
+
 //harus login
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/profil', ProfilController::class);
@@ -62,6 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/prestasi', (PrestasiController::class));
         Route::resource('/kepengurusan', KepengurusanController::class);
         Route::resource('/kelola', UserController::class);
+        Route::resource('/anggota', (AnggotaController::class));
     });
 });
 require __DIR__.'/auth.php';
