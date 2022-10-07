@@ -32,7 +32,7 @@ Route::get('/', function () {
 });
 Route::get('/user-pendaftaran', [PendaftaranController::class, 'index']);
 // Route::post('/daftar', [AnggotaController::class, 'store'])->name('anggota.store');
-Route::post('/user-storeservice', [ServiceController::class, 'userstore'])->name('userservicestore');
+Route::post('/user-service', [ServiceController::class, 'store'])->name('userservicestore');
 Route::get('/user-pengumuman', [PengumumanController::class, 'user']);
 Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::class, 'showpengumuman'])->name('pengumuman');
 Route::get('/user-proker', [ProgramkerjaController::class, 'user']);
@@ -45,11 +45,11 @@ Route::resource('/pendaftaran', PendaftaranController::class);
 //harus login
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/profil', ProfilController::class);
-    Route::get('/user-service', [ServiceController::class, 'usercreate']);
+    // Route::get('/user-service', [ServiceController::class, 'create']);
     //role su, admin, teknisi
     Route::group(['middleware' => 'checkRole:su,admin,teknisi'], function () {
         Route::resource('/teknisi', TeknisiController::class);
-        Route::resource('/service', (ServiceController::class));
+        Route::resource('/service', ServiceController::class);
         Route::get('/admin-home', function () {
             return view('admin.home');
         });

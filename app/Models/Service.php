@@ -16,7 +16,7 @@ class service extends Model
         'no_hp',
         'pesan',
         'status',
-        // 'kepengurusan_id',
+        'teknisi_id',
         'foto'
     ];
 }

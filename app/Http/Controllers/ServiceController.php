@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Models\Service;
+use App\Models\Teknisi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\File;
@@ -27,13 +28,17 @@ class serviceController extends Controller
      */
     public function create()
     {
-        return view('admin.service.servicetambah');
+        $teknisi = Teknisi::select('nama','id')->get();
+        return view('user.service',
+        [
+            'teknisi' => $teknisi,
+            ]);
     }
 
-    public function usercreate()
-    {
-        return view('user.service');
-    }
+    // public function usercreate()
+    // {
+    //     return view('user.service');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -50,6 +55,7 @@ class serviceController extends Controller
             'no_hp' => 'required',
             'pesan' => 'required',
             'status' => 'required',
+            'teknisi_id' => 'required',
             'foto' => 'required|mimes:jpg,jpeg|max:50000'
         ]);
 
@@ -64,6 +70,7 @@ class serviceController extends Controller
             'no_hp'=>$request->no_hp,
             'pesan'=>$request->pesan,
             'status'=>$request->status,
+            'teknisi_id'=>$request->teknisi_id,
             'foto'=>$newNameFoto
 
         ]);
@@ -71,35 +78,35 @@ class serviceController extends Controller
         return redirect()->route('service.index')->with('success','Data berhasil ditambahkan');
     }
 
-    public function userstore(Request $request)
-    {
-        $this->validate($request, [
-            'nama' => 'required',
-            'hari' => 'required',
-            'sesi' => 'required',
-            'no_hp' => 'required',
-            'pesan' => 'required',
-            'status' => 'required',
-            'foto' => 'required|mimes:jpg,jpeg|max:50000',
-            // 'user_id' => 'required'
-        ]);
+    // public function userstore(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'nama' => 'required',
+    //         'hari' => 'required',
+    //         'sesi' => 'required',
+    //         'no_hp' => 'required',
+    //         'pesan' => 'required',
+    //         'status' => 'required',
+    //         'foto' => 'required|mimes:jpg,jpeg|max:50000',
+    //         // 'user_id' => 'required'
+    //     ]);
 
-        $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
+    //     $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
 
-        $request->file('foto')->move(public_path('images/service'), $newNameFoto);
+    //     $request->file('foto')->move(public_path('images/service'), $newNameFoto);
 
-        service::create([
-            'nama'=>$request->nama,            
-            'hari'=>$request->hari,            
-            'sesi'=>$request->sesi,
-            'no_hp'=>$request->no_hp,
-            'pesan'=>$request->pesan,
-            'status'=>$request->status,
-            'foto'=>$newNameFoto,
-        ]);
+    //     service::create([
+    //         'nama'=>$request->nama,            
+    //         'hari'=>$request->hari,            
+    //         'sesi'=>$request->sesi,
+    //         'no_hp'=>$request->no_hp,
+    //         'pesan'=>$request->pesan,
+    //         'status'=>$request->status,
+    //         'foto'=>$newNameFoto,
+    //     ]);
 
-        return redirect()->back()->with('success','Data berhasil ditambahkan');
-    }
+    //     return redirect()->back()->with('success','Data berhasil ditambahkan');
+    // }
 
     /**
      * Display the specified resource.

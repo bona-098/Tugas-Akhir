@@ -23,8 +23,8 @@ class CreateservicesTable extends Migration
             $table->string('status')->nullable();            
             $table->string('foto')->nullable();            
             // $table->string('user_id')->nullable();
+            $table->foreignId('teknisi_id')->constrained('teknisi')->onDelete('restrict')->onUpdate('cascade');          
             $table->timestamps();
-            // $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('restrict')->onUpdate('cascade');          
         });
     }
 

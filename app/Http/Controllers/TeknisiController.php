@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teknisi;
+use App\Models\service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
