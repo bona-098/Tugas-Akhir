@@ -45,7 +45,7 @@ Route::resource('/pendaftaran', PendaftaranController::class);
 //harus login
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/profil', ProfilController::class);
-    // Route::get('/user-service', [ServiceController::class, 'create']);
+    Route::get('/user-create', [ServiceController::class, 'create']);
     //role su, admin, teknisi
     Route::group(['middleware' => 'checkRole:su,admin,teknisi'], function () {
         Route::resource('/teknisi', TeknisiController::class);

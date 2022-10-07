@@ -33,7 +33,8 @@
                                 <td class="text-sm">{{ $item->hari }}</td>
                                 <td class="text-sm">{{ $item->sesi }}</td>
                                 <td class="text-sm">{{ $item->no_hp }}</td>
-                                <td class="text-sm">pending</td>
+                                <!-- <td class="text-sm">pending</td> -->
+                                <td class="text-sm"><?php if ($item->status == null) echo 'Pending';?><?php echo $item->status; ?></td>
                                 {{-- <td><span class="badge badge-danger badge-sm">pending</span></td> --}}
                                 <td class="text-sm">
                                     <a href="{{ route('service.edit', $item->id) }}" class="mx-3"
