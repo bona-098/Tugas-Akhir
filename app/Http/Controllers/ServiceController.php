@@ -48,16 +48,16 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'nama' => 'required',
-        //     'hari' => 'required',
-        //     'sesi' => 'required',
-        //     'no_hp' => 'required',
-        //     'pesan' => 'required',
-        //     'status' => 'required',
-        //     'teknisi_id' => 'required',
-        //     'foto' => 'required|mimes:jpg,jpeg|max:50000'
-        // ]);
+        $this->validate($request, [
+            'nama' => 'required',
+            'hari' => 'required',
+            'sesi' => 'required',
+            'no_hp' => 'required',
+            'pesan' => 'required',
+            'status' => 'required',
+            'teknisi_id' => 'required',
+            'foto' => 'required|mimes:jpg,jpeg|max:50000'
+        ]);
 
         $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
 
@@ -68,11 +68,14 @@ class serviceController extends Controller
             'hari'=>$request->hari,            
             'sesi'=>$request->sesi,
             'no_hp'=>$request->no_hp,
+            'pesan'=>$request->pesan,         
+            'status'=>$request->status,         
+            'teknisi_id'=>$request->teknisi_id,         
             'foto'=>$newNameFoto
 
         ]);
 
-        return redirect()->route('service.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->back()->with('success','Data berhasil ditambahkan');
     }
 
     // public function userstore(Request $request)

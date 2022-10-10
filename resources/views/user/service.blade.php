@@ -13,17 +13,12 @@
                         <h5 class="font-weight-bolder">Silahkan isi form dibawah ini untuk melakukan booking jadwal servis
                         </h5>
                         <br>
-                        <form action="{{ route('userservicestore') }}" method="POST" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('service.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <label>Nama</label>
                                     <input class="form-control" type="text" name="nama">
-                                    <br>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <label>Nim</label>
-                                    <input class="form-control" type="text" name="nim">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
@@ -44,6 +39,31 @@
                                         <option value="4">4</option>
                                     </select>
                                     <br>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label>hp_hp</label>
+                                    <input class="form-control" type="text" name="no_hp">
+                                    <br>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label>pesan</label>
+                                    <input class="form-control" type="text" name="pesan">
+                                    <br>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label>status</label>
+                                    <input class="form-control" type="text" name="status">
+                                    <br>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="name">Pilih kepengurusan</div>
+                                    <div class="value">
+                                        <select class="form-select" name="teknisi_id" aria-label="Default select example">
+                                            @foreach ($teknisi as $item)
+                                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-6 mt-3 mt-sm-3">
