@@ -1,8 +1,8 @@
 <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center"="index.html">
-        <div class="sidebar-brand-text mx-3">SAA</div>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <div class="sidebar-brand-text mx-3">SAsA</div>
     </a>
 
     <!-- Divider -->
@@ -10,7 +10,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="admin-home">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -22,26 +22,6 @@
     <div class="sidebar-heading">
         Interface
     </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    {{-- <li class="nav-item">
-        <a class="nav-link collapsed" href="/dokumentasi" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <span>Divisi</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Divisi:</h6>
-                <a class="collapse-item" href="/divisi">HRD</a>
-            </div>
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Divisi:</h6>
-                <a class="collapse-item" href="/proker">Program Kerja</a>
-            </div>
-        </div>
-    </li> --}}
-
-    <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link" href="/divisi">
             <i class="fas fa-fw fa-camera"></i>
@@ -71,6 +51,11 @@
         <a class="nav-link" href="/kepengurusan">
             <i class="fas fa-fw fa-cog"></i>
             <span>Kepengurusan</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/anggota">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Penerimaan</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/anggota">

@@ -9,7 +9,7 @@
         <main>
             <div class="row g-5 bd">
                 <div class="col-md-6 col-lg-12 bd">
-                    <h4 class="mb-3">Tambah Prestasi</h4>
+                    <h4 class="mb-3">Tambah Divisi</h4>
                     <form method="POST" action="{{ route('divisi.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row g-3">

@@ -17,25 +17,45 @@
                     <thead class="thead-light">
                         <tr>
                             <th>Nama</th>
-                            <th>Nim</th>
                             <th>Hari</th>
-                            <th>Sesi</th>
+                            <th>Jam</th>
                             <th>No_hp</th>
+                            <th>Teknisi</th>
+                            <th>Pesan</th>
                             <th>Status</th>
-                            <th>action</th>
+                            <th>Hapus</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($service as $item)
                             <tr>
+                                {{-- <td class="text-sm">{{ $loop->iteration }}</td> --}}
                                 <td class="text-sm">{{ $item->nama }}</td>
-                                <td class="text-sm">{{ $item->nim }}</td>
                                 <td class="text-sm">{{ $item->hari }}</td>
-                                <td class="text-sm">{{ $item->sesi }}</td>
+                                <td class="text-sm">{{ $item->jam }}</td>
                                 <td class="text-sm">{{ $item->no_hp }}</td>
-                                <!-- <td class="text-sm">pending</td> -->
-                                <td class="text-sm"><?php if ($item->status == null) echo 'Pending';?><?php echo $item->status; ?></td>
-                                {{-- <td><span class="badge badge-danger badge-sm">pending</span></td> --}}
+                                <td class="test-sm">{{ $item->teknisi->nama ?? "-" }}</td>
+                                <td class="text-sm">{{ $item->pesan }}</td>
+                                <td>
+                                    @if($item->status==1)
+                                    <a href="{{ url('change-status/'.$item->id.'status?Terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Terima</a>
+                                    @elseif ($item->status==2)
+                                    <a href="{{ url('change-status/'.$item->id.'status?Proses') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-danger">Proses</a>
+                                    @else
+                                    <a href="{{ url('change-status/'.$item->id.'status?Tolak') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Selesai</a>
+                                    @endif
+                                </td>
+                                <td>
+                                    
+                                    <a href="{{ url('change-status/'.$item->id.'?status=Terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Terima</a>
+                                    
+                                    <a href="{{ url('change-status/'.$item->id.'?status=Proses') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-danger">Proses</a>
+                                    
+                                    <a href="{{ url('change-status/'.$item->id.'?status=Tolak') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Selesai</a>
+                                    
+                                </td>
+                                            
                                 <td class="text-sm">
                                     <a href="{{ route('service.edit', $item->id) }}" class="mx-3"
                                         data-bs-toggle="tooltip" data-bs-original-title="Edit product">
@@ -44,7 +64,7 @@
                                     <form action="{{ route('service.destroy', $item->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="submit" class="badge bg-danger">delete</button>
+                                        <button type="submit" class="badge bg-danger">Hapus</button>
                                     </form>
                                 </td>
                             </tr>

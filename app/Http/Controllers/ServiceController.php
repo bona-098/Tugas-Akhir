@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Auth;
 use App\Models\Service;
 use App\Models\Teknisi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\File;
+use Toastr;
 
 class serviceController extends Controller
 {
@@ -17,7 +19,7 @@ class serviceController extends Controller
      */
     public function index()
     {
-        $service = Service::get();
+        $service = Service::with("teknisi")->get();
         return view('admin.service.service', compact('service'));
     }
 
@@ -28,11 +30,13 @@ class serviceController extends Controller
      */
     public function create()
     {
-        $teknisi = Teknisi::select('nama','id')->get();
-        return view('user.service',
-        [
-            'teknisi' => $teknisi,
-            ]);
+        $teknisi = Teknisi::select('nama', 'id')->get();
+        return view(
+            'user.service',
+            [
+                'teknisi' => $teknisi,
+            ]
+        );
     }
 
     // public function usercreate()
@@ -51,31 +55,31 @@ class serviceController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'hari' => 'required',
-            'sesi' => 'required',
+            'jam' => 'required',
             'no_hp' => 'required',
             'pesan' => 'required',
-            'status' => 'required',
+            'status' => '1',
             'teknisi_id' => 'required',
-            'foto' => 'required|mimes:jpg,jpeg|max:50000'
+            // 'foto' => 'required|mimes:jpg,jpeg|max:50000'
         ]);
 
-        $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
+        // $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
 
-        $request->file('foto')->move(public_path('images/service'), $newNameFoto);
+        // $request->file('foto')->move(public_path('images/service'), $newNameFoto);
 
         Service::create([
-            'nama'=>$request->nama,         
-            'hari'=>$request->hari,            
-            'sesi'=>$request->sesi,
-            'no_hp'=>$request->no_hp,
-            'pesan'=>$request->pesan,         
-            'status'=>$request->status,         
-            'teknisi_id'=>$request->teknisi_id,         
-            'foto'=>$newNameFoto
+            'nama' => $request->nama,
+            'hari' => $request->hari,
+            'jam' => $request->jam,
+            'no_hp' => $request->no_hp,
+            'pesan' => $request->pesan,
+            'status' => 1,
+            'teknisi_id' => $request->teknisi_id,
+            // 'foto'=>$newNameFoto
 
         ]);
 
-        return redirect()->back()->with('success','Data berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
 
     // public function userstore(Request $request)
@@ -143,48 +147,48 @@ class serviceController extends Controller
     {
 
         // dd($request);
-        // $request->validate([
-        //     'nama' => 'required',
-        //     'nim' => 'required',
-        //     'hari' => 'required',
-        //     'sesi' => 'required',
-        //     'no_hp' => 'required',
-        //     'pesan' => 'required',
-        //     'status' => 'required',
-        //     'user_id' => 'required',
-        //     'foto' => 'file|mimes:jpg,jpeg|max:50000'
-        // ]);
+        $request->validate([
+            'nama' => 'required',
+            'nim' => 'required',
+            'hari' => 'required',
+            'sesi' => 'required',
+            'no_hp' => 'required',
+            'pesan' => 'required',
+            'status' => 'required',
+            'user_id' => 'required',
+            'foto' => 'file|mimes:jpg,jpeg|max:50000'
+        ]);
 
-        
-        
-        // $serviced = $request->all();
 
-        // $service = Service::find($id); 
-        
+
+        $serviced = $request->all();
+
+        $service = Service::find($id);
+
         // dd($serviced);
-        // if ($foto = $request->file('foto')) {
-        //     File::delete('images/service/'.$service->foto);
-        //     $fotos = 'images/service/';
-        //     $file_name = $request->foto->getClientOriginalName();
-        //     $foto->move($fotos, $file_name);
-        //     $serviced['foto'] = "$file_name";
-        // }else{
-        //     unset($serviced['foto']);
-        // }
+        if ($foto = $request->file('foto')) {
+            File::delete('images/service/' . $service->foto);
+            $fotos = 'images/service/';
+            $file_name = $request->foto->getClientOriginalName();
+            $foto->move($fotos, $file_name);
+            $serviced['foto'] = "$file_name";
+        } else {
+            unset($serviced['foto']);
+        }
 
-        // $service->update([
-        //     'nama' => $request->nama,
-        //     'nim' => $request->nim,
-        //     'hari' => $request->hari,
-        //     'sesi' => $request->sesi,
-        //     'no_hp' => $request->no_hp,
-        //     'pesan' => $request->pesan,
-        //     'status' => 'in progress',
-        //     'user_id' => $request->user_id,
-        //     'foto' => $foto,
-        // ]);
+        $service->update([
+            'nama' => $request->nama,
+            'nim' => $request->nim,
+            'hari' => $request->hari,
+            'sesi' => $request->sesi,
+            'no_hp' => $request->no_hp,
+            'pesan' => $request->pesan,
+            'status' => $request->status,
+            'user_id' => $request->user_id,
+            // 'foto' => $foto,
+        ]);
 
-        // return redirect()->route('service.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('service.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -197,6 +201,23 @@ class serviceController extends Controller
     {
         // $karyawan = Karyawan::find($karyawan);
         $service->destroy($id);
+        return redirect()->back();
+    }
+
+    public function changeStatus(Request $request, $id)
+    {
+        // dd($request->all());
+        // $getStatus = Service::select('status')->where('id',$id)->first();
+        if ($request->status == 'Terima') {
+            $status = 1;
+        } elseif ($request->status == 'Proses') {
+            $status = 2;
+        } else {
+            $status = 3;
+        }
+        // dd($status);
+        Service::where('id', $id)->update(['status' => $status]);
+        // Toastr::success('Status Successfully Changed', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
         return redirect()->back();
     }
 }

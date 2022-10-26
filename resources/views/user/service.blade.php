@@ -25,23 +25,15 @@
                                     <label>Hari</label>
                                     <input class="form-control" type="date" name="hari">
                                 </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>no_hp</label>
-                                    <input class="form-control" type="text" name="no_hp">
+                                <label name="jam">Jam</label>
+                                <div class="col-6 col-sm-3 mt-4">
+                                    <select class="form-select" id="hours" >ac</select>
+                                </div>
+                                <div class="col-6 col-sm-3 mt-4">
+                                    <select class="form-select" id="minutes"  >ac</select>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <label>Sesi</label>
-                                    <select class="form-control" name="sesi">
-                                        <option selected value="">Sesi</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                                    <br>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <label>hp_hp</label>
+                                    <label>hp</label>
                                     <input class="form-control" type="text" name="no_hp">
                                     <br>
                                 </div>
@@ -50,13 +42,8 @@
                                     <input class="form-control" type="text" name="pesan">
                                     <br>
                                 </div>
-                                <div class="col-12 col-sm-6">
-                                    <label>status</label>
-                                    <input class="form-control" type="text" name="status">
-                                    <br>
-                                </div>
                                 <div class="col-sm-6">
-                                    <div class="name">Pilih kepengurusan</div>
+                                    <div class="name">Pilih Teknisi</div>
                                     <div class="value">
                                         <select class="form-select" name="teknisi_id" aria-label="Default select example">
                                             @foreach ($teknisi as $item)
@@ -81,30 +68,29 @@
                                 </div>
                             </div>
                         </form>
-
                     </div>
-                    {{-- <div class="row">
-                        <div class="card text-start" style="width: 18rem;">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Nama : Bona A. Matanari</li>
-                                <li class="list-group-item">Nim : 1181019</li>
-                                <li class="list-group-item">Hari : selasa</li>
-                                <li class="list-group-item">Sesi : 4</li>
-                            </ul>
-                            <div class="card-footer">
-                        Card footer
-                        </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <ul class="list-group list-group-flush">
-                                <h2 class="list-group-item">An item</h2>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
+
+
+    <script>
+        function createOption(value, text) {
+            var option = document.createElement('option');
+            option.text = text;
+            option.value = value;
+            return option;
+        }
+
+        var hourSelect = document.getElementById('hours');
+        for (var i = 8; i <= 16; i++) {
+            hourSelect.add(createOption(i, i));
+        }
+
+        var minutesSelect = document.getElementById('minutes');
+        for (var i = 0; i < 60; i += 15) {
+            minutesSelect.add(createOption(i, i));
+        }
+    </script>
 @endsection

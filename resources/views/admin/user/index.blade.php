@@ -22,7 +22,6 @@
                     <th scope="col">Nama</th>
                     <th scope="col">Email</th>
                     <th scope="col">Role</th>
-                    <th scope="col">Booking</th>
                     <th scope="col">action</th>
                 </tr>
             </thead>
@@ -32,7 +31,6 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->role }}</td>
-                        <td></td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button"

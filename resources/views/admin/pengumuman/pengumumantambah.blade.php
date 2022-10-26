@@ -21,9 +21,9 @@
                                     <input class="form-control" type="text" name="judul">
                                     <br>
                                 </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                <div class="col-12 col-sm-6 mt-3 mb-3 mt-sm-0">
                                     <label>deskripsi</label>
-                                    <input class="form-control" type="text" name="deskripsi">
+                                    <textarea class="form-control" type="text-" name="deskripsi"></textarea>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label>waktu</label>

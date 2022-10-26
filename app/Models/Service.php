@@ -12,11 +12,21 @@ class service extends Model
     protected $fillable = [
         'nama',
         'hari',
-        'sesi',
+        'jam',
         'no_hp',
         'pesan',
         'status',
         'teknisi_id',
-        'foto'
+        // 'foto'
     ];
+
+    /**
+     * Get the teknisi that owns the Service
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function teknisi()
+    {
+        return $this->belongsTo(Teknisi::class, 'teknisi_id');
+    }
 }

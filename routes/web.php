@@ -38,7 +38,8 @@ Route::get('/user-dokumentasi', [DokumentasiController::class, 'user']);
 Route::get('/user-dokumentasidetail/{showdokumentasi}', [DokumentasiController::class, 'showuser'])->name('showdokumentasi');
 Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
 Route::get('/user-prestasi', [PrestasiController::class, 'user']);
-Route::resource('/pendaftaran', PendaftaranController::class); 
+Route::resource('/pendaftaran', PendaftaranController::class);
+Route::get('/change-status/{id}',[ServiceController::class,'changeStatus']);
 
 //harus login
 Route::group(['middleware' => 'auth'], function () {
@@ -57,12 +58,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'checkRole:su, admin'], function () {
         Route::resource('/divisi', DivisiController::class);
         Route::resource('/proker', ProgramkerjaController::class);
-        Route::resource('/dokumentasi', (DokumentasiController::class));
-        Route::resource('/pengumuman', (PengumumanController::class));
-        Route::resource('/prestasi', (PrestasiController::class));
+        Route::resource('/dokumentasi', DokumentasiController::class);
+        Route::resource('/pengumuman', PengumumanController::class);
+        Route::resource('/prestasi', PrestasiController::class);
         Route::resource('/kepengurusan', KepengurusanController::class);
         Route::resource('/kelola', UserController::class);
-        Route::resource('/anggota', (AnggotaController::class));
+        Route::resource('/anggota', AnggotaController::class);
     });
 });
 require __DIR__.'/auth.php';
