@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
- 
-class DashboardControler extends Controller
+
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class DashboardControler extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard', compact('dashboard'));
+        return view('admin.dashboard');
     }
 
     /**

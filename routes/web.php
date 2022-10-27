@@ -13,6 +13,7 @@ use App\Http\Controllers\KepengurusanController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -50,9 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'checkRole:su,admin,teknisi'], function () {
         Route::resource('/service', ServiceController::class); 
         Route::resource('/teknisi', TeknisiController::class);
-        Route::get('/admin-home', function () {
-            return view('admin.home');
-        }); 
+        Route::resource('/home', HomeController::class); 
     });
     //role
     Route::group(['middleware' => 'checkRole:su, admin'], function () {
