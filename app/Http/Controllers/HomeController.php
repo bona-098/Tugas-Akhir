@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Anggota;
+use App\Models\Service;
+use App\Models\Prestasi;
+use App\Models\Programkerja;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +16,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $jumlah_anggota = Anggota::all()->count();
+        $jumlah_service = Service::all()->count();
+        $jumlah_prestasi = Prestasi::all()->count();
+        $jumlah_programkerja = Programkerja::all()->count();
+        // dd($jumlah_anggota);
+        return view('admin.dashboard', compact('jumlah_anggota', 'jumlah_service', 'jumlah_prestasi', 'jumlah_programkerja'));
     }
 
     /**

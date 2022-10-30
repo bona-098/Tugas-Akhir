@@ -1,26 +1,12 @@
+
 @extends('admin.app')
 @section('content')
     <div class="container-fluid">
-        <div class="button">
+        <div class="button mb-3">
             <a button type="button" class="btn btn-primary" id="liveToastBtn"
                 href="{{ route('anggota.create') }}">Tambah Anggota</a>
         </div>
         <table id="example" class="table table-striped">
-            {{-- <caption>Berikut adalah Proposal Ormawa yang harus dilengkapi
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-            </caption> --}}
             <thead>
                 <tr>
                     <th scope="col">Nama</th>

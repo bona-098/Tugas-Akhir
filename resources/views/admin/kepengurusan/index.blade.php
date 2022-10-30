@@ -1,12 +1,13 @@
 @extends('admin.app')
 @section('content')
-    <div class="container border">
-        <div class="d-grid gap-1">
+<link rel="canonical" href="https://www.creative-tim.com/product/argon-dashboard-pro" />
+    <div class="container">
+        <div class="mb-3">
             <a button type="button" class="btn btn-primary" id="liveToastBtn"
                 href="{{ route('kepengurusan.create') }}">Tambah Kepengurusan</a>
         </div>
         <div class="card-body px-0 pb-0">
-            <div class="table-responsive border">
+            <div class="table-responsive">
                 <table id="example" class="table table-flush" id="products-list">
 
                     <thead class="thead-light">
