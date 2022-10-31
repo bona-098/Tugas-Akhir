@@ -55,7 +55,7 @@ class serviceController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'hari' => 'required',
-            'jam' => 'required',
+            'sesi' => 'required',
             'no_hp' => 'required',
             'pesan' => 'required',
             'status' => '1',
@@ -70,7 +70,7 @@ class serviceController extends Controller
         Service::create([
             'nama' => $request->nama,
             'hari' => $request->hari,
-            'jam' => $request->jam,
+            'sesi' => $request->sesi,
             'no_hp' => $request->no_hp,
             'pesan' => $request->pesan,
             'status' => 1,
@@ -149,14 +149,14 @@ class serviceController extends Controller
         // dd($request);
         $request->validate([
             'nama' => 'required',
-            'nim' => 'required',
+            // 'nim' => 'required',
             'hari' => 'required',
             'sesi' => 'required',
             'no_hp' => 'required',
             'pesan' => 'required',
             'status' => 'required',
             'user_id' => 'required',
-            'foto' => 'file|mimes:jpg,jpeg|max:50000'
+            // 'foto' => 'file|mimes:jpg,jpeg|max:50000'
         ]);
 
 
@@ -166,19 +166,19 @@ class serviceController extends Controller
         $service = Service::find($id);
 
         // dd($serviced);
-        if ($foto = $request->file('foto')) {
-            File::delete('images/service/' . $service->foto);
-            $fotos = 'images/service/';
-            $file_name = $request->foto->getClientOriginalName();
-            $foto->move($fotos, $file_name);
-            $serviced['foto'] = "$file_name";
-        } else {
-            unset($serviced['foto']);
-        }
+        // if ($foto = $request->file('foto')) {
+        //     File::delete('images/service/' . $service->foto);
+        //     $fotos = 'images/service/';
+        //     $file_name = $request->foto->getClientOriginalName();
+        //     $foto->move($fotos, $file_name);
+        //     $serviced['foto'] = "$file_name";
+        // } else {
+        //     unset($serviced['foto']);
+        // }
 
         $service->update([
             'nama' => $request->nama,
-            'nim' => $request->nim,
+            // 'nim' => $request->nim,
             'hari' => $request->hari,
             'sesi' => $request->sesi,
             'no_hp' => $request->no_hp,

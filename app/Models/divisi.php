@@ -21,4 +21,13 @@ class divisi extends Model
         'created_at',
         'update_at'
     ];
+    /**
+     * Get the Programkerja that owns the divisi
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function programkerja()
+    {
+        return $this->belongsTo(Programkerja::class, 'programkerja_id');
+    }
 }

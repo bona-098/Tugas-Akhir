@@ -29,4 +29,23 @@ class programkerja extends Model
         'divisi_id',
         'kepengurusan_id'
     ];
+
+    /**
+     * Get the divisi that owns the Programkerja
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function divisi()
+    {
+        return $this->belongsTo(divisi::class, 'divisi_id');
+    }
+    /**
+     * Get the Kepengurusan that owns the Programkerja
+     *
+     * @return \Illuminate\Kepengurusanbase\EloquKepengurusan\Relations\BelongsTo
+     */
+    public function kepengurusan()
+    {
+        return $this->belongsTo(Kepengurusan::class, 'Kepengurusan_id');
+    }
 }

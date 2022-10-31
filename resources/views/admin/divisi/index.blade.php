@@ -56,4 +56,18 @@
             </div>
         </div>
     </div>
-@endsection
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            $('#products-list').DataTable({
+                dom: 'IBfrtp',
+                lengthMenu: [
+                    [2, 10, 50, 1000],
+                    [2, 10, 50, 1000]
+                ]
+
+            })
+        })
+    </script>    
+@endpush
+    @endsection

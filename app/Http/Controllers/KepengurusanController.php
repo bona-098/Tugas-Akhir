@@ -73,15 +73,8 @@ class KepengurusanController extends Controller
      */
     public function show($id)
     {
-        $kepengurusan = Kepengurusan::findOrfail($id);
-        $prestasi = Prestasi::where('kepengurusan_id', '=', $id)->get();
-        $programkerja = Programkerja::where('kepengurusan_id', '=', $id)->get();
-        return view('admin.kepengurusan.show',
-        [
-            'kepengurusan' => $kepengurusan,
-            'prestasi' => $prestasi,
-            'programkerja' => $programkerja
-            ]);
+        $kepengurusan = Kepengurusan::with('prestasi', 'programkerja')->get();
+        return view('admin.kepengurusan.show', compact('kepengurusan'));
     }
     
 

@@ -9,36 +9,41 @@
                 {{ csrf_field() }}
                 @method('patch')
                 <br>    
-                <div class="row justify-content-evenly">
-                    <div class="col-4">
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">kepengurusan</p>
-                            <p class="subtitle is-size-5">{{ $kepengurusan->nama }}</p>
-                        </span>
-                        <br>
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">Kepala kepengurusan</p>
-                            <p class="subtitle is-size-5">{{ $kepengurusan->tahun }}</p>
-                        </span>
-                        <br>
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">Staff Ahli</p>
-                            <p class="subtitle is-size-5">{{ $kepengurusan->pembina }}</p>
-                        </span>
+                <div class="card-body px-0 pb-0">
+                    <div class="table-responsive">
+                        <table id="example" class="table table-flush" id="products-list">
+        
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Tahun</th>
+                                    <th>Pembina</th>                            
+                                    <th>Ketua</th>                            
+                                    <th>Staff</th>                            
+                                    <th>Program Kerja</th>                            
+                                    <th>Prestasi</th>                            
+                                    <th>Uang Masuk</th>                            
+                                    <th>Uang Keluar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <div>
+                                        @foreach ($kepengurusan as $item)
+                                        <td class="text-sm">{{ $kepengurusan->tahun }}</td>
+                                        <td class="text-sm">{{ $kepengurusan->pembina }}</td>                           
+                                        <td class="text-sm">{{ $kepengurusan->pembina }}</td>
+                                        @endforeach
+                                        @foreach ($prestasi as $item)
+                                        <td class="text-sm">{{ $item->nama }}</td>                                                                    
+                                        @endforeach
+                                        @foreach ($programkerja as $item)
+                                        <td class="text-sm">{{ $item->nama }}</td>
+                                        @endforeach
+                                        </td>
+                                    </tr>
+                                </tbody>
+                        </table>
                     </div>
-                    <div class="col-4">
-                        <p class="title is-semibolded is-size-6 has-text-grey">prestasi</p>
-                            @foreach ($prestasi as $item)
-                            <p>{{ $item->nama }}</p>                            
-                            @endforeach
-                    </div>
-                    <div class="col-4"> 
-                        <p class="title is-semibolded is-size-6 has-text-grey">Program kerja</p>
-                            @foreach ($programkerja as $item)
-                            <p>{{ $item->nama }}</p>                            
-                            @endforeach
-                    </div>
-
                 </div>
             </form>
         </div>

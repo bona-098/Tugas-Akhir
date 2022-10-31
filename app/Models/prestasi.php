@@ -22,4 +22,13 @@ class prestasi extends Model
         'foto',
         'kepengurusan_id',
     ];
+    /**
+     * Get the Kepengurusan that owns the prestasi
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function kepengurusan()
+    {
+        return $this->belongsTo(Kepengurusan::class, 'kepengurusan_id');
+    }
 }

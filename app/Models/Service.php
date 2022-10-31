@@ -12,7 +12,7 @@ class service extends Model
     protected $fillable = [
         'nama',
         'hari',
-        'jam',
+        'sesi',
         'no_hp',
         'pesan',
         'status',

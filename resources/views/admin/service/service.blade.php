@@ -1,6 +1,5 @@
 @extends('admin.app')
 @section('content')
-    <link rel="canonical" href="https://www.creative-tim.com/product/argon-dashboard-pro" />
     <style>
         .border {
             border: 2px;
@@ -18,7 +17,7 @@
                         <tr>
                             <th>Nama</th>
                             <th>Hari</th>
-                            <th>Jam</th>
+                            <th>Sesi</th>
                             <th>No_hp</th>
                             <th>Teknisi</th>
                             <th>Pesan</th>
@@ -33,7 +32,7 @@
                                 {{-- <td class="text-sm">{{ $loop->iteration }}</td> --}}
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->hari }}</td>
-                                <td class="text-sm">{{ $item->jam }}</td>
+                                <td class="text-sm">{{ $item->sesi }}</td>
                                 <td class="text-sm">{{ $item->no_hp }}</td>
                                 <td class="test-sm">{{ $item->teknisi->nama ?? "-" }}</td>
                                 <td class="text-sm">{{ $item->pesan }}</td>
