@@ -15,28 +15,32 @@
 
                             <thead class="thead-light">
                                 <tr>
+                                    <th>Nama</th>
                                     <th>Tahun</th>
                                     <th>Pembina</th>
-                                    <th>Ketua</th>
-                                    <th>Staff</th>
-                                    <th>Program Kerja</th>
+                                    <th>Nama Proker</th>
                                     <th>Prestasi</th>
+                                    {{-- <th>Prestasi</th>
                                     <th>Uang Masuk</th>
-                                    <th>Uang Keluar</th>
+                                    <th>Uang Keluar</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <div>
-                                        @foreach ($kepengurusan as $pengurus)
+                                        {{-- @foreach ($kepengurusan as $pengurus) --}}
                                             <td class="text-sm">{{ $kepengurusan->nama }}</td>
                                             <td class="text-sm">{{ $kepengurusan->tahun }}</td>
                                             <td class="text-sm">{{ $kepengurusan->pembina }}</td>
-                                            @foreach ($pengurus as $k => $l)
-                                                <td class="text-sm">{{ $l->programkerja->nama }}</td>
-                                                <td class="text-sm">{{ $l->prestasi->nama }}</td>
+                                            <td class="text-sm">
+                                            @foreach ($kepengurusan->prestasi as $colab)
+                                                {{ $loop->iteration }} {{ $colab->nama  }} <br>
                                             @endforeach
-                                        @endforeach
+                                            </td>
+                                            @foreach ($kepengurusan->programkerja as $colabs)
+                                                <td class="text-sm">{{ $colabs->nama }}</td>
+                                            @endforeach
+                                        {{-- @endforeach --}}
                                         </td>
                                         
                                     </div>
