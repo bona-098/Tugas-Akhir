@@ -18,7 +18,7 @@ class CreateTeknisiTable extends Migration
             $table->string('nama');
             $table->string('nim');                        
             $table->string('hari');
-            $table->string('sesi');
+            // $table->string('sesi');
             $table->string('no_hp');
             $table->string('foto');
             $table->timestamps();

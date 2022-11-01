@@ -13,12 +13,24 @@ class Kepengurusan extends Model
         'nama',
         'tahun',
         'pembina',
-        // 'bph',
-        // 'pengurus_lain',
-        // 'anggota',
-        // 'program_kerja'
-        // 'created_at',
-        // 'update_at',
-        // 'user_id'
     ];
+    /**
+     * Get the prestasi t owns the Kepengurusan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function prestasi()
+    {
+        return $this->hasMany(prestasi::class, 'kepengurusan_id');
+    }
+
+    /**
+     * Get the programkerja that owns the Kepengurusan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function programkerja()
+    {
+        return $this->hasMany(Programkerja::class, 'kepengurusan_id');
+    }
 }

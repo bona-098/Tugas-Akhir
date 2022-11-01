@@ -13,7 +13,7 @@
                             <th>Nama</th>
                             <th>Nim</th>
                             <th>Hari</th>
-                            <th>sesi</th>
+                            {{-- <th>sesi</th> --}}
                             <th>No_hp</th>
                             <th>Foto</th>
                             <th>action</th>
@@ -25,7 +25,7 @@
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->nim }}</td>
                                 <td class="text-sm">{{ $item->hari }}</td>
-                                <td class="text-sm">{{ $item->sesi }}</td>
+                                {{-- <td class="text-sm">{{ $item->sesi }}</td> --}}
                                 <td class="text-sm">{{ $item->no_hp }}</td>
                                 <td>
                                     <div class="d-flex">

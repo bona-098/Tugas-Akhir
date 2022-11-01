@@ -13,7 +13,7 @@
         <div class="card-body px-0 pb-0 border">
             <div class="table-responsive border">
                 <table class="table table-flush" id="products-list">
-                    <thead class="thead-light">
+                    <thead class="thead-dark">
                         <tr>
                             <th>Nama</th>
                             <th>Hari</th>
@@ -22,8 +22,13 @@
                             <th>Teknisi</th>
                             <th>Pesan</th>
                             <th>Status</th>
+                            <th>
+                                <div class="text-center">
+                                    Aksi
+                                </div>
+                            </th>
+                            <th>Edit</th>
                             <th>Hapus</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +43,7 @@
                                 <td class="text-sm">{{ $item->pesan }}</td>
                                 <td>
                                     @if($item->status==1)
-                                    <a href="{{ url('change-status/'.$item->id.'status?Terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Terima</a>
+                                    <a href="{{ url('change-status/'.$item->id.'status?Terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Menunggu</a>
                                     @elseif ($item->status==2)
                                     <a href="{{ url('change-status/'.$item->id.'status?Proses') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-danger">Proses</a>
                                     @else
@@ -46,13 +51,14 @@
                                     @endif
                                 </td>
                                 <td>
+                                    <div class="text-center">
                                     
-                                    <a href="{{ url('change-status/'.$item->id.'?status=Terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Terima</a>
-                                    
-                                    <a href="{{ url('change-status/'.$item->id.'?status=Proses') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-danger">Proses</a>
-                                    
-                                    <a href="{{ url('change-status/'.$item->id.'?status=Tolak') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Selesai</a>
-                                    
+                                        <a href="{{ url('change-status/'.$item->id.'?status=Terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Menunggu</a>
+                                        
+                                        <a href="{{ url('change-status/'.$item->id.'?status=Proses') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-danger">Proses</a>
+                                        
+                                        <a href="{{ url('change-status/'.$item->id.'?status=Tolak') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Selesai</a>
+                                    </div>
                                 </td>
                                             
                                 <td class="text-sm">
@@ -60,10 +66,12 @@
                                         data-bs-toggle="tooltip" data-bs-original-title="Edit product">
                                         <i class="fas fa-user-edit text-secondary"></i>
                                     </a>
+                                </td>
+                                <td class="text-sm">
                                     <form action="{{ route('service.destroy', $item->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="submit" class="badge bg-danger">Hapus</button>
+                                        <button type="submit"><i class="fas fa-trash text-secondary"></i></button>
                                     </form>
                                 </td>
                             </tr>

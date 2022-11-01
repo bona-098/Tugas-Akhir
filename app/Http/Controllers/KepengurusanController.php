@@ -73,7 +73,8 @@ class KepengurusanController extends Controller
      */
     public function show($id)
     {
-        $kepengurusan = Kepengurusan::with('prestasi', 'programkerja')->get();
+        $kepengurusan = Kepengurusan::with("prestasi", "programkerja")->find($id);
+        // dd($kepengurusan);
         return view('admin.kepengurusan.show', compact('kepengurusan'));
     }
     

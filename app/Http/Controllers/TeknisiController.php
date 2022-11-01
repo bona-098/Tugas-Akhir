@@ -42,7 +42,7 @@ class TeknisiController extends Controller
             'nama' => 'required',
             'nim' => 'required',            
             'hari' => 'required',            
-            'sesi' => 'required',            
+            // 'sesi' => 'required',            
             'no_hp' => 'required',            
             'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
         ]);
@@ -55,7 +55,7 @@ class TeknisiController extends Controller
             'nama' => $request->nama,
             'nim' => $request->nim,
             'hari' => $request->hari,
-            'sesi' => $request->sesi,
+            // 'sesi' => $request->sesi,
             'no_hp' => $request->no_hp,
             'foto' => $newNameFoto
         ]);
@@ -99,7 +99,7 @@ class TeknisiController extends Controller
             'nama' => 'required',
             'nim' => 'required',            
             'hari' => 'required',            
-            'sesi' => 'required',            
+            // 'sesi' => 'required',            
             'no_hp' => 'required',            
             'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
         ]);

@@ -9,7 +9,7 @@
         <main>
             <div class="row g-5 bd">
                 <div class="col-md-6 col-lg-12 bd">
-                    <h4 class="mb-3">Tambah Prestasi</h4>
+                    <h4 class="mb-3">Tambah Teknisi</h4>
                     <form method="POST" action="{{ route('teknisi.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row g-3">
@@ -48,7 +48,7 @@
                                                         
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>sesi</label>
+                                    <label>Pilih Hari</label>
                                     <select name="hari" class="form-control" id="hari">
                                         <option value="" selected disabled>Pilih Hari</option>
                                         <option value="Senin">Senin</option>
@@ -59,7 +59,27 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            {{-- <div class="col-sm-6">
+                                <div class="form-check">
+                                    <label>Pilih sesi</label>
+                                    <br>
+                                    <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">Sesi 1</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">Sesi 2</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="3" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">Sesi 3</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="4" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">Sesi 4</label>
+                                </div>
+                            </div> --}}
+                            {{-- <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>sesi</label>
                                     <select name="sesi" class="form-control" id="sesi">
@@ -70,7 +90,7 @@
                                         <option value="4">Sesi 4</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             
                             <div class="col-sm-6">
                                 <label for="firstName" class="form-label">No. Hp</label>

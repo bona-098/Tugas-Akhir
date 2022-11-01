@@ -13,7 +13,6 @@
     {{ session('success') }}
 </div>
 @endif
-    {{-- <link rel="canonical" href="https://www.creative-tim.com/product/argon-dashboard-pro" /> --}}
     <div class="container">
         <div class="mb-3">
             <a button type="button" class="btn btn-primary" id="liveToastBtn" href="{{ route('kepengurusan.create') }}">Tambah
@@ -24,6 +23,7 @@
             <table class="table table-flush" id="products-list">
                 <thead class="thead-dark">
                     <tr>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>Tahun</th>
                         <th>Pembina</th>
@@ -33,8 +33,8 @@
                 <tbody>
                     @foreach ($kepengurusan as $item)
                         <tr>
-                            <div>
-                                {{-- <a href="oh/shiow/{{ $item->id }}">  --}}
+                            <div>                                
+                                <td class="text-sm">{{ $loop->iteration }}</td>
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->tahun }}</td>
                                 <td class="text-sm">{{ $item->pembina }}</td>

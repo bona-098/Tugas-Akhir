@@ -13,7 +13,7 @@ class Teknisi extends Model
         'nama',
         'nim',
         'hari',
-        'sesi',
+        // 'sesi',
         'no_hp',
         'foto'
     ];
