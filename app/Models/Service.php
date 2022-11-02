@@ -17,6 +17,7 @@ class service extends Model
         'pesan',
         'status',
         'teknisi_id',
+        'user_id',
         // 'foto'
     ];
 
@@ -29,4 +30,15 @@ class service extends Model
     {
         return $this->belongsTo(Teknisi::class, 'teknisi_id');
     }
+
+    /**
+     * Get the user that owns the Service
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }

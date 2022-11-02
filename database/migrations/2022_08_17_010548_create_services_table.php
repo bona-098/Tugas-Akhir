@@ -22,7 +22,7 @@ class CreateservicesTable extends Migration
             $table->string('pesan')->nullable();            
             $table->tinyInteger('status')->default('1');         
             // $table->string('foto')->nullable();            
-            // $table->string('user_id')->nullable();
+            $table->string('user_id')->nullable();
             $table->foreignId('teknisi_id')->constrained('teknisi')->onDelete('restrict')->onUpdate('cascade');          
             $table->timestamps();
         });

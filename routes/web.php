@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/profil', ProfilController::class);
     // Route::resource('/user-service', ServiceController::class);
     Route::get('/user-service', [ServiceController::class, 'create']);
+    Route::post('/user-service', [ServiceController::class, 'create']);
     //role su, admin, teknisi
     Route::group(['middleware' => 'checkRole:su,admin,teknisi'], function () {
         Route::resource('/service', ServiceController::class); 
