@@ -40,6 +40,7 @@ class serviceController extends Controller
         // $ambilSesi = Service::where('user_id', Auth::user()->id)->whereDate('created_at', Carbon::today())->get();
         $ambilSesi = Service::where('user_id', Auth::user()->id)->get();
         foreach ($ambilSesi as $ambil){
+            // if $sesi != null and $request->hari =! null;
             array_push($sesi, $ambil->sesi);
         }
         // dd($sesi);
@@ -66,7 +67,7 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         // return $request;
         $this->validate($request, [
             'nama' => 'required',

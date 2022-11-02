@@ -37,6 +37,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd('$request');
+        return $request;
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -85,11 +87,13 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'role' => 'required',
-            'password' => 'nullable'
+            'role' => 'required'
         ]);
+
+        $users = User::findOrFail($id);
+
+        $users->role = $request->role;
+        $users->save();
         return redirect()->route('kelola.index');
     }
     
