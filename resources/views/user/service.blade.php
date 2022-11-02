@@ -1,5 +1,8 @@
 @extends('user.app')
 @section('content')
+    
+    
+
     {{-- <style>
     border {
         border: 1px;
@@ -13,7 +16,8 @@
                         <h5 class="font-weight-bolder">Silahkan isi form dibawah ini untuk melakukan booking jadwal servis
                         </h5>
                         <br>
-                        <form method="POST" action="{{ route('service.store') }}" enctype="multipart/form-data">
+                        {{-- {{url('user-service')}} --}}
+                        <form method="POST" action="{{ route('service') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-12 col-sm-6">
@@ -24,29 +28,25 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Hari</label>
-                                        <select name="hari" class="form-control" id="hari">
-                                            <option value="" selected disabled>Pilih Hari</option>
-                                            <option value="Senin">Senin</option>
-                                            <option value="Selasa">Selasa</option>
-                                            <option value="Rabu">Rabu</option>
-                                            <option value="Kamis">Kamis</option>
-                                            <option value="Jumat">Jumat</option>
-                                        </select>
+                                        <input id="date1" type="date" class="form-control" name="hari">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>sesi</label>
+                                        <label>Pilih Sesi</label>
                                         <select name="sesi" class="form-control" id="sesi">
-                                            <option value="" selected disabled>Pilih sesi</option>
-                                            <option value="sesi 1">Sesi 1</option>
-                                            <option value="sesi 2">Sesi 2</option>
-                                            <option value="sesi 3">Sesi 3</option>
-                                            <option value="sesi 4">Sesi 4</option>
+                                            <option {{ in_array('1', $sesi) ? 'disabled' : '' }} value="1">sesi 1
+                                            </option>
+                                            <option {{ in_array('2', $sesi) ? 'disabled' : '' }} value="2">sesi 2
+                                            </option>
+                                            <option {{ in_array('3', $sesi) ? 'disabled' : '' }} value="3">sesi 3
+                                            </option>
+                                            <option {{ in_array('4', $sesi) ? 'disabled' : '' }} value="4">sesi 4
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-12 col-sm-6">
                                     <label>hp</label>
                                     <input class="form-control" type="text" name="no_hp">
@@ -88,7 +88,21 @@
             </div>
         </div>
     </div>
-
+    
+    <script>
+        $("#date1").flatpickr({
+            enableTime: true,
+            dateFormat: "m-d-Y",
+            "disable": [
+                function(date) {
+                    return (date.getDay() === 0 || date.getDay() === 6); // disable weekends
+                }
+            ],
+            "locale": {
+                "firstDayOfWeek": 1 // set start day of week to Monday
+            }
+        });
+    </script>
 
     <script>
         function createOption(value, text) {
@@ -109,76 +123,76 @@
         }
     </script>
 
-<div class="modal fade" id="antrian" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-aria-labelledby="antrianLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered"  role="document">
-    <div id="kartuantrian">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">
-                    <img src="{{ asset('img/cutlogo.jpg') }}" style=”float:left; width="55";height="55"” />Klinik {{ env("APP_NAME") }}
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p class="h3">Nomor Antrian : <span
-                        class="text-primary">{{ Session::has('nama') ? Session::get('nama') : '' }}</span>
-                </p>
-                <p class="h3">Atas Nama : <span
-                        class="text-primary">{{ Session::has('hari') ? Session::get('hari') : '' }}</span></p>
-                <p>Daftar pada jam : <span
-                        class="text-primary">{{ Session::has('sesi') ? Session::get('sesi') : '' }}</span>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <p>Tanggal : <span
-                        class="text-primary">{{ Session::has('tanggaldaftar') ? Session::get('tanggaldaftar') : '' }}</span>
-                </p>
-                
-                <a type="button" class="btn btn-secondary" href="/profil">
-                    <i class="fas fa-users me-2"></i>
-                    Cek Antrian
-                </a>
-                <button type="button" class="btn btn-primary" id="download">Simpan</button>
+    <div class="modal fade" id="antrian" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="antrianLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div id="kartuantrian">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">
+                            <img src="{{ asset('img/cutlogo.jpg') }}" style=”float:left;
+                                width="55";height="55"” />Klinik {{ env('APP_NAME') }}
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="h3">Nomor Antrian : <span
+                                class="text-primary">{{ Session::has('nama') ? Session::get('nama') : '' }}</span>
+                        </p>
+                        <p class="h3">Atas Nama : <span
+                                class="text-primary">{{ Session::has('hari') ? Session::get('hari') : '' }}</span></p>
+                        <p>Daftar pada jam : <span
+                                class="text-primary">{{ Session::has('sesi') ? Session::get('sesi') : '' }}</span>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <p>Tanggal : <span
+                                class="text-primary">{{ Session::has('tanggaldaftar') ? Session::get('tanggaldaftar') : '' }}</span>
+                        </p>
+
+                        <a type="button" class="btn btn-secondary" href="/profil">
+                            <i class="fas fa-users me-2"></i>
+                            Cek Antrian
+                        </a>
+                        <button type="button" class="btn btn-primary" id="download">Simpan</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
- <!--------------------------------------------------------modal antrian----------------------------------------------------------------------------------->    
- <script>
-    @if (Session::has('nomorAntrian'))
-        $(document).ready(function() {
-            $('#antrian').modal('show')
-        });
-    @endif
-</script>
-<!--------------------------------------------------------fungsi download kartu antrian----------------------------------------------------------------------------------->
-<script>
-    document.getElementById("download").addEventListener("click", function() {
-        const imgName = prompt("Input nama gambar yang akan diunduh: ")
-        html2canvas(document.querySelector('#kartuantrian')).then(function(canvas) {
+    <!--------------------------------------------------------modal antrian----------------------------------------------------------------------------------->
+    <script>
+        @if (Session::has('nomorAntrian'))
+            $(document).ready(function() {
+                $('#antrian').modal('show')
+            });
+        @endif
+    </script>
+    <!--------------------------------------------------------fungsi download kartu antrian----------------------------------------------------------------------------------->
+    <script>
+        document.getElementById("download").addEventListener("click", function() {
+            const imgName = prompt("Input nama gambar yang akan diunduh: ")
+            html2canvas(document.querySelector('#kartuantrian')).then(function(canvas) {
 
-            console.log(canvas);
-            saveAs(canvas.toDataURL(),imgName + '.jpg');
+                console.log(canvas);
+                saveAs(canvas.toDataURL(), imgName + '.jpg');
+            });
         });
-    });
 
-    function saveAs(uri, filename) {
-        var link = document.createElement('a');
-        if (typeof link.download === 'string') {
-            link.href = uri;
-            link.download = filename;
-            //Firefox requires the link to be in the body
-            document.body.appendChild(link);
-            //simulate click
-            link.click();
-            //remove the link when done
-            document.body.removeChild(link);
-        } else {
-            window.open(uri);
+        function saveAs(uri, filename) {
+            var link = document.createElement('a');
+            if (typeof link.download === 'string') {
+                link.href = uri;
+                link.download = filename;
+                //Firefox requires the link to be in the body
+                document.body.appendChild(link);
+                //simulate click
+                link.click();
+                //remove the link when done
+                document.body.removeChild(link);
+            } else {
+                window.open(uri);
+            }
         }
-    }
-</script>
+    </script>
 @endsection

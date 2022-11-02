@@ -20,6 +20,7 @@
                             <th>Sesi</th>
                             <th>No_hp</th>
                             <th>Teknisi</th>
+                            <th>user</th>
                             <th>Pesan</th>
                             <th>Status</th>
                             <th>
@@ -40,6 +41,7 @@
                                 <td class="text-sm">{{ $item->sesi }}</td>
                                 <td class="text-sm">{{ $item->no_hp }}</td>
                                 <td class="test-sm">{{ $item->teknisi->nama ?? "-" }}</td>
+                                <td class="test-sm">{{ $item->user->name ?? "-" }}</td>
                                 <td class="text-sm">{{ $item->pesan }}</td>
                                 <td>
                                     @if($item->status==1)
@@ -60,7 +62,7 @@
                                         <a href="{{ url('change-status/'.$item->id.'?status=Tolak') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Selesai</a>
                                     </div>
                                 </td>
-                                            
+                                
                                 <td class="text-sm">
                                     <a href="{{ route('service.edit', $item->id) }}" class="mx-3"
                                         data-bs-toggle="tooltip" data-bs-original-title="Edit product">
@@ -75,7 +77,8 @@
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
+                            
                     </tbody>
                 </table>
             </div>

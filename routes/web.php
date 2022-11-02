@@ -46,8 +46,8 @@ Route::get('/change-status/{id}',[ServiceController::class,'changeStatus']);
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/profil', ProfilController::class);
     // Route::resource('/user-service', ServiceController::class);
-    Route::get('/user-service', [ServiceController::class, 'create']);
-    Route::post('/user-service', [ServiceController::class, 'create']);
+    Route::get('/user-service', [ServiceController::class, 'create'])->name('service');
+    Route::post('/user-service', [ServiceController::class, 'store'])->name('service');
     //role su, admin, teknisi
     Route::group(['middleware' => 'checkRole:su,admin,teknisi'], function () {
         Route::resource('/service', ServiceController::class); 

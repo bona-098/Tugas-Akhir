@@ -21,10 +21,10 @@ class CreateservicesTable extends Migration
             $table->string('no_hp');
             $table->string('pesan')->nullable();            
             $table->tinyInteger('status')->default('1');         
-            // $table->string('foto')->nullable();            
-            $table->string('user_id')->nullable();
-            $table->foreignId('teknisi_id')->constrained('teknisi')->onDelete('restrict')->onUpdate('cascade');          
             $table->timestamps();
+            // $table->foreign('user_id')->references('id')->on('users');         
+            $table->foreignId('user_id')->constrained('users')->onDelete('restrict')->onUpdate('cascade');          
+            $table->foreignId('teknisi_id')->constrained('teknisi')->onDelete('restrict')->onUpdate('cascade');          
         });
     }
 

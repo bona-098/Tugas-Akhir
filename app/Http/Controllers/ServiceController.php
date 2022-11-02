@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Illuminate\Support\Carbon;
 use App\Models\Service;
+use App\Models\User;
 use App\Models\Teknisi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
@@ -19,10 +21,11 @@ class serviceController extends Controller
      */
     public function index()
     {
-        $service = Service::with("teknisi")->get();
+        $service = Service::with("teknisi", "user")->get();
+        // dd($service);
         return view('admin.service.service', compact('service'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -31,12 +34,23 @@ class serviceController extends Controller
     public function create()
     {
         $teknisi = Teknisi::select('nama', 'id')->get();
+        $user = User::select('name', 'id')->get();
+        
+        $sesi = [];
+        // $ambilSesi = Service::where('user_id', Auth::user()->id)->whereDate('created_at', Carbon::today())->get();
+        $ambilSesi = Service::where('user_id', Auth::user()->id)->get();
+        foreach ($ambilSesi as $ambil){
+            array_push($sesi, $ambil->sesi);
+        }
+        // dd($sesi);
         return view(
             'user.service',
             [
                 'teknisi' => $teknisi,
-            ]
-        );
+                'sesi' => $sesi,
+                'user' =>$user
+                ]
+            );
     }
 
     // public function usercreate()
@@ -52,6 +66,8 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        // return $request;
         $this->validate($request, [
             'nama' => 'required',
             'hari' => 'required',
@@ -60,9 +76,9 @@ class serviceController extends Controller
             'pesan' => 'required',
             'status' => '1',
             'teknisi_id' => 'required',
+            'user_id' => 'Auth::id()',
             // 'foto' => 'required|mimes:jpg,jpeg|max:50000'
         ]);
-
         // $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
 
         // $request->file('foto')->move(public_path('images/service'), $newNameFoto);
@@ -75,6 +91,7 @@ class serviceController extends Controller
             'pesan' => $request->pesan,
             'status' => 1,
             'teknisi_id' => $request->teknisi_id,
+            'user_id' => Auth::user()->id
             // 'foto'=>$newNameFoto
 
         ]);

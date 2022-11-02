@@ -23,7 +23,7 @@ class CreateAnggotasTable extends Migration
             $table->string('transkip');
             $table->string('surat_rekomendasi');
             $table->string('sertifikat');
-            $table->string('status')->nullable();
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
             // $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('restrict')->onUpdate('cascade');
         });
