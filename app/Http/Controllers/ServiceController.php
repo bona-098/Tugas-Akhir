@@ -67,7 +67,7 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         // return $request;
         $this->validate($request, [
             'nama' => 'required',

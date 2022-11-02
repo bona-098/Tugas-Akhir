@@ -40,7 +40,7 @@
                                 :value="old('email')" required />
                         </div>
 
-                        <div class="form-group mb4">
+                        {{-- <div class="form-group mb4">
                             <div class="form-group">
                                 <label>Role</label>
                                 <select name="role" class="form-control" id="role">
@@ -51,7 +51,7 @@
                                     <option value="user">user</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- Password -->
                         <div class="form-group mb4">

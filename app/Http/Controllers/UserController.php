@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 class UserController extends Controller
 {
@@ -38,20 +39,20 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // dd('$request');
-        return $request;
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'role' => ['required'],
-            'password' => ['required'],
-        ]);
+        // return $request;
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'role' => ['required'],
+        //     'password' => ['required'],
+        // ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'role' => $request->role,
-            'password' => $request->password,
-        ]);
+        // User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'role' => $request->role,
+        //     'password' => $request->password,
+        // ]);
     }
 
     /**
@@ -87,11 +88,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
             'role' => 'required'
         ]);
 
         $users = User::findOrFail($id);
 
+        $users->name = $request->name;
+        $users->email = $request->email;
+        $users->password = Hash::make($request->password);
         $users->role = $request->role;
         $users->save();
         return redirect()->route('kelola.index');

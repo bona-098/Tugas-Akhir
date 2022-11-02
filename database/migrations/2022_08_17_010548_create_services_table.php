@@ -16,7 +16,7 @@ class CreateservicesTable extends Migration
         Schema::create('service', function (Blueprint $table) {
             $table->id();
             $table->string('nama');                        
-            $table->date('hari');            
+            $table->string('hari');            
             $table->string('sesi');            
             $table->string('no_hp');
             $table->string('pesan')->nullable();            

@@ -18,7 +18,7 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-lg-10">
-                <h4 class="text-danger">Edit Teknisi</h4>
+                <h4 class="text-danger">Ubah Data Pengguna</h4>
             </div>
         </div>
 
@@ -50,11 +50,11 @@
                                     <div class="form-group">
                                         <label>Role</label>
                                         <select name="role" class="form-control" id="role">
-                                            <option value="#" selected disabled>{{auth()->user()->role}}</option>
-                                            <option value="{{ $user->role }}">super admin</option>
-                                            <option value="{{ $user->role }}">admin</option>
-                                            <option value="{{ $user->role }}">teknisi</option>
-                                            <option value="{{ $user->role }}">user</option>
+                                            <option value="#" selected disabled>Pilih role...</option>
+                                            <option value="su">super admin</option>
+                                            <option value="admin">admin</option>
+                                            <option value="teknisi">teknisi</option>
+                                            <option value="user">user</option>
                                         </select>
                                     </div>
                                 </div>
