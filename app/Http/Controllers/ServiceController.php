@@ -22,6 +22,7 @@ class serviceController extends Controller
     public function index()
     {
         $service = Service::with("teknisi", "user")->get();
+        
         // dd($service);
         return view('admin.service.service', compact('service'));
     }

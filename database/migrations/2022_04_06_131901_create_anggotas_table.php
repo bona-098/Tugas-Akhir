@@ -23,9 +23,9 @@ class CreateAnggotasTable extends Migration
             $table->string('transkip');
             $table->string('surat_rekomendasi');
             $table->string('sertifikat');
-            $table->tinyInteger('status')->default('1');
+            $table->enum('status',['berkas','wawancara','anggota','gagal'])->default('berkas');
             $table->timestamps();
-            // $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

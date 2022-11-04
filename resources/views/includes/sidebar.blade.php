@@ -53,9 +53,14 @@
             <span>Kepengurusan</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/anggota">
+        <a class="nav-link" href="/pendaftaran">
             <i class="fas fa-fw fa-users"></i>
-            <span>Penerimaan</span></a>
+            <span>Pendaftaran</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/wawancara">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Wawancara</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/anggota">

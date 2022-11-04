@@ -267,15 +267,10 @@
     <!-- Logout Modal-->
     {{-- @include('includes.modallokot') --}}
 
-    {{-- ptikertime --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"></script>
-    <!-- Template Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
     <!-- Bootstrap core JavaScript-->
-
+    
     <script src="{{ asset('dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
+    
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('dashboard/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
@@ -284,11 +279,16 @@
 
     <!-- Page level plugins -->
     <script src="{{ asset('dashboard/vendor/chart.js/Chart.min.js') }}"></script>
-
+    
     <!-- Page level custom scripts -->
     <script src="{{ asset('dashboard/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('dashboard/js/demo/chart-pie-demo.js') }}"></script>
 
+    {{-- ptikertime --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"></script> --}}
+    <!-- Template Main JS File -->
+    {{-- <script src="{{ asset('assets/js/main.js') }}"></script> --}}
 </body>
 
 </html>

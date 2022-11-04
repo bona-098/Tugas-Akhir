@@ -17,7 +17,7 @@ class pendaftaranController extends Controller
     public function index()
     {
         // $daftar = pendaftaran::get();
-        return view('user.anggota');    
+        return view('admin.anggota.pendaftaran');    
     }
 
     /**

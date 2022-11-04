@@ -35,17 +35,8 @@
                                 @enderror
                             </div>
 
+                                                                                
                             <div class="col-sm-6">
-                                <label for="lastName" class="form-label">Hari</label>
-                                <input id="date1" type="date" class="form-control" name="hari"
-                                    @error('hari') is-invalid @enderror" value="{{ old('hari') }}">
-                                @error('hari')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>                                                        
-                            {{-- <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Pilih Hari</label>
                                     <select name="hari" class="form-control" id="hari">
@@ -57,7 +48,7 @@
                                         <option value="Jumat">Jumat</option>
                                     </select>
                                 </div>
-                            </div> --}}
+                            </div>
                             {{-- <div class="col-sm-6">
                                 <div class="form-check">
                                     <label>Pilih sesi</label>

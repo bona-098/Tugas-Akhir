@@ -14,11 +14,7 @@
         </div>
     @endif
     <div class="container-fluid">
-        <h1>Anggota SAA</h1>
-        <div class="button mb-3">
-            <a button type="button" class="btn btn-primary" id="liveToastBtn" href="{{ route('anggota.create') }}">Tambah
-                Anggota</a>
-        </div>
+        <h1>wawanvara</h1>
 
         <div class="table-responsive border">
             <table class="table table-flush" id="products-list">
@@ -34,12 +30,12 @@
                         <th scope="col">Transkrip</th>
                         <th scope="col">Surat Rekomendasi</th>
                         <th scope="col">Sertifikat</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">action</th>
                         {{-- <th scope="col">action</th> --}}
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($daftar->where('status', 'anggota') as $item)
+                    @foreach ($wawan->where('status', 'wawancara') as $item)
                         <tr>
                             {{-- <a href="{{ url('delete-data/'.$post->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-sm btn-danger">Delete</a> --}}
                             <td>{{ $item->nama }}</td>
@@ -70,18 +66,16 @@
                                 </div>
                             </td> --}}
                             <td>
-                                anggota
-                                {{-- @if ($item->status == 1)
-                                    <a href="{{ url('change-status/' . $item->id . 'status?berkas') }}"
-                                        onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Lulus</a>
-                                @elseif ($item->status == 2)
-                                    <a href="{{ url('change-status/' . $item->id . 'status?wawancara') }}"
-                                        onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-danger">Lulus</a>
-                                @else
-                                    <a href="{{ url('change-status/' . $item->id . 'status?Anggota') }}"
-                                        onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Anggota</a>
-                                @endif --}}
-
+                                <form method="post" action="{{ route('anggoti', $item->id) }}" >
+                                    @csrf
+                                    <input type="hidden" value="anggota" name="status" >
+                                    <button type="submit">Terima</button>
+                                </form>
+                                <form method="post" action="{{ route('gagal', $item->id) }}">
+                                    @csrf
+                                    <input type="hidden" value="gagal" name="status">
+                                    <button type="submit">Tolak</button>
+                                </form>
                             </td>
                             {{-- <td>
                                 <a href="{{ url('change-status/' . $item->id) }}" onclick="return confirm('Are you Sure?')"

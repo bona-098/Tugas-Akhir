@@ -20,7 +20,7 @@
         }
     </style>
     <body>
-        <form method="POST" action="{{ route('anggota.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('anggota') }}" enctype="multipart/form-data">
             @csrf
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-8 col-xl-7">

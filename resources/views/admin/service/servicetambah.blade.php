@@ -89,12 +89,12 @@
                                     @enderror
                                     <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB</div>
                                 </div>
-                            </div>
+                            </div> 
                             <div class="col-sm-6">
                                 <div class="name">Pilih teknisi</div>
                                 <div class="value">
                                     <select class="form-select" name="teknisi_id" aria-label="Default select example">
-                                        @foreach ($teknisi as $item)
+                                        @foreach ($teknisi->where('hari', 'senin') as $item)
                                             <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                         @endforeach
                                     </select>
