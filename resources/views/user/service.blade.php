@@ -28,7 +28,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Hari</label>
-                                        <input id="date1" type="date" class="form-control" name="hari">
+                                        <select id="date1" type="date" class="form-control" name="hari">
+                                            <option value="senin">senin</option>
+                                            <option value="selasa">selasa</option>
+                                            <option value="rabu">rabu</option>
+                                            <option value="kamis">kamis</option>
+                                            <option value="jumat">jumat</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -61,7 +67,7 @@
                                     <div class="name">Pilih Teknisi</div>
                                     <div class="value">
                                         <select class="form-select" name="teknisi_id" aria-label="Default select example">
-                                            @foreach ($teknisi as $item)
+                                            @foreach ($teknisi->where('hari', 'req hari input user') as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                             @endforeach
                                         </select>
