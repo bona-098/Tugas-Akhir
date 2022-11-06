@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-lg-10">
                 <h4 class="text-danger">Edit Teknisi</h4>
-            </div>            
+            </div>
         </div>
 
         <div class="row mt-4">
@@ -33,31 +33,35 @@
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <label>Nama</label>
-                                    <input class="form-control" type="text" name="nama" 
+                                    <input class="form-control" type="text" name="nama"
                                     value="{{ $teknisi->nama }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label>Nim</label>
-                                    <input class="form-control" type="text" name="nim" 
+                                    <input class="form-control" type="text" name="nim"
                                     value="{{ $teknisi->nim }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label>Hari</label>
-                                    <input class="form-control" type="date" name="hari"
-                                        value="{{ $teknisi->hari }}">
+                                    <div class="form-group">
+                                        <label>Pilih Hari</label>
+                                        <select name="hari" class="form-control" id="hari">
+                                            <option value="" selected disabled>Pilih Hari</option>
+                                            <option value="Senin">Senin</option>
+                                            <option value="Selasa">Selasa</option>
+                                            <option value="Rabu">Rabu</option>
+                                            <option value="Kamis">Kamis</option>
+                                            <option value="Jumat">Jumat</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>sesi</label>
-                                    <input class="form-control" type="text" name="sesi"
-                                        value="{{ $teknisi->sesi }}">
-                                </div>                                
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label>No.Hp</label>
                                     <input class="form-control" type="number" name="no_hp"
                                         value="{{ $teknisi->no_hp }}">
-                                </div>                                
+                                </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-6 mt-3 mt-sm-3">

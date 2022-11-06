@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Illuminate\Support\Carbon;
-use App\Models\Service;
+use Toastr;
 use App\Models\User;
+use App\Models\Service;
 use App\Models\Teknisi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Toastr;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class serviceController extends Controller
 {
@@ -22,37 +22,27 @@ class serviceController extends Controller
     public function index()
     {
         $service = Service::with("teknisi", "user")->get();
-        
+
         // dd($service);
         return view('admin.service.service', compact('service'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $teknisi = Teknisi::select('nama', 'id')->get();
-        $user = User::select('name', 'id')->get();
-        
-        $sesi = [];
-        // $ambilSesi = Service::where('user_id', Auth::user()->id)->whereDate('created_at', Carbon::today())->get();
-        $ambilSesi = Service::where('user_id', Auth::user()->id)->get();
-        foreach ($ambilSesi as $ambil){
-            // if $sesi != null and $request->hari =! null;
-            array_push($sesi, $ambil->sesi);
-        }
-        // dd($sesi);
-        return view(
-            'user.service',
-            [
-                'teknisi' => $teknisi,
-                'sesi' => $sesi,
-                'user' =>$user
-                ]
-            );
+
+        $hari = $request->get('hari');
+
+        $ambilhari = Carbon::parse($hari)->translatedFormat('l');
+
+        $filter = Teknisi::where('hari', '=', $ambilhari)->get();
+
+        return view('user.service', compact('filter'));
+
     }
 
     // public function usercreate()
@@ -68,37 +58,36 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        // return $request;
+
         $this->validate($request, [
             'nama' => 'required',
             'hari' => 'required',
             'sesi' => 'required',
             'no_hp' => 'required',
             'pesan' => 'required',
-            'status' => '1',
+            // 'status' => '1',
             'teknisi_id' => 'required',
-            'user_id' => 'Auth::id()',
-            // 'foto' => 'required|mimes:jpg,jpeg|max:50000'
-        ]);
-        // $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
-
-        // $request->file('foto')->move(public_path('images/service'), $newNameFoto);
-
-        Service::create([
-            'nama' => $request->nama,
-            'hari' => $request->hari,
-            'sesi' => $request->sesi,
-            'no_hp' => $request->no_hp,
-            'pesan' => $request->pesan,
-            'status' => 1,
-            'teknisi_id' => $request->teknisi_id,
-            'user_id' => Auth::user()->id
-            // 'foto'=>$newNameFoto
-
         ]);
 
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+        // dd($request->all());
+
+        if(Service::where('sesi', '=', $request->sesi)->where('hari', '=', $request->hari)->exists()){
+            return redirect()->back()->with('gagal', 'Data servis di sesi dan yang sama telah terisi');
+        }else{
+            Service::create([
+                'nama' => $request->nama,
+                'hari' => $request->hari,
+                'sesi' => $request->sesi,
+                'no_hp' => $request->no_hp,
+                'pesan' => $request->pesan,
+                'status' => 1,
+                'teknisi_id' => $request->teknisi_id,
+                'user_id' => Auth::user()->id
+
+            ]);
+
+            return redirect()->route('service')->with('success', 'Data berhasil ditambahkan');
+        }
     }
 
     // public function userstore(Request $request)
@@ -119,8 +108,8 @@ class serviceController extends Controller
     //     $request->file('foto')->move(public_path('images/service'), $newNameFoto);
 
     //     service::create([
-    //         'nama'=>$request->nama,            
-    //         'hari'=>$request->hari,            
+    //         'nama'=>$request->nama,
+    //         'hari'=>$request->hari,
     //         'sesi'=>$request->sesi,
     //         'no_hp'=>$request->no_hp,
     //         'pesan'=>$request->pesan,
