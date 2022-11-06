@@ -15,30 +15,39 @@
 <body>
     <main>
         <div class="limiter">
-            <div class="container-login">                
+            <div class="container-login">
                 <div class="login-wrapper">
                     <div class="text-center">
                     <img src="assets/img/cutlogo.jpg" alt="logo">
                     <h1 class="login-title">Welcome</h1>
                 </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger text-sm">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group mb-4">
                             <label for="email" :value="__('Email')" >Email</label>
-                            
-                            <input type="email" 
-                            name="email" 
-                            id="email" 
+
+                            <input type="email"
+                            name="email"
+                            id="email"
                             class="form-control"
                             placeholder="email@example.com">
                         </div>
 
                         <div class="form-group mb-4">
                             <label for="password" :value="__('Password')"  >Password</label>
-                            
-                            <input type="password" 
-                                    name="password" 
+
+                            <input type="password"
+                                    name="password"
                                     id="password"
                                     required autocomplete="current-password"
                                     class="form-control"

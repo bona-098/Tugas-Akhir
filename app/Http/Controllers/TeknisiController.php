@@ -40,17 +40,18 @@ class TeknisiController extends Controller
     {
         $this->validate($request, [
             'nama' => 'required',
-            'nim' => 'required',            
-            'hari' => 'required',            
-            // 'sesi' => 'required',            
-            'no_hp' => 'required',            
+            'nim' => 'required',
+            'hari' => 'required',
+            // 'sesi' => 'required',
+            'no_hp' => 'required',
             'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
         ]);
 
-        $newNameFoto = date('ymd'). '-' . $request->foto->extension();
-         
+        $newNameFoto = date('ymd'). '-' .$request->nama. '.'. $request->foto->extension();
+        // dd($newNameFoto);
+
         $request->file('foto')->move(public_path('images/teknisi'), $newNameFoto);
-        
+
         Teknisi::create([
             'nama' => $request->nama,
             'nim' => $request->nim,
@@ -97,13 +98,13 @@ class TeknisiController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'nim' => 'required',            
-            'hari' => 'required',            
-            // 'sesi' => 'required',            
-            'no_hp' => 'required',            
+            'nim' => 'required',
+            'hari' => 'required',
+            // 'sesi' => 'required',
+            'no_hp' => 'required',
             'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
         ]);
-        
+
         $teknisis = $request->all();
 
         $teknisi = Teknisi::find($id);

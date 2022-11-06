@@ -1,13 +1,5 @@
 @extends('user.app')
 @section('content')
-    
-    
-
-    {{-- <style>
-    border {
-        border: 1px;
-    }
-</style> --}}
     <div class="container">
         <div class="row mt-4">
             <div class="col-lg-12 mt-lg-0 mt-4">
@@ -16,43 +8,42 @@
                         <h5 class="font-weight-bolder">Silahkan isi form dibawah ini untuk melakukan booking jadwal servis
                         </h5>
                         <br>
-                        {{-- {{url('user-service')}} --}}
+                        <form action="" method="GET" id="form_1">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <label>Hari</label>
+                                    <input type="date" class="form-control" name="hari" id="hari">
+                                    <script>document.getElementById('hari').value = "<?php if (isset($_GET['hari']) && $_GET['hari']) echo $_GET['hari'];?>";</script>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <label>Pilih Sesi</label>
+                                    <select name="sesi" class="form-control" id="sesi" onchange="this.form.submit()">
+                                        <option value="sesi1">Sesi 1</option>
+                                        <option value="sesi2">Sesi 2</option>
+                                        <option value="sesi3">Sesi 3</option>
+                                        <option value="sesi4">Sesi 4</option>
+                                        </option>
+                                    </select>
+                                </div>
+                                <script>document.getElementById('sesi').value = "<?php if (isset($_GET['sesi']) && $_GET['sesi']) echo $_GET['sesi'];?>";</script>
+                            </div>
+                            {{-- <div class="row">
+                                <div class="d-flex mt-2 justify-content-end">
+                                    <button class="btn btn-primary" type="submit">Cari</button>
+                                </div>
+                            </div> --}}
+                        </form>
+                    </div>
+                </div>
+                    <div class="card-body">
                         <form method="POST" action="{{ route('service') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-12 col-sm-6">
+                                <div class="col-md-6 col-sm-12">
                                     <label>Nama</label>
                                     <input class="form-control" type="text" name="nama">
                                     <br>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Hari</label>
-                                        <select id="date1" type="date" class="form-control" name="hari">
-                                            <option value="senin">senin</option>
-                                            <option value="selasa">selasa</option>
-                                            <option value="rabu">rabu</option>
-                                            <option value="kamis">kamis</option>
-                                            <option value="jumat">jumat</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Pilih Sesi</label>
-                                        <select name="sesi" class="form-control" id="sesi">
-                                            <option {{ in_array('1', $sesi) ? 'disabled' : '' }} value="1">sesi 1
-                                            </option>
-                                            <option {{ in_array('2', $sesi) ? 'disabled' : '' }} value="2">sesi 2
-                                            </option>
-                                            <option {{ in_array('3', $sesi) ? 'disabled' : '' }} value="3">sesi 3
-                                            </option>
-                                            <option {{ in_array('4', $sesi) ? 'disabled' : '' }} value="4">sesi 4
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-
                                 <div class="col-12 col-sm-6">
                                     <label>hp</label>
                                     <input class="form-control" type="text" name="no_hp">
@@ -63,25 +54,16 @@
                                     <input class="form-control" type="text" name="pesan">
                                     <br>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="name">Pilih Teknisi</div>
-                                    <div class="value">
-                                        <select class="form-select" name="teknisi_id" aria-label="Default select example">
-                                            @foreach ($teknisi->where('hari', 'req hari input user') as $item)
-                                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                {{-- <div class="row">
-                                    <div class="col-12 col-sm-6 mt-3 mt-sm-3">
-                                        <div class="name">KTM / KTP</div>
+                                    <div class="col-sm-6">
+                                        <div class="name">Pilih Teknisi</div>
                                         <div class="value">
-                                            <input type="file" name="foto">
-                                            <div class="label--desc">Upload file gambar</div>
+                                            <select class="form-select" name="teknisi_id">
+                                                @foreach ($filter as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
-                                </div> --}}
                             </div>
                             <div class="row">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -94,7 +76,11 @@
             </div>
         </div>
     </div>
-    
+    <script>
+        $('#form_1').submit(function () {
+            return false;
+        });
+    </script>
     <script>
         $("#date1").flatpickr({
             enableTime: true,
