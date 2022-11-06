@@ -4,6 +4,26 @@
         <div class="row mt-4">
             <div class="col-lg-12 mt-lg-0 mt-4">
                 <div class="card">
+                    @if ($errors->any())
+                        <div class="alert alert-danger text-sm">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if(session()->has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+
+                    @if(session()->has('gagal'))
+                    <div class="alert alert-warning" role="alert">
+                        {{ session()->get('gagal') }}
+                    </div>
+                    @endif
                     <div class="card-body">
                         <h5 class="font-weight-bolder">Silahkan isi form dibawah ini untuk melakukan booking jadwal servis
                         </h5>
@@ -38,6 +58,8 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('service') }}" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="hari" value="<?php if (isset($_GET['hari']) && $_GET['hari']) echo $_GET['hari']; ?>">
+                            <input type="hidden" name="sesi" value="<?php if (isset($_GET['sesi']) && $_GET['sesi']) echo $_GET['sesi']; ?>">
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
                                     <label>Nama</label>

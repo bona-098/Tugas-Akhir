@@ -58,31 +58,36 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $this->validate($request, [
             'nama' => 'required',
             'hari' => 'required',
             'sesi' => 'required',
             'no_hp' => 'required',
             'pesan' => 'required',
-            'status' => '1',
+            // 'status' => '1',
             'teknisi_id' => 'required',
         ]);
 
-        Service::create([
-            'nama' => $request->nama,
-            'hari' => $request->hari,
-            'sesi' => $request->sesi,
-            'no_hp' => $request->no_hp,
-            'pesan' => $request->pesan,
-            'status' => 1,
-            'teknisi_id' => $request->teknisi_id,
-            'user_id' => Auth::user()->id
-            // 'foto'=>$newNameFoto
+        // dd($request->all());
 
-        ]);
+        if(Service::where('sesi', '=', $request->sesi)->where('hari', '=', $request->hari)->exists()){
+            return redirect()->back()->with('gagal', 'Data servis di sesi dan yang sama telah terisi');
+        }else{
+            Service::create([
+                'nama' => $request->nama,
+                'hari' => $request->hari,
+                'sesi' => $request->sesi,
+                'no_hp' => $request->no_hp,
+                'pesan' => $request->pesan,
+                'status' => 1,
+                'teknisi_id' => $request->teknisi_id,
+                'user_id' => Auth::user()->id
 
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+            ]);
+
+            return redirect()->route('service')->with('success', 'Data berhasil ditambahkan');
+        }
     }
 
     // public function userstore(Request $request)
