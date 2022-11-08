@@ -1,3 +1,4 @@
+<title>Tambah Program Kerja</title>
 @extends('admin.app')
 @section('content')
     <style>

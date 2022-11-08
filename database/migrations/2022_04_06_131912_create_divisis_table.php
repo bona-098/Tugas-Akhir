@@ -22,8 +22,7 @@ class CreateDivisisTable extends Migration
             $table->string('visi');
             $table->string('misi');
             $table->timestamps();
-            // $table->foreignId('user_id')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
-            
+            // $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

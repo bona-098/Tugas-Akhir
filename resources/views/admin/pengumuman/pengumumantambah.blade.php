@@ -1,3 +1,4 @@
+<title>Tambah Pengumuman</title>
 @extends('admin.app')
 @section('content')
     <style>

@@ -6,6 +6,7 @@ use App\Models\Service;
 use App\Models\Prestasi;
 use App\Models\Programkerja;
 use App\Models\Dokumentasi;
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +29,14 @@ class HomeController extends Controller
     public function landingpage()
     {
         $getdokumentasi = Dokumentasi::all();
-        return view('user.home', compact('getdokumentasi'));
+        $getpengumuman = Pengumuman::limit(2)->get();
+        $getproker = Programkerja::all();
+        $getprestasi = Prestasi::all();
+        return view('user.home', compact(
+            'getdokumentasi',
+            'getpengumuman',
+            'getprestasi',
+            'getproker'));
     }
 
     /**

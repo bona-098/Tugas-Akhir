@@ -1,3 +1,4 @@
+<title>Detail Divisi : {{ $divisi->nama }}</title>
 @extends('admin.app')
 @section('content')
     <style>
@@ -61,9 +62,9 @@
                     </div>
                     <div class="col-4">
                         <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">proker</p>
+                            <p class="title is-semibolded is-size-6 has-text-grey">prok</p>
                             @foreach ($proker as $item)
-                            <p>{{ $item->nama }}</p>                            
+                            <p>{{ $item->nama ?? "jago"}}</p>                            
                             @endforeach
                         </span>
                         <br>                        

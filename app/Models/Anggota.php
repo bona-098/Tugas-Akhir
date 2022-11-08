@@ -12,12 +12,15 @@ class Anggota extends Model
     protected $fillable = [
         'nama',
         'nim',
-        'prodi',
-        'no_telp',
-        'resume',
-        'transkip',
-        'surat_rekomendasi',
-        'sertifikat',
+        'pilihan_satu',
+        'alasan_satu',
+        'pilihan_dua',
+        'alasan_dua',
+        'pindah_divisi',
+        'motivasi',
+        'komitmen',
+        'cv',
+        'porto',
         'status',
         'user_id'
         // 'kepengurusan_id'

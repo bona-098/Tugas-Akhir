@@ -130,19 +130,13 @@ class DivisiController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param \App\Models\Divisi $divisi
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($divisi,$id)
+    public function destroy(Divisi $divisi)
     {
-        $divisi->Divisi::find($id);
-        try {
-            $divisi->delete();
-        } catch (Exception $e){
-            return redirect()->back()->with('alert', 'tidak bisa dihapus');
-        }
-
-        return redirect()->back;
+        $divisi->delete();
+        return redirect()->back();
     }
 }

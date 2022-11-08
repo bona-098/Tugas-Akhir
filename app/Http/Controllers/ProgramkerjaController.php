@@ -136,9 +136,8 @@ class ProgramkerjaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Programkerja $proker)
     {
-        $proker = Programkerja::find($id);
         try {
             $proker->delete();
         } catch (Exception $e){

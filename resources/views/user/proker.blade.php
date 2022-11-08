@@ -1,8 +1,7 @@
 @extends('user.app')
 @section('content')
-    <section id="team" class="team">
-        <div class="container">
-
+    <section>
+        <div class="container py-5">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="section-title" data-aos="fade-right">

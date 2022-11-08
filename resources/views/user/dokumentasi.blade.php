@@ -1,7 +1,7 @@
 @extends('user.app')
 @section('content')
     <section id="portfolio" class="portfolio">
-        <div class="container">
+        <div class="container py-5">
             <div class="section-title" data-aos="fade-left">
                 <h2>dokumentasi</h2>
                 <p>Berikut ini merupakan dokumentasi dari kegiatan yang pernah dilakukan oleh student automotive association

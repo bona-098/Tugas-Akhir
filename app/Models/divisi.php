@@ -17,7 +17,7 @@ class divisi extends Model
         'staff',
         'visi',
         'misi',
-        'programkerja_id',
+        // 'programkerja_id',
         'created_at',
         'update_at'
     ];

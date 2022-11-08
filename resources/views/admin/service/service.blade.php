@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($service->where('status', 'terima') as $item)
+                        @foreach ($service->where('status', 'proses') as $item)
                             <tr>
                                 {{-- <td class="text-sm">{{ $loop->iteration }}</td> --}}
                                 <td class="text-sm">{{ $item->nama }}</td>
@@ -44,8 +44,8 @@
                                 <td class="test-sm">{{ $item->user->name ?? "-" }}</td>
                                 <td class="text-sm">{{ $item->pesan }}</td>
                                 <td>
-                                    @if($item->status=='terima')
-                                    <a href="{{ url('change-status/'.$item->id.'status?terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Terima</a>
+                                    @if($item->status=='proses')
+                                    <a href="{{ url('change-status/'.$item->id.'status?terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success" type="hidden">Proses</a>
                                     @elseif ($item->status=='selesai')
                                     <a href="{{ url('change-status/'.$item->id.'status?selesai') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">selesai</a>
                                     @endif
@@ -53,7 +53,7 @@
                                 <td>
                                     <div class="text-center">
                                     
-                                        <a href="{{ url('change-status/'.$item->id.'?status=terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Terima</a>
+                                        {{-- <a href="{{ url('change-status/'.$item->id.'?status=terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Terima</a> --}}
                                         <a href="{{ url('change-status/'.$item->id.'?status=selesai') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Selesai</a>
                                     </div>
                                 </td>

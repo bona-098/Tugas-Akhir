@@ -19,11 +19,11 @@
                             <th>user</th>
                             <th>Pesan</th>
                             <th>Status</th>
-                            <th>
+                            {{-- <th>
                                 <div class="text-center">
                                     Aksi
                                 </div>
-                            </th>                            
+                            </th>                             --}}
                             <th>Hapus</th>
                         </tr>
                     </thead>
@@ -45,13 +45,13 @@
                                     <a href="{{ url('change-status/'.$item->id.'status?selesai') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">selesai</a>
                                     @endif
                                 </td>
-                                <td>
+                                {{-- <td>
                                     <div class="text-center">
                                     
                                         <a href="{{ url('change-status/'.$item->id.'?status=terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Terima</a>
                                         <a href="{{ url('change-status/'.$item->id.'?status=selesai') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Selesai</a>
                                     </div>
-                                </td>
+                                </td> --}}
                                 <td class="text-sm">
                                     <form action="{{ route('service.destroy', $item->id) }}" method="POST">
                                         @method('DELETE')

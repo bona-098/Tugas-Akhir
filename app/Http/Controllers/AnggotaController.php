@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\Models\Anggota;
 use App\Models\Kepengurusan;
 use Illuminate\Http\Request;
 use illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class AnggotaController extends Controller
 {
@@ -51,41 +51,43 @@ class AnggotaController extends Controller
     public function store(Request $request)
     {
 
-        // dd($kepengurusan);?
+        // dd($request);
+        // return $request;
         $this->validate($request, [
             'nama' => 'required',
             'nim' => 'required',
-            'no_telp' => 'required',
-            'prodi' => 'required',
-            'prodi' => 'required',
+            'pilihan_satu' => 'required',
+            'alasan_satu' => 'required',
+            'pilihan_dua' => 'required',
+            'alasan_dua' => 'required',
+            'pindah_divisi' => 'required',
+            'motivasi' => 'required',
+            'komitmen' => 'required',
             'user_id' => 'Auth::id()',
-            'resume' => 'required|mimes:pdf|max:50000',
-            'transkip' => 'required|mimes:pdf|max:50000',
-            'surat_rekomendasi' => 'required|mimes:pdf|max:50000',
-            'sertifikat' => 'required|mimes:pdf|max:50000'
+            'cv' => 'required|mimes:pdf|max:50000',
+            // 'porto' => 'required|mimes:pdf|max:50000',
         ]);
 
-        $newNameResume = date('ymd') . '-' . $request->nama . '-' . $request->resume->extension();
-        $newNameTranskip = date('ymd') . '-' . $request->nama . '-' . $request->transkip->extension();
-        $newNameSurat = date('ymd') . '-' . $request->nama . '-' . $request->surat_rekomendasi->extension();
-        $newNameSertifikat = date('ymd') . '-' . $request->nama . '-' . $request->sertifikat->extension();
+        $newNamecv = date('ymd') . '-' . $request->nama . '-' . $request->cv->extension();
+        $newNameporto = date('ymd') . '-' . $request->nama . '-' . $request->porto->extension();
+       
 
 
-
-        $request->file('resume')->move(public_path('images/pendaftaran/resume'), $newNameResume);
-        $request->file('transkip')->move(public_path('images/pendaftaran/transkip'), $newNameTranskip);
-        $request->file('surat_rekomendasi')->move(public_path('images/pendaftaran/surat_rekomendasi'), $newNameSurat);
-        $request->file('sertifikat')->move(public_path('images/pendaftaran/sertifikat'), $newNameSertifikat);
-
+        $request->file('cv')->move(public_path('images/pendaftaran/cv'), $newNamecv);
+        $request->file('porto')->move(public_path('images/pendaftaran/porto'), $newNameporto);
+       
         Anggota::create([
             'nama' => $request->nama,
             'nim' => $request->nim,
-            'prodi' => $request->prodi,
-            'no_telp' => $request->no_telp,
-            'resume' => $newNameResume,
-            'transkip' => $newNameTranskip,
-            'surat_rekomendasi' => $newNameSurat,
-            'sertifikat' => $newNameSertifikat,
+            'pilihan_satu' => $request->pilihan_satu,
+            'alasan_satu' => $request->alasan_satu,
+            'pilihan_dua' => $request->pilihan_dua,
+            'alasan_dua' => $request->alasan_dua,
+            'pindah_divisi' => $request->pindah_divisi,
+            'motivasi' => $request->motivasi,
+            'komitmen' => $request->komitmen,
+            'cv' => $newNamecv,
+            'porto' => $newNameporto,
             'kepengurusan_id' => null,
             'user_id' => Auth::user()->id
         ]);

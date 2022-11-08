@@ -10,7 +10,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="home">
+        <a class="nav-link" href="/home">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -20,8 +20,13 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        Manajemen
     </div>
+    <li class="nav-item">
+        <a class="nav-link" href="/kepengurusan">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Kepengurusan</span></a>
+    </li>
     <li class="nav-item">
         <a class="nav-link" href="/divisi">
             <i class="fas fa-fw fa-camera"></i>
@@ -48,21 +53,16 @@
             <span>Prestasi</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/kepengurusan">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Kepengurusan</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
-            aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages2"
+            aria-expanded="true" aria-controls="collapsePages2">
             <i class="fas fa-fw fa-folder"></i>
             <span>Penerimaan Anggota</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/kepengurusan">Seleksi Berkkas</a>
-                <a class="collapse-item" href="/pendaftaran">Seleksi Wawancara</a>
-                <a class="collapse-item" href="/wawancara">Anggota</a>
+                <a class="collapse-item" href="/pendaftaran">Seleksi Berkkas</a>
+                <a class="collapse-item" href="/wawancara">Seleksi Wawancara</a>
+                <a class="collapse-item" href="/anggota">Anggota</a>
             </div>
         </div>
     </li>
@@ -72,12 +72,12 @@
             <span>Teknisi</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
-            aria-expanded="false" aria-controls="collapsePages">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages1"
+            aria-expanded="false" aria-controls="collapsePages1">
             <i class="fas fa-fw fa-folder"></i>
             <span>Servis</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="/service">Jadwal Servis</a>
                 <a class="collapse-item" href="/riwayat">Riwayat Servis</a>

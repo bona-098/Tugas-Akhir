@@ -1,3 +1,4 @@
+<title>Edit Divisi : {{ $divisi->nama }}</title>
 @extends('admin.app')
 @section('content')
     <style>

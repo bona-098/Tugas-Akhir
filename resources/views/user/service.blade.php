@@ -1,81 +1,90 @@
 @extends('user.app')
 @section('content')
-    <div class="container">
-        <div class="row mt-4">
-            <div class="col-lg-12 mt-lg-0 mt-4">
-                <div class="card">
-                    @if ($errors->any())
-                        <div class="alert alert-danger text-sm">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    @if(session()->has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
-
-                    @if(session()->has('gagal'))
-                    <div class="alert alert-warning" role="alert">
-                        {{ session()->get('gagal') }}
-                    </div>
-                    @endif
-                    <div class="card-body">
-                        <h5 class="font-weight-bolder">Silahkan isi form dibawah ini untuk melakukan booking jadwal servis
-                        </h5>
-                        <br>
-                        <form action="" method="GET" id="form_1">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                    <label>Hari</label>
-                                    <input type="date" class="form-control" name="hari" id="hari">
-                                    <script>document.getElementById('hari').value = "<?php if (isset($_GET['hari']) && $_GET['hari']) echo $_GET['hari'];?>";</script>
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <label>Pilih Sesi</label>
-                                    <select name="sesi" class="form-control" id="sesi" onchange="this.form.submit()">
-                                        <option value="sesi1">Sesi 1</option>
-                                        <option value="sesi2">Sesi 2</option>
-                                        <option value="sesi3">Sesi 3</option>
-                                        <option value="sesi4">Sesi 4</option>
-                                        </option>
-                                    </select>
-                                </div>
-                                <script>document.getElementById('sesi').value = "<?php if (isset($_GET['sesi']) && $_GET['sesi']) echo $_GET['sesi'];?>";</script>
+    <section>
+        <div class="container py-5">
+            <div class="row mt-4">
+                <div class="col-lg-12 mt-lg-0 mt-4">
+                    <div class="card">
+                        @if ($errors->any())
+                            <div class="alert alert-danger text-sm">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-                            {{-- <div class="row">
-                                <div class="d-flex mt-2 justify-content-end">
-                                    <button class="btn btn-primary" type="submit">Cari</button>
+                        @endif
+                        @if (session()->has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
+
+                        @if (session()->has('gagal'))
+                            <div class="alert alert-warning" role="alert">
+                                {{ session()->get('gagal') }}
+                            </div>
+                        @endif
+                        <div class="card-body">
+                            <h5 class="font-weight-bolder">Silahkan isi form dibawah ini untuk melakukan booking jadwal
+                                servis
+                            </h5>
+                            <br>
+                            <form action="" method="GET" id="form_1">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <label>Hari</label>
+                                        <input type="date" class="form-control" name="hari" id="hari">
+                                        <script>
+                                            document.getElementById('hari').value = "<?php if (isset($_GET['hari']) && $_GET['hari']) {
+                                                echo $_GET['hari'];
+                                            } ?>";
+                                        </script>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <label>Pilih Sesi</label>
+                                        <select name="sesi" class="form-control" id="sesi"
+                                            onchange="this.form.submit()">
+                                            <option value="sesi1">Sesi 1</option>
+                                            <option value="sesi2">Sesi 2</option>
+                                            <option value="sesi3">Sesi 3</option>
+                                            <option value="sesi4">Sesi 4</option>
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <script>
+                                        document.getElementById('sesi').value = "<?php if (isset($_GET['sesi']) && $_GET['sesi']) {
+                                            echo $_GET['sesi'];
+                                        } ?>";
+                                    </script>
                                 </div>
-                            </div> --}}
-                        </form>
-                    </div>
-                </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('service') }}" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="hari" value="<?php if (isset($_GET['hari']) && $_GET['hari']) echo $_GET['hari']; ?>">
-                            <input type="hidden" name="sesi" value="<?php if (isset($_GET['sesi']) && $_GET['sesi']) echo $_GET['sesi']; ?>">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                    <label>Nama</label>
-                                    <input class="form-control" type="text" name="nama">
-                                    <br>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <label>hp</label>
-                                    <input class="form-control" type="text" name="no_hp">
-                                    <br>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <label>pesan</label>
-                                    <input class="form-control" type="text" name="pesan">
-                                    <br>
-                                </div>
+                            </form>
+
+
+                            <form method="POST" action="{{ route('service') }}" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="hari" value="<?php if (isset($_GET['hari']) && $_GET['hari']) {
+                                    echo $_GET['hari'];
+                                } ?>"><br>
+                                <input type="hidden" name="sesi" value="<?php if (isset($_GET['sesi']) && $_GET['sesi']) {
+                                    echo $_GET['sesi'];
+                                } ?>"><br>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <label>Nama</label>
+                                        <input class="form-control" type="text" name="nama">
+                                        <br>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <label>hp</label>
+                                        <input class="form-control" type="text" name="no_hp">
+                                        <br>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <label>pesan</label>
+                                        <input class="form-control" type="text" name="pesan">
+                                        <br>
+                                    </div>
                                     <div class="col-sm-6">
                                         <div class="name">Pilih Teknisi</div>
                                         <div class="value">
@@ -83,23 +92,26 @@
                                                 @foreach ($filter as $item)
                                                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                                 @endforeach
+                                                <option value="">Pilih Teknisi....</option>
                                             </select>
                                         </div>
                                     </div>
-                            </div>
-                            <div class="row">
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary" type="submit">Booking</button>
                                 </div>
-                            </div>
-                        </form>
+                                <div class="row">
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn btn-primary" type="submit">Booking</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+    </section>
     <script>
-        $('#form_1').submit(function () {
+        $('#form_1').submit(function() {
             return false;
         });
     </script>

@@ -1,6 +1,7 @@
 @extends('user.app')
 @section('content')
-    <div class="container mt-sm-5 mt-3">
+<section>
+    <div class="container py-5">
         <div class="row text-center">
             <div class="col-lg-12">
                 <div class="position-sticky pb-lg-5 pb-3 mt-lg-0 mt-5 ps-2" style="top: 100px">
@@ -14,19 +15,21 @@
                 <div class="row">
                     @foreach ($pengumuman as $item)
                         <div class="col-md-4 mt-md-0">
-                            <a href="/detail-pengumuman-user">
-                                {{-- <div class="card shadow-lg move-on-hover min-height-160 min-height-160">
-                  <img class="w-100 my-auto" src="{{ asset('prestasi/foto/' .$item->foto) }}" alt="hero">
-                </div> --}}
-                                <div class="mt-2 ms-2">
+                            <div class="card shadow-lg move-on-hover">
+                                <img class="w-100 my-auto" src="{{ asset('images/pengumuman/' .$item->media) }}" alt="hero" width="100" height="100">
+                            </div>
+                            <div class="mt-2 ms-2">
+                                <a href="/detail-pengumuman-user">
                                     <h6 class="mb-0">{{ $item->judul }}</h6>
                                     <p class="text-secondary text-sm">{{ $item->deskripsi }}</p>
                                     <p class="text-secondary text-sm">{{ $item->waktu }}</p>
+                                </a>
                                 </div>
-                            </a>
                         </div>
                     @endforeach
                 </div>
             </div>
         </div>
+    </div>
+    </section>
     @endsection

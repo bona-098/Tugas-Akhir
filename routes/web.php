@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::resource('/user-service', ServiceController::class);
     Route::get('/user-service', [ServiceController::class, 'create'])->name('service');
     Route::post('/user-service', [ServiceController::class, 'store'])->name('serviceuser.store');
-    Route::get('/user-pendaftaran', [AnggotaController::class, 'index']);
+    Route::get('/user-pendaftaran', [AnggotaController::class, 'create']);
     Route::post('/user-pendaftaran', [AnggotaController::class, 'store'])->name('anggota');
     //role su, admin, teknisi
     Route::group(['middleware' => 'checkRole:su,admin,teknisi'], function () {

@@ -39,14 +39,7 @@
     @include('lp.header')
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex align-items-center">
-        <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
-            <h1>Student Automotive Association</h1>
-            <h2>mengembangkan dan membina kemampuan mahasiswa Institut Teknologi Kalimantan dalam bidang otomotif </h2>
-            {{-- <a href="#about" class="btn-get-started scrollto">Get Started</a> --}}
-        </div>
-    </section>
-    <!-- End Hero -->
+    
 
     <main id="main">
 

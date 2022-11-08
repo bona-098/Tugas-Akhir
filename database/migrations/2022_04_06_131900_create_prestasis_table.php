@@ -25,7 +25,7 @@ class CreatePrestasisTable extends Migration
             $table->date('waktu');
             $table->string('tempat');
             $table->string('foto');
-            $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

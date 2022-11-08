@@ -17,15 +17,18 @@ class CreateAnggotasTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('nim');
-            $table->string('prodi');
-            $table->string('no_telp');
-            $table->string('resume');
-            $table->string('transkip');
-            $table->string('surat_rekomendasi');
-            $table->string('sertifikat');
+            $table->string('pilihan_satu');
+            $table->string('alasan_satu');
+            $table->string('pilihan_dua');
+            $table->string('alasan_dua');
+            $table->string('pindah_divisi');
+            $table->string('motivasi');
+            $table->string('komitmen');
+            $table->string('cv');
+            $table->string('porto');
             $table->enum('status',['berkas','wawancara','anggota','gagal'])->default('berkas');
             $table->timestamps();
-            $table->foreignId('user_id')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

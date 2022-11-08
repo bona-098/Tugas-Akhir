@@ -28,7 +28,7 @@
                         {{-- <th scope="col">delete</th> --}}
                         <th scope="col">Nama</th>
                         <th scope="col">Nim</th>
-                        <th scope="col">Prodi</th>
+                        <th scope="col">Divisi</th>
                         <th scope="col">No Telp</th>
                         <th scope="col">Resume</th>
                         <th scope="col">Transkrip</th>

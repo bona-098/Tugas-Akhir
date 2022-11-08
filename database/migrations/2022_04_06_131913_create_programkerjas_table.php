@@ -28,8 +28,8 @@ class CreateProgramkerjasTable extends Migration
             $table->string('jumlah_sdm');
             $table->string('kebutuhan_lain')->nullable();
             $table->timestamps();
-            $table->foreignId('divisi_id')->constrained('divisis')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('divisi_id')->constrained('divisis')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
