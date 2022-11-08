@@ -22,8 +22,8 @@ class serviceController extends Controller
     public function index()
     {
         $service = Service::with("teknisi", "user")->get();
-
         // dd($service);
+        // $service = Service::where('status', '1')->orWhere('status', '2');
         return view('admin.service.service', compact('service'));
     }
 
@@ -216,16 +216,21 @@ class serviceController extends Controller
     {
         // dd($request->all());
         // $getStatus = Service::select('status')->where('id',$id)->first();
-        if ($request->status == 'Terima') {
-            $status = 1;
-        } elseif ($request->status == 'Proses') {
-            $status = 2;
+        if ($request->status == 'terima') {
+            $status = 'terima';
+        } elseif ($request->status == 'selesai') {
+            $status = 'selesai';
         } else {
-            $status = 3;
+            $status = 'gagal';
         }
         // dd($status);
         Service::where('id', $id)->update(['status' => $status]);
         // Toastr::success('Status Successfully Changed', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
         return redirect()->back();
+    }
+    public function riwayat()
+    {
+        $service = Service::with("teknisi", "user")->get();
+        return view('admin.service.riwayat', compact('service'));
     }
 }

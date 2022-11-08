@@ -28,9 +28,9 @@ use App\Http\Controllers\HomeController;
 */
 
 //user
-Route::get('/', function () {
-    return view('user.home');
-});
+// Route::get('/', function () {
+//     return view('user.home');
+// });
 Route::get('/user-pengumuman', [PengumumanController::class, 'user']);
 Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::class, 'showpengumuman'])->name('pengumuman');
 Route::get('/user-proker', [ProgramkerjaController::class, 'user']);
@@ -40,6 +40,7 @@ Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 's
 Route::get('/user-prestasi', [PrestasiController::class, 'user']);
 // Route::resource('/pendaftaran', PendaftaranController::class);
 Route::get('/change-status/{id}',[ServiceController::class,'changeStatus']);
+Route::get('/', [HomeController::class, 'landingpage']);
 // Route::get('/change-status/{id}',[AnggotaController::class,'statusdaftar']);
 
 //harus login
@@ -55,6 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/service', ServiceController::class);
         Route::resource('/teknisi', TeknisiController::class);
         Route::resource('/home', HomeController::class);
+        Route::get('/riwayat', [ServiceController::class, 'riwayat']);
+        Route::post('/riwayat', [ServiceController::class, 'riwayat']);
     });
     //role
     Route::group(['middleware' => 'checkRole:su, admin'], function () {

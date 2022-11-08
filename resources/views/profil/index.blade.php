@@ -67,16 +67,19 @@
                     <div class="col-md-4">
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-primary">Riwayat Servis</span>
-                            <span class="badge bg-primary rounded-pill">1</span>
+                            <span class="badge bg-primary rounded-pill">Status</span>
                         </h4>
                         <ul class="list-group mb-3">
+                            @foreach ($getservice as $lane)
+                            {{-- @dd($lane); --}}
                             <li class="list-group-item d-flex justify-content-between lh-sm">
                                 <div>
-                                    <h6 class="my-0">Product name</h6>
-                                    <small class="text-muted">jadwal</small>
+                                    <h6 class="my-0">{{ $lane->nama }}</h6>
+                                    <span class="text-muted">{{ $lane->hari }}</span>
                                 </div>
-                                <span class="text-muted">pending</span>
+                                <small class="text-muted">{{ $lane->status }}</small>
                             </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

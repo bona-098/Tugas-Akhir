@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 use App\Models\User;
+use App\Models\Service;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 // use RealRashhid\SweetAlert\Facades\Alert;
 
 class ProfilController extends Controller
@@ -19,7 +21,8 @@ class ProfilController extends Controller
     public function index()
     {
         $profil = Auth::user();
-        return view('profil.index', compact('profil'));
+        $getservice = Service::where('user_id', Auth::user()->id)->get();
+        return view('profil.index', compact('profil', 'getservice'));
     }
 
     /**

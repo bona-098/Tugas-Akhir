@@ -1,7 +1,7 @@
 @extends('admin.app')
 @section('content')
-    <div class="container border">
-        <div class="d-grid gap-1">
+    <div class="container">
+        <div class="mb-3">
             <a button type="button" class="btn btn-primary" id="liveToastBtn" href="{{ route('teknisi.create') }}">Tambah Teknisi</a>
         </div>
         <div class="card-body px-0 pb-0">
@@ -60,4 +60,21 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#products-list').DataTable({
+                dom: 'lBfrtip',
+                lengthMenu: [
+                    [5, 10, 25, 50, 100, 1000, -1],
+                    ['5', '10', '25', '50', '100', '1000', 'All']
+                ],
+                
+                language: {
+                    "searchPlaceholder": "Cari nama teknisi",
+                    "zeroRecords": "Tidak ditemukan data yang sesuai",
+                    "emptyTable": "Tidak terdapat data di tabel"
+                }
+            });
+        });
+    </script>
 @endsection

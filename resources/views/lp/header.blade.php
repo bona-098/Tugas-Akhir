@@ -13,18 +13,41 @@
                     <li><a class="nav-link scrollto" href="/user-dokumentasi">Dokumentasi</a></li>
                     <li><a class="nav-link scrollto" href="/user-pendaftaran">Pendaftaran</a></li>
                     <li><a class="nav-link scrollto" href="/user-service">Servis Harian</a></li>
-                    <li class="dropdown"><a href="#"><span>Daftar</span> <span class="bi bi-caret-down-fill"></span></i></a>
+                    @if (auth()->id() != null)
+                        <li><a class="button" href="/profil">{{auth()->user()->email}}</a></li>
+                    @else
+                        <li><a class="nav-link scrollto" href="/user-service">Masuk</a></li>
+                    @endif
+                    @if (auth()->id() != null)
+                    <li>
+                        <form action="{{route('logout')}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-transparent"><i class="bi bi-arrow-right-square-fill"></i></button>
+                        </form>
+                    </li>
+                    @else
+                    <li><a class="nav-link scrollto" href="/user-service">daftar</a></li>
+                    <input type="hidden">
+                    @endif
+                    
+                    {{-- <li class="dropdown"><a href="#">
+                        @if (auth()->id() != null)
+                        <a href="/profil" class="button is-dark is-mediumed is-inverted px-5"><i class="bi bi-person-check-fill"></i></a>
+                        @else
+                        <span><i class="bi bi-person-fill"></i></span>    
+                        <span class="bi bi-caret-down-fill"></span></i></a>
+                        @endif
                         <ul>
                           <li>
 
                               @if (auth()->id() != null)
                                   <div class="buttons">
-                                      <a href="/profil" class="button is-dark is-mediumed is-inverted px-5">{{auth()->user()->email}}</a>
-                                      <a href="register" class="button is-danger px-5">
+                                      <a button href="/profil" class="button is-dark is-mediumed is-inverted px-5">profil</a>
+                                      <a button href="register" class="button is-danger px-5">
                                           <strong class="has-text-light is-mediumed">
                                               <form action="{{route('logout')}}" method="post">
                                                   @csrf
-                                                  <button type="submit" class="btn btn-outline-light">Logout</button>
+                                                  <button type="submit" class="btn btn-outline-dark">Logout</button>
                                               </form>
                                           </strong>
                                       </a>
@@ -39,7 +62,7 @@
                               @endif
                           </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li>
                     </li>
                     {{-- <li><a class="getstarted scrollto" href="{{ route('register') }}">Daftar</a></li> --}}

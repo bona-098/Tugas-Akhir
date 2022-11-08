@@ -73,7 +73,7 @@
                             <button class="btn btn-block login-btn">{{ __('Register') }}</button>
                         </div>
                     </form>
-                    <a href="#!" class="forgot-password-link">Lupa Password?</a>
+                    <a href="/forgot-password" class="forgot-password-link">Lupa Password?</a>
                     <p class="login-wrapper-footer-text">Belum Memiliki Akun? <a href="{{ route('login') }}"
                             class="text-reset">Daftar Disini</a></p>
                 </div>

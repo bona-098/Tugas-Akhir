@@ -5,6 +5,7 @@ use App\Models\Anggota;
 use App\Models\Service;
 use App\Models\Prestasi;
 use App\Models\Programkerja;
+use App\Models\Dokumentasi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,6 +23,12 @@ class HomeController extends Controller
         $jumlah_programkerja = Programkerja::all()->count();
         // dd($jumlah_anggota);
         return view('admin.dashboard', compact('jumlah_anggota', 'jumlah_service', 'jumlah_prestasi', 'jumlah_programkerja'));
+    }
+
+    public function landingpage()
+    {
+        $getdokumentasi = Dokumentasi::all();
+        return view('user.home', compact('getdokumentasi'));
     }
 
     /**

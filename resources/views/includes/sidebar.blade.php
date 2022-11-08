@@ -2,7 +2,7 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-        <div class="sidebar-brand-text mx-3">SAsA</div>
+        <div class="sidebar-brand-text mx-3">SIMAO</div>
     </a>
 
     <!-- Divider -->
@@ -53,19 +53,18 @@
             <span>Kepengurusan</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/pendaftaran">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Pendaftaran</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/wawancara">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Wawancara</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/anggota">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Anggota</span></a>
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
+            aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Penerimaan Anggota</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="/kepengurusan">Seleksi Berkkas</a>
+                <a class="collapse-item" href="/pendaftaran">Seleksi Wawancara</a>
+                <a class="collapse-item" href="/wawancara">Anggota</a>
+            </div>
+        </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/teknisi">
@@ -73,71 +72,61 @@
             <span>Teknisi</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/service">
-            <i class="fa fa-plus-square" aria-hidden="true"></i>
-            <span>Servis</span></a>
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
+            aria-expanded="false" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Servis</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="/service">Jadwal Servis</a>
+                <a class="collapse-item" href="/riwayat">Riwayat Servis</a>
+            </div>
+        </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/kelola">
             <i class="fa fa-plus-square" aria-hidden="true"></i>
             <span>Kelola user</span></a>
+
     </li>
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
-    {{-- sidebar start--}}
+    {{-- sidebar start --}}
     <!-- Divider -->
-    {{-- <hr class="sidebar-divider">
+    {{-- <hr class="sidebar-divider"> --}}
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    {{-- <div class="sidebar-heading">
         Addons
-    </div>
-    
+    </div> --}}
+
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-            aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
-            </div>
-        </div>
-    </li>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Charts</span></a>
-    </li>
+    </li> --}}
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
-    </li>
-    
+    </li> --}}
+
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    {{-- <hr class="sidebar-divider d-none d-md-block"> --}}
 
     <!-- Sidebar Toggler (Sidebar) -->
-    
+
 
     <!-- Sidebar Message -->
-    <div class="sidebar-card d-none d-lg-flex">
+    {{-- <div class="sidebar-card d-none d-lg-flex">
         <img class="sidebar-card-illustration mb-2" src="dashboard/img/undraw_rocket.svg" alt="...">
         <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
         <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>

@@ -1,15 +1,15 @@
 @extends('admin.app')
 @section('content')
     <div class="container border">
-        <div class="d-grid gap-1">
+        <div class="button mb-3">
             <a button type="button" class="btn btn-primary" id="liveToastBtn"
                 href="{{ route('divisi.create') }}">Tambah Divisi</a>
         </div>
         <div class="card-body px-0 pb-0">
             <div class="table-responsive border">
-                <table id="example" class="table table-flush" id="products-list">
+                <table class="table table-flush" id="products-list">
 
-                    <thead class="thead-light">
+                    <thead class="thead-dark">
                         <tr>
                             <th>Nama</th>
                             <th>kadiv</th>
@@ -56,18 +56,21 @@
             </div>
         </div>
     </div>
-@push('scripts')
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             $('#products-list').DataTable({
-                dom: 'IBfrtp',
+                dom: 'lBfrtip',
                 lengthMenu: [
-                    [2, 10, 50, 1000],
-                    [2, 10, 50, 1000]
-                ]
+                    [5, 10, 25, 50, 100, 1000, -1],
+                    ['5', '10', '25', '50', '100', '1000', 'All']
+                ],
 
-            })
-        })
-    </script>    
-@endpush
+                language: {
+                    "searchPlaceholder": "Cari nama divisi",
+                    "zeroRecords": "Tidak ditemukan data yang sesuai",
+                    "emptyTable": "Tidak terdapat data di tabel"
+                }
+            });
+        });
+    </script>
     @endsection
