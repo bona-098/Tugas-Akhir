@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-4">
                         <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">prok</p>
+                            <p class="title is-semibolded is-size-6 has-text-grey">Program Kerja</p>
                             @foreach ($proker as $item)
                             <p>{{ $item->nama ?? "jago"}}</p>                            
                             @endforeach

@@ -21,12 +21,13 @@ class CreateProgramkerjasTable extends Migration
             $table->string('landasan_kegiatan');
             $table->string('tujuan_kegiatan');
             $table->string('objek_segmentasi');
-            $table->string('deskripsi');
+            $table->string('deskripsi')->nullable();
             $table->string('parameter_keberhasilan');
             $table->string('kebutuhan_dana')->nullable();
             $table->string('sumber_dana')->nullable();
             $table->string('jumlah_sdm');
             $table->string('kebutuhan_lain')->nullable();
+            $table->enum('status',['planning','monitoring','selesai'])->default('planning');
             $table->timestamps();
             $table->foreignId('divisi_id')->constrained('divisis')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('cascade')->onUpdate('cascade');

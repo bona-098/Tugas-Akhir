@@ -33,9 +33,18 @@
             <span>Divisi</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/proker">
-            <i class="fas fa-fw fa-camera"></i>
-            <span>Program Kerja</span></a>
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages3"
+            aria-expanded="true" aria-controls="collapsePages3">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Program Kerja</span>
+        </a>
+        <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="/proker">Planning</a>
+                <a class="collapse-item" href="/monitoring">monitoring</a>
+                <a class="collapse-item" href="/riwayatkerja">riwayat</a>
+            </div>
+        </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/dokumentasi">

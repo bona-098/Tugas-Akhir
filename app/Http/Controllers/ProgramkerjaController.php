@@ -21,6 +21,16 @@ class ProgramkerjaController extends Controller
         $proker = Programkerja::get();
         return view('admin.proker.proker', compact('proker'));
     }
+    public function riwayatkerja()
+    {
+        $proker = Programkerja::get();
+        return view('admin.proker.riwayatkerja', compact('proker'));
+    }
+    public function monitoring()
+    {
+        $proker = Programkerja::get();
+        return view('admin.proker.monitoring', compact('proker'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -54,12 +64,12 @@ class ProgramkerjaController extends Controller
             'landasan_kegiatan' => 'required',
             'tujuan_kegiatan' => 'required',
             'objek_segmentasi' => 'required',
-            'deskripsi' => 'required',
+            // 'deskripsi' => 'required',
             'parameter_keberhasilan' => 'required',
-            'kebutuhan_dana' => 'required',
-            'sumber_dana' => 'required',
+            // 'kebutuhan_dana' => 'required',
+            // 'sumber_dana' => 'required',
             'jumlah_sdm' => 'required',
-            'kebutuhan_lain' => 'required',
+            // 'kebutuhan_lain' => 'required',
             'divisi_id' => 'required',
             'kepengurusan_id' => 'required'
         ]);
@@ -77,6 +87,7 @@ class ProgramkerjaController extends Controller
             'sumber_dana' => $request->sumber_dana,
             'jumlah_sdm' => $request->jumlah_sdm,
             'kebutuhan_lain' => $request->kebutuhan_lain,
+            // 'status' => 'planning',
             'divisi_id' => $request->divisi_id,
             'kepengurusan_id' => $request->kepengurusan_id
         ]);
@@ -158,6 +169,18 @@ class ProgramkerjaController extends Controller
         return view('user.proker', compact('proker')); 
     }
 
-
+    public function status(Request $request, $id)
+    {
+        // dd($request->all());
+        if ($request->status == 'monitoring') {
+            $status = 'monitoring';
+        } elseif ($request->status == 'planning') {
+            $status = 'planning';
+        } else {
+            $status = 'selesai';
+        }
+        programkerja::where('id', $id)->update(['status' => $status]);
+        // Toastr::success('Status Successfully Changed', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
+        return redirect()->back();
+    }
 }
-

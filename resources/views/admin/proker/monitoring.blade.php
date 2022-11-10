@@ -2,7 +2,7 @@
 @section('content')
     <div class="container border">
         <div class="button mb-3">
-            <h1>riwayat</h1>
+            <h1>Monitoring</h1>
             <a button type="button" class="btn btn-primary" id="liveToastBtn"
                 href="{{ route('proker.create') }}">Tambah Program kerja</a>
         </div>
@@ -24,12 +24,10 @@
                             <th>sumber_dana</th>
                             <th>Jumlah_sdm</th>
                             <th>Kebutuhan_lain</th>
-                            <th>status</th>
-                            <th>aksi</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    @foreach ($proker->where('status', 'planning') as $item)
+                    @foreach ($proker->where('status', 'monitoring') as $item)
                     {{-- @dd('$item') --}}
                         <tbody>
                             <tr>
@@ -46,19 +44,19 @@
                                 <td class="text-sm">{{ $item->jumlah_sdm }}</td>                                
                                 <td class="text-sm">{{ $item->kebutuhan_lain }}</td>
                                 <td>
-                                    @if($item->status=='monitoring')
-                                    <a href="{{ url('status/'.$item->id.'?status=monitoring') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Setuju</a>
-                                    @elseif ($item->status=='planning')
+                                    @if($item->status=='selesai')
+                                    <a href="{{ url('status/'.$item->id.'?status=selesai') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Setuju</a>
+                                    @elseif ($item->status=='monitoring')
                                     <a href="{{ url('status/'.$item->id.'?status=planning') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Tolak</a>
                                     @endif
                                 </td>
                                 {{-- url('status/'.$item->id.'?status=monitoring')                      --}}
                                 <td>
-                                    <a href="{{ url('status/'.$item->id.'?status=monitoring') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Setuju</a>
+                                    <a href="{{ url('status/'.$item->id.'?status=selesai') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Setuju</a>
                                     
                                     <a href="{{ url('status/'.$item->id.'?status=planning') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Tolak</a>
                                     
-                                </td>                     
+                                </td>                              
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

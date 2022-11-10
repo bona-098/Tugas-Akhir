@@ -40,6 +40,7 @@ Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 's
 Route::get('/user-prestasi', [PrestasiController::class, 'user']);
 // Route::resource('/pendaftaran', PendaftaranController::class);
 Route::get('/change-status/{id}',[ServiceController::class,'changeStatus']);
+Route::get('/status/{id}',[ProgramkerjaController::class,'status']);
 Route::get('/', [HomeController::class, 'landingpage']);
 // Route::get('/change-status/{id}',[AnggotaController::class,'statusdaftar']);
 
@@ -76,6 +77,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/wawancari-2/{wawancari}', [AnggotaController::class, 'wawancari'])->name('gagal');
         Route::get('/pendaftaran', [AnggotaController::class, 'berkas'])->name('berkas');
         Route::resource('/anggota', AnggotaController::class);
+        route::get('/monitoring', [ProgramkerjaController::class, 'monitoring']);
+        route::get('/riwayatkerja', [ProgramkerjaController::class, 'riwayatkerja']);
     });
 });
 require __DIR__.'/auth.php';

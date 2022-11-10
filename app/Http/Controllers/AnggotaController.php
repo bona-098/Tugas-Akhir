@@ -68,13 +68,25 @@ class AnggotaController extends Controller
             // 'porto' => 'required|mimes:pdf|max:50000',
         ]);
 
-        $newNamecv = date('ymd') . '-' . $request->nama . '-' . $request->cv->extension();
-        $newNameporto = date('ymd') . '-' . $request->nama . '-' . $request->porto->extension();
-       
+        // $newNamecv = date('ymd') . '-' . $request->nama . '-' . $request->cv->extension();
+        // $newNameporto = date('ymd') . '-' . $request->nama . '-' . $request->porto->extension();
+        $newNamecv = '-';
+        $newNameporto = '-';
+        if ($request->hasFile('cv')) {
+            //code proses jika file cv di upload
+            $newNamecv = date('ymd') . '-' . $request->nama . $request->cv->extension();
+            $request->file('cv')->move(public_path('images/pendaftaran/cv'), $newNamecv);
+        }
+        
+        if ($request->hasFile('porto')) {
+            //code proses jika file porto di upload
+            $newNameporto = date('ymd') . '-' . $request->nama . $request->porto->extension();
+            $request->file('porto')->move(public_path('images/pendaftaran/porto'), $newNameporto);
+        }
 
 
-        $request->file('cv')->move(public_path('images/pendaftaran/cv'), $newNamecv);
-        $request->file('porto')->move(public_path('images/pendaftaran/porto'), $newNameporto);
+        // $request->file('cv')->move(public_path('images/pendaftaran/cv'), $newNamecv);
+        // $request->file('porto')->move(public_path('images/pendaftaran/porto'), $newNameporto);
        
         Anggota::create([
             'nama' => $request->nama,

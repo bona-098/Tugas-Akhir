@@ -215,7 +215,6 @@ class serviceController extends Controller
     public function changeStatus(Request $request, $id)
     {
         // dd($request->all());
-        // $getStatus = Service::select('status')->where('id',$id)->first();
         if ($request->status == 'terima') {
             $status = 'terima';
         } elseif ($request->status == 'selesai') {
@@ -223,7 +222,6 @@ class serviceController extends Controller
         } else {
             $status = 'gagal';
         }
-        // dd($status);
         Service::where('id', $id)->update(['status' => $status]);
         // Toastr::success('Status Successfully Changed', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
         return redirect()->back();

@@ -25,7 +25,7 @@ class CreateAnggotasTable extends Migration
             $table->string('motivasi');
             $table->string('komitmen');
             $table->string('cv');
-            $table->string('porto');
+            $table->string('porto')->nullable();
             $table->enum('status',['berkas','wawancara','anggota','gagal'])->default('berkas');
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');

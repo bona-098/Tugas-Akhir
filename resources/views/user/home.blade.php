@@ -75,7 +75,7 @@
         </section>
         <!-- end pengumuman section -->
         <!-- progran kerja Section -->
-        <section id="services" class="services section-bg">
+        {{-- <section id="services" class="services section-bg">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4">
@@ -101,7 +101,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- End Services Section -->
         <!-- Dokumentasi Section -->
         <section id="portfolio" class="portfolio">
