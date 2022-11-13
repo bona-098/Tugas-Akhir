@@ -1,24 +1,6 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-</script>
-</head> --}}
 <title>Pendaftaran Anggota</title>
 @extends('user.app')
 @section('content')
-    <style>
-        .name {
-            font-style: bold;
-        }
-    </style>
     <section>
         <div class="container py-5">
             <form method="POST" action="{{ route('anggota') }}" enctype="multipart/form-data">
@@ -36,14 +18,26 @@
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="form3Example1q">Nama</label>
                                                 <input type="text" name="nama" id="form3Example1q"
-                                                    class="form-control" />
+                                                    class="form-control"
+                                                    @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
+                                                @error('nama')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="form3Example1q">Nim</label>
-                                                <input type="string" name="nim" id="form3Example1q"
-                                                    class="form-control" />
+                                                <input type="number" name="nim" id="form3Example1q"
+                                                    class="form-control"
+                                                    @error('nim') is-invalid @enderror" value="{{ old('nim') }}">
+                                                    @error('nim')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -52,19 +46,26 @@
                                             <div class="form-outline mb-4">
                                                 <label>Pilihan Pertama</label>
                                                 <select name="pilihan_satu" class="form-control">
+                                                    <option value="" >Pilih divisi...</option>
                                                     <option value="Divisi HRD">Divisi HRD</option>
                                                     <option value="Divisi ORG">Divisi ORG</option>
                                                     <option value="Divisi UMUM">Divisi UMUM</option>
                                                     <option value="Divisi MEDFO">Divisi MEDFO</option>
                                                     <option value="Divisi HUBLU">Divisi HUBLU</option>
                                                     <option value="Divisi KWU">Divisi KWU</option>
-                                                </select>
+                                                </select>                                                
+                                                @error('pilihan_satu')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-outline mb-4">
                                                 <label>Pilihan Kedua</label>
                                                 <select name="pilihan_dua" class="form-control">
+                                                    <option value="" >Pilih divisi...</option>
                                                     <option value="Divisi HRD">Divisi HRD</option>
                                                     <option value="Divisi ORG">Divisi ORG</option>
                                                     <option value="Divisi UMUM">Divisi UMUM</option>
@@ -72,6 +73,11 @@
                                                     <option value="Divisi HUBLU">Divisi HUBLU</option>
                                                     <option value="Divisi KWU">Divisi KWU</option>
                                                 </select>
+                                                @error('pilihan_dua')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -81,12 +87,22 @@
                                                 <label class="form-label" for="form3Example1q">Alasan pilihan
                                                     pertama</label>
                                                 <textarea type="text" name="alasan_satu" id="form3Example1q" class="form-control"></textarea>
+                                                @error('alasan_satu')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="form3Example1q">Alasan pilihan kedua</label>
-                                                <textarea type="text" name="alasan_dua" id="form3Example1q" class="form-control"></textarea>
+                                                <textarea type="text" name="alasan_dua" id="form3Example1q" class="form-control" ></textarea>
+                                                @error('alasan_dua')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -94,12 +110,17 @@
                                         <div class="col">
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="form3Example1q">Apakah bersedia dipindahkan
-                                                    ke
-                                                    divisi lain ?</label>
+                                                    ke divisi lain ?</label>
                                                 <select name="pindah_divisi" class="form-control" id="">
+                                                    <option value="" >Ya / Tidak</option>
                                                     <option value="ya">Ya</option>
                                                     <option value="Tidak">Tidak</option>
                                                 </select>
+                                                @error('pindah_divisi')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -108,12 +129,22 @@
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="form3Example1q">Motivasi</label>
                                                 <textarea type="text" name="motivasi" id="form3Example1q" class="form-control"></textarea>
+                                                @error('motivasi')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="form3Example1q">Komitmen</label>
                                                 <textarea type="text" name="komitmen" id="form3Example1q" class="form-control"></textarea>
+                                                @error('komitmen')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -125,8 +156,12 @@
                                                 <input type="file" name="cv" @error('cv') is-invalid @enderror"
                                                     value="#">
                                                 <div class="label--desc">Upload file pdf</div>
+                                                @error('cv')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                             </div>
-
                                         </div>
                                         <div class="col">
                                             <div class="name">Portofolio</div>

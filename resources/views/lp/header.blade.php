@@ -2,7 +2,7 @@
     <div class="container responsive">
         <div class="header-container d-flex align-items-center justify-content-between">
             <div class="logo">
-                <img src="{{ asset('assets/img/logoSAA.png') }}" alt="logosaa">
+                <a href="{{ '/' }}"><img src="{{ asset('assets/img/logoSAA.png') }}" alt="logosaa"></a>
             </div>
 
             <nav id="navbar" class="navbar">

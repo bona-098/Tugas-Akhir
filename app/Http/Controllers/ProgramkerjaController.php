@@ -137,8 +137,11 @@ class ProgramkerjaController extends Controller
             'jumlah_sdm' => 'required',
             'kebutuhan_lain' => 'required'
         ]);
+        $prokers = $request->all();
+        $proker = Programkerja::find($id);
+        $proker->update($prokers);
 
-        return redirect()->route('proker.proker');
+        return view('admin.proker.proker', compact('proker'));
     }
 
     /**

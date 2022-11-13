@@ -24,7 +24,9 @@
                             <th>sumber_dana</th>
                             <th>Jumlah_sdm</th>
                             <th>Kebutuhan_lain</th>
-                            <th>Action</th>
+                            <th>status</th>
+                            <th>Aksi</th>
+                            <th>Alat</th>
                         </tr>
                     </thead>
                     @foreach ($proker->where('status', 'monitoring') as $item)

@@ -33,7 +33,7 @@ use App\Http\Controllers\HomeController;
 // });
 Route::get('/user-pengumuman', [PengumumanController::class, 'user']);
 Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::class, 'showpengumuman'])->name('pengumuman');
-Route::get('/user-proker', [ProgramkerjaController::class, 'user']);
+// Route::get('/user-proker', [ProgramkerjaController::class, 'user']);
 Route::get('/user-dokumentasi', [DokumentasiController::class, 'user']);
 Route::get('/user-dokumentasidetail/{showdokumentasi}', [DokumentasiController::class, 'showuser'])->name('showdokumentasi');
 Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
@@ -79,6 +79,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/anggota', AnggotaController::class);
         route::get('/monitoring', [ProgramkerjaController::class, 'monitoring']);
         route::get('/riwayatkerja', [ProgramkerjaController::class, 'riwayatkerja']);
+        route::patch('/proker/{id}/Update', [ProgramkerjaController::class, 'update'])->name('proker');
+        // Route::patch('/settings/{id}/update/', 'HomeController@update')->name('user.update');
     });
 });
 require __DIR__.'/auth.php';

@@ -38,33 +38,69 @@
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <label>waktu</label>
-                                    <input class="form-control" type="text" name="kadiv"
-                                        value="{{ $proker->kadiv }}">
+                                    <label>Penanggung Jawab</label>
+                                    <input class="form-control" type="text" name="penanggung_jawab"
+                                        value="{{ $proker->penanggung_jawab }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <label>deskripsi</label>
-                                    <input class="form-control" type="text" name="staffahli"
-                                        value="{{ $proker->staffahli }}">
+                                    <label>Pengurus</label>
+                                    <input class="form-control" type="text" name="pengurus"
+                                        value="{{ $proker->pengurus }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <label>deskripsi</label>
-                                    <input class="form-control" type="text" name="staff"
-                                        value="{{ $proker->staff }}">
+                                    <label>Landasan Kegiatan</label>
+                                    <input class="form-control" type="text" name="landasan_kegiatan"
+                                        value="{{ $proker->landasan_kegiatan }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <label>deskripsi</label>
-                                    <input class="form-control" type="text" name="visi"
-                                        value="{{ $proker->visi }}">
+                                    <label>Tujuan Kegiatan</label>
+                                    <input class="form-control" type="text" name="tujuan_kegiatan"
+                                        value="{{ $proker->tujuan_kegiatan }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">
+                                    <label>Objek Segmentasi</label>
+                                    <input class="form-control" type="text" name="objek_segmentasi"
+                                        value="{{ $proker->objek_segmentasi }}">
+                                    <br>
+                                </div>                                
+                                <div class="col-12 col-sm-6">
                                     <label>deskripsi</label>
-                                    <input class="form-control" type="text" name="misi"
-                                        value="{{ $proker->misi }}">
+                                    <input class="form-control" type="text" name="deskripsi"
+                                        value="{{ $proker->deskripsi }}">
+                                    <br>
+                                </div>                                
+                                <div class="col-12 col-sm-6">
+                                    <label>Parameter Keberhasilan</label>
+                                    <input class="form-control" type="text" name="parameter_keberhasilan"
+                                        value="{{ $proker->parameter_keberhasilan }}">
+                                    <br>
+                                </div>                                
+                                <div class="col-12 col-sm-6">
+                                    <label>Kebutuhan Dana</label>
+                                    <input class="form-control" type="text" name="kebutuhan_dana"
+                                        value="{{ $proker->kebutuhan_dana }}">
+                                    <br>
+                                </div>                                
+                                <div class="col-12 col-sm-6">
+                                    <label>SUmber Dana</label>
+                                    <input class="form-control" type="text" name="sumber_dana"
+                                        value="{{ $proker->sumber_dana }}">
+                                    <br>
+                                </div>                                
+                                <div class="col-12 col-sm-6">
+                                    <label>Jumlah SDM</label>
+                                    <input class="form-control" type="text" name="jumlah_sdm"
+                                        value="{{ $proker->jumlah_sdm }}">
+                                    <br>
+                                </div>                                
+                                <div class="col-12 col-sm-6">
+                                    <label>Kebutuhan Lain</label>
+                                    <input class="form-control" type="text" name="kebutuhan_lain"
+                                        value="{{ $proker->kebutuhan_lain }}">
                                     <br>
                                 </div>                                
                             </div>

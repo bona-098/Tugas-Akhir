@@ -5,7 +5,7 @@
             <div class="row mt-4">
                 <div class="col-lg-12 mt-lg-0 mt-4">
                     <div class="card">
-                        @if ($errors->any())
+                        {{-- @if ($errors->any())
                             <div class="alert alert-danger text-sm">
                                 <ul>
                                     @foreach ($errors->all() as $error)
@@ -13,7 +13,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif
+                        @endif --}}
                         @if (session()->has('success'))
                             <div class="alert alert-success" role="alert">
                                 {{ session()->get('success') }}
@@ -72,17 +72,33 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12">
                                         <label>Nama</label>
-                                        <input class="form-control" type="text" name="nama">
+                                        <input class="form-control" type="text" name="nama"
+                                            @error('nama') is-invalid @enderror"value="{{ old('nama') }}">
+                                        @error('nama')
+                                            <div class="alert alert-danger mt-2">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                         <br>
                                     </div>
-                                    <div class="col-12 col-sm-6">
+                                    <div class="col-12 col-sm-6 ">
                                         <label>hp</label>
-                                        <input class="form-control" type="text" name="no_hp">
+                                        <input class="form-control " type="number" name="no_hp" @error('no_hp') is-invalid @enderror" value="{{ old('no_hp') }}">
+                                                @error('no_hp')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                         <br>
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <label>pesan</label>
-                                        <input class="form-control" type="text" name="pesan">
+                                        <label>Keluhan</label>
+                                        <input class="form-control" type="text" name="pesan" @error('pesan') is-invalid @enderror" value="{{ old('pesan') }}">
+                                                @error('pesan')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror>
                                         <br>
                                     </div>
                                     <div class="col-sm-6">
@@ -94,6 +110,11 @@
                                                 @endforeach
                                                 <option value="">Pilih Teknisi....</option>
                                             </select>
+                                            @error('teknisi_id')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                         </div>
                                     </div>
                                 </div>

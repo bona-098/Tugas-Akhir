@@ -47,62 +47,46 @@
     </section><!-- End profil Section -->
     <main>
         {{-- pengumuman section --}}
-        <section>
-            <div class="container px-4 py-5" id="featured-3">
-                <h2 class="pb-2 border-bottom">Pengumuman</h2>
-                {{-- @dd($pengumuman) --}}
-                <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-                    @foreach ($getpengumuman as $pengumuman)
-                        <div class="feature col">
-                            <div class="card shadow-lg move-on-hover">
-                                <img class="w-100 my-auto" src="{{ asset('images/pengumuman/' . $pengumuman->media) }}"
-                                    alt="hero" height="200">
-                            </div>
-                            <br>
-                            <h2>sa</h2>
-                            <p>{{ $pengumuman->judul }}</p>
-                            <p>{{ $pengumuman->deskripsi }}</p>
-                            <a href="/user-pengumuman" class="icon-link">
-                                Call to action
+        <section id="team" class="team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="section-title" data-aos="fade-right">
+                            <h2>Pengumuman</h2>
+                            <p>Berikut ini adalah pengumuman terkait Student Automotive association</p>
+                            <a href="/user-prestasi" class="icon-link">
+                                Selengkapnya
                                 <svg class="bi" width="1em" height="1em">
                                     <use xlink:href="/user-pengumumandet" />
                                 </svg>
                             </a>
                         </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-        <!-- end pengumuman section -->
-        <!-- progran kerja Section -->
-        {{-- <section id="services" class="services section-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="section-title" data-aos="fade-right">
-                            <h2>Program Kerja</h2>
-                            <p>Berikut ini merupakan program kerja unggulan kami :</p>
-                        </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="row">
-                            @foreach ($getproker as $proker)
-                                <div class="col-md-6 d-flex align-items-stretch">
-                                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-                                        <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                                        <h4><a href="">{{ $proker->nama }}</a></h4>
-                                        <p>servis harian dilaksakan setiap hari senin - jumat mulai dari pukul 10.00 - 16.00
-                                            wita di
-                                            workshop saa</p>
+                            @foreach ($getpengumuman as $pengumuman)
+                                <div class="col-lg-6">
+                                    <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                                        <div class="pic"><img src="Bethany/assets/img/team/team-1.jpg" class="img-fluid"
+                                                alt=""></div>
+                                        <div class="member-info">
+                                            <h4>{{ $pengumuman->waktu }}</h4>
+                                            <span>{{ $pengumuman->judul }}</span>
+                                            <p>{{ $pengumuman->deskripsi }}</p>
+                                            <div class="social">
+                                                <a href="#">selengkapnya</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
+
             </div>
-        </section> --}}
-        <!-- End Services Section -->
+        </section>
+        <!-- end pengumuman section -->
         <!-- Dokumentasi Section -->
         <section id="portfolio" class="portfolio">
             <div class="container">
@@ -116,14 +100,14 @@
                     @foreach ($getdokumentasi as $dokumentasi)
                         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                             <div class="portfolio-wrap">
-                                <img src="assets/img/dokumentasi/dok2.jpg" class="img-fluid" alt="">
+                                <img src="{{ asset('images/dokumentasi/' . $dokumentasi->media) }}" class="img-fluid" alt="">
                                 <div class="portfolio-info">
                                     <h4>{{ $dokumentasi->nama }}</h4>
-                                    <p>11 mei 2022</p>
+                                    <p>{{ $dokumentasi->waktu }}</p>
                                     <div class="portfolio-links">
-                                        <a href="assets/img/dokumentasi/dok2.jpg" data-gallery="portfolioGallery"
-                                            class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                        <a href="{{ asset('images/dokumentasi/' . $dokumentasi->media) }}" data-gallery="portfolioGallery"
+                                            class="portfolio-lightbox" title="{{ $dokumentasi->nama }}"><i class="bx bx-plus"></i></a>
+                                        <a href="/user-dokumentasi" title="selengkapnya"><i class="bx bx-link"></i></a>
                                     </div>
                                 </div>
                             </div>
