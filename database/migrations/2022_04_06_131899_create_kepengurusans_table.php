@@ -19,9 +19,9 @@ class CreateKepengurusansTable extends Migration
             $table->string('nama');
             $table->string('tahun');
             $table->string('pembina');
-            // $table->string('anggotas_id');
-            // $table->string('programkerjas_id');
-            // $table->string('prestasis_id');
+            $table->string('ketua');
+            $table->string('sekretaris');
+            $table->string('bendahara');
             // $table->string('service_id');
             $table->timestamps();
         });

@@ -86,7 +86,7 @@ class serviceController extends Controller
 
             ]);
 
-            return redirect()->route('service')->with('success', 'Data berhasil ditambahkan');
+            return redirect()->route('service')->with('success', 'Servis berhasil, silahkan cek profil');
         }
     }
 
@@ -196,7 +196,7 @@ class serviceController extends Controller
             // 'foto' => $foto,
         ]);
 
-        return redirect()->route('service.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('service.index')->with('success', 'servis berhasil diperbarui');
     }
 
     /**
@@ -209,7 +209,7 @@ class serviceController extends Controller
     {
         // $karyawan = Karyawan::find($karyawan);
         $service->destroy($id);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'riwayat servis berhasil dihapus');
     }
 
     public function changeStatus(Request $request, $id)
@@ -223,8 +223,7 @@ class serviceController extends Controller
             $status = 'gagal';
         }
         Service::where('id', $id)->update(['status' => $status]);
-        // Toastr::success('Status Successfully Changed', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'servis telah selesai');
     }
     public function riwayat()
     {

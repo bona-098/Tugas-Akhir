@@ -13,8 +13,7 @@
                         <tr>
                             <th>Nama</th>
                             <th>kadiv</th>
-                            <th>staffahli</th>
-                            <th>staff</th>
+                            {{-- <th>staff</th> --}}
                             <th>visi</th>
                             <th>misi</th>                            
                             <th>Action</th>
@@ -27,8 +26,7 @@
                                 {{-- <a href="oh/shiow/{{ $item->id }}">  --}}
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->kadiv }}</td>
-                                <td class="text-sm">{{ $item->staffahli }}</td>
-                                <td class="text-sm">{{ $item->staff }}</td>
+                                {{-- <td class="text-sm">{{ $item->staff->nama }}</td> --}}
                                 <td class="text-sm">{{ $item->visi }}</td>                                
                                 <td class="text-sm">{{ $item->misi }}</td>
                                 </a>

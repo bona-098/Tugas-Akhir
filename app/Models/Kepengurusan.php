@@ -13,6 +13,9 @@ class Kepengurusan extends Model
         'nama',
         'tahun',
         'pembina',
+        'ketua',
+        'sekretaris',
+        'bendahara',
     ];
     /**
      * Get the prestasi t owns the Kepengurusan

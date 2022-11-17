@@ -44,18 +44,12 @@
                                         value="{{ $divisi->kadiv }}">
                                     <br>
                                 </div>
-                                <div class="col-12 col-sm-6">
-                                    <label>deskripsi</label>
-                                    <input class="form-control" type="text" name="staffahli"
-                                        value="{{ $divisi->staffahli }}">
-                                    <br>
-                                </div>
-                                <div class="col-12 col-sm-6">
+                                {{-- <div class="col-12 col-sm-6">
                                     <label>deskripsi</label>
                                     <input class="form-control" type="text" name="staff"
                                         value="{{ $divisi->staff }}">
                                     <br>
-                                </div>
+                                </div> --}}
                                 <div class="col-12 col-sm-6">
                                     <label>deskripsi</label>
                                     <input class="form-control" type="text" name="visi"

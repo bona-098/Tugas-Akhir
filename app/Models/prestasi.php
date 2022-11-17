@@ -10,16 +10,14 @@ class prestasi extends Model
     use HasFactory;
     public $table = 'prestasis';
     protected $fillable = [
-        'nama',
-        'nim',
-        'pencapaian',
-        'dospem',
-        'kategori',
         'nama_kegiatan',
+        'jenis_kegiatan',
+        'partisipasi',
+        'deskripsi',
+        'sertifikat',
         'penyelenggara',
         'waktu',
         'tempat',
-        'foto',
         'kepengurusan_id',
     ];
     /**

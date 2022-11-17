@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\divisi;
 use App\Models\programkerja;
+use App\Models\Anggota;
 use Exception;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
@@ -48,8 +49,7 @@ class DivisiController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'kadiv' => 'required',
-            'staffahli' => 'required',
-            'staff' => 'required',
+            // 'staff' => 'required',
             'visi' => 'required',
             'misi' => 'required'
         ]);
@@ -57,13 +57,12 @@ class DivisiController extends Controller
         Divisi::create([
             'nama'=>$request->nama,
             'kadiv'=>$request->kadiv,
-            'staffahli'=>$request->staffahli,
-            'staff'=>$request->staff,
+            // 'staff'=>$request->staff,
             'visi'=>$request->visi,
             'misi'=>$request->misi
         ]);
 
-        return redirect()->route('divisi.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('divisi.index')->with('success', 'Data divisi berhasil ditambahkan');
     }
 
     /**
@@ -76,10 +75,12 @@ class DivisiController extends Controller
     {
         $divisi = Divisi::findOrfail($id);
         $proker = Programkerja::where('divisi_id', '=', $id)->get();
+        $staff = Anggota::where('divisi_id', '=', $id)->get();
         return view('admin.divisi.show',
         [
             'divisi' => $divisi,
-            'proker' => $proker
+            'proker' => $proker,
+            'staff' => $staff
             ]);
     }
 
@@ -107,8 +108,7 @@ class DivisiController extends Controller
         $request->validate([
             'nama' => 'required',
             'kadiv' => 'required',
-            'staffahli' => 'required',
-            'staff' => 'required',
+            // 'staff' => 'required',
             'visi' => 'required',
             'misi' => 'required'
         ]);
@@ -119,13 +119,12 @@ class DivisiController extends Controller
         $divisi->update([
             'nama'=>$request->nama,
             'kadiv'=>$request->kadiv,
-            'staffahli'=>$request->staffahli,
-            'staff'=>$request->staff,
+            // 'staff'=>$request->staff,
             'visi'=>$request->visi,
             'misi'=>$request->misi
         ]);
 
-        return redirect()->route('divisi.index');
+        return redirect()->route('divisi.index')->with('success', 'data divisi telah diubah');
     }
 
     /**

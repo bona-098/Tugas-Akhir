@@ -46,6 +46,6 @@ class programkerja extends Model
      */
     public function kepengurusan()
     {
-        return $this->belongsTo(Kepengurusan::class, 'Kepengurusan_id');
+        return $this->belongsTo(Kepengurusan::class, 'kepengurusan_id');
     }
 }

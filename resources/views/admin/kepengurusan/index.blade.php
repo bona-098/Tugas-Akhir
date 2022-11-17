@@ -27,6 +27,9 @@
                         <th>Nama</th>
                         <th>Tahun</th>
                         <th>Pembina</th>
+                        <th>Ketua</th>
+                        <th>Sekretris</th>
+                        <th>Bendahara</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -38,6 +41,9 @@
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->tahun }}</td>
                                 <td class="text-sm">{{ $item->pembina }}</td>
+                                <td class="text-sm">{{ $item->ketua }}</td>
+                                <td class="text-sm">{{ $item->sekretaris }}</td>
+                                <td class="text-sm">{{ $item->bendahara }}</td>
                                 </a>
                             </div>
                             <td>

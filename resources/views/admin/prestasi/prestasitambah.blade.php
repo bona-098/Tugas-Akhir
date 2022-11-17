@@ -14,10 +14,10 @@
                         @csrf
                         <div class="row g-3">
                             <div class="col-sm-6">
-                                <label for="nama" class="form-label">nama</label>
-                                <input type="text" class="form-control" name="nama"
-                                    @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
-                                @error('nama')
+                                <label for="nama_kegiatan" class="form-label">Nama Kegiatan</label>
+                                <input type="text" class="form-control" name="nama_kegiatan"
+                                    @error('nama_kegiatan') is-invalid @enderror" value="{{ old('nama_kegiatan') }}">
+                                @error('nama_kegiatan')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -25,20 +25,20 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <label for="nim" class="form-label">nim</label>
-                                <input type="number" class="form-control" name="nim"
-                                    @error('nim') is-invalid @enderror" value="{{ old('nim') }}">
-                                @error('nim')
+                                <label for="jenis_kegiatan" class="form-label">Jenis Kegiatan</label>
+                                <input type="text" class="form-control" name="jenis_kegiatan"
+                                    @error('jenis_kegiatan') is-invalid @enderror" value="{{ old('jenis_kegiatan') }}">
+                                @error('jenis_kegiatan')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-sm-6">
-                                <label for="firstName" class="form-label">dospem</label>
-                                <input type="text" class="form-control" name="dospem"
-                                    @error('dospem') is-invalid @enderror" value="{{ old('dospem') }}">
-                                @error('dospem')
+                                <label for="firstName" class="form-label">Partisipasi</label>
+                                <input type="text" class="form-control" name="partisipasi"
+                                    @error('partisipasi') is-invalid @enderror" value="{{ old('partisipasi') }}">
+                                @error('partisipasi')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -46,10 +46,10 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <label for="lastName" class="form-label">waktu</label>
-                                <input type="date" class="form-control" name="waktu"
-                                    @error('waktu') is-invalid @enderror" value="{{ old('dospem') }}">
-                                @error('waktu')
+                                <label for="lastName" class="form-label">Deskripsi</label>
+                                <input type="text" class="form-control" name="deskripsi"
+                                    @error('deskripsi') is-invalid @enderror" value="{{ old('deskripsi') }}">
+                                @error('deskripsi')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -65,7 +65,16 @@
                                     </div>
                                 @enderror
                             </div>
-
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Waktu</label>
+                                <input type="date" class="form-control" name="waktu"
+                                    @error('waktu') is-invalid @enderror" value="{{ old('waktu') }}">
+                                @error('waktu')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                             <div class="col-sm-6">
                                 <label for="lastName" class="form-label">Tempat</label>
                                 <input type="text" class="form-control" name="tempat"
@@ -74,44 +83,6 @@
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
-                                @enderror
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Kategori</label>
-                                    <select name="kategori" class="form-control" id="kategori">
-                                        <option value="" selected disabled>Pilih kategori</option>
-                                        <option value="Lomba">Lomba</option>
-                                        <option value="Webinar">Webinar</option>
-                                        <option value="Peraih Penghargaan">Peraih Penghargaan</option>
-                                        <option value="Peraih Nominasi">Peraih Nominasi</option>
-                                        <option value="Dll">Dll</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Pencapaian</label>
-                                    <select name="pencapaian" class="form-control" id="pencapaian">
-                                        <option value="" selected disabled>Pilih pencapaian</option>
-                                        <option value="Juara 1">Juara 1</option>
-                                        <option value="Juara 2">Juara 2</option>
-                                        <option value="Juara 3">Juara 3</option>
-                                        <option value="Juara Harapan">Juara Harapan</option>
-                                        <option value="Peserta">Peserta</option>
-                                        <option value="Guest Star">Guest Star</option>
-                                        <option value="Dll">Dll</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="firstName" class="form-label">Nama Kegiatan</label>
-                                <input type="text" class="form-control" name="nama_kegiatan" @error('nama_kegiatan') is-invalid @enderror" value="{{ old('nama_kegiatan') }}">
-                                @error('nama_kegiatan')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
                                 @enderror
                             </div>
                             <div class="col-sm-6">
@@ -125,11 +96,11 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="name">Foto</div>
+                                <div class="name">sertifikat</div>
                                 <div class="value">
-                                    <input type="file" name="foto" @error('foto') is-invalid @enderror"
-                                        value="{{ old('foto') }}">
-                                    @error('foto')
+                                    <input type="file" name="sertifikat" @error('sertifikat') is-invalid @enderror"
+                                        value="{{ old('sertifikat') }}">
+                                    @error('sertifikat')
                                         <div class="alert alert-danger mt-2">
                                             {{ $message }}
                                         </div>

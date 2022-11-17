@@ -15,16 +15,14 @@ class CreatePrestasisTable extends Migration
     {
         Schema::create('prestasis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('nim');
-            $table->string('pencapaian');
-            $table->string('dospem');
-            $table->string('kategori');
             $table->string('nama_kegiatan');
+            $table->string('jenis_kegiatan');
+            $table->string('partisipasi');
+            $table->string('deskripsi');
+            $table->string('sertifikat');
             $table->string('penyelenggara');
             $table->date('waktu');
             $table->string('tempat');
-            $table->string('foto');
             $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-lg-10">
                 <h4 class="text-danger">Edit Prestasi</h4>
-            </div>            
+            </div>
         </div>
 
         <div class="row mt-4">
@@ -32,36 +32,26 @@
                             @method('patch')
                             <div class="row">
                                 <div class="col-12 col-sm-6">
-                                    <label>Nama</label>
-                                    <input class="form-control" type="text" name="nama" 
-                                    value="{{ $prestasi->nama }}">
+                                    <label>nama_kegiatan</label>
+                                    <input class="form-control" type="text" name="nama_kegiatan"
+                                        value="{{ $prestasi->nama_kegiatan }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <label>Nim</label>
-                                    <input class="form-control" type="text" name="nim" 
-                                    value="{{ $prestasi->nim }}">
+                                    <label>jenis_kegiatan</label>
+                                    <input class="form-control" type="text" name="jenis_kegiatan"
+                                        value="{{ $prestasi->jenis_kegiatan }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>Pencapaian</label>
-                                    <input class="form-control" type="text" name="pencapaian"
-                                        value="{{ $prestasi->pencapaian }}">
+                                    <label>partisipasi</label>
+                                    <input class="form-control" type="text" name="partisipasi"
+                                        value="{{ $prestasi->partisipasi }}">
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>dosen pembimbing</label>
-                                    <input class="form-control" type="text" name="dospem"
-                                        value="{{ $prestasi->dospem }}">
-                                </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>kategori</label>
-                                    <input class="form-control" type="text" name="kategori"
-                                        value="{{ $prestasi->kategori }}">
-                                </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>nama kegiatan</label>
-                                    <input class="form-control" type="text" name="nama_kegiatan"
-                                        value="{{ $prestasi->nama_kegiatan }}">
+                                    <label>deskripsi</label>
+                                    <input class="form-control" type="text" name="deskripsi"
+                                        value="{{ $prestasi->deskripsi }}">
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label>penyelenggara</label>
@@ -73,29 +63,34 @@
                                     <input class="form-control" type="date" name="waktu"
                                         value="{{ $prestasi->waktu }}">
                                 </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>tempat</label>
-                                    <input class="form-control" type="text" name="tempat"
-                                        value="{{ $prestasi->tempat }}">
-                                </div>
                                 <div class="row">
+                                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                        <label>tempat</label>
+                                        <input class="form-control" type="text" name="tempat"
+                                            value="{{ $prestasi->tempat }}">
+                                    </div>
                                     <div class="col-12 col-sm-6 mt-3 mt-sm-3">
                                         <a class="card-profile-image mt-4"
-                                            href="{{ asset('images/prestasi/' . $prestasi->foto) }}" target="_blank">
-                                            <img id="preview-image" src="{{ asset('images/prestasi/' . $prestasi->foto) }}"
+                                            href="{{ asset('images/prestasi/' . $prestasi->sertifikat) }}" target="_blank">
+                                            <a href="{{ asset('images/prestasi/' . $prestasi->sertifikat) }}"
                                                 height="120px" width="120px">
-                                        </a>
-                                        <div class="value">
-                                            <input type="file" name="foto" id="foto">
-                                            <div class="label--desc">Upload your foto with pdf format. Max file size 50 MB
+                                            </a>
+                                            <div class="value">
+                                                <input type="file" name="sertifikat" id="sertifikat">
+                                                <div class="label--desc">Upload your media with pdf format. Max file size 50
+                                                    MB
+                                                </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <br>
                             <div class="row">
+                                <div class="col-2">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary" type="submit">Edit</button>
+                                    <a button class="btn btn-dark" href="/prestasi">Batal</button></a>
+                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                </div>
                                 </div>
                             </div>
                         </form>
@@ -104,7 +99,7 @@
             </div>
         </div>
         <script type="text/javascript">
-            $('#foto').change(function() {
+            $('#sertifikat').change(function() {
                 let reader = new FileReader();
                 reader.onload = (e) => {
                     $('#preview-image').attr('src', e.target.result);
@@ -112,4 +107,4 @@
                 reader.readAsDataURL(this.files[0]);
             });
         </script>
-@endsection
+    @endsection

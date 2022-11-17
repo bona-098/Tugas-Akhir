@@ -56,7 +56,7 @@ class PengumumanController extends Controller
             'waktu'=>$request->waktu,
             'media'=>$newNameMedia,
         ]);
-        return redirect()->route('pengumuman.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('pengumuman.index')->with('success','Pengumuman berhasil ditambahkan');
     }
 
     /**
@@ -117,7 +117,7 @@ class PengumumanController extends Controller
 
         $pengumuman->update($pengumumans);
 
-        return redirect()->route('pengumuman.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('pengumuman.index')->with('success','Pengumuman berhasil diperbarui');
     }
 
     /**
@@ -130,7 +130,7 @@ class PengumumanController extends Controller
     {
         $pengumuman->delete();
         File::delete('images/pengumuman/'.$pengumuman->media);
-        return redirect()->back();
+        return redirect()->back()->with('succes', 'Pengumuman berhasil dihapus');
     }
     public function showpengumuman($id)
     {

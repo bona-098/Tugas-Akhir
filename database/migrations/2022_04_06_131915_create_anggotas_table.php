@@ -17,7 +17,6 @@ class CreateAnggotasTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('nim');
-            $table->string('pilihan_satu');
             $table->string('alasan_satu');
             $table->string('pilihan_dua');
             $table->string('alasan_dua');
@@ -29,6 +28,7 @@ class CreateAnggotasTable extends Migration
             $table->enum('status',['berkas','wawancara','anggota','gagal'])->default('berkas');
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('divisi_id')->constrained('divisis')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

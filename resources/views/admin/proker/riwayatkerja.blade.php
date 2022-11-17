@@ -1,5 +1,18 @@
 @extends('admin.app')
 @section('content')
+@if ($errors->any())
+        @foreach ($errors->all() as $item)
+            <div class="alert alert-danger" role="alert">
+                {{ $item }}
+            </div>
+        @endforeach
+    @endif
+
+    @if (session()->has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="container border">
         <div class="button mb-3">
             <h1>riwayat</h1>
@@ -13,6 +26,8 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Nama</th>
+                            <th>divisi</th>
+                            <th>kepengurusan</th>
                             <th>penanggung_jawab</th>
                             <th>pengurus</th>
                             <th>landasan_kegiatan</th>
@@ -30,9 +45,11 @@
                     </thead>
                     <tbody>
                     @foreach ($proker->where('status', 'selesai') as $item)
-                        {{-- @dd('$item') --}}
+                        {{-- @dd($item->divisi) --}}
                             <tr>
                                 <td class="text-sm">{{ $item->nama }}</td>
+                                <td class="text-sm">{{ $item->divisi->nama }}</td>
+                                <td class="text-sm">{{ $item->kepengurusan->nama }}</td>
                                 <td class="text-sm">{{ $item->penanggung_jawab }}</td>
                                 <td class="text-sm">{{ $item->pengurus }}</td>
                                 <td class="text-sm">{{ $item->landasan_kegiatan }}</td>

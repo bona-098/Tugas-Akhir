@@ -1,6 +1,14 @@
 <title>Pendaftaran Anggota</title>
 @extends('user.app')
 @section('content')
+@if ($errors->any())
+        @foreach ($errors->all() as $item)
+            <div class="alert alert-danger" role="alert">
+                {{ $item }}
+            </div>
+        @endforeach
+    @endif
+
     <section>
         <div class="container py-5">
             <form method="POST" action="{{ route('anggota') }}" enctype="multipart/form-data">
@@ -10,6 +18,11 @@
                         <div class="card rounded-3">
                             <div class="card-body p-4 p-md-5">
                                 <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info</h3>
+                                @if (session()->has('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
 
                                 <form class="px-md-2">
 
@@ -45,14 +58,10 @@
                                         <div class="col">
                                             <div class="form-outline mb-4">
                                                 <label>Pilihan Pertama</label>
-                                                <select name="pilihan_satu" class="form-control">
-                                                    <option value="" >Pilih divisi...</option>
-                                                    <option value="Divisi HRD">Divisi HRD</option>
-                                                    <option value="Divisi ORG">Divisi ORG</option>
-                                                    <option value="Divisi UMUM">Divisi UMUM</option>
-                                                    <option value="Divisi MEDFO">Divisi MEDFO</option>
-                                                    <option value="Divisi HUBLU">Divisi HUBLU</option>
-                                                    <option value="Divisi KWU">Divisi KWU</option>
+                                                <select name="divisi_id" class="form-control">
+                                                    @foreach ($divisi as $div)
+                                                    <option value="{{ $div->id }}">{{ $div->nama }}</option>
+                                                    @endforeach
                                                 </select>                                                
                                                 @error('pilihan_satu')
                                                     <div class="alert alert-danger mt-2">

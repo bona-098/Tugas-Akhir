@@ -58,7 +58,7 @@ class DokumentasiController extends Controller
             'media'=>$newNameMedia
         ]);
 
-        return redirect()->route('dokumentasi.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('dokumentasi.index')->with('success','Dokumentasi telah ditambahkan');
     }
 
     /**
@@ -118,7 +118,7 @@ class DokumentasiController extends Controller
 
         $dokumentasi->update($dokumenta);
 
-        return redirect()->route('dokumentasi.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('dokumentasi.index')->with('success','Dokumentasi telah diperbarui');
     }
 
     /**
@@ -131,7 +131,7 @@ class DokumentasiController extends Controller
     {
         $dokumentasi->delete();
         File::delete('images/dokumentasi/'.$dokumentasi->media);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Dokumentasi telah dihapus');
     }
 
     public function showuser($id)

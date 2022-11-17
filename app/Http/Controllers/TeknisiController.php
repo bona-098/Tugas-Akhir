@@ -60,7 +60,7 @@ class TeknisiController extends Controller
             'no_hp' => $request->no_hp,
             'foto' => $newNameFoto
         ]);
-        return redirect()->route('teknisi.index');
+        return redirect()->route('teknisi.index')->with('success', 'Teknisi berhasil ditambah');
     }
 
     /**
@@ -97,12 +97,12 @@ class TeknisiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
-            'nim' => 'required',
-            'hari' => 'required',
+            // 'nama' => 'required',
+            // 'nim' => 'required',
+            // 'hari' => 'required',
             // 'sesi' => 'required',
-            'no_hp' => 'required',
-            'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
+            // 'no_hp' => 'required',
+            // 'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
         ]);
 
         $teknisis = $request->all();
@@ -120,7 +120,7 @@ class TeknisiController extends Controller
         }
 
         $teknisi->update($teknisis);
-        return redirect()->route('teknisi.index');
+        return redirect()->route('teknisi.index')->with('success', 'Teknisi berhasil diperbarui');
     }
 
     /**
@@ -133,6 +133,6 @@ class TeknisiController extends Controller
     {
         $teknisi->delete();
         File::delete('images/teknisi/'.$teknisi->foto);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Teknisi berhasil dihapus');
     }
 }

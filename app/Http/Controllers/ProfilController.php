@@ -104,7 +104,7 @@ class ProfilController extends Controller
         }
         $user->save();
         // Alert::toast('data berhasil diubah', 'succes');
-        return redirect()->route('profil.index');
+        return redirect()->route('profil.index')->with('success', 'profil berhasil diperbarui');
     }
 
     /**

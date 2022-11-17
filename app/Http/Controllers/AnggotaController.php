@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggota;
-use App\Models\Kepengurusan;
+use App\Models\Divisi;
 use Illuminate\Http\Request;
 use illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +39,8 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        return view('user.anggota');
+        $divisi = Divisi::select('nama','id')->get();
+        return view('user.anggota', compact('divisi'));
     }
 
     /**
@@ -56,7 +57,7 @@ class AnggotaController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'nim' => 'required',
-            'pilihan_satu' => 'required',
+            'divisi_id' => 'required',
             'alasan_satu' => 'required',
             'pilihan_dua' => 'required',
             'alasan_dua' => 'required',
@@ -68,30 +69,21 @@ class AnggotaController extends Controller
             // 'porto' => 'required|mimes:pdf|max:50000',
         ]);
 
-        // $newNamecv = date('ymd') . '-' . $request->nama . '-' . $request->cv->extension();
-        // $newNameporto = date('ymd') . '-' . $request->nama . '-' . $request->porto->extension();
         $newNamecv = '-';
         $newNameporto = '-';
         if ($request->hasFile('cv')) {
-            //code proses jika file cv di upload
             $newNamecv = date('ymd') . '-' . $request->nama . $request->cv->extension();
             $request->file('cv')->move(public_path('images/pendaftaran/cv'), $newNamecv);
         }
         
         if ($request->hasFile('porto')) {
-            //code proses jika file porto di upload
             $newNameporto = date('ymd') . '-' . $request->nama . $request->porto->extension();
             $request->file('porto')->move(public_path('images/pendaftaran/porto'), $newNameporto);
         }
-
-
-        // $request->file('cv')->move(public_path('images/pendaftaran/cv'), $newNamecv);
-        // $request->file('porto')->move(public_path('images/pendaftaran/porto'), $newNameporto);
-       
         Anggota::create([
             'nama' => $request->nama,
             'nim' => $request->nim,
-            'pilihan_satu' => $request->pilihan_satu,
+            'divisi_id' => $request->divisi_id,
             'alasan_satu' => $request->alasan_satu,
             'pilihan_dua' => $request->pilihan_dua,
             'alasan_dua' => $request->alasan_dua,
@@ -104,7 +96,7 @@ class AnggotaController extends Controller
             'user_id' => Auth::user()->id
         ]);
 
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Pendaftaran berhasil, silahkan tunggu pengumuman');
     }
 
     /**
@@ -119,33 +111,6 @@ class AnggotaController extends Controller
         return view('admin.anggota.anggotadetail', compact('anggota'));
     }
 
-    // public function showp($id)
-    // {
-    //     $anggota = Anggota::where('status', '1')->get();
-    //     return view('admin.anggota.pendaftaran', compact('pendaftaran'));
-    // }
-    //terima anggota
-    // public function deleteData($id=null){
-    //     Angota::findOrFail($id)->delete();
-    //     Toastr::success('Post Successfully Deleted', 'Success', 
-    //     ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
-    //         return redirect()->back();
-    // }
-
-    //tiadakan
-    // public function restoreData($id){
-    //     Post::withTrashed()->findOrFail($id)->restore();
-    //     Toastr::success('Post Successfully restored', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
-    //         return redirect()->back(); 
-    // }
-
-    //tolak
-    // public function pDeleteData($id=null){
-    //     Post::onlyTrashed()->findOrFail($id)->forceDelete();
-    //     Toastr::success('Post permanently Deleted', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
-    //     return redirect()->back();
-    // }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -154,8 +119,9 @@ class AnggotaController extends Controller
      */
     public function edit($id)
     {
+        $divisi = Divisi::select('nama','id')->get();
         $anggota = Anggota::find($id);
-        return view('admin.anggota.anggotaedit', compact('anggota'));
+        return view('admin.anggota.anggotaedit', compact('anggota', 'divisi'));
     }
 
     /**
@@ -168,31 +134,17 @@ class AnggotaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'divisi_id' => 'required',
             'nama' => 'required',
             'nim' => 'required',
-            'prodi' => 'required',
-            'no_telp' => 'required',
-            'resume' => 'required',
-            'transkip' => 'required',
-            'surat_rekomendasi' => 'required',
-            'sertifikat' => 'required',
-            'kepengurusan_id' => 'file|mimes:jpg, jpeg, png|max:50000'
         ]);
 
         $anggot = $request->all();
         $anggota = Anggota::find($id);
 
-        if ($resume = $request->file('resume')) {
-            file::delete('images/pendaftaran/anggota/' . $anggota->resume);
-            $file_name = $request->media->getVlientOriginalName();
-            $resume->move(public_path('images/pendaftaran/anggota'), $file_name);
-            $anggot['resume'] = "$file_name";
-        } else {
-            unset($anggot['resume']);
-        }
-
         $anggota->update($anggot);
-        return redirect()->route('anggota.index')->with('nice');
+        $berkas = Anggota::get();
+        return view('admin.anggota.pendaftaran', compact('berkas'));
     }
 
     /**
@@ -214,7 +166,7 @@ class AnggotaController extends Controller
         $request->validate(['status' => 'required']);
         $anggota = Anggota::find($id);
         $anggota->update(['status' => $request->status]);
-        return redirect()->back()->with('pesan', "anggota lulus seleksi");
+        return redirect()->back()->with('success', "pendaftar lulus seleksi berkas");
     }
 
     public function anggoti(Request $request, $id)
@@ -222,6 +174,6 @@ class AnggotaController extends Controller
         $request->validate(['status' => 'required']);
         $anggota = Anggota::find($id);
         $anggota->update(['status' => $request->status]);
-        return redirect()->back()->with('pesan', "anggota lulus wawancara");
+        return redirect()->back()->with('succes', "pendaftar lulus seleksi wawancara");
     }
 }

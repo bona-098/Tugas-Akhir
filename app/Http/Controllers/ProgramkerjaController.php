@@ -18,12 +18,14 @@ class ProgramkerjaController extends Controller
      */
     public function index()
     {
+        // $proker = Programkerja::with("kepengurusan", "divisi")->get();
         $proker = Programkerja::get();
         return view('admin.proker.proker', compact('proker'));
     }
     public function riwayatkerja()
     {
         $proker = Programkerja::get();
+        // dd($proker);
         return view('admin.proker.riwayatkerja', compact('proker'));
     }
     public function monitoring()
@@ -92,7 +94,7 @@ class ProgramkerjaController extends Controller
             'kepengurusan_id' => $request->kepengurusan_id
         ]);
 
-        return redirect()->route('proker.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('proker.index')->with('success', 'Program kerja berhasil ditambah');
     }
 
     /**
@@ -161,15 +163,9 @@ class ProgramkerjaController extends Controller
     }
 
 
-    public function show($id)
+    public function show()
     {
-        $proker = Programkerja::findOrfail($id);
         return view('admin.proker.show', compact('proker'));
-    }
-    public function user()
-    {
-        $proker = programkerja::get();
-        return view('user.proker', compact('proker')); 
     }
 
     public function status(Request $request, $id)
@@ -183,7 +179,6 @@ class ProgramkerjaController extends Controller
             $status = 'selesai';
         }
         programkerja::where('id', $id)->update(['status' => $status]);
-        // Toastr::success('Status Successfully Changed', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Program kerja telah diupdate');
     }
 }

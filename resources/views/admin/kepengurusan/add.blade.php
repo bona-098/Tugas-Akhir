@@ -31,6 +31,21 @@
                                     <input class="form-control" type="text" name="pembina">
                                     <br>
                                 </div>
+                                <div class="col-12 col-sm-6">
+                                    <label>Ketua</label>
+                                    <input class="form-control" type="text" name="ketua">
+                                    <br>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label>sekretaris</label>
+                                    <input class="form-control" type="text" name="sekretaris">
+                                    <br>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label>bendahara</label>
+                                    <input class="form-control" type="text" name="bendahara">
+                                    <br>
+                                </div>
                                 {{-- <div class="col-12 col-sm-6">
                                     <label>bph</label>
                                     <input class="form-control" type="text" name="bph">

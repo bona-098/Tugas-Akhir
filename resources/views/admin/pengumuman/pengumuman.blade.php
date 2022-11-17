@@ -1,13 +1,20 @@
 @extends('admin.app')
 @section('content')
-    <link rel="canonical" href="https://www.creative-tim.com/product/argon-dashboard-pro" />
-    <style>
-        .border {
-            border: 2px;
-        }
-    </style>
-    <div class="container border">
-        <div class="d-grid gap-1">
+@if ($errors->any())
+        @foreach ($errors->all() as $item)
+            <div class="alert alert-danger" role="alert">
+                {{ $item }}
+            </div>
+        @endforeach
+    @endif
+
+    @if (session()->has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+    <div class="container">
+        <div class="mb-3">
             <a button type="button" class="btn btn-primary" id="liveToastBtn"
                 href="{{ route('pengumuman.create') }}">Buat Pengumuman</a>
         </div>

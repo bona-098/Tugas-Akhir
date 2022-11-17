@@ -46,9 +46,9 @@ class KepengurusanController extends Controller
             'nama' => 'required',
             'tahun' => 'required',
             'pembina' => 'required',
-            // 'programkerjas_id' => 'required',
-            // 'anggotas_id' => 'required',
-            // 'prestasis_id' => 'required',
+            'ketua' => 'required',
+            'sekretaris' => 'required',
+            'bendahara' => 'required',
             // 'service_id' => 'required'
         ]);
 
@@ -56,13 +56,13 @@ class KepengurusanController extends Controller
             'nama'=>$request->nama,
             'tahun'=>$request->tahun,
             'pembina'=>$request->pembina,
-            // 'programkerjas_id'=>$request->pembina,
-            // 'anggotas_id'=>$request->pembina,
-            // 'prestasis_id'=>$request->pembina,
+            'ketua'=>$request->ketua,
+            'sekretaris'=>$request->sekretaris,
+            'bendahara'=>$request->bendahara,
             // 'service_id'=>$request->pembina,
             
         ]);
-        return redirect()->route('kepengurusan.index');
+        return redirect()->route('kepengurusan.index')->with('success', 'Berhasil menambah kepengurusan');
     }
 
     /**
@@ -104,13 +104,13 @@ class KepengurusanController extends Controller
             'nama' => 'required',
             'tahun' => 'required',
             'pembina' => 'required',
-            // 'programkerjas_id' => 'required',
-            // 'anggotas_id' => 'required',
-            // 'prestasis_id' => 'required',
+            'ketua' => 'required',
+            'sekretaris' => 'required',
+            'bendahara' => 'required',
             // 'service_id' => 'required'
         ]);
         
-        return redirect()->route('kepengurusan.index');
+        return redirect()->route('kepengurusan.index')->with('success', 'Kepengurusan berhasil diperbarui');
     }
 
     /**
@@ -122,6 +122,6 @@ class KepengurusanController extends Controller
     public function destroy($kepengurusan, $id)
     {
         $kepengurusan->destroy($id);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Kepengurusan berhasil dihapus');
     }
 }

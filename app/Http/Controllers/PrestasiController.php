@@ -46,38 +46,35 @@ class PrestasiController extends Controller
     {
         // dd($request);/
         $this->validate($request, [
-            'nama' => 'required',
-            'nim' => 'required',
-            'pencapaian' => 'required',
-            'dospem' => 'required',
-            'kategori' => 'required',
             'nama_kegiatan' => 'required',
+            'jenis_kegiatan' => 'required',
+            'partisipasi' => 'required',
+            'deskripsi' => 'required',
+            'sertifikat' => 'required',
             'penyelenggara' => 'required',
             'waktu' => 'required',
             'tempat' => 'required',
             'kepengurusan_id' => 'required',
-            'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
+            'sertifikat' => 'required|mimes:pdf|max:50000'
         ]);
         
-        $newNameFoto = date('ymd'). '-' . $request->foto->extension();
+        $newNameSertifikat = date('ymd'). '-' . $request->sertifikat->extension();
          
-        $request->file('foto')->move(public_path('images/prestasi'), $newNameFoto);
+        $request->file('sertifikat')->move(public_path('images/prestasi'), $newNameSertifikat);
         
         Prestasi::create([
-            'nama'=>$request->nama,
-            'nim'=>$request->nim,            
-            'pencapaian'=>$request->pencapaian,            
-            'dospem'=>$request->dospem,
-            'kategori'=>$request->kategori,
             'nama_kegiatan'=>$request->nama_kegiatan,
+            'jenis_kegiatan'=>$request->jenis_kegiatan,            
+            'partisipasi'=>$request->partisipasi,            
+            'deskripsi'=>$request->deskripsi,
             'penyelenggara'=>$request->penyelenggara,
             'waktu'=>$request->waktu,
             'tempat'=>$request->tempat,
             'kepengurusan_id'=>$request->kepengurusan_id,
-            'foto'=>$newNameFoto
+            'sertifikat'=>$newNameSertifikat
         ]);
 
-        return redirect()->route('prestasi.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('prestasi.index')->with('success','Prestasi berhasil ditambahkan');
     }
 
     /**
@@ -114,16 +111,16 @@ class PrestasiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
-            'nim' => 'required',
-            'pencapaian' => 'required',
-            'dospem' => 'required',
-            'kategori' => 'required',
-            'nama_kegiatan' => 'required',
-            'penyelenggara' => 'required',
-            'waktu' => 'required',
-            'tempat' => 'required',
-            'foto' => 'file|mimes:jpg,jpeg|max:50000'
+            // 'nama_kegiatan' => 'required',
+            // 'jenis_kegiatan' => 'required',
+            // 'partisipasi' => 'required',
+            // 'deskripsi' => 'required',
+            // 'sertifikat' => 'required',
+            // 'penyelenggara' => 'required',
+            // 'waktu' => 'required',
+            // 'tempat' => 'required',
+            // 'kepengurusan_id' => 'required',
+            // 'sertifikat' => 'required|mimes:pdf|max:50000'
         ]);
         
         $prestasis = $request->all();
@@ -131,18 +128,18 @@ class PrestasiController extends Controller
         $prestasi = Prestasi::find($id); 
         
 
-        if ($foto = $request->file('foto')) {
-            File::delete('images/prestasi/'.$prestasi->foto);
-            $file_name = $request->foto->getClientOriginalName();
-            $foto->move(public_path('images/prestasi'), $file_name);
-            $prestasis['foto'] = "$file_name";
+        if ($sertifikat = $request->file('sertifikat')) {
+            File::delete('images/prestasi/'.$prestasi->sertifikat);
+            $file_name = $request->sertifikat->getClientOriginalName();
+            $sertifikat->move(public_path('images/prestasi'), $file_name);
+            $prestasis['sertifikat'] = "$file_name";
         }else{
-            unset($prestasis['foto']);
+            unset($prestasis['sertifikat']);
         }
 
         $prestasi->update($prestasis);
 
-        return redirect()->route('prestasi.index')->with('success','Data berhasil ditambahkan');
+        return redirect()->route('prestasi.index')->with('success','Prestasi berhasil diperbarui');
     }
 
     /**
@@ -154,7 +151,7 @@ class PrestasiController extends Controller
     public function destroy(Prestasi $prestasi,$id)
     {
         $prestasi->destroy($id);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Prestasi berhasil dihapus');
     }
 
     public function showuser($id)

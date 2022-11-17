@@ -33,17 +33,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-sm-6">
-                                <label for="staffahli" class="form-label">staffahli</label>
-                                <input type="text" class="form-control" name="staffahli"
-                                    @error('staffahli') is-invalid @enderror" value="{{ old('staffahli') }}">
-                                @error('staffahli')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="col-sm-6">
+                            {{-- <div class="col-sm-6">
                                 <label for="staff" class="form-label">staff</label>
                                 <input type="staff" class="form-control" name="staff"
                                     @error('staff') is-invalid @enderror" value="{{ old('staff') }}">
@@ -52,7 +42,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="col-sm-6">
                                 <label for="visi" class="form-label">visi</label>
                                 <input type="text" class="form-control" name="visi"

@@ -21,7 +21,6 @@
 
                 <thead class="thead-dark">
                     <tr>
-                        {{-- <th scope="col">delete</th> --}}
                         <th scope="col">Nama</th>
                         <th scope="col">Nim</th>
                         <th scope="col">Pilihan pertama</th>
@@ -34,25 +33,35 @@
                         <th scope="col">CV</th>
                         <th scope="col">Portofolio</th>
                         <th scope="col">action</th>
-                        {{-- <th scope="col">action</th> --}}
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($berkas->where('status', 'berkas') as $item)
                         <tr>
-                            {{-- <a href="{{ url('delete-data/'.$post->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-sm btn-danger">Delete</a> --}}
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->nim }}</td>
-                            <td>{{ $item->pilihan_satu }}</td>
+                            <td>{{ $item->divisi->nama }}</td>
                             <td>{{ $item->alasan_satu }}</td>
                             <td>{{ $item->pilihan_dua }}</td>
                             <td>{{ $item->alasan_dua }}</td>
                             <td>{{ $item->pindah_divisi }}</td>
                             <td>{{ $item->motivasi }}</td>
                             <td>{{ $item->komitmen }}</td>
-                            <td>{{ $item->cv }}</td>
-                            <td>{{ $item->porto }}</td>
-                            {{-- <td>
+                            <td>
+                                <div>
+                                    <a href="{{ asset('images/pendaftaran/cv/' . $item->cv) }}">
+                                    {{ $item->cv }}
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <a href="{{ asset('images/pendaftaran/protofolio/' . $item->cv) }}">
+                                    {{ $item->portofolio }}
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,7 +79,7 @@
                                         </form>
                                     </div>
                                 </div>
-                            </td> --}}
+                            </td>
                             <td>
                                 <form method="post" action="{{ route('wawancari', $item->id) }}" >
                                     @csrf                                    

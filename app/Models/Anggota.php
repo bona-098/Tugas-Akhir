@@ -12,7 +12,7 @@ class Anggota extends Model
     protected $fillable = [
         'nama',
         'nim',
-        'pilihan_satu',
+        'divisi_id',
         'alasan_satu',
         'pilihan_dua',
         'alasan_dua',
@@ -25,4 +25,8 @@ class Anggota extends Model
         'user_id'
         // 'kepengurusan_id'
     ];
+    public function divisi()
+    {
+        return $this->belongsTo(divisi::class, 'divisi_id');
+    }
 }

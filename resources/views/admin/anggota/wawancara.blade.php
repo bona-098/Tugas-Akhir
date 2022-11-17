@@ -21,31 +21,46 @@
 
                 <thead class="thead-dark">
                     <tr>
-                        {{-- <th scope="col">delete</th> --}}
                         <th scope="col">Nama</th>
                         <th scope="col">Nim</th>
-                        <th scope="col">Prodi</th>
-                        <th scope="col">No Telp</th>
-                        <th scope="col">Resume</th>
-                        <th scope="col">Transkrip</th>
-                        <th scope="col">Surat Rekomendasi</th>
-                        <th scope="col">Sertifikat</th>
+                        <th scope="col">Pilihan pertama</th>
+                        <th scope="col">Alasan pilihan pertama</th>
+                        <th scope="col">Pilihan kedua</th>
+                        <th scope="col">Alasan pilihan kedua</th>
+                        <th scope="col">Pindah divisi</th>
+                        <th scope="col">Motivasi</th>
+                        <th scope="col">Komitmen</th>
+                        <th scope="col">CV</th>
+                        <th scope="col">Portofolio</th>
                         <th scope="col">action</th>
-                        {{-- <th scope="col">action</th> --}}
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($wawan->where('status', 'wawancara') as $item)
                         <tr>
-                            {{-- <a href="{{ url('delete-data/'.$post->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-sm btn-danger">Delete</a> --}}
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->nim }}</td>
-                            <td>{{ $item->prodi }}</td>
-                            <td>{{ $item->no_telp }}</td>
-                            <td>{{ $item->resume }}</td>
-                            <td>{{ $item->transkip }}</td>
-                            <td>{{ $item->surat_rekomendasi }}</td>
-                            <td>{{ $item->sertifikat }}</td>
+                            <td>{{ $item->divisi->nama }}</td>
+                            <td>{{ $item->alasan_satu }}</td>
+                            <td>{{ $item->pilihan_dua }}</td>
+                            <td>{{ $item->alasan_dua }}</td>
+                            <td>{{ $item->pindah_divisi }}</td>
+                            <td>{{ $item->motivasi }}</td>
+                            <td>{{ $item->komitmen }}</td>
+                            <td>
+                                <div>
+                                    <a href="{{ asset('images/pendaftaran/cv/' . $item->cv) }}">
+                                    {{ $item->cv }}
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <a href="{{ asset('images/pendaftaran/protofolio/' . $item->cv) }}">
+                                    {{ $item->portofolio }}
+                                    </a>
+                                </div>
+                            </td>
                             {{-- <td>
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"

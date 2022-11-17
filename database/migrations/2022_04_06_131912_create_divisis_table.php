@@ -17,8 +17,7 @@ class CreateDivisisTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('kadiv');
-            $table->string('staffahli');
-            $table->string('staff');
+            // $table->string('staff');
             $table->string('visi');
             $table->string('misi');
             $table->timestamps();

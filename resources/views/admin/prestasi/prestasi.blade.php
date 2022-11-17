@@ -24,35 +24,48 @@
 
                 <thead class="thead-dark">
                     <tr>
-                        <th>Nama</th>
-                        <th>Nim</th>
-                        <th>Pencapaian</th>
-                        <th>Dospem</th>
-                        <th>Kategori</th>
                         <th>Nama Kegiatan</th>
+                        <th>Jenis Kegiatan</th>
+                        <th>Partisipasi</th>
+                        <th>Deskripsi</th>
                         <th>Penyelenggara</th>
                         <th>Waktu</th>
-                        <th>Media</th>
+                        <th>tempat</th>
+                        <th>Sertifikat</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($prestasi as $item)
+                    {{-- @dd($item); --}}
                         <tr>
-                            <td class="text-sm">{{ $item->nama }}</td>
-                            <td class="text-sm">{{ $item->nim }}</td>
-                            <td class="text-sm">{{ $item->pencapaian }}</td>
-                            <td class="text-sm">{{ $item->dospem }}</td>
-                            <td class="text-sm">{{ $item->kategori }}</td>
                             <td class="text-sm">{{ $item->nama_kegiatan }}</td>
+                            <td class="text-sm">{{ $item->jenis_kegiatan }}</td>
+                            <td class="text-sm">{{ $item->partisipasi }}</td>
+                            <td class="text-sm">{{ $item->deskripsi }}</td>
                             <td class="text-sm">{{ $item->penyelenggara }}</td>
                             <td class="text-sm">{{ $item->waktu }}</td>
+                            <td class="text-sm">{{ $item->tempat }}</td>
                             <td>
+                                <a href="{{asset('images/prestasi/')}}/{{ $item->sertifikat }}" target ="_blank">{{ $item->sertifikat }}</a>
+                                {{-- <a href="{{ route('dokumen.edit',$data->id) }}"class="btn btn-sm btn-warning">Edit</a> --}}
+                                {{-- <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#staticBackdropdelete{{$data->id}}">
+                                  Delete
+                                </button> --}}
+                            </td>
+                            {{-- <td>
+                                <div>
+                                    <a href="{{ asset('images/prestasi/' . $item->sertifikat) }}">
+                                    {{ $item->sertifikat }}
+                                    </a>
+                                </div>
+                            </td> --}}
+                            {{-- <td>
                                 <div class="d-flex">
-                                    <div class="pic"><img src="{{ asset('images/prestasi/' . $item->foto) }}"
+                                    <div class="pic"><img src="{{ asset('images/prestasi/' . $item->sertifikat) }}"
                                             class="img-fluid" width="80" height="80" alt="pp"></div>
                                 </div>
-                            </td>
+                            </td> --}}
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
