@@ -29,6 +29,7 @@ class CreateAnggotasTable extends Migration
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('divisi_id')->constrained('divisis')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('kepengurusan_id')->constrained('kepengurusans')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -13,33 +13,30 @@
             {{ session('success') }}
         </div>
     @endif
-    <div class="container border">
         <div class="button mb-3">
-            <h1>Monitoring</h1>
-            <a button type="button" class="btn btn-primary" id="liveToastBtn"
-                href="{{ route('proker.create') }}">Tambah Program kerja</a>
+            <h4>Tahap monitoring program kerja</h4>
         </div>
         <div class="card-body px-0 pb-0">
-            <div class="table-responsive border">
+            <div class="table-responsive">
                 <table class="table table-flush" id="products-list">
 
                     <thead class="thead-dark">
                         <tr>
                             <th>Nama</th>
-                            <th>penanggung_jawab</th>
-                            <th>pengurus</th>
-                            <th>landasan_kegiatan</th>
-                            <th>tujuan_kegiatan</th>
-                            <th>objek_segmentasi</th>
-                            <th>deskripsi</th>
-                            <th>parameter_keberhasilan</th>
-                            <th>kebutuhan_dana</th>
-                            <th>sumber_dana</th>
-                            <th>Jumlah_sdm</th>
-                            <th>Kebutuhan_lain</th>
-                            <th>status</th>
+                            <th>Penanggung jawab</th>
+                            <th>Pengurus</th>
+                            <th>Landasan kegiatan</th>
+                            <th>Tujuan kegiatan</th>
+                            <th>Objek segmentasi</th>
+                            <th>Deskripsi</th>
+                            <th>Parameter keberhasilan</th>
+                            <th>Kebutuhan dana</th>
+                            <th>Sumber dana</th>
+                            <th>Sumlah sdm</th>
+                            <th>Kebutuhan lain</th>
+                            <th>Status</th>
                             <th>Aksi</th>
-                            <th>Alat</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     @foreach ($proker->where('status', 'monitoring') as $item)
@@ -67,7 +64,7 @@
                                 </td>
                                 {{-- url('status/'.$item->id.'?status=monitoring')                      --}}
                                 <td>
-                                    <a href="{{ url('status/'.$item->id.'?status=selesai') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Setuju</a>
+                                    <a href="{{ url('status/'.$item->id.'?status=selesai') }}" onclick="return confirm('Apakah program kerja telah selesai?')" class="btn btn-sm btn-success">Setuju</a>
                                     
                                     <a href="{{ url('status/'.$item->id.'?status=planning') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Tolak</a>
                                     
@@ -94,7 +91,6 @@
                 </table>
             </div>
         </div>
-    </div>
     <script>
         $(document).ready(function() {
             $('#products-list').DataTable({

@@ -163,8 +163,10 @@ class ProgramkerjaController extends Controller
     }
 
 
-    public function show()
+    public function show($id)
     {
+        $proker = Programkerja::findOrfail($id);
+        // dd($proker);
         return view('admin.proker.show', compact('proker'));
     }
 

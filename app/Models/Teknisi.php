@@ -10,11 +10,20 @@ class Teknisi extends Model
     use HasFactory;
     public $table = 'teknisi';
     protected $fillable = [
-        'nama',
+        
         'nim',
         'hari',
-        // 'sesi',
         'no_hp',
+        'user_id',
         'foto'
     ];
+    /**
+     * Get the user that owns the Teknisi
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -22,11 +22,16 @@ class Anggota extends Model
         'cv',
         'porto',
         'status',
-        'user_id'
-        // 'kepengurusan_id'
+        'user_id',
+        'kepengurusan_id'
     ];
     public function divisi()
     {
         return $this->belongsTo(divisi::class, 'divisi_id');
+    }
+
+    public function kepengurusan()
+    {
+        return $this->belongsTo(kepengurusan::class, 'kepengurusan_id');
     }
 }

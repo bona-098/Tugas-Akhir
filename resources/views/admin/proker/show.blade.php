@@ -1,126 +1,94 @@
 @extends('admin.app')
 @section('content')
-    <style>
-        .title {
-            font-size: large;
-        }
-    </style>
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>sorry?</strong>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    <section id="mc-profile" class="section">
-        <div class="container">
-            <div class="has-text-centered">
-                <h3 class="is-size-3 is-uppercase has-text-dark">{{ $proker->nama }}</h3>
+    <div class="container mb-5">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center">Program kerja : {{ $proker->nama }}</h3>
+                <form action="{{ route('proker.show', $proker->id) }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    @method('patch')
+                    <br>
+                    <fieldset disabled="disabled">
+                        <div class="row justify-content-evenly">
+                            <div class="col-5">
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Nama Kepengurusan</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->nama }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Penanggung jawab</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->penanggung_jawab }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Pengurus</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->pengurus }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Landasan kegiatan</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->landasan_kegiatan }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Landasan kegiatan</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->landasan_kegiatan }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Objek segmentasi</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->objek_segmentasi }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Deskripsi</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->deskripsi }}">
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Parameter keberhasilan</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->parameter_keberhasilan }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Tujuan kegiatan</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->tujuan__kegiatan }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Kebutuhan dana</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->kebutuhan_dana }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Sumber dana</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->sumber_dana }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Jumlah dana</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->jumlah_dana }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" class="form-label">Kebutuhan lain</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="{{ $proker->kebutuhan_lain }}">
+                                </div>
+                            </div>
+                            </fieldset>
+                            <div class="row">
+                                <div class="col-2 mb-5 mt-5 ml-5">
+                                <div class="d-grid gap-2 d-md-flex justify-content">
+                                    <a button class="btn btn-dark" href="{{ URL::previous() }}">Kembali</button></a>
+                                </div>
+                                </div>
+                            </div>
+                </form>
             </div>
-            <form action="{{ route('proker.show', $proker->id) }}" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                @method('patch')
-                <br>
-                <div class="row justify-content-evenly">
-                    <div class="col-4">
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">nama</p>
-                            <p class="subtitle is-size-5">{{ $proker->nama }}</p>
-                        </span>
-                        <br>
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">penanggung jawab</p>
-                            <p class="subtitle is-size-5">{{ $proker->penanggung_jawab }}</p>
-                        </span>
-                        <br>
-                        <span>
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">pengurus</p>
-                            <p class="subtitle is-size-5">{{ $proker->pengurus }}</p>
-                        </span>
-                        <br>
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">landasan_kegiatan</p>
-                            <p class="subtitle is-size-5">{{ $proker->landasan_kegiatan }}</p>
-                        </span>                   
-                            <p class="title is-semibolded is-size-6 has-text-grey">objek_segmentasi</p>
-                            <p class="subtitle is-size-5">{{ $proker->objek_segmentasi }}</p>
-                        </span>
-                        <br>
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">deskripsi</p>
-                            <p class="subtitle is-size-5">{{ $proker->deskripsi }}</p>
-                        </span>
-                    </div>
-                    <div class="col-4">
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">parameter_keberhasilan</p>
-                            <p class="subtitle is-size-5">{{ $proker->parameter_keberhasilan }}</p>
-                        </span>
-                        <br>
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">tujuan_kegiatan</p>
-                            <p class="subtitle is-size-5">{{ $proker->tujuan_kegiatan }}</p>
-                        </span>
-                        <br>
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">kebutuhan_dana</p>
-                            <p class="subtitle is-size-5">{{ $proker->kebutuhan_dana }}</p>
-                        </span>
-                        <br>
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">sumber_dana</p>
-                            <p class="subtitle is-size-5">{{ $proker->sumber_dana }}</p>
-                        </span>
-                        <br>
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">jumlah_sdm</p>
-                            <p class="subtitle is-size-5">{{ $proker->jumlah_sdm }}</p>
-                        </span>
-                        <br>
-                        <span>
-                            <p class="title is-semibolded is-size-6 has-text-grey">kebutuhan_lain</p>
-                            <p class="subtitle is-size-5">{{ $proker->kebutuhan_lain }}</p>
-                        </span>
-                        <br>
-                    </div>
-                </div>
-                <br>
-                {{-- <div class="columns is-centered is-multiline" id="my-courses">
-                                        <div class="column is-9">
-                                            <h3 class="is-size-3 is-uppercase has-text-dark title">Riwayat Janji</h3>
-                                        </div>
-                                        @foreach ($campuran as $item)
-                                        <div class="column is-8" style="border: 1px solid lightgrey; border-radius: 3px; margin-bottom: 15px;">
-                                            <div class="columns">						
-                                                <div class="column">							
-                                                        <a href="#" class="is-semibolded is-size-4">{{$item->nama_psikolog}}</a>
-                                                        <br>
-                                                        <p>{{$item->jadwal_psikolog}}</p>									
-                                                </div>		
-                                                
-                                                @if ($item->status == 'Proses')
-                                                <div class="column is-3 has-text-centered">
-                                                    <p class="has-background-warning">Proses</p>
-                                                </div>
-                                                @elseif ($item->status == 'Tolak')
-                                                <div class="column is-3 has-text-centered">
-                                                    <p class="has-background-danger">Tertolak</p>
-                                                </div>
-                                                @else					
-                                                <div class="column is-3 has-text-centered">
-                                                    <p class="has-background-primary has-text-light">Diterima</p>
-                                                </div>
-                                                @endif
-                                
-                                            </div>
-                                        </div>
-                                        @endforeach	
-                                    </div> --}}
         </div>
-    </section>
-    </form>
+    </div>
 @endsection

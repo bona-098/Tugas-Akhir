@@ -28,8 +28,9 @@
                         <th>Tahun</th>
                         <th>Pembina</th>
                         <th>Ketua</th>
-                        <th>Sekretris</th>
-                        <th>Bendahara</th>
+                        <th>Wakil ketua internal</th>
+                        <th>Wakil ketua eksternal</th>
+                        <th>Sekretaris</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -42,8 +43,9 @@
                                 <td class="text-sm">{{ $item->tahun }}</td>
                                 <td class="text-sm">{{ $item->pembina }}</td>
                                 <td class="text-sm">{{ $item->ketua }}</td>
+                                <td class="text-sm">{{ $item->internal }}</td>
+                                <td class="text-sm">{{ $item->external }}</td>
                                 <td class="text-sm">{{ $item->sekretaris }}</td>
-                                <td class="text-sm">{{ $item->bendahara }}</td>
                                 </a>
                             </div>
                             <td>

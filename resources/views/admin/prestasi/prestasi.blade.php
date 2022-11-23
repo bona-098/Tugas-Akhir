@@ -19,7 +19,7 @@
                 prestasi</a>
         </div>
 
-        <div class="table-responsive border">
+        <div class="table-responsive">
             <table class="table table-flush" id="products-list">
 
                 <thead class="thead-dark">
@@ -114,7 +114,7 @@
                 ],
 
                 language: {
-                    "searchPlaceholder": "Cari nama kepengurusan",
+                    "searchPlaceholder": "Cari prestasi",
                     "zeroRecords": "Tidak ditemukan data yang sesuai",
                     "emptyTable": "Tidak terdapat data di tabel"
                 }

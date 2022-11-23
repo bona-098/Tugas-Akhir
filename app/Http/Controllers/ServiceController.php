@@ -36,15 +36,18 @@ class serviceController extends Controller
     {
 
         $hari = $request->get('hari');
-
+        
         $ambilhari = Carbon::parse($hari)->translatedFormat('l');
-
+        
         $filter = Teknisi::where('hari', '=', $ambilhari)->get();
+        // dd($filter);
+        // dd(auth::id());
+
 
         return view('user.service', compact('filter'));
 
     }
-
+    
     // public function usercreate()
     // {
     //     return view('user.service');
@@ -58,6 +61,7 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
 
         $this->validate($request, [
             'nama' => 'required',
@@ -83,7 +87,6 @@ class serviceController extends Controller
                 'status' => 1,
                 'teknisi_id' => $request->teknisi_id,
                 'user_id' => Auth::user()->id
-
             ]);
 
             return redirect()->route('service')->with('success', 'Servis berhasil, silahkan cek profil');

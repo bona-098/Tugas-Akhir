@@ -13,11 +13,8 @@
             {{ session('success') }}
         </div>
     @endif
-    <div class="container border">
         <div class="button mb-3">
-            <h1>riwayat</h1>
-            <a button type="button" class="btn btn-primary" id="liveToastBtn" href="{{ route('proker.create') }}">Tambah
-                Program kerja</a>
+            <h4>Riwayat program kerja</h4>
         </div>
         <div class="card-body px-0 pb-0">
             <div class="table-responsive">
@@ -26,21 +23,19 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Nama</th>
-                            <th>divisi</th>
-                            <th>kepengurusan</th>
-                            <th>penanggung_jawab</th>
-                            <th>pengurus</th>
-                            <th>landasan_kegiatan</th>
-                            <th>tujuan_kegiatan</th>
-                            <th>objek_segmentasi</th>
-                            <th>deskripsi</th>
-                            <th>parameter_keberhasilan</th>
-                            <th>kebutuhan_dana</th>
-                            <th>sumber_dana</th>
-                            <th>Jumlah_sdm</th>
-                            <th>Kebutuhan_lain</th>
-                            <th>status</th>
-                            <th>Action</th>
+                            <th>Penanggung jawab</th>
+                            <th>Pengurus</th>
+                            <th>Landasan kegiatan</th>
+                            <th>Tujuan kegiatan</th>
+                            <th>Objek segmentasi</th>
+                            <th>Deskripsi</th>
+                            <th>Parameter keberhasilan</th>
+                            <th>Kebutuhan dana</th>
+                            <th>Sumber dana</th>
+                            <th>Sumlah sdm</th>
+                            <th>Kebutuhan lain</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,8 +43,8 @@
                         {{-- @dd($item->divisi) --}}
                             <tr>
                                 <td class="text-sm">{{ $item->nama }}</td>
-                                <td class="text-sm">{{ $item->divisi->nama }}</td>
-                                <td class="text-sm">{{ $item->kepengurusan->nama }}</td>
+                                {{-- <td class="text-sm">{{ $item->divisi->nama }}</td>
+                                <td class="text-sm">{{ $item->kepengurusan->nama }}</td> --}}
                                 <td class="text-sm">{{ $item->penanggung_jawab }}</td>
                                 <td class="text-sm">{{ $item->pengurus }}</td>
                                 <td class="text-sm">{{ $item->landasan_kegiatan }}</td>
@@ -72,13 +67,6 @@
                                             class="btn btn-sm btn-primary">Tolak</a>
                                     @endif
                                 </td>
-                                {{-- url('status/'.$item->id.'?status=monitoring')                      --}}
-                                {{-- <td>
-                                    <a href="{{ url('status/'.$item->id.'?status=selesai') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Setuju</a>
-                                    
-                                    <a href="{{ url('status/'.$item->id.'?status=monitoring') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Tolak</a>
-                                    
-                                </td> --}}
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-primary dropdown-toggle" type="button"
@@ -87,10 +75,8 @@
                                             <i class="fa fa-cog"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="{{ route('proker.edit', $item->id) }}"><i
-                                                    class="fa fa-edit"></i> Edit</a>
                                             <a class="dropdown-item" href="{{ route('proker.show', $item->id) }}"><i
-                                                    class="fa fa-edit"></i> show</a>
+                                                    class="fa fa-eye"></i> show</a>
                                             <form action="{{ route('proker.destroy', $item->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
@@ -107,7 +93,6 @@
                 </table>
             </div>
         </div>
-    </div>
     <script>
         $(document).ready(function() {
             $('#products-list').DataTable({
@@ -118,7 +103,7 @@
                 ],
 
                 language: {
-                    "searchPlaceholder": "Cari nama pemesan",
+                    "searchPlaceholder": "Cari nama",
                     "zeroRecords": "Tidak ditemukan data yang sesuai",
                     "emptyTable": "Tidak terdapat data di tabel"
                 }

@@ -13,30 +13,23 @@
             {{ session('success') }}
         </div>
     @endif
-    <div class="container-fluid">
-        <h1>Anggota SAA</h1>
-        <div class="button mb-3">
-            <a button type="button" class="btn btn-primary" id="liveToastBtn" href="{{ route('anggota.create') }}">Tambah
-                Anggota</a>
-        </div>
+    <div class="container-mb5">
+        <h4 class="row mb-5 m-2">Staff diterima</h4>
+        {{-- <div class="button mb-3">s --}}
 
-        <div class="table-responsive border">
+        <div class="table-responsive">
             <table class="table table-flush" id="products-list">
 
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Nama</th>
                         <th scope="col">Nim</th>
-                        <th scope="col">Pilihan pertama</th>
-                        <th scope="col">Alasan pilihan pertama</th>
-                        <th scope="col">Pilihan kedua</th>
-                        <th scope="col">Alasan pilihan kedua</th>
-                        <th scope="col">Pindah divisi</th>
+                        <th scope="col">Divisi</th>
                         <th scope="col">Motivasi</th>
                         <th scope="col">Komitmen</th>
                         <th scope="col">CV</th>
                         <th scope="col">Portofolio</th>
-                        <th scope="col">action</th>
+                        <th scope="col">Hapus</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,10 +38,6 @@
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->nim }}</td>
                             <td>{{ $item->divisi->nama }}</td>
-                            <td>{{ $item->alasan_satu }}</td>
-                            <td>{{ $item->pilihan_dua }}</td>
-                            <td>{{ $item->alasan_dua }}</td>
-                            <td>{{ $item->pindah_divisi }}</td>
                             <td>{{ $item->motivasi }}</td>
                             <td>{{ $item->komitmen }}</td>
                             <td>
@@ -65,47 +54,17 @@
                                     </a>
                                 </div>
                             </td>
-                            {{-- <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-cog"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ route('anggota.edit', $item->id) }}"><i
-                                                class="fa fa-edit"></i> Edit</a>
+                            <td>
                                         <form action="{{ route('anggota.destroy', $item->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="dropdown-item" type="submit"
                                                 onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i
-                                                    class="fa fa-trash"></i> Hapus</button>
+                                                    class="fa fa-trash"></i></button>
                                         </form>
                                     </div>
                                 </div>
-                            </td> --}}
-                            <td>
-                                anggota
-                                {{-- @if ($item->status == 1)
-                                    <a href="{{ url('change-status/' . $item->id . 'status?berkas') }}"
-                                        onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Lulus</a>
-                                @elseif ($item->status == 2)
-                                    <a href="{{ url('change-status/' . $item->id . 'status?wawancara') }}"
-                                        onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-danger">Lulus</a>
-                                @else
-                                    <a href="{{ url('change-status/' . $item->id . 'status?Anggota') }}"
-                                        onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Anggota</a>
-                                @endif --}}
-
                             </td>
-                            {{-- <td>
-                                <a href="{{ url('change-status/' . $item->id) }}" onclick="return confirm('Are you Sure?')"
-                                    class="btn btn-sm btn-success">Diterima</a>
-
-                                <a href="{{ url('change-status/' . $item->id) }}" onclick="return confirm('Are you Sure?')"
-                                    class="btn btn-sm btn-danger">Ditolak</a>
-
-                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>
@@ -124,7 +83,7 @@
                 ],
 
                 language: {
-                    "searchPlaceholder": "Cari nama kepengurusan",
+                    "searchPlaceholder": "Cari nama",
                     "zeroRecords": "Tidak ditemukan data yang sesuai",
                     "emptyTable": "Tidak terdapat data di tabel"
                 }

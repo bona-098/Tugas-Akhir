@@ -1,11 +1,6 @@
 @extends('admin.app')
 @section('content')
-    <style>
-        .bd {
-            border: 2px;
-        }
-    </style>
-    <div class="container bd">
+    <div class="container">
         <main>
             <div class="row g-5 bd">
                 <div class="col-md-6 col-lg-12 bd">
@@ -86,14 +81,13 @@
                                 @enderror
                             </div>
                             <div class="col-sm-6">
-                                <div class="name">Pilih Kepengurusan</div>
-                                <div class="value">
+                                <label for="">Kepengurusan</label>
                                     <select class="form-select" name="kepengurusan_id" aria-label="Default select example">
                                         @foreach ($kepengurusan as $item)
                                             <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                
                             </div>
                             <div class="col-sm-6">
                                 <div class="name">sertifikat</div>
@@ -109,8 +103,12 @@
                                 </div>
                             </div>
                         </div>
-                        <hr class="my-4">
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">Simpan</button>
+                        <div class="row mb-5 mt-5">
+                            <div class="d-grid gap-2 d-md-flex justify-content">
+                                <a button class="btn btn-dark" href="/kelola">Batal</button></a>
+                                <button class="btn btn-primary" type="submit">Simpan</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

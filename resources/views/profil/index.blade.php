@@ -52,7 +52,7 @@
                         @foreach ($getservice as $lane)
                             <li class="list-group-item d-flex justify-content-between lh-sm">
                                 <div>
-                                    <h6 class="my-0">{{ $lane->nama }}</h6>
+                                    <h6 class="my-0">{{ $lane->teknisi->user->name }}</h6>
                                     <span class="text-muted">{{ $lane->hari }}</span>
                                 </div>
                                 <small class="text-muted">{{ $lane->status }}</small>

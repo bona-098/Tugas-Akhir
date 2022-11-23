@@ -1,15 +1,13 @@
 @extends('admin.app')
 @section('content')
     <div class="container">
-        <div class="mb-3">
-            <a button type="button" class="btn btn-primary" id="liveToastBtn" href="{{ route('service.create') }}">Tambah
-                Jadwal</a>
-        </div>
+        <h3 class="row mb-5 ml-2">Riwayat servis</h3>
         <div class="card-body px-0 pb-0 ">
             <div class="table-responsive ">
                 <table class="table table-flush" id="products-list">
                     <thead class="thead-dark">
                         <tr>
+                            <th>#</th>
                             <th>Nama</th>
                             <th>Hari</th>
                             <th>Sesi</th>
@@ -18,23 +16,18 @@
                             <th>user</th>
                             <th>Pesan</th>
                             <th>Status</th>
-                            {{-- <th>
-                                <div class="text-center">
-                                    Aksi
-                                </div>
-                            </th>                             --}}
                             <th>Hapus</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($service->where('status', 'selesai') as $item)
                             <tr>
-                                {{-- <td class="text-sm">{{ $loop->iteration }}</td> --}}
+                                <td class="text-sm">{{ $loop->iteration }}</td>
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->hari }}</td>
                                 <td class="text-sm">{{ $item->sesi }}</td>
                                 <td class="text-sm">{{ $item->no_hp }}</td>
-                                <td class="test-sm">{{ $item->teknisi->nama ?? '-' }}</td>
+                                <td class="test-sm">{{ $item->teknisi->user->name ?? '-' }}</td>
                                 <td class="test-sm">{{ $item->user->name ?? '-' }}</td>
                                 <td class="text-sm">{{ $item->pesan }}</td>
                                 <td>

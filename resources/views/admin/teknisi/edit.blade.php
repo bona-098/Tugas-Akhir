@@ -1,11 +1,6 @@
-<title>Edit Teknisi : {{ $teknisi->nama }}</title>
+<title>Edit Teknisi : {{ $teknisi->user->name }}</title>
 @extends('admin.app')
 @section('content')
-    <style>
-        .border {
-            border: 2px;
-        }
-    </style>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>sorry?</strong>
@@ -17,16 +12,12 @@
         </div>
     @endif
     <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-lg-10">
-                <h4 class="text-danger">Edit Teknisi</h4>
-            </div>
-        </div>
-
-        <div class="row mt-4">
-            <div class="col-lg-12 mt-lg-0 mt-4">
-                <div class="card">
-                    <div class="card-body">
+    
+    <div class="row mt-4">
+        <div class="col-lg-12 mt-lg-0 mt-4">
+            <div class="card">
+                <div class="card-body">
+                        <h4 class="row mb-5">Edit Teknisi</h4>
                         <form action="{{ route('teknisi.update', $teknisi->id) }}" method="POST"
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -35,7 +26,7 @@
                                 <div class="col-12 col-sm-6">
                                     <label>Nama</label>
                                     <input class="form-control" type="text" name="nama"
-                                    value="{{ $teknisi->nama }}">
+                                    value="{{ $teknisi->user->name }}">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -45,11 +36,10 @@
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>Hari</label>
                                     <div class="form-group">
                                         <label>Pilih Hari</label>
                                         <select name="hari" class="form-control" id="hari">
-                                            <option value="" selected disabled>Pilih Hari</option>
+                                            <option value="{{ $teknisi->hari }}" selected>{{ $teknisi->hari }}</option>
                                             <option value="Senin">Senin</option>
                                             <option value="Selasa">Selasa</option>
                                             <option value="Rabu">Rabu</option>
@@ -69,7 +59,7 @@
                                         <a class="card-profile-image mt-4"
                                             href="{{ asset('images/teknisi/' . $teknisi->foto) }}" target="_blank">
                                             <img id="preview-image" src="{{ asset('images/teknisi/' . $teknisi->foto) }}"
-                                                height="120px" width="120px">
+                                                height="100px" width="100px">
                                         </a>
                                         <div class="value">
                                             <input type="file" name="foto" id="foto">
@@ -80,8 +70,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary" type="submit">Edit</button>
+                                <div class="col-2 mb-5 mt-5 ml-2">
+                                <div class="d-grid gap-2 d-md-flex justify-content">
+                                    <a button class="btn btn-dark" href="/prestasi">Batal</button></a>
+                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                </div>
                                 </div>
                             </div>
                         </form>

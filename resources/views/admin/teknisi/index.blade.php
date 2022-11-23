@@ -18,15 +18,14 @@
             <a button type="button" class="btn btn-primary" id="liveToastBtn" href="{{ route('teknisi.create') }}">Tambah Teknisi</a>
         </div>
         <div class="card-body px-0 pb-0">
-            <div class="table-responsive border">
+            <div class="table-responsive">
                 <table class="table table-flush" id="products-list">
 
-                    <thead class="thead-light">
+                    <thead class="thead-dark">
                         <tr>
                             <th>Nama</th>
                             <th>Nim</th>
                             <th>Hari</th>
-                            {{-- <th>sesi</th> --}}
                             <th>No_hp</th>
                             <th>Foto</th>
                             <th>action</th>
@@ -35,10 +34,9 @@
                     @foreach ($teknisi as $item)
                         <tbody>
                             <tr>
-                                <td class="text-sm">{{ $item->nama }}</td>
+                                <td class="test-sm">{{ $item->user->name ?? "-" }}</td>
                                 <td class="text-sm">{{ $item->nim }}</td>
                                 <td class="text-sm">{{ $item->hari }}</td>
-                                {{-- <td class="text-sm">{{ $item->sesi }}</td> --}}
                                 <td class="text-sm">{{ $item->no_hp }}</td>
                                 <td>
                                     <div class="d-flex">

@@ -20,9 +20,9 @@ class CreateKepengurusansTable extends Migration
             $table->string('tahun');
             $table->string('pembina');
             $table->string('ketua');
+            $table->string('internal');
+            $table->string('external');
             $table->string('sekretaris');
-            $table->string('bendahara');
-            // $table->string('service_id');
             $table->timestamps();
         });
     }

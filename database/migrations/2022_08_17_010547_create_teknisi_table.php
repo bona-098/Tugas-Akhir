@@ -15,13 +15,13 @@ class CreateTeknisiTable extends Migration
     {
         Schema::create('teknisi', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            // $table->string('nama');
             $table->string('nim');                        
             $table->string('hari');
-            // $table->string('sesi');
             $table->string('no_hp');
             $table->string('foto');
             $table->timestamps();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

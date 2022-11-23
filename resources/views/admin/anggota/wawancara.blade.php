@@ -14,9 +14,9 @@
         </div>
     @endif
     <div class="container-fluid">
-        <h1>wawanvara</h1>
+        <h4 class="row mb-3">Seleksi wawancara</h4>
 
-        <div class="table-responsive border">
+        <div class="table-responsive">
             <table class="table table-flush" id="products-list">
 
                 <thead class="thead-dark">
@@ -32,7 +32,7 @@
                         <th scope="col">Komitmen</th>
                         <th scope="col">CV</th>
                         <th scope="col">Portofolio</th>
-                        <th scope="col">action</th>
+                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,48 +61,23 @@
                                     </a>
                                 </div>
                             </td>
-                            {{-- <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-cog"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ route('anggota.edit', $item->id) }}"><i
-                                                class="fa fa-edit"></i> Edit</a>
-                                        <form action="{{ route('anggota.destroy', $item->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="dropdown-item" type="submit"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i
-                                                    class="fa fa-trash"></i> Hapus</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td> --}}
                             <td>
                                 <form method="post" action="{{ route('anggoti', $item->id) }}" >
-                                    @csrf
+                                    @csrf                                    
                                     <input type="hidden" value="anggota" name="status" >
-                                    <button type="submit">Terima</button>
+                                    <button type="submit" class="btn btn-primary">Terima</button>                                        
                                 </form>
-                                <form method="post" action="{{ route('gagal', $item->id) }}">
+                                <form action="{{ route('anggota.destroy', $item->id) }}" method="POST">
                                     @csrf
-                                    <input type="hidden" value="gagal" name="status">
-                                    <button type="submit">Tolak</button>
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit"
+                                        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Tolak</button>
                                 </form>
+                                <a class="btn btn-dark" href="{{ route('anggota.edit', $item->id) }}">Edit</a>
                             </td>
-                            {{-- <td>
-                                <a href="{{ url('change-status/' . $item->id) }}" onclick="return confirm('Are you Sure?')"
-                                    class="btn btn-sm btn-success">Diterima</a>
-
-                                <a href="{{ url('change-status/' . $item->id) }}" onclick="return confirm('Are you Sure?')"
-                                    class="btn btn-sm btn-danger">Ditolak</a>
-
-                            </td> --}}
                         </tr>
-                    @endforeach
-                </tbody>
+                        @endforeach
+                    </tbody>
             </table>
         </div>
     </div>
@@ -118,7 +93,7 @@
                 ],
 
                 language: {
-                    "searchPlaceholder": "Cari nama kepengurusan",
+                    "searchPlaceholder": "Cari",
                     "zeroRecords": "Tidak ditemukan data yang sesuai",
                     "emptyTable": "Tidak terdapat data di tabel"
                 }

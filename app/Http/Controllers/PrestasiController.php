@@ -148,12 +148,18 @@ class PrestasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prestasi $prestasi,$id)
+    public function destroy(Prestasi $prestasi)
     {
-        $prestasi->destroy($id);
+        $prestasi->delete();
+        File::delete('images/prestasi/'.$prestasi->sertifikat);
         return redirect()->back()->with('success', 'Prestasi berhasil dihapus');
     }
-
+    // public function destroy(Pengumuman $pengumuman)
+    // {
+    //     $pengumuman->delete();
+    //     File::delete('images/pengumuman/'.$pengumuman->media);
+    //     return redirect()->back()->with('succes', 'Pengumuman berhasil dihapus');
+    // }
     public function showuser($id)
     {
         $prestasi = Prestasi::where('id', $id)->get();

@@ -1,30 +1,28 @@
 @extends('admin.app')
 @section('content')
-    <style>
-        .bd {
-            border: 2px;
-        }
-    </style>
-    <div class="container bd">
+    <div class="container mb-5">
         <main>
             <div class="row g-5 bd">
                 <div class="col-md-6 col-lg-12 bd">
-                    <h4 class="mb-3">Tambah Divisi</h4>
+                    <div class="card">
+                        <div class="card-body">
+                    <h4 class="mb-5">Tambah Divisi</h4>
                     <form method="POST" action="{{ route('divisi.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row g-3">
                             <div class="col-sm-6">
-                                <label for="nama" class="form-label">nama</label>
+                                <label for="nama" class="form-label">Nama Divisi</label>
                                 <input type="text" class="form-control" name="nama"
                                     @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
                                 @error('nama')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                                 @enderror
+                                <br>
                             </div>
                             <div class="col-sm-6">
-                                <label for="kadiv" class="form-label">kadiv</label>
+                                <label for="kadiv" class="form-label">Kepala Divisi</label>
                                 <input type="text" class="form-control" name="kadiv"
                                     @error('kadiv') is-invalid @enderror" value="{{ old('kadiv') }}">
                                 @error('kadiv')
@@ -33,18 +31,8 @@
                                     </div>
                                 @enderror
                             </div>
-                            {{-- <div class="col-sm-6">
-                                <label for="staff" class="form-label">staff</label>
-                                <input type="staff" class="form-control" name="staff"
-                                    @error('staff') is-invalid @enderror" value="{{ old('staff') }}">
-                                @error('landasan_kegiatan')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div> --}}
                             <div class="col-sm-6">
-                                <label for="visi" class="form-label">visi</label>
+                                <label for="visi" class="form-label">Visi</label>
                                 <input type="text" class="form-control" name="visi"
                                     @error('visi') is-invalid @enderror" value="{{ old('visi') }}">
                                 @error('visi')
@@ -54,7 +42,7 @@
                                 @enderror
                             </div>
                             <div class="col-sm-6">
-                                <label for="misi" class="form-label">misi</label>
+                                <label for="misi" class="form-label">Misi</label>
                                 <input type="text" class="form-control" name="misi"
                                     @error('misi') is-invalid @enderror" value="{{ old('misi') }}">
                                 @error('misi')
@@ -64,9 +52,17 @@
                                 @enderror
                             </div>
                         </div>
-                        <hr class="my-4">
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">Simpan</button>
+                        <div class="row">
+                            <div class="col-2 mb-5 mt-5 ml-2">
+                            <div class="d-grid gap-2 d-md-flex justify-content">
+                                {{-- <a button class="btn btn-dark" href="/prestasi">Batal</button></a> --}}
+                                <button class="btn btn-primary" type="submit">Simpan</button>
+                            </div>
+                            </div>
+                        </div>
                     </form>
+                </div>
+            </div>
                 </div>
             </div>
         </main>

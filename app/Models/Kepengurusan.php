@@ -14,8 +14,9 @@ class Kepengurusan extends Model
         'tahun',
         'pembina',
         'ketua',
+        'internal',
+        'external',
         'sekretaris',
-        'bendahara',
     ];
     /**
      * Get the prestasi t owns the Kepengurusan
@@ -35,5 +36,10 @@ class Kepengurusan extends Model
     public function programkerja()
     {
         return $this->hasMany(Programkerja::class, 'kepengurusan_id');
+    }
+
+    public function anggota()
+    {
+        return $this->hasMany(Anggota::class, 'kepengurusan_id');
     }
 }

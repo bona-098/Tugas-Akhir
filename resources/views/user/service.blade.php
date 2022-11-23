@@ -82,23 +82,25 @@
                                         <br>
                                     </div>
                                     <div class="col-12 col-sm-6 ">
-                                        <label>hp</label>
-                                        <input class="form-control " type="number" name="no_hp" @error('no_hp') is-invalid @enderror" value="{{ old('no_hp') }}">
-                                                @error('no_hp')
-                                                    <div class="alert alert-danger mt-2">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                        <label>No.hp</label>
+                                        <input class="form-control" type="number" name="no_hp"
+                                            @error('no_hp') is-invalid @enderror" value="{{ old('no_hp') }}">
+                                        @error('no_hp')
+                                            <div class="alert alert-danger mt-2">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                         <br>
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <label>Keluhan</label>
-                                        <input class="form-control" type="text" name="pesan" @error('pesan') is-invalid @enderror" value="{{ old('pesan') }}">
-                                                @error('pesan')
-                                                    <div class="alert alert-danger mt-2">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror>
+                                        <input class="form-control" type="text" name="pesan"
+                                            @error('pesan') is-invalid @enderror" value="{{ old('pesan') }}">
+                                        @error('pesan')
+                                            <div class="alert alert-danger mt-2">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                         <br>
                                     </div>
                                     <div class="col-sm-6">
@@ -106,15 +108,15 @@
                                         <div class="value">
                                             <select class="form-select" name="teknisi_id">
                                                 @foreach ($filter as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                                    <option value="{{ $item->id }}">{{ $item->user->name }}</option>
                                                 @endforeach
                                                 <option value="">Pilih Teknisi....</option>
                                             </select>
                                             @error('teknisi_id')
-                                                    <div class="alert alert-danger mt-2">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>

@@ -1,19 +1,18 @@
 @extends('admin.app')
 @section('content')
-    <div class="container border">
+    <div class="container mb-5">
         <div class="button mb-3">
             <a button type="button" class="btn btn-primary" id="liveToastBtn"
                 href="{{ route('divisi.create') }}">Tambah Divisi</a>
         </div>
         <div class="card-body px-0 pb-0">
-            <div class="table-responsive border">
+            <div class="table-responsive">
                 <table class="table table-flush" id="products-list">
 
                     <thead class="thead-dark">
                         <tr>
                             <th>Nama</th>
                             <th>kadiv</th>
-                            {{-- <th>staff</th> --}}
                             <th>visi</th>
                             <th>misi</th>                            
                             <th>Action</th>
@@ -23,10 +22,8 @@
                         <tbody>
                             <tr>
                                 <div>
-                                {{-- <a href="oh/shiow/{{ $item->id }}">  --}}
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->kadiv }}</td>
-                                {{-- <td class="text-sm">{{ $item->staff->nama }}</td> --}}
                                 <td class="text-sm">{{ $item->visi }}</td>                                
                                 <td class="text-sm">{{ $item->misi }}</td>
                                 </a>
@@ -42,7 +39,9 @@
                                             <form action="{{route('divisi.destroy', $item->id)}}" method="POST">
                                                 @csrf   
                                                 @method('DELETE')
-                                                <button class="dropdown-item" type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i> Hapus</button>
+                                                <button class="dropdown-item" type="submit" 
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i 
+                                                class="fa fa-trash"></i> Hapus</button>
                                             </form>
                                         </div>
                                     </div>

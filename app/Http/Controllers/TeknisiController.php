@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Teknisi;
 use App\Models\service;
+use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class TeknisiController extends Controller
 {
@@ -16,7 +18,9 @@ class TeknisiController extends Controller
      */
     public function index(Teknisi $teknisi)
     {
-        $teknisi = Teknisi::get();
+        // $service = Service::with("teknisi", "user")->get();
+        // $user = User::get();
+        $teknisi = Teknisi::with("user")->get();
         return view('admin.teknisi.index', compact('teknisi'));
     }
 
@@ -27,7 +31,9 @@ class TeknisiController extends Controller
      */
     public function create()
     {
-        return view('admin.teknisi.tambah');
+        $user = User::get();
+        // dd($user);
+        return view('admin.teknisi.tambah', compact('user'));
     }
 
     /**
@@ -39,24 +45,24 @@ class TeknisiController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required',
+            // 'nama' => 'required',
             'nim' => 'required',
             'hari' => 'required',
-            // 'sesi' => 'required',
+            'user_id' => 'required',
             'no_hp' => 'required',
             'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
         ]);
 
-        $newNameFoto = date('ymd'). '-' .$request->nama. '.'. $request->foto->extension();
+        $newNameFoto = date('ymd'). '-' .$request->nim. '.'. $request->foto->extension();
         // dd($newNameFoto);
 
         $request->file('foto')->move(public_path('images/teknisi'), $newNameFoto);
 
         Teknisi::create([
-            'nama' => $request->nama,
+            // 'nama' => $request->nama,
             'nim' => $request->nim,
             'hari' => $request->hari,
-            // 'sesi' => $request->sesi,
+            'user_id' => $request->user_id,
             'no_hp' => $request->no_hp,
             'foto' => $newNameFoto
         ]);

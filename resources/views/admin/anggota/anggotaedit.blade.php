@@ -1,10 +1,5 @@
 @extends('admin.app')
 @section('content')
-    <style>
-        .border {
-            border: 2px;
-        }
-    </style>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>sorry?</strong>
@@ -15,17 +10,12 @@
             </ul>
         </div>
     @endif
-    <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-lg-10">
-                <h4 class="text-danger">Edit Anggota</h4>
-            </div>
-        </div>
-
+    <div class="container-fluid py-4">        
         <div class="row mt-4">
             <div class="col-lg-12 mt-lg-0 mt-4">
                 <div class="card">
                     <div class="card-body">
+                        <h4 class="row mb-5 ml-2">Edit : {{ $anggota->nama }}</h4>
                         <form action="{{ route('anggota.update', $anggota->id) }}" method="POST"
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -52,8 +42,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary" type="submit">Edit</button>
+                                <div class="col-2 mb-5 mt-5 ml-2">
+                                <div class="d-grid gap-2 d-md-flex justify-content">
+                                    <a button class="btn btn-dark" href="{{ URL::previous() }}">Batal</button></a>
+                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                </div>
                                 </div>
                             </div>
                         </form>

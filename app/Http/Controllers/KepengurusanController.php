@@ -47,8 +47,9 @@ class KepengurusanController extends Controller
             'tahun' => 'required',
             'pembina' => 'required',
             'ketua' => 'required',
+            'internal' => 'required',
+            'external' => 'required',
             'sekretaris' => 'required',
-            'bendahara' => 'required',
             // 'service_id' => 'required'
         ]);
 
@@ -57,8 +58,9 @@ class KepengurusanController extends Controller
             'tahun'=>$request->tahun,
             'pembina'=>$request->pembina,
             'ketua'=>$request->ketua,
+            'internal'=>$request->internal,
+            'external'=>$request->external,
             'sekretaris'=>$request->sekretaris,
-            'bendahara'=>$request->bendahara,
             // 'service_id'=>$request->pembina,
             
         ]);
@@ -119,9 +121,9 @@ class KepengurusanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($kepengurusan, $id)
+    public function destroy(Kepengurusan $kepengurusan)
     {
-        $kepengurusan->destroy($id);
+        $kepengurusan->delete();
         return redirect()->back()->with('success', 'Kepengurusan berhasil dihapus');
     }
 }

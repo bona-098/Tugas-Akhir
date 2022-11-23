@@ -1,10 +1,5 @@
 @extends('admin.app')
 @section('content')
-    <style>
-        .border {
-            border: 2px;
-        }
-    </style>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>sorry?</strong>
@@ -15,65 +10,63 @@
             </ul>
         </div>
     @endif
-    <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-lg-10">
-                <h4 class="text-danger">Edit Kepengurusan</h4>
-            </div>
-            {{-- <div class="col-lg-2 text-right d-flex flex-column justify-content-center end-0">
-            <button type="button" class="btn btn-primary position-absolute top-0 end-0">Save</button>
-        </div> --}}
-        </div>
-
+    <div class="container-fluid py-4">        
         <div class="row mt-4">
             <div class="col-lg-12 mt-lg-0 mt-4">
                 <div class="card">
                     <div class="card-body">
+                        <h4 class="row mb-3 ml-2">Edit Kepengurusan</h4>
                         <form action="{{ route('kepengurusan.update', $kepengurusan->id) }}" method="POST"
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
                             @method('patch')
                             <div class="row">
                                 <div class="col-12 col-sm-6">
-                                    <label>nama</label>
+                                    <label>Nama kepengurusan</label>
                                     <input class="form-control" type="text" name="nama"
                                         value="{{ $kepengurusan->nama }}">
                                     <br>
                                 </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>tahun</label>
+                                <div class="col-12 col-sm-6">
+                                    <label>Tahun</label>
                                     <input class="form-control" type="text" name="tahun"
                                         value="{{ $kepengurusan->tahun }}">
                                 </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>pembina</label>
+                                <div class="col-12 col-sm-6">
+                                    <label>Pembina</label>
                                     <input class="form-control" type="text" name="pembina"
                                         value="{{ $kepengurusan->pembina }}">
+                                        <br>
                                 </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>bph</label>
-                                    <input class="form-control" type="text" name="bph"
-                                        value="{{ $kepengurusan->bph }}">
+                                <div class="col-12 col-sm-6">
+                                    <label>Ketua</label>
+                                    <input class="form-control" type="text" name="ketua"
+                                        value="{{ $kepengurusan->ketua }}">
                                 </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>pengurus_lain</label>
-                                    <input class="form-control" type="text" name="pengurus_lain"
-                                        value="{{ $kepengurusan->pengurus_lain }}">
+                                <div class="col-12 col-sm-6">
+                                    <label>Wakil internal</label>
+                                    <input class="form-control" type="text" name="internal"
+                                        value="{{ $kepengurusan->internal }}">
+                                        <br>
                                 </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>anggota</label>
-                                    <input class="form-control" type="text" name="anggota"
-                                        value="{{ $kepengurusan->anggota }}">
+                                <div class="col-12 col-sm-6">
+                                    <label>Wakil eksternal</label>
+                                    <input class="form-control" type="text" name="external"
+                                        value="{{ $kepengurusan->external }}">
                                 </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label>program kerja</label>
-                                    <input class="form-control" type="text" name="program_kerja"
-                                        value="{{ $kepengurusan->program_kerja }}">
+                                
+                                <div class="col-12 col-sm-6">
+                                    <label>Sekretaris</label>
+                                    <input class="form-control" type="text" name="sekretaris"
+                                        value="{{ $kepengurusan->sekretaris }}">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary" type="submit">Edit</button>
+                                <div class="col-2 mb-5 mt-5 ml-2">
+                                <div class="d-grid gap-2 d-md-flex justify-content">
+                                    <a button class="btn btn-dark" href="{{ URL::previous() }}">Batal</button></a>
+                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                </div>
                                 </div>
                             </div>
                         </form>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Anggota;
 use App\Models\Divisi;
+use App\Models\Kepengurusan;
 use Illuminate\Http\Request;
 use illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
@@ -39,8 +40,13 @@ class AnggotaController extends Controller
      */
     public function create()
     {
+        $kepengurusan = Kepengurusan::select('nama','id')->OrderBy('id', 'desc')->get();
         $divisi = Divisi::select('nama','id')->get();
-        return view('user.anggota', compact('divisi'));
+        return view('user.anggota',
+        [
+            'kepengurusan' => $kepengurusan,
+            'divisi' => $divisi,
+            ]);
     }
 
     /**
@@ -58,11 +64,13 @@ class AnggotaController extends Controller
             'nama' => 'required',
             'nim' => 'required',
             'divisi_id' => 'required',
+            'kepengurusan_id' => 'required',
             'alasan_satu' => 'required',
             'pilihan_dua' => 'required',
             'alasan_dua' => 'required',
             'pindah_divisi' => 'required',
             'motivasi' => 'required',
+            'komitmen' => 'required',
             'komitmen' => 'required',
             'user_id' => 'Auth::id()',
             'cv' => 'required|mimes:pdf|max:50000',
@@ -84,6 +92,7 @@ class AnggotaController extends Controller
             'nama' => $request->nama,
             'nim' => $request->nim,
             'divisi_id' => $request->divisi_id,
+            'kepengurusan_id' => $request->kepengurusan_id,
             'alasan_satu' => $request->alasan_satu,
             'pilihan_dua' => $request->pilihan_dua,
             'alasan_dua' => $request->alasan_dua,
@@ -92,7 +101,6 @@ class AnggotaController extends Controller
             'komitmen' => $request->komitmen,
             'cv' => $newNamecv,
             'porto' => $newNameporto,
-            'kepengurusan_id' => null,
             'user_id' => Auth::user()->id
         ]);
 
@@ -119,9 +127,10 @@ class AnggotaController extends Controller
      */
     public function edit($id)
     {
+        $kepengurusan = Kepengurusan::select('nama','id')->get();
         $divisi = Divisi::select('nama','id')->get();
         $anggota = Anggota::find($id);
-        return view('admin.anggota.anggotaedit', compact('anggota', 'divisi'));
+        return view('admin.anggota.anggotaedit', compact('anggota', 'divisi', 'kepengurusan'));
     }
 
     /**
@@ -143,8 +152,9 @@ class AnggotaController extends Controller
         $anggota = Anggota::find($id);
 
         $anggota->update($anggot);
-        $berkas = Anggota::get();
-        return view('admin.anggota.pendaftaran', compact('berkas'));
+        // $berkas = Anggota::get();
+        $wawan = Anggota::get();
+        return view('admin.anggota.wawancara', compact('wawan'));
     }
 
     /**

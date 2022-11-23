@@ -14,11 +14,9 @@
         </div>
     @endif
     <div class="container-fluid">
-        <h1>seleksi berkas</h1>
-
-        <div class="table-responsive border">
+        <h4 class="row mb-3 ml-2">Seleksi berkas</h4>
+        <div class="table-responsive">
             <table class="table table-flush" id="products-list">
-
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Nama</th>
@@ -32,7 +30,8 @@
                         <th scope="col">Komitmen</th>
                         <th scope="col">CV</th>
                         <th scope="col">Portofolio</th>
-                        <th scope="col">action</th>
+                        <th scope="col">Terima</th>
+                        <th scope="col">Tolak</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,35 +61,19 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-cog"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ route('anggota.edit', $item->id) }}"><i
-                                                class="fa fa-edit"></i> Edit</a>
-                                        <form action="{{ route('anggota.destroy', $item->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="dropdown-item" type="submit"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i
-                                                    class="fa fa-trash"></i> Hapus</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
                                 <form method="post" action="{{ route('wawancari', $item->id) }}" >
                                     @csrf                                    
                                     <input type="hidden" value="wawancara" name="status" >
-                                    <button type="submit">Terima</button>                                        
+                                    <button type="submit" class="btn btn-primary">Terima</button>                                        
                                 </form>
-                                <form method="post" action="{{ route('gagal', $item->id) }}">
-                                    @csrf                                    
-                                    <input type="hidden" value="gagal" name="status">
-                                    <button type="submit">Tolak</button>
-                                </form>
+                            </td>
+                            <td>
+                            <form action="{{ route('anggota.destroy', $item->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit"
+                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Tolak</button>
+                            </form>
                             </td>
                             {{-- <td>
                                 <a href="{{ url('change-status/' . $item->id) }}" onclick="return confirm('Are you Sure?')"

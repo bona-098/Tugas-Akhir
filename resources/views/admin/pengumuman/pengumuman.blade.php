@@ -18,10 +18,10 @@
             <a button type="button" class="btn btn-primary" id="liveToastBtn"
                 href="{{ route('pengumuman.create') }}">Buat Pengumuman</a>
         </div>
-        <div class="card-body px-0 pb-0 border">
-            <div class="table-responsive border">
+        <div class="card-body px-0 pb-0">
+            <div class="table-responsive">
                 <table class="table table-flush" id="products-list">
-                    <thead class="thead-light">
+                    <thead class="thead-dark">
                         <tr>
                             <th>Judul</th>
                             <th>Deskripsi</th>

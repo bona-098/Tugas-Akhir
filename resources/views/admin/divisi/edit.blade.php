@@ -1,11 +1,6 @@
 <title>Edit Divisi : {{ $divisi->nama }}</title>
 @extends('admin.app')
 @section('content')
-    <style>
-        .border {
-            border: 2px;
-        }
-    </style>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>sorry?</strong>
@@ -16,17 +11,12 @@
             </ul>
         </div>
     @endif
-    <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-lg-10">
-                <h4 class="text-danger">Edit Divisi</h4>
-            </div>            
-        </div>
-
+    <div class="container mb-5">
         <div class="row mt-4">
             <div class="col-lg-12 mt-lg-0 mt-4">
                 <div class="card">
                     <div class="card-body">
+                        <h4 class="row mb-3 ml-2">Edit Divisi</h4>
                         <form action="{{ route('divisi.update', $divisi->id) }}" method="POST"
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -44,12 +34,6 @@
                                         value="{{ $divisi->kadiv }}">
                                     <br>
                                 </div>
-                                {{-- <div class="col-12 col-sm-6">
-                                    <label>deskripsi</label>
-                                    <input class="form-control" type="text" name="staff"
-                                        value="{{ $divisi->staff }}">
-                                    <br>
-                                </div> --}}
                                 <div class="col-12 col-sm-6">
                                     <label>deskripsi</label>
                                     <input class="form-control" type="text" name="visi"
@@ -64,8 +48,11 @@
                                 </div>                                
                             </div>
                             <div class="row">
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary" type="submit">Edit</button>
+                                <div class="col-2 mb-5 mt-5 ml-2">
+                                <div class="d-grid gap-2 d-md-flex justify-content">
+                                    <a button class="btn btn-dark" href="/prestasi">Batal</button></a>
+                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                </div>
                                 </div>
                             </div>
                         </form>
