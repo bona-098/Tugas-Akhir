@@ -90,7 +90,6 @@ class ProfilController extends Controller
 
         $user = User::findOrFail(Auth::user()->id);
 
-        //ganti password
         $user->name = $request->input('name');
         $user->email = $request->input('email');
 
@@ -98,12 +97,10 @@ class ProfilController extends Controller
             if (Hash::check($request->input('current_password'), $user->password)) {
                 $user->password = Hash::make($request->input('new_password'));
             } else {
-                // Alert::toast('Password Lama Tidak Sesuai!', 'error');
                 return redirect()->back();
             }
         }
         $user->save();
-        // Alert::toast('data berhasil diubah', 'succes');
         return redirect()->route('profil.index')->with('success', 'profil berhasil diperbarui');
     }
 

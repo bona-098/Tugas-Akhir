@@ -18,8 +18,6 @@ class TeknisiController extends Controller
      */
     public function index(Teknisi $teknisi)
     {
-        // $service = Service::with("teknisi", "user")->get();
-        // $user = User::get();
         $teknisi = Teknisi::with("user")->get();
         return view('admin.teknisi.index', compact('teknisi'));
     }
@@ -32,7 +30,6 @@ class TeknisiController extends Controller
     public function create()
     {
         $user = User::get();
-        // dd($user);
         return view('admin.teknisi.tambah', compact('user'));
     }
 
@@ -45,7 +42,6 @@ class TeknisiController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            // 'nama' => 'required',
             'nim' => 'required',
             'hari' => 'required',
             'user_id' => 'required',
@@ -54,12 +50,10 @@ class TeknisiController extends Controller
         ]);
 
         $newNameFoto = date('ymd'). '-' .$request->nim. '.'. $request->foto->extension();
-        // dd($newNameFoto);
 
         $request->file('foto')->move(public_path('images/teknisi'), $newNameFoto);
 
         Teknisi::create([
-            // 'nama' => $request->nama,
             'nim' => $request->nim,
             'hari' => $request->hari,
             'user_id' => $request->user_id,
@@ -103,12 +97,6 @@ class TeknisiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            // 'nama' => 'required',
-            // 'nim' => 'required',
-            // 'hari' => 'required',
-            // 'sesi' => 'required',
-            // 'no_hp' => 'required',
-            // 'foto' => 'required|mimes:jpg,img,jpeg|max:50000'
         ]);
 
         $teknisis = $request->all();

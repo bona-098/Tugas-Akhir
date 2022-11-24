@@ -22,16 +22,14 @@ class PresatasiTest extends TestCase
         $admin = User::where('role', $role)->first();
 
         Prestasi::create([
-            'nama' => $this->faker->name(),
-            'nim' => $this->faker->numerify('########'),
-            'pencapaian' => $this->faker->randomElement(array('juara 1', 'juara 2', 'juara 3', 'juara harapan', 'peserta', 'guest star', 'dll')),
-            'dospem' => $this->faker->name(),
-            'kategori' => $this->faker->randomElement(array('lomba', 'webinar', 'peraih penghargaan', 'peraih nominasi', 'dll')),
-            'nama_kegiatan' => $this->faker->realText($maxNbChars = 200),
+            'nama_kegiatan' => $this->faker->name(),
+            'jenis_kegiatan' => $this->faker->name(),
+            'partisipasi' => $this->faker->name(),
+            'deskripsi' => $this->faker->name(),
+            'sertifikat' => $this->faker->file(),
             'penyelenggara' => $this->faker->company(),
             'waktu' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'tempat' => $this->faker->city(),
-            'foto' => $this->faker->imageUrl($width = 640, $height = 480),
         ]);
         $response = $this->actingAs($admin)->get(route('admin-prestasi.store'));
 
@@ -54,22 +52,18 @@ class PresatasiTest extends TestCase
         $admin = User::where('role', $role)->first();
 
         $request = [
-            'nama' => 'sukses',
-            'nim' => '11181019',
-            'pencapaian' => 'juara 1',
-            'dospem' => 'luhut',
-            'kategori' => 'lomba',
-            'nama_kegiatan' => 'lomba panjat pinang',
+            'nama_kegiatan' => 'sukses',
+            'jeniskegiatan' => 'sukses',
+            'partisipasi' => 'sukses',
+            'deskripsi' => 'sukses',
+            'sertifikat' => 'sukses.pdf',
             'penyelenggara' => 'uniba',
             'waktu' => '09-06-1907',
             'tempat' => 'West Judge',
-            'foto' => 'sukses.jpg'
         ];
 
-        // $response = $this->call('PUT', route('supplier.update'),$request);
-        // $this->assertEquals(200, $response->getStatusCode());
         $response = $this->actingAs($admin)
-        ->put(route('admin-prestasi.update',3), $request);
+        ->put(route('admin-prestasi.update',9), $request);
 
         $response->assertStatus(302);
     }
@@ -80,7 +74,7 @@ class PresatasiTest extends TestCase
         $admin = User::where('role', $role)->first();
 
         $response = $this->actingAs($admin)
-        ->delete(route('admin-prestasi.destroy',4));
+        ->delete(route('admin-prestasi.destroy',));
 
         $response->assertStatus(302);
     }

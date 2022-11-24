@@ -22,8 +22,6 @@ class serviceController extends Controller
     public function index()
     {
         $service = Service::with("teknisi", "user")->get();
-        // dd($service);
-        // $service = Service::where('status', '1')->orWhere('status', '2');
         return view('admin.service.service', compact('service'));
     }
 
@@ -40,9 +38,6 @@ class serviceController extends Controller
         $ambilhari = Carbon::parse($hari)->translatedFormat('l');
         
         $filter = Teknisi::where('hari', '=', $ambilhari)->get();
-        // dd($filter);
-        // dd(auth::id());
-
 
         return view('user.service', compact('filter'));
 
@@ -61,8 +56,6 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-
         $this->validate($request, [
             'nama' => 'required',
             'hari' => 'required',
@@ -72,8 +65,6 @@ class serviceController extends Controller
             // 'status' => '1',
             'teknisi_id' => 'required',
         ]);
-
-        // dd($request->all());
 
         if(Service::where('sesi', '=', $request->sesi)->where('hari', '=', $request->hari)->exists()){
             return redirect()->back()->with('gagal', 'Data servis di sesi dan yang sama telah terisi');
@@ -176,17 +167,6 @@ class serviceController extends Controller
 
         $service = Service::find($id);
 
-        // dd($serviced);
-        // if ($foto = $request->file('foto')) {
-        //     File::delete('images/service/' . $service->foto);
-        //     $fotos = 'images/service/';
-        //     $file_name = $request->foto->getClientOriginalName();
-        //     $foto->move($fotos, $file_name);
-        //     $serviced['foto'] = "$file_name";
-        // } else {
-        //     unset($serviced['foto']);
-        // }
-
         $service->update([
             'nama' => $request->nama,
             // 'nim' => $request->nim,
@@ -210,14 +190,12 @@ class serviceController extends Controller
      */
     public function destroy(Service $service, $id)
     {
-        // $karyawan = Karyawan::find($karyawan);
         $service->destroy($id);
         return redirect()->back()->with('success', 'riwayat servis berhasil dihapus');
     }
 
     public function changeStatus(Request $request, $id)
     {
-        // dd($request->all());
         if ($request->status == 'terima') {
             $status = 'terima';
         } elseif ($request->status == 'selesai') {

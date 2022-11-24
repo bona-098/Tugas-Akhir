@@ -27,11 +27,9 @@ class PrestasiController extends Controller
      */
     public function create()
     {
-        // $kepengurusan = Divisi::select('nama','id')->get();
         $kepengurusan = Kepengurusan::select('nama','id')->get();
         return view('admin.prestasi.prestasitambah', 
         [
-            // 'divisi' => $divisi,
             'kepengurusan' => $kepengurusan
             ]);
     }
@@ -44,7 +42,6 @@ class PrestasiController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);/
         $this->validate($request, [
             'nama_kegiatan' => 'required',
             'jenis_kegiatan' => 'required',
@@ -110,18 +107,7 @@ class PrestasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            // 'nama_kegiatan' => 'required',
-            // 'jenis_kegiatan' => 'required',
-            // 'partisipasi' => 'required',
-            // 'deskripsi' => 'required',
-            // 'sertifikat' => 'required',
-            // 'penyelenggara' => 'required',
-            // 'waktu' => 'required',
-            // 'tempat' => 'required',
-            // 'kepengurusan_id' => 'required',
-            // 'sertifikat' => 'required|mimes:pdf|max:50000'
-        ]);
+        $request->validate([]);
         
         $prestasis = $request->all();
 

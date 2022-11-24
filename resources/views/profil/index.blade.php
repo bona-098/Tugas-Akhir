@@ -53,7 +53,7 @@
                             <li class="list-group-item d-flex justify-content-between lh-sm">
                                 <div>
                                     <h6 class="my-0">{{ $lane->teknisi->user->name }}</h6>
-                                    <span class="text-muted">{{ $lane->hari }}</span>
+                                    <span class="text-muted">{{ $lane->hari }} ( {{ $lane->sesi }} )</span>
                                 </div>
                                 <small class="text-muted">{{ $lane->status }}</small>
                             </li>

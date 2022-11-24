@@ -102,13 +102,10 @@ class PengumumanController extends Controller
         $pengumumans = $request->all();
 
         $pengumuman = Pengumuman::find($id); 
-        
-        // dd($prestasis);
+
         if ($media = $request->file('media')) {
             File::delete('images/pengumuman/'.$pengumuman->media);
-            // $medias = 'pengumuman/media/';
             $file_name = $request->media->getClientOriginalName();
-            // $media->move($medias, $file_name);
             $media->move(public_path('images/pengumuman'), $file_name);
             $pengumumans['media'] = "$file_name";
         }else{
