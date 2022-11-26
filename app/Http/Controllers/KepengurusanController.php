@@ -41,7 +41,6 @@ class KepengurusanController extends Controller
      */
     public function store(Request $request)
     {
-        // dd('$request');
         $this->validate($request, [
             'nama' => 'required',
             'tahun' => 'required',
@@ -50,7 +49,6 @@ class KepengurusanController extends Controller
             'internal' => 'required',
             'external' => 'required',
             'sekretaris' => 'required',
-            // 'service_id' => 'required'
         ]);
 
         Kepengurusan::create([
@@ -61,7 +59,6 @@ class KepengurusanController extends Controller
             'internal'=>$request->internal,
             'external'=>$request->external,
             'sekretaris'=>$request->sekretaris,
-            // 'service_id'=>$request->pembina,
             
         ]);
         return redirect()->route('kepengurusan.index')->with('success', 'Berhasil menambah kepengurusan');
@@ -76,7 +73,6 @@ class KepengurusanController extends Controller
     public function show($id)
     {
         $kepengurusan = Kepengurusan::with("prestasi", "programkerja")->find($id);
-        // dd($kepengurusan);
         return view('admin.kepengurusan.show', compact('kepengurusan'));
     }
     
@@ -107,9 +103,21 @@ class KepengurusanController extends Controller
             'tahun' => 'required',
             'pembina' => 'required',
             'ketua' => 'required',
+            'internal' => 'required',
+            'external' => 'required',
             'sekretaris' => 'required',
-            'bendahara' => 'required',
-            // 'service_id' => 'required'
+        ]);
+        $urus = $request->all();
+        $kepengurusan = Kepengurusan::find($id);
+
+        $kepengurusan->update([
+            'nama'=>$request->nama,
+            'tahun'=>$request->tahun,
+            'pembina'=>$request->pembina,
+            'ketua'=>$request->ketua,
+            'internal'=>$request->internal,
+            'external'=>$request->external,
+            'sekretaris'=>$request->sekretaris,
         ]);
         
         return redirect()->route('kepengurusan.index')->with('success', 'Kepengurusan berhasil diperbarui');

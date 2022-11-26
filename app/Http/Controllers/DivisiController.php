@@ -49,7 +49,6 @@ class DivisiController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'kadiv' => 'required',
-            // 'staff' => 'required',
             'visi' => 'required',
             'misi' => 'required'
         ]);
@@ -57,7 +56,6 @@ class DivisiController extends Controller
         Divisi::create([
             'nama'=>$request->nama,
             'kadiv'=>$request->kadiv,
-            // 'staff'=>$request->staff,
             'visi'=>$request->visi,
             'misi'=>$request->misi
         ]);
@@ -108,7 +106,6 @@ class DivisiController extends Controller
         $request->validate([
             'nama' => 'required',
             'kadiv' => 'required',
-            // 'staff' => 'required',
             'visi' => 'required',
             'misi' => 'required'
         ]);
@@ -119,7 +116,6 @@ class DivisiController extends Controller
         $divisi->update([
             'nama'=>$request->nama,
             'kadiv'=>$request->kadiv,
-            // 'staff'=>$request->staff,
             'visi'=>$request->visi,
             'misi'=>$request->misi
         ]);

@@ -25,12 +25,12 @@ class iterasi2 extends TestCase
 
     public function testLihatdokumentasi()
     {
-        // $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
         $user = User::where('role','admin')->first();
             $response = $this->actingAs($user)
-                ->get(route('dokumentasi.index'));
-            $response->assertStatus(302);
-            // ->assertSee('dokumentasi');
+                ->get(route('admin.dokumentasi.dokumentasi'));
+            $response->assertStatus(200)
+            ->assertSee('dokumentasi');
             
     }
 
@@ -63,7 +63,7 @@ class iterasi2 extends TestCase
     public function testHapusdokumentasi()
     {
         $user = User::where('role','admin')->first();
-        $response = $this->actingAs($user)->delete(route('dokumentasi.destroy',1));
+        $response = $this->actingAs($user)->delete(route('dokumentasi.destroy',13));
         $response->assertStatus(302);
     }
 

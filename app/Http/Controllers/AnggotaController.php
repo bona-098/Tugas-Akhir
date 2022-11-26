@@ -57,9 +57,6 @@ class AnggotaController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd($request);
-        // return $request;
         $this->validate($request, [
             'nama' => 'required',
             'nim' => 'required',
@@ -152,7 +149,6 @@ class AnggotaController extends Controller
         $anggota = Anggota::find($id);
 
         $anggota->update($anggot);
-        // $berkas = Anggota::get();
         $wawan = Anggota::get();
         return view('admin.anggota.wawancara', compact('wawan'));
     }

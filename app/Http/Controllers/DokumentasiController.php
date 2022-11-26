@@ -94,7 +94,6 @@ class DokumentasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
         $request->validate([
             'nama' => 'required',
             'waktu' => 'required',
@@ -106,7 +105,6 @@ class DokumentasiController extends Controller
 
         $dokumentasi = Dokumentasi::find($id); 
         
-        // dd($dokumentasi);
         if ($media = $request->file('media')) {
             File::delete('images/dokumentasi/'.$dokumentasi->media);
             $file_name = $request->media->getClientOriginalName();

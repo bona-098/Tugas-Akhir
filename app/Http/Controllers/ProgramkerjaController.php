@@ -18,14 +18,12 @@ class ProgramkerjaController extends Controller
      */
     public function index()
     {
-        // $proker = Programkerja::with("kepengurusan", "divisi")->get();
         $proker = Programkerja::get();
         return view('admin.proker.proker', compact('proker'));
     }
     public function riwayatkerja()
     {
         $proker = Programkerja::get();
-        // dd($proker);
         return view('admin.proker.riwayatkerja', compact('proker'));
     }
     public function monitoring()
@@ -43,7 +41,6 @@ class ProgramkerjaController extends Controller
     {
         $kepengurusan = Kepengurusan::select('nama','id')->get();
         $divisi = Divisi::select('nama','id')->get();
-        // dd($kepengurusan);
         return view('admin.proker.tambah',
         [
             'kepengurusan' => $kepengurusan,
@@ -166,13 +163,11 @@ class ProgramkerjaController extends Controller
     public function show($id)
     {
         $proker = Programkerja::findOrfail($id);
-        // dd($proker);
         return view('admin.proker.show', compact('proker'));
     }
 
     public function status(Request $request, $id)
     {
-        // dd($request->all());
         if ($request->status == 'monitoring') {
             $status = 'monitoring';
         } elseif ($request->status == 'planning') {
