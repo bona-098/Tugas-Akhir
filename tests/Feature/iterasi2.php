@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
+// use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
@@ -21,12 +21,12 @@ class iterasi2 extends TestCase
      * @return void
      */
     use WithFaker;
-    use WithoutMiddleware;
+    // use WithoutMiddleware;
 
     public function testLihatdokumentasi()
     {
         $this->withoutExceptionHandling();
-        $user = User::where('role','Admin')->first();
+        $user = User::where('role','admin')->first();
             $response = $this->actingAs($user)
                 ->get(route('admin.dokumentasi.dokumentasi'));
             $response->assertStatus(200)
@@ -36,7 +36,7 @@ class iterasi2 extends TestCase
 
     public function testCreatedokumentasi()
     {
-        $user = User::where('role', 'Admin')->first();
+        $user = User::where('role', 'admin')->first();
             $response = $this->actingAs($user)
                 ->post(route('dokumentasi.store'), [
                     'nama' => $this->faker->name(),
@@ -49,7 +49,7 @@ class iterasi2 extends TestCase
 
     public function testEditdokumentasi()
     {
-        $user = User::where('role', 'Admin')->first();
+        $user = User::where('role', 'admin')->first();
         $response = $this->actingAs($user)
             ->put(route('dokumentasi.update', '1'), [
                 'nama' => $this->faker->name(),
@@ -62,7 +62,7 @@ class iterasi2 extends TestCase
 
     public function testHapusdokumentasi()
     {
-        $user = User::where('role','Admin')->first();
+        $user = User::where('role','admin')->first();
         $response = $this->actingAs($user)->delete(route('dokumentasi.destroy',13));
         $response->assertStatus(302);
     }
