@@ -5,6 +5,9 @@ namespace Tests\Feature;
 // use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Auth\Notifications\ResetPassword;
+// use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Models\Dokumentasi;
@@ -22,16 +25,87 @@ class iterasi1Test extends TestCase
      */
     use WithFaker;
     // use WithoutMiddleware;
+// 1
+    public function testregister()
+    {
+        $response = $this->post('/register', [
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
 
+        $response->assertStatus(302);
+    }
+// 2
+    public function testlogin()
+    {
+        $user = User::where('role', 'user')->first();
+
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+
+       
+        $response->assertRedirect(RouteServiceProvider::HOME);
+    }
+// 3 logout
+    public function testLogout()
+    {
+        $user = User::where('role', 'admin')->first();
+        $response = $this->actingAs($user)
+            ->post(route('logout'));
+        $response->assertStatus(302);
+    }
+
+// 4 edit profil
+    public function testEditprofil()
+    {
+        $user = User::where('role', 'su')->first();
+        $response = $this->actingAs($user)
+            ->put(route('profil.update', '1'), [
+                'name' => 'Test User',
+                'email' => 'test@example.com',
+                'password' => 'password',
+                'password_confirmation' => 'password',
+            ]);
+        $response->assertStatus(302);
+    }
+//5 
+    public function testresetpassword()
+    {
+        Notification::fake();
+
+        $user = User::factory()->create();
+
+        $this->post('/forgot-password', ['email' => $user->email]);
+
+        Notification::assertSentTo($user, ResetPassword::class);
+    }
+
+// 6kelola user
+    public function testKelolauser()
+    {
+        $user = User::where('role', 'su')->first();
+        $response = $this->actingAs($user)
+            ->put(route('profil.update', '1'), [
+                'name' => 'Test User',
+                'email' => 'test@example.com',
+                'password' => 'password',
+                'role' => 'admin',
+            ]);
+        $response->assertStatus(302);
+    }
+
+// 7
     public function testLihatprestasi()
     {
         $this->withoutExceptionHandling();
         $user = User::where('role','admin')->first();
             $response = $this->actingAs($user)
                 ->get(route('prestasi.index'));
-            $response->assertStatus(200);
-            // ->assertSee('pengumuman');
-            
+            $response->assertStatus(302);
     }
 
     public function testCreateprestasi()

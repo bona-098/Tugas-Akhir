@@ -57,7 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/service', ServiceController::class);
         Route::resource('/teknisi', TeknisiController::class);
         Route::resource('/home', HomeController::class);
-        Route::get('/riwayat', [ServiceController::class, 'riwayat']);
+        Route::get('/riwayat', [ServiceController::class, 'riwayat'])->name('riwayat');
         Route::post('/riwayat', [ServiceController::class, 'riwayat']);
     });
     //role
@@ -77,8 +77,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/wawancari-2/{wawancari}', [AnggotaController::class, 'wawancari'])->name('gagal');
         Route::get('/pendaftaran', [AnggotaController::class, 'berkas'])->name('berkas');
         Route::resource('/anggota', AnggotaController::class);
-        route::get('/monitoring', [ProgramkerjaController::class, 'monitoring']);
-        route::get('/riwayatkerja', [ProgramkerjaController::class, 'riwayatkerja']);
+        route::get('/monitoring', [ProgramkerjaController::class, 'monitoring'])->name('monitoring');
+        route::get('/riwayatkerja', [ProgramkerjaController::class, 'riwayatkerja'])->name('riwayatkerja');
         route::patch('/proker/{id}/Update', [ProgramkerjaController::class, 'update'])->name('proker');
         // Route::patch('/settings/{id}/update/', 'HomeController@update')->name('user.update');
     });

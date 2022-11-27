@@ -188,9 +188,9 @@ class serviceController extends Controller
      * @param  \App\Models\service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service, $id)
+    public function destroy(Service $service)
     {
-        $service->destroy($id);
+        $service->delete();
         return redirect()->back()->with('success', 'riwayat servis berhasil dihapus');
     }
 

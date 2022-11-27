@@ -30,7 +30,7 @@ class iterasi4Test extends TestCase
         $this->withoutExceptionHandling();
         $user = User::where('role','admin')->first();
         $response = $this->actingAs($user)
-        ->get(route('anggota.berkas'));
+        ->get(route('berkas'));
         $response->assertStatus(302);
         // ->assertSee('staff');
         
@@ -40,7 +40,7 @@ class iterasi4Test extends TestCase
         $this->withoutExceptionHandling();
         $user = User::where('role','admin')->first();
             $response = $this->actingAs($user)
-                ->get(route('anggota.wawancari'));
+                ->get(route('wawancara'));
             $response->assertStatus(302);
             // ->assertSee('staff');
             
@@ -99,7 +99,7 @@ class iterasi4Test extends TestCase
     }
     
     
-    public function testPlanningprogramkerja()
+    public function testTambahrogramkerja()
     {
         $user = User::where('role', 'admin')->first();
             $response = $this->actingAs($user)
@@ -127,7 +127,17 @@ class iterasi4Test extends TestCase
         $this->withoutExceptionHandling();
         $user = User::where('role','admin')->first();
             $response = $this->actingAs($user)
-                ->get(route('proker.monitoring'));
+                ->get(route('monitoring'));
+            $response->assertStatus(302);
+            // ->assertSee('staff');
+            
+    }
+    public function testLihatRiwayat()
+    {
+        $this->withoutExceptionHandling();
+        $user = User::where('role','admin')->first();
+            $response = $this->actingAs($user)
+                ->get(route('riwayatkerja'));
             $response->assertStatus(302);
             // ->assertSee('staff');
             
@@ -137,13 +147,13 @@ class iterasi4Test extends TestCase
         $this->withoutExceptionHandling();
         $user = User::where('role','admin')->first();
             $response = $this->actingAs($user)
-                ->get(route('proker.riwayatkerja'));
+                ->get(route('proker.index'));
             $response->assertStatus(302);
             // ->assertSee('staff');
             
     }
 
-    public function testEditprogramkerja()
+    public function testMengubahprogramkerja()
     {
         $user = User::where('role', 'admin')->first();
         $response = $this->actingAs($user)
