@@ -96,20 +96,18 @@ class TeknisiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-        ]);
+        $request->validate([]);
 
         $teknisis = $request->all();
 
         $teknisi = Teknisi::find($id);
 
         if ($foto = $request->file('foto')) {
-            file::delete('images/teknisi' .$teknisi->images);
+            File::delete('images/teknisi' .$teknisi->foto);
             $file_name = $request->foto->getClientOriginalName();
             $foto->move(public_path('images/teknisi'), $file_name);
             $teknisis['foto'] = "$file_name";
-        }
-        else {
+        }else {
             unset($teknisis['foto']);
         }
 

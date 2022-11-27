@@ -68,7 +68,6 @@ class AnggotaController extends Controller
             'pindah_divisi' => 'required',
             'motivasi' => 'required',
             'komitmen' => 'required',
-            'komitmen' => 'required',
             'user_id' => 'Auth::id()',
             'cv' => 'required|mimes:pdf|max:50000',
             // 'porto' => 'required|mimes:pdf|max:50000',

@@ -47,7 +47,7 @@ class PrestasiController extends Controller
             'jenis_kegiatan' => 'required',
             'partisipasi' => 'required',
             'deskripsi' => 'required',
-            'sertifikat' => 'required',
+            // 'sertifikat' => 'required',
             'penyelenggara' => 'required',
             'waktu' => 'required',
             'tempat' => 'required',
@@ -124,7 +124,6 @@ class PrestasiController extends Controller
         }
 
         $prestasi->update($prestasis);
-
         return redirect()->route('prestasi.index')->with('success','Prestasi berhasil diperbarui');
     }
 

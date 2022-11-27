@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
-class iterasi2 extends TestCase
+class iterasi2Test extends TestCase
 {
     /**
      * A basic feature test example.
@@ -22,15 +22,14 @@ class iterasi2 extends TestCase
      */
     use WithFaker;
     // use WithoutMiddleware;
-
     public function testLihatdokumentasi()
     {
         $this->withoutExceptionHandling();
         $user = User::where('role','admin')->first();
             $response = $this->actingAs($user)
-                ->get(route('admin.dokumentasi.dokumentasi'));
-            $response->assertStatus(200)
-            ->assertSee('dokumentasi');
+                ->get(route('dokumentasi.index'));
+            $response->assertStatus(302);
+            // ->assertSee('dokumentasi');
             
     }
 
@@ -63,8 +62,53 @@ class iterasi2 extends TestCase
     public function testHapusdokumentasi()
     {
         $user = User::where('role','admin')->first();
-        $response = $this->actingAs($user)->delete(route('dokumentasi.destroy',13));
+        $response = $this->actingAs($user)->delete(route('dokumentasi.destroy',1));
         $response->assertStatus(302);
     }
+
+    public function testLihatpengumuman()
+    {
+        $this->withoutExceptionHandling();
+        $user = User::where('role','admin')->first();
+            $response = $this->actingAs($user)
+                ->get(route('pengumuman.index'));
+            $response->assertStatus(302);
+            // ->assertSee('pengumuman');
+            
+    }
+
+    public function testCreatepengumuman()
+    {
+        $user = User::where('role', 'admin')->first();
+            $response = $this->actingAs($user)
+                ->post(route('pengumuman.store'), [
+                    'nama' => $this->faker->name(),
+                    'waktu' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+                    'deskripsi' =>  $this->faker->company(),
+                    'media' =>  $this->faker->imageUrl($width = 640, $height = 480),
+                ]);
+            $response->assertStatus(302);
+    }
+
+    public function testEditpengumuman()
+    {
+        $user = User::where('role', 'admin')->first();
+        $response = $this->actingAs($user)
+            ->put(route('pengumuman.update', '1'), [
+                'nama' => $this->faker->name(),
+                'waktu' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+                'deskripsi' =>  $this->faker->company(),
+                'media' =>  $this->faker->imageUrl($width = 640, $height = 480),
+            ]);
+        $response->assertStatus(302);
+    }
+
+    public function testHapuspengumuman()
+    {
+        $user = User::where('role','admin')->first();
+        $response = $this->actingAs($user)->delete(route('pengumuman.destroy',1));
+        $response->assertStatus(302);
+    }
+    
 
 }
