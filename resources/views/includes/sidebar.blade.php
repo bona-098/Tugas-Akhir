@@ -22,16 +22,21 @@
     <div class="sidebar-heading">
         Manajemen
     </div>
+    @if (auth()->user()->role == 'su' || auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link" href="/kepengurusan">
             <i class="fas fa-fw fa-cog"></i>
             <span>Kepengurusan</span></a>
     </li>
+    @endif
+    @if (auth()->user()->role == 'su' || auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link" href="/divisi">
             <i class="fas fa-fw fa-camera"></i>
             <span>Divisi</span></a>
     </li>
+    @endif
+    @if (auth()->user()->role == 'su' || auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages3"
             aria-expanded="true" aria-controls="collapsePages3">
@@ -46,21 +51,29 @@
             </div>
         </div>
     </li>
+    @endif
+    @if (auth()->user()->role == 'su' || auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link" href="/dokumentasi">
             <i class="fas fa-fw fa-camera"></i>
             <span>Dokumentasi</span></a>
     </li>
+    @endif
+    @if (auth()->user()->role == 'su' || auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link" href="/pengumuman">
             <i class="fas fa-fw fa-bullhorn"></i>
             <span>Pengumuman</span></a>
     </li>
+    @endif
+    @if (auth()->user()->role == 'su' || auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link" href="/prestasi">
             <i class="fas fa-fw fa-trophy"></i>
             <span>Prestasi</span></a>
     </li>
+    @endif
+    @if (auth()->user()->role == 'su' || auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages2"
             aria-expanded="true" aria-controls="collapsePages2">
@@ -75,6 +88,7 @@
             </div>
         </div>
     </li>
+    @endif
     <li class="nav-item">
         <a class="nav-link" href="/teknisi">
             <i class="fa fa-gavel" aria-hidden="true"></i>
@@ -93,12 +107,14 @@
             </div>
         </div>
     </li>
+    @if (auth()->user()->role == 'su')
     <li class="nav-item">
         <a class="nav-link" href="/kelola">
             <i class="fa fa-plus-square" aria-hidden="true"></i>
             <span>Kelola user</span></a>
 
     </li>
+    @endif
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>

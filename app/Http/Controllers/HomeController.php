@@ -18,10 +18,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jumlah_anggota = Anggota::all()->count();
-        $jumlah_service = Service::all()->count();
-        $jumlah_prestasi = Prestasi::all()->count();
-        $jumlah_programkerja = Programkerja::all()->count();
+        $jumlah_anggota = Anggota::all();
+        $jumlah_service = Service::all();
+        $jumlah_prestasi = Prestasi::all();
+        $jumlah_programkerja = Programkerja::all();
+        // $proker = Programkerja::all();
+        // @dd($proker);
         // dd($jumlah_anggota);
         return view('admin.dashboard', compact('jumlah_anggota', 'jumlah_service', 'jumlah_prestasi', 'jumlah_programkerja'));
     }

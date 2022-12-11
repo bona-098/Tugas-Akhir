@@ -42,7 +42,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <link rel="SHORTCUT ICON" href="{{ 'assets/img/logoSAA.png' }}">
+    
+    <style>
 
+        #content{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        #content > .container-fluid{
+            flex-grow: 2;
+            align-items: flex-start;
+            align-content: flex-start;
+        }
+    </style>
 
 </head>
 
@@ -107,7 +121,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     @yield('content')
                 </div>
                 <!-- /.container-fluid -->

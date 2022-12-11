@@ -22,7 +22,7 @@
         <div class="card-body px-0 pb-0 border">
             <div class="table-responsive border">
                 <table class="table table-flush" id="products-list">
-                    <thead class="thead-light">
+                    <thead class="thead-dark">
                         <tr>
                             <th>Nama</th>
                             <th>Waktu</th>
@@ -36,17 +36,10 @@
                             <tr>
                                 <td class="text-sm">{{ $item->nama }}</td>
                                 <td class="text-sm">{{ $item->waktu }}</td>
-                                <td class="text-sm">{{ $item->deskripsi }}</td>                                
-                                {{-- <td>
-                                    <div class="d-flex">
-                                        <div class="pic"><img src="{{ asset('images/dokumentasi/' . $item->media) }}"
-                                                class="img-fluid" width="80" height="80" alt="pp"></div>
-                                    </div>
-                                </td> --}}
+                                <td class="text-sm">{{ $item->deskripsi }}</td>
                                 <td><a href="{{asset('images/dokumentasi/'. $item->media)}}" target="_blank">
                                     <img src="{{asset('images/dokumentasi/'.$item->media)}}" width="50px" height="50px" alt="">
                                 </td>
-                                {{-- <td><span class="badge badge-danger badge-sm">pending</span></td> --}}
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

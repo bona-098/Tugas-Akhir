@@ -5,7 +5,7 @@
                 <a href="{{ '/' }}"><img src="{{ asset('assets/img/logoSAA.png') }}" alt="logosaa"></a>
             </div>
 
-            <nav id="navbar" class="navbar">
+            <nav id="navbar" class="navbar" style="padding: 0 1.5rem;">
                 <ul>
                     <li><a class="nav-link scrollto active" href="/user-pengumuman">Pengumuman</a></li>
                     {{-- <li><a class="nav-link scrollto" href="/user-proker">Program Kerja</a></li> --}}
