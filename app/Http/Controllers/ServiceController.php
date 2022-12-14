@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Toastr;
+use App\Mail\BookingMail;
 use App\Models\User;
 use App\Models\Service;
 use App\Models\Teknisi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 
@@ -80,39 +82,21 @@ class serviceController extends Controller
                 'user_id' => Auth::user()->id
             ]);
 
+            $teknisi = Teknisi::find($request->teknisi_id);
+            $emailteknisi = User::find($teknisi->user_id)->email;
+            $details = [
+                'title' => 'Informasi Booking',
+                'body' => 'Silahkan login untuk mengelola booking',
+                'nama' => $request->nama,
+                'sesi' => $request->sesi,
+                'hari' => $request->hari,
+                'pesan' => $request->pesan
+                ];
+                Mail::to($emailteknisi)->send(new BookingMail($details));
+            // dd($details);
             return redirect()->route('service')->with('success', 'Servis berhasil, silahkan cek profil');
         }
     }
-
-    // public function userstore(Request $request)
-    // {
-    //     $this->validate($request, [
-    //         'nama' => 'required',
-    //         'hari' => 'required',
-    //         'sesi' => 'required',
-    //         'no_hp' => 'required',
-    //         'pesan' => 'required',
-    //         'status' => 'required',
-    //         'foto' => 'required|mimes:jpg,jpeg|max:50000',
-    //         // 'user_id' => 'required'
-    //     ]);
-
-    //     $newNameFoto = date('ymd'). '-' . $request->foto . '-' . $request->foto->extension();
-
-    //     $request->file('foto')->move(public_path('images/service'), $newNameFoto);
-
-    //     service::create([
-    //         'nama'=>$request->nama,
-    //         'hari'=>$request->hari,
-    //         'sesi'=>$request->sesi,
-    //         'no_hp'=>$request->no_hp,
-    //         'pesan'=>$request->pesan,
-    //         'status'=>$request->status,
-    //         'foto'=>$newNameFoto,
-    //     ]);
-
-    //     return redirect()->back()->with('success','Data berhasil ditambahkan');
-    // }
 
     /**
      * Display the specified resource.

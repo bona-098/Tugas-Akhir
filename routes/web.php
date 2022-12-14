@@ -26,6 +26,7 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::view('/mail', 'mail');
 
 Route::get('/user-pengumuman', [PengumumanController::class, 'user']);
 Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::class, 'showpengumuman'])->name('pengumuman');
