@@ -18,8 +18,7 @@
                                     <div class="pic"><img src="{{ asset('images/prestasi/' . $item->foto) }}"
                                             class="img-fluid" alt=""></div>
                                     <div class="member-info">
-                                        <h4>{{ $item->nama }}</h4>
-                                        <span>{{ $item->nim }}</span>
+                                        <h4>{{ $item->waktu }}</h4>
                                         <p>{{ $item->nama_kegiatan }}</p>
                                         <div class="social">
                                             <a href="{{ route('showprestasi', $item->id) }}">selengkapnya</a>

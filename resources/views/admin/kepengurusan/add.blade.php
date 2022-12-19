@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label>Tahun</label>
-                                    <input class="form-control" type="text" name="tahun">
+                                    <input class="form-control" type="number" name="tahun">
                                     <br>
                                 </div>
                                 <div class="col-12 col-sm-6">

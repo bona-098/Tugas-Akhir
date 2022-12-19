@@ -135,7 +135,7 @@ class DokumentasiController extends Controller
     public function showuser($id)
     {
         $dokumentasi = Dokumentasi::where('id', $id)->get();
-        return view('user.dokumentasidetail', compact('dokumentasi'));
+        return view('user.dokumentasidet', compact('dokumentasi'));
     }
 
     public function user()

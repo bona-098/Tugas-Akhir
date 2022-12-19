@@ -15,16 +15,17 @@
                 <div class="row">
                     @foreach ($pengumuman as $item)
                         <div class="col-md-4 mt-md-0">
-                            <div class="card shadow-lg move-on-hover">
+                            {{-- <div class="card shadow-lg move-on-hover">
                                 <img class="w-100 my-auto" src="{{ asset('images/pengumuman/' .$item->media) }}" alt="hero" width="100" height="100">
-                            </div>
-                            <div class="mt-2 ms-2">
-                                <a href="/detail-pengumuman-user">
-                                    <h6 class="mb-0">{{ $item->judul }}</h6>
-                                    <p class="text-secondary text-sm">{{ $item->deskripsi }}</p>
-                                    <p class="text-secondary text-sm">{{ $item->waktu }}</p>
-                                </a>
+                            </div> --}}
+                            <div class="member-info">
+                                <h4>{{ $item->judul }}</h4>
+                                <p>{{ $item->deskripsi }}</p>
+                                <p>{{ $item->waktu }}</p>
+                                <div class="social">
+                                    <a href="{{ route('showpengumuman', $item->id) }}">selengkapnya</a>
                                 </div>
+                            </div>
                         </div>
                     @endforeach
                 </div>

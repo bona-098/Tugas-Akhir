@@ -24,6 +24,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">{{ $item->deskripsi }}</small>
                                         <small class="text-muted">{{ $item->waktu }}</small>
+                                        <a href="{{ route('showdokumentasi', $item->id) }}">selengkapnya</a>
                                     </div>
                                 </div>
                             </div>

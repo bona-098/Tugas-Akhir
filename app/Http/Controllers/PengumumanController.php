@@ -129,10 +129,10 @@ class PengumumanController extends Controller
         File::delete('images/pengumuman/'.$pengumuman->media);
         return redirect()->back()->with('succes', 'Pengumuman berhasil dihapus');
     }
-    public function showpengumuman($id)
+    public function showuser($id)
     {
         $pengumuman = Pengumuman::where('id', $id)->get();
-        return view('user.pengumuman', compact('pengumuman'));
+        return view('user.pengumumandet', compact('pengumuman'));
     }
 
     public function user()
@@ -140,4 +140,5 @@ class PengumumanController extends Controller
         $pengumuman = Pengumuman::get();
         return view('user.pengumuman', compact('pengumuman')); 
     }
+
 }

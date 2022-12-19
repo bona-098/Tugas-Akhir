@@ -26,15 +26,13 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/mail', 'mail');
 
 Route::get('/user-pengumuman', [PengumumanController::class, 'user']);
-Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::class, 'showpengumuman'])->name('pengumuman');
-// Route::get('/user-proker', [ProgramkerjaController::class, 'user']);
+Route::get('/user-pengumumandetail/{showpengumuman}', [PengumumanController::class, 'showuser'])->name('showpengumuman');
 Route::get('/user-dokumentasi', [DokumentasiController::class, 'user']);
 Route::get('/user-dokumentasidetail/{showdokumentasi}', [DokumentasiController::class, 'showuser'])->name('showdokumentasi');
-Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
 Route::get('/user-prestasi', [PrestasiController::class, 'user']);
+Route::get('/user-prestasidetail/{showprestasi}', [PrestasiController::class, 'showuser'])->name('showprestasi');
 Route::get('/change-status/{id}',[ServiceController::class,'changeStatus']);
 Route::get('/status/{id}',[ProgramkerjaController::class,'status']);
 Route::get('/', [HomeController::class, 'landingpage']);

@@ -42,8 +42,8 @@
 
                             <div class="col-sm-6">
                                 <label for="lastName" class="form-label">Deskripsi</label>
-                                <input type="text" class="form-control" name="deskripsi"
-                                    @error('deskripsi') is-invalid @enderror" value="{{ old('deskripsi') }}">
+                                <textarea type="text" class="form-control" name="deskripsi"
+                                    @error('deskripsi') is-invalid @enderror" value="{{ old('deskripsi') }}"></textarea>
                                 @error('deskripsi')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
@@ -99,7 +99,7 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                    <div class="label--desc">Pastikan media yang diunggah berupa file gambar</div>
+                                    <div class="label--desc">Pastikan media yang diunggah berupa file pdf</div>
                                 </div>
                             </div>
                         </div>

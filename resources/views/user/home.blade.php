@@ -71,7 +71,7 @@
                                                 alt=""></div>
                                         <div class="member-info">
                                             <h4>{{ $pengumuman->waktu }}</h4>
-                                            <span>{{ $pengumuman->judul }}</span>
+                                            <h4>{{ $pengumuman->judul }}</h4>
                                             <p>{{ $pengumuman->deskripsi }}</p>
                                             <div class="social">
                                                 <a href="#">selengkapnya</a>
@@ -142,8 +142,8 @@
                                                 alt=""></div>
                                         <div class="member-info">
                                             <h4>{{ $prestasi->nama }}</h4>
-                                            <span>11181019</span>
-                                            <p>Juara 1 lomba mobil listrik</p>
+                                            <h4>{{ $prestasi->deskripsi }}</h4>
+                                            <p>{{ $prestasi->waktu }}</p>
                                             <div class="social">
                                                 <a href="#">selengkapnya</a>
                                             </div>
