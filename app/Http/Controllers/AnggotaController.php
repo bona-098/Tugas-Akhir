@@ -39,12 +39,6 @@ class AnggotaController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $kepengurusan = Kepengurusan::select('nama','id')->OrderBy('id', 'desc')->get();
@@ -55,9 +49,26 @@ class AnggotaController extends Controller
             'divisi' => $divisi,
             ]);
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $this->validate($request, [
+            'nama' => 'required',
+            'nim' => 'required',
+            'divisi_id' => 'required',
+            'kepengurusan_id' => 'required',
+            'alasan_satu' => 'required',
+            'pilihan_dua' => 'required',
+            'alasan_dua' => 'required',
+            'pindah_divisi' => 'required',
+            'motivasi' => 'required',
+            'komitmen' => 'required',
+            'komitmen' => 'required',
             'user_id' => 'Auth::id()',
             'cv' => 'required|mimes:pdf|max:50000',
         ]);
@@ -72,6 +83,17 @@ class AnggotaController extends Controller
             $request->file('porto')->move(public_path('images/pendaftaran/porto'), $newNameporto);
         }
         Anggota::create([
+            'nama' => $request->nama,
+            'nim' => $request->nim,
+            'divisi_id' => $request->divisi_id,
+            'kepengurusan_id' => $request->kepengurusan_id,
+            'alasan_satu' => $request->alasan_satu,
+            'pilihan_dua' => $request->pilihan_dua,
+            'alasan_dua' => $request->alasan_dua,
+            'pindah_divisi' => $request->pindah_divisi,
+            'motivasi' => $request->motivasi,
+            'komitmen' => $request->komitmen,
+            'cv' => $newNamecv,
             'porto' => $newNameporto,
             'user_id' => Auth::user()->id
         ]);

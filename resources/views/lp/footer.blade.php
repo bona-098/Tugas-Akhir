@@ -25,12 +25,11 @@
           <div class="col-2">
             <h4>Sosial Media</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Instagram</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Tiktok</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Youtube</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Twiter</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Facebook</a></li>
-            </ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://instagram.com/saa_itk?igshid=YmMyMTA2M2Y=">Instagram</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://www.tiktok.com/@saa_itk?_t=8XcVv4SU9mk&_r=1">Tiktok</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://youtube.com/@saaitk7829">Youtube</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=hfv5743r">line</a></li>
+             </ul>
           </div>
         </div>
       </div>
