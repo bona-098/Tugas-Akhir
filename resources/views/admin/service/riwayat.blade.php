@@ -20,44 +20,49 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($service->where('status', 'selesai') as $item)
-                            <tr>
-                                <td class="text-sm">{{ $loop->iteration }}</td>
-                                <td class="text-sm">{{ $item->nama }}</td>
-                                <td class="text-sm">{{ $item->hari }}</td>
-                                <td class="text-sm">{{ $item->sesi }}</td>
-                                <td class="text-sm">{{ $item->no_hp }}</td>
-                                <td class="test-sm">{{ $item->teknisi->user->name ?? '-' }}</td>
-                                <td class="test-sm">{{ $item->user->name ?? '-' }}</td>
-                                <td class="text-sm">{{ $item->pesan }}</td>
-                                <td>
-                                    @if ($item->status == 'terima')
-                                        <a href="{{ url('change-status/' . $item->id . 'status?terima') }}"
-                                            onclick="return confirm('Are you Sure?')"
-                                            class="btn btn-sm btn-success">Terima</a>
-                                    @elseif ($item->status == 'selesai')
-                                        <a href="{{ url('change-status/' . $item->id . 'status?selesai') }}"
-                                            onclick="return confirm('Are you Sure?')"
-                                            class="btn btn-sm btn-primary">selesai</a>
-                                    @endif
-                                </td>
-                                {{-- <td>
-                                    <div class="text-center">
-                                    
-                                        <a href="{{ url('change-status/'.$item->id.'?status=terima') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Terima</a>
-                                        <a href="{{ url('change-status/'.$item->id.'?status=selesai') }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-primary">Selesai</a>
-                                    </div>
-                                </td> --}}
-                                <td class="text-sm">
-                                    <form action="{{ route('service.destroy', $item->id) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit"><i class="fas fa-trash text-secondary"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-
+                        @if (auth()->user()->role == 'teknisi')
+                            @foreach ($service->where('status', 'selesai')->where('teknisi_id', $teknisis->id) as $item)
+                                <tr>
+                                    <td class="text-sm">{{ $loop->iteration }}</td>
+                                    <td class="text-sm">{{ $item->nama }}</td>
+                                    <td class="text-sm">{{ $item->hari }}</td>
+                                    <td class="text-sm">{{ $item->sesi }}</td>
+                                    <td class="text-sm">{{ $item->no_hp }}</td>
+                                    <td class="test-sm">{{ $item->teknisi->user->name ?? '-' }}</td>
+                                    <td class="test-sm">{{ $item->user->name ?? '-' }}</td>
+                                    <td class="text-sm">{{ $item->pesan }}</td>
+                                    <td><button type="button" class="btn btn-sm btn-primary" disabled>Selesai</button></td>
+                                    <td class="text-sm">
+                                        <form action="{{ route('service.destroy', $item->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit"><i class="fas fa-trash text-secondary"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @elseif (auth()->user()->role == 'su' || auth()->user()->role == 'admin')
+                            @foreach ($service->where('status', 'selesai')->where('teknisi_id', $teknisis->id) as $item)
+                                <tr>
+                                    <td class="text-sm">{{ $loop->iteration }}</td>
+                                    <td class="text-sm">{{ $item->nama }}</td>
+                                    <td class="text-sm">{{ $item->hari }}</td>
+                                    <td class="text-sm">{{ $item->sesi }}</td>
+                                    <td class="text-sm">{{ $item->no_hp }}</td>
+                                    <td class="test-sm">{{ $item->teknisi->user->name ?? '-' }}</td>
+                                    <td class="test-sm">{{ $item->user->name ?? '-' }}</td>
+                                    <td class="text-sm">{{ $item->pesan }}</td>
+                                    <td><button type="button" class="btn btn-sm btn-primary" disabled>Selesai</button></td>
+                                    <td class="text-sm">
+                                        <form action="{{ route('service.destroy', $item->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit"><i class="fas fa-trash text-secondary"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

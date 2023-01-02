@@ -21,10 +21,12 @@ class serviceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $teknisis = Teknisi::where('user_id', Auth::id())->first();;
         $service = Service::with("teknisi", "user")->get();
-        return view('admin.service.service', compact('service'));
+        // @dd($teknisis);
+        return view('admin.service.service', compact('service', 'teknisis'));
     }
 
     /**
@@ -34,17 +36,36 @@ class serviceController extends Controller
      */
     public function create(Request $request)
     {
+        $c = ['sesi 1', 'sesi 2', 'sesi 3', 'sesi 4'];
 
         $hari = $request->get('hari');
-        
+
         $ambilhari = Carbon::parse($hari)->translatedFormat('l');
-        
+
         $filter = Teknisi::where('hari', '=', $ambilhari)->get();
 
-        return view('user.service', compact('filter'));
+        $sesi = Service::get('sesi');
 
+        if ($request->get('teknisi_id')) {
+            $cekTeknisi = Service::where('teknisi_id', $request->get('teknisi_id'))
+                ->get('sesi')
+                ->pluck('sesi')
+                ->toArray();
+            foreach ($c as $item) {
+                if (!in_array($item, $cekTeknisi)) {
+                    $dataSesi[] = $item;
+                }
+            }
+            // dd($cekTeknisi);   
+              
+        } else {
+            $dataSesi = [];
+        }
+
+        // $teknis = Service::where('sesi', '=', $sesi)->get();
+        return view('user.service', compact('filter', 'sesi','dataSesi'));
     }
-    
+
     // public function usercreate()
     // {
     //     return view('user.service');
@@ -58,6 +79,8 @@ class serviceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(request()->all()) ;
+        // dd($request->all); 
         $this->validate($request, [
             'nama' => 'required',
             'hari' => 'required',
@@ -67,10 +90,10 @@ class serviceController extends Controller
             // 'status' => '1',
             'teknisi_id' => 'required',
         ]);
-
-        if(Service::where('sesi', '=', $request->sesi)->where('hari', '=', $request->hari)->exists()){
+        
+        if (Service::where('sesi', '=', $request->sesi)->where('hari', '=', $request->hari)->exists()) {
             return redirect()->back()->with('gagal', 'Data servis di sesi dan yang sama telah terisi');
-        }else{
+        } else {
             Service::create([
                 'nama' => $request->nama,
                 'hari' => $request->hari,
@@ -81,7 +104,6 @@ class serviceController extends Controller
                 'teknisi_id' => $request->teknisi_id,
                 'user_id' => Auth::user()->id
             ]);
-
             $teknisi = Teknisi::find($request->teknisi_id);
             $emailteknisi = User::find($teknisi->user_id)->email;
             $details = [
@@ -91,8 +113,8 @@ class serviceController extends Controller
                 'sesi' => $request->sesi,
                 'hari' => $request->hari,
                 'pesan' => $request->pesan
-                ];
-                Mail::to($emailteknisi)->send(new BookingMail($details));
+            ];
+            Mail::to($emailteknisi)->send(new BookingMail($details));
             // dd($details);
             return redirect()->route('service')->with('success', 'Servis berhasil, silahkan cek profil');
         }
@@ -192,7 +214,8 @@ class serviceController extends Controller
     }
     public function riwayat()
     {
+        $teknisis = Teknisi::where('user_id', Auth::id())->first();;
         $service = Service::with("teknisi", "user")->get();
-        return view('admin.service.riwayat', compact('service'));
+        return view('admin.service.riwayat', compact('service', 'teknisis'));
     }
 }
